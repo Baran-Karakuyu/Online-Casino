@@ -6,13 +6,15 @@
 package ch.bbbaden.CasinoMenü.ViewModel;
 
 import ch.bbbaden.CasinoMenü.Model.Model;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.io.IOException;
 
 /**
  *
  * @author Baran
  */
-public class ViewModel {
+public class ViewModel  implements PropertyChangeListener{
     Model m;
 
     public ViewModel(Model m) {
@@ -21,5 +23,10 @@ public class ViewModel {
     
     public void startSlots() throws IOException {
         m.startSlots();
+    }
+
+    @Override
+    public void propertyChange(PropertyChangeEvent pce) {
+        
     }
 }
