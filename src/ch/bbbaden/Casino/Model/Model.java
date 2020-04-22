@@ -7,6 +7,7 @@ package ch.bbbaden.Casino.Model;
 
 import ch.bbbaden.Casino.MainApp;
 import java.io.IOException;
+import java.sql.SQLException;
 
 /**
  *
@@ -20,8 +21,8 @@ public class Model {
         mainApp.startSlots();
     }
 
-    public void startBlackJack() throws IOException {
-        mainApp.startSlots();
+    public void startBlackJack() throws IOException, SQLException, ClassNotFoundException {
+        mainApp.startBlackjack();
     }
 
     public void startRoulette() throws IOException {
