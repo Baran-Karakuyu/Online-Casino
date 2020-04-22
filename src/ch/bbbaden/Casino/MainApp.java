@@ -55,13 +55,10 @@ public class MainApp extends Application {
     }
     
     public void startSlots() throws IOException {
-        System.out.println("a");
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Games/Slots/FXMLDocument.fxml"));
         Parent root;
-        System.out.println("b");
         root = loader.load();
         FXMLSlotsController view = loader.getController();
-        System.out.println("l");
         SlotMachineModel model = new SlotMachineModel();
         final SlotMachineViewModel viewModel = new SlotMachineViewModel(model);
         view.setViewModel(viewModel);

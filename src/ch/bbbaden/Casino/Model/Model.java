@@ -5,15 +5,8 @@
  */
 package ch.bbbaden.Casino.Model;
 
-import ch.bbbaden.Casino.Games.Slots.FXMLSlotsController;
-import ch.bbbaden.Casino.Games.Slots.SlotMachineModel;
-import ch.bbbaden.Casino.Games.Slots.SlotMachineViewModel;
 import ch.bbbaden.Casino.MainApp;
 import java.io.IOException;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
 
 /**
  *
@@ -24,7 +17,6 @@ public class Model {
     private MainApp mainApp;
 
     public void startSlots() throws IOException {
-        System.out.println("p");
         mainApp.startSlots();
     }
 

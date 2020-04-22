@@ -20,7 +20,6 @@ public class ViewModel {
     }
     
     public void startSlots() throws IOException {
-        System.out.println("t");
         m.startSlots();
     }
 }
