@@ -5,19 +5,20 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="700.0" styleClass="menu" stylesheets="@../../CasinoStyleSheet/MenuCSS.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="casinomenü.FXMLMenüController">
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="700.0" styleClass="menu" stylesheets="@../../../../CasinoStyleSheet/MenuCSS.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.bbbaden.Casino.View.FXMLDocumentController">
    <children>
       <Button fx:id="btnBuyCredits" layoutX="529.0" layoutY="426.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="130.0" text="Credits kaufen" />
       <Button layoutX="29.0" layoutY="426.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="130.0" text="Credits kaufen" />
-      <ImageView fx:id="btnYatzy" fitHeight="121.0" fitWidth="242.0" layoutX="29.0" layoutY="91.0" onMouseClicked="#YatzyButtonActionHandling">
+      <ImageView fx:id="btnYatzy" fitHeight="121.0" fitWidth="242.0" layoutX="29.0" layoutY="91.0">
          <image>
-            <Image url="@../../../kisspng-dice-yahtzee-logo-product-trademark-bakno-games-mac-games-windows-games-ios-game-5be71c1b284c37.9579155315418726671651.png" />
+            <Image url="@../../../../CasinoIMG/BlackJack.png" />
          </image>
       </ImageView>
       <ImageView fx:id="btnBlackJack" fitHeight="133.0" fitWidth="200.0" layoutX="429.0" layoutY="67.0" onMouseClicked="#BlackJackButtonActionHandling">
          <image>
-            <Image url="@../../../BJ.png" />
+            <Image url="@../../../../CasinoIMG/Yahtzee.png" />
          </image>
       </ImageView>
+      <Button fx:id="Slots" layoutX="245.0" layoutY="250.0" mnemonicParsing="false" onAction="#YatzyButtonActionHandling" prefHeight="25.0" prefWidth="58.0" />
    </children>
 </AnchorPane>

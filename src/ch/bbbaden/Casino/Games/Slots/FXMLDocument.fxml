@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.effect.BoxBlur?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="apSlots" prefHeight="910.0" prefWidth="910.0" scaleShape="false" styleClass="apSlots" stylesheets="@../../../../../CasinoStyleSheet/SlotsCSS/SlotsStyle.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.bbbaden.SlotMachineCherry.View.FXMLDocumentController">
+   <children>
+      <Rectangle fx:id="recUnten" arcHeight="5.0" arcWidth="5.0" fill="#333333" height="440.0" layoutX="131.0" layoutY="456.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" width="770.0" />
+      <ImageView fitHeight="434.0" fitWidth="764.0" layoutX="134.0" layoutY="459.0">
+         <image>
+            <Image url="@../../../../../CasinoIMG/Slots/SlotsImages/SlotsBackgroundTOP.png" />
+         </image>
+         <effect>
+            <BoxBlur height="7.0" iterations="3" width="7.0" />
+         </effect>
+      </ImageView>
+      <Rectangle fx:id="recWalzen" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="250.0" layoutX="140.0" layoutY="466.0" stroke="BLACK" strokeType="INSIDE" width="565.0" />
+      <ImageView fx:id="ivWalzeStop" fitHeight="250.0" fitWidth="112.0" layoutX="574.0" layoutY="479.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../CasinoIMG/Slots/SlotsImages/SlotsSTOP.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="ivSpinnerForm" fitHeight="250.0" fitWidth="565.0" layoutX="140.0" layoutY="466.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../CasinoIMG/Slots/SlotsImages/SlotsForm.png" />
+         </image>
+      </ImageView>
+      <Rectangle fx:id="recOben" arcHeight="5.0" arcWidth="5.0" fill="#333333" height="440.0" layoutX="131.0" layoutY="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" width="770.0" />
+      <ImageView fitHeight="434.0" fitWidth="764.0" layoutX="134.0" layoutY="17.0">
+         <image>
+            <Image url="@../../../../../CasinoIMG/Slots/SlotsImages/SlotsBackgroundTOP.png" />
+         </image>
+         <effect>
+            <BoxBlur height="7.0" iterations="3" width="7.0" />
+         </effect>
+      </ImageView>
+      <ImageView fx:id="ivPentagon" fitHeight="440.0" fitWidth="770.0" layoutX="131.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../CasinoIMG/Slots/SlotsImages/SlotsPentagon.png" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#090a36" height="36.0" layoutX="343.0" layoutY="410.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="280.0" AnchorPane.leftAnchor="343.0" AnchorPane.rightAnchor="267.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#090a36" height="36.0" layoutX="343.0" layoutY="372.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="280.0" />
+      <Rectangle fx:id="rec5x" arcHeight="5.0" arcWidth="5.0" height="75.0" layoutX="697.0" layoutY="55.0" stroke="BLACK" strokeType="INSIDE" styleClass="rectangle" width="130.0" />
+      <Rectangle fx:id="rec3x" arcHeight="5.0" arcWidth="5.0" height="75.0" layoutX="638.0" layoutY="143.0" stroke="BLACK" strokeType="INSIDE" styleClass="rectangle" width="130.0" />
+      <Rectangle fx:id="rec2x" arcHeight="5.0" arcWidth="5.0" height="75.0" layoutX="730.0" layoutY="231.0" stroke="BLACK" strokeType="INSIDE" styleClass="rectangle" width="130.0" />
+      <Button fx:id="btnAuszahlen" layoutX="235.0" layoutY="398.0" mnemonicParsing="false" onAction="#handleAuszahlenButtonAction" text="Auszahlen" />
+      <Button fx:id="btnEInwerfen" layoutX="766.0" layoutY="398.0" mnemonicParsing="false" onAction="#handleEinwerfenButtonAction" prefHeight="25.0" prefWidth="70.0" text="Einwerfen" />
+      <Spinner fx:id="spnEinwerfen" layoutX="679.0" layoutY="398.0" prefHeight="25.0" prefWidth="80.0" />
+      <Label fx:id="lblSpielerkonto" layoutX="356.0" layoutY="382.0" styleClass="lblSpielerkonto" text="Spielerkonto:" textFill="WHITE" />
+      <Label fx:id="lblGewinn" layoutX="359.0" layoutY="420.0" styleClass="lblGewinn" text="Gewinn:" textFill="WHITE" />
+      <Label fx:id="lblSpielerkontoZahl" layoutX="433.0" layoutY="382.0" styleClass="lblSpielerkontoZahl" text="0" textFill="WHITE">
+         <font>
+            <Font name="DS-Digital" size="12.0" />
+         </font></Label>
+      <Label fx:id="lblGewinnZahl" layoutX="435.0" layoutY="420.0" styleClass="lblGewinnZahl" text="0" textFill="WHITE" />
+      <Button fx:id="btnMystery" layoutX="140.0" layoutY="806.0" mnemonicParsing="false" onAction="#handleMysteryButtonAction" prefHeight="75.0" prefWidth="130.0" styleClass="btnMystery" text="MYSTERY">
+         <font>
+            <Font size="20.0" />
+         </font></Button>
+      <Button fx:id="btnBet" layoutX="280.0" layoutY="806.0" mnemonicParsing="false" onAction="#handleBetButtonAction" prefHeight="75.0" prefWidth="130.0" styleClass="btnbet" text="BET" AnchorPane.leftAnchor="278.0">
+         <font>
+            <Font size="20.0" />
+         </font></Button>
+      <Button fx:id="btnGamble" layoutX="590.0" layoutY="806.0" mnemonicParsing="false" onAction="#handleGambleButtonAction" prefHeight="75.0" prefWidth="130.0" styleClass="btnGamble" text="GAMBLE">
+         <font>
+            <Font size="20.0" />
+         </font></Button>
+      <Button fx:id="btnStop" defaultButton="true" layoutX="730.0" layoutY="806.0" mnemonicParsing="false" onAction="#handleStopButtonAction" prefHeight="75.0" prefWidth="130.0" styleClass="btnStop" text="STOP">
+         <font>
+            <Font size="20.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Rectangle fx:id="recWins" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="325.0" layoutX="713.0" layoutY="466.0" stroke="BLACK" strokeType="INSIDE" width="177.0" />
+      <Button fx:id="btnAbbrechen" layoutX="14.0" layoutY="48.0" mnemonicParsing="false" onAction="#handleAbbrechenButtonAction" prefHeight="50.0" prefWidth="104.0" text="Abbrechen" />
+      <Label fx:id="lblKontostand" layoutX="14.0" layoutY="14.0" text="Kontostand:" textFill="WHITE" />
+      <Label fx:id="lblKontostandZahl" layoutX="84.0" layoutY="14.0" prefHeight="17.0" prefWidth="43.0" textFill="WHITE" />
+      <Label fx:id="lblM2x" layoutX="776.0" layoutY="241.0" text="2x" textFill="#007500">
+         <font>
+            <Font size="38.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblM3x" layoutX="684.0" layoutY="153.0" text="3x" textFill="#000075">
+         <font>
+            <Font size="38.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblM5x" layoutX="743.0" layoutY="65.0" text="5x" textFill="#750000">
+         <font>
+            <Font size="38.0" />
+         </font>
+      </Label>
+      <Rectangle fx:id="rec2x1" arcHeight="5.0" arcWidth="5.0" height="285.0" layoutX="153.0" layoutY="31.0" stroke="BLACK" strokeType="INSIDE" styleClass="rectangle" width="130.0" />
+      <Label fx:id="lblCC5x1" layoutX="199.0" layoutY="253.0" text="5x" textFill="#7a7a00">
+         <font>
+            <Font size="38.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblCC5x2" layoutX="199.0" layoutY="204.0" text="5x" textFill="#7a7a00">
+         <font>
+            <Font size="38.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblCC10x" layoutX="189.0" layoutY="153.0" text="10x" textFill="#7a5a00">
+         <font>
+            <Font size="38.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblCC100x" layoutX="179.0" layoutY="102.0" text="100x" textFill="#7c2916">
+         <font>
+            <Font size="38.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblWalze1" layoutX="150.0" layoutY="500.0" visible="false" />
+      <Label fx:id="lblWalze2" layoutX="277.0" layoutY="500.0" visible="false" />
+      <Label fx:id="lblWalze3" layoutX="404.0" layoutY="500.0" visible="false" AnchorPane.leftAnchor="404.0" />
+      <Label fx:id="lblBONUS" layoutX="303.0" layoutY="314.0" text="BONUS" textFill="#770000">
+         <font>
+            <Font size="34.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblWIN" layoutX="622.0" layoutY="314.0" text="WIN" textFill="#000077">
+         <font>
+            <Font size="34.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblLightLeft" layoutX="198.0" layoutY="446.0" opacity="0.0" prefHeight="25.0" prefWidth="25.0" text="o" textFill="RED">
+         <font>
+            <Font name="System Bold" size="40.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblLightMiddle" layoutX="331.0" layoutY="446.0" opacity="0.0" prefHeight="25.0" prefWidth="25.0" text="o" textFill="RED">
+         <font>
+            <Font name="System Bold" size="40.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblLightRight" layoutX="458.0" layoutY="446.0" opacity="0.0" prefHeight="25.0" prefWidth="25.0" text="o" textFill="RED">
+         <font>
+            <Font name="System Bold" size="40.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblLightStop" layoutX="577.0" layoutY="446.0" opacity="0.0" prefHeight="25.0" prefWidth="25.0" text="o" textFill="RED">
+         <font>
+            <Font name="System Bold" size="40.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblRisikoZahl" layoutX="527.0" layoutY="382.0" styleClass="lblRisiko" text="0" textFill="WHITE" />
+      <Label fx:id="lblShuffleTwo" layoutX="419.0" layoutY="228.0" rotate="-107.0" text="   2x&#10;Shuffle" textFill="#007575">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblShuffleFour" layoutX="522.0" layoutY="160.0" rotate="37.0" text="   4x&#10;Shuffle" textFill="#007500">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblCherryCollect" layoutX="445.0" layoutY="160.0" rotate="-37.0" text="Cherry&#10;Collect" textFill="#770000">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblTenTimes" layoutX="562.0" layoutY="243.0" rotate="107.0" text="10x" textFill="#550088">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblFruitStop1" layoutX="496.0" layoutY="280.0" text="Fruit" textFill="#000088">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblFruitStop2" layoutX="496.0" layoutY="303.0" text="Stop" textFill="#880000">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblTenTimesScreen" layoutX="585.0" layoutY="382.0" text="10x" textFill="WHITE" visible="false" />
+      <ImageView fx:id="ivWalze1" fitHeight="125.0" fitWidth="125.0" layoutX="152.0" layoutY="534.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../CasinoIMG/Slots/SlotsSymbole/Cherry.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="ivWalze2" fitHeight="125.0" fitWidth="125.0" layoutX="290.0" layoutY="534.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../CasinoIMG/Slots/SlotsSymbole/Cherry.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="ivWalze3" fitHeight="125.0" fitWidth="125.0" layoutX="429.0" layoutY="534.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../CasinoIMG/Slots/SlotsSymbole/Cherry.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="325.0" fitWidth="177.0" layoutX="713.0" layoutY="466.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../CasinoIMG/Slots/SlotsImages/SlotsWinTable.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="lblCherryCollectSteps" layoutX="521.0" layoutY="420.0" prefHeight="17.0" prefWidth="19.0" textFill="WHITE" />
+      <Label fx:id="lblCCAction" layoutX="165.0" layoutY="46.0" text="Action" textFill="#7a0000">
+         <font>
+            <Font size="38.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblHold" layoutX="297.0" layoutY="729.0" text="HOLD" textFill="#750075">
+         <font>
+            <Font size="34.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblStep" layoutX="458.0" layoutY="729.0" text="STEP" textFill="#007575">
+         <font>
+            <Font size="34.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

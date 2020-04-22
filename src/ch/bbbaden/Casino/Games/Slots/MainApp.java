@@ -3,12 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ch.bbbaden.CasinoMenü;
+package ch.bbbaden.Casino.Games.Slots;
 
-import ch.bbbaden.CasinoMenü.Model.Model;
-import ch.bbbaden.CasinoMenü.View.FXMLMenüController;
-import ch.bbbaden.CasinoMenü.ViewModel.ViewModel;
-import java.io.IOException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -19,16 +15,16 @@ import javafx.stage.Stage;
  *
  * @author Baran
  */
-public class CasinoMenü extends Application {
-    
+public class MainApp extends Application {
+
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("View/FXMLMenü.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("View/FXMLDocument.fxml"));
         Parent root;
         root = loader.load();
-        FXMLMenüController view = loader.getController();
-        Model model = new Model();
-        final ViewModel viewModel = new ViewModel(model);
+        FXMLSlotsController view = loader.getController();
+        SlotMachineModel model = new SlotMachineModel();
+        final SlotMachineViewModel viewModel = new SlotMachineViewModel(model);
         view.setViewModel(viewModel);
         model.addPropertyChangeListener(viewModel);
         view.bind();
@@ -47,4 +43,5 @@ public class CasinoMenü extends Application {
     public static void main(String[] args) {
         launch(args);
     }
+
 }

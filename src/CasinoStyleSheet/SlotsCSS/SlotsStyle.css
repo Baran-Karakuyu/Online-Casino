@@ -1,0 +1,48 @@
+.apSlots {
+	-fx-background-color: #333333;
+}
+
+.btnGamble {
+	-fx-background-color: yellow;
+}
+
+.btnMystery {
+	-fx-background-color: #3636ff;
+}
+
+.btnbet {
+	-fx-background-color: #ffffff;
+}
+
+.btnStop {
+	-fx-background-color: #ff0000;
+}
+
+.btnGamble:pressed  {
+	-fx-background-color: #c4c400;
+}
+
+.btnMystery:pressed  {
+	-fx-background-color: #3636b4;
+}
+
+.btnbet:pressed  {
+	-fx-background-color: #c4c4c4;
+}
+
+.btnStop:pressed  {
+	-fx-background-color: #c40000;
+}
+
+.rectangle {
+	-fx-stroke-width: 8px;
+	-fx-stroke: #bababa;
+}
+
+@font-face {
+	src: url("DS-DIGIB.ttf");
+}
+
+.lblSpielerkonto, .lblSpielerkontoZahl, .lblGewinn, .lblGewinnZahl, .lblRisiko {
+	-fx-font-family: "DS-Digital";
+}

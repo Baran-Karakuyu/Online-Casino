@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ch.bbbaden.CasinoMenü.ViewModel;
+package ch.bbbaden.Casino.ViewModel;
 
-import ch.bbbaden.CasinoMenü.Model.Model;
+import ch.bbbaden.Casino.Model.Model;
 import java.io.IOException;
 
 /**
@@ -20,6 +20,7 @@ public class ViewModel {
     }
     
     public void startSlots() throws IOException {
+        System.out.println("t");
         m.startSlots();
     }
 }
