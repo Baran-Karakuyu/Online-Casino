@@ -5,7 +5,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="700.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="casinomenü.FXMLMenüController">
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="700.0" styleClass="menu" stylesheets="@../../CasinoStyleSheet/MenuCSS.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="casinomenü.FXMLMenüController">
    <children>
       <Button fx:id="btnBuyCredits" layoutX="529.0" layoutY="426.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="130.0" text="Credits kaufen" />
       <Button layoutX="29.0" layoutY="426.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="130.0" text="Credits kaufen" />
