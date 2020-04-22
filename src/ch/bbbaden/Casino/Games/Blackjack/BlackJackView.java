@@ -171,11 +171,11 @@ public class BlackJackView implements Initializable {
     //Start
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        chip10.setImage(new Image("CasinoIMG.BlackJack.Chips/Chip10.png"));
-        chip50.setImage(new Image("CasinoIMG.BlackJack.Chips/Chip50.png"));
-        chip100.setImage(new Image("CasinoIMG.BlackJack.Chips/Chip100.png"));
-        chip250.setImage(new Image("CasinoIMG.BlackJack.Chips/Chip250.png"));
-        chip1000.setImage(new Image("CasinoIMG.BlackJack.Chips/Chip1000.png"));
+        chip10.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip10.png"));
+        chip50.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip50.png"));
+        chip100.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip100.png"));
+        chip250.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip250.png"));
+        chip1000.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip1000.png"));
         versichernChoice.getItems().add(10);
         versichernChoice.getItems().add(50);
         versichernChoice.getItems().add(100);
@@ -238,9 +238,9 @@ public class BlackJackView implements Initializable {
         } else {
             viewModel.play();
 
-            cardsPlayer(cardP, card1Player, "CasinoIMG.BlackJack.Card");
-            cardsDealer(cardG, card1Groupier, "CasinoIMG.BlackJack.Card");
-            cardsPlayer(card2P, card2Player, "CasinoIMG.BlackJack.Card");
+            cardsPlayer(cardP, card1Player, "CasinoIMG/BlackJack/Card");
+            cardsDealer(cardG, card1Groupier, "CasinoIMG/BlackJack/Card");
+            cardsPlayer(card2P, card2Player, "CasinoIMG/BlackJack/Card");
             card4Hide();
 
             summep = 0;
@@ -292,7 +292,7 @@ public class BlackJackView implements Initializable {
         } else {
             switch (cardshit) {
                 case 2:
-                    cardsPlayer(card3P, card3Player, "CasinoIMG.BlackJack.Card");
+                    cardsPlayer(card3P, card3Player, "CasinoIMG/BlackJack/Card");
                     summep = 0;
                     for (int i = 0; i < playerCards.size(); i++) {
                         summep += playerCards.get(i).getValue();
@@ -304,7 +304,7 @@ public class BlackJackView implements Initializable {
                     }
                     break;
                 case 3:
-                    cardsPlayer(card4P, card4Player, "CasinoIMG.BlackJack.Card");
+                    cardsPlayer(card4P, card4Player, "CasinoIMG/BlackJack/Card");
                     summep = 0;
                     for (int i = 0; i < playerCards.size(); i++) {
                         summep += playerCards.get(i).getValue();
@@ -315,7 +315,7 @@ public class BlackJackView implements Initializable {
                     }
                     break;
                 case 4:
-                    cardsPlayer(card5P, card5Player, "CasinoIMG.BlackJack.Card");
+                    cardsPlayer(card5P, card5Player, "CasinoIMG/BlackJack/Card");
                     summep = 0;
                     for (int i = 0; i < playerCards.size(); i++) {
                         summep += playerCards.get(i).getValue();
@@ -353,7 +353,7 @@ public class BlackJackView implements Initializable {
         System.out.println("Summeg ist " + summeg);
 
         card4Show();
-        cardsDealer(card3G, card3Groupier, "CasinoIMG.BlackJack.Card");
+        cardsDealer(card3G, card3Groupier, "CasinoIMG/BlackJack/Card");
         summeg = 0;
         for (int i = 0; i < dealerCards.size(); i++) {
             summeg += dealerCards.get(i).getValue();
@@ -362,14 +362,14 @@ public class BlackJackView implements Initializable {
         if (summeg < 17) {
 
             viewModel.holdaction(summeg, cardsDealer);
-            cardsDealer(card4G, card4Groupier, "CasinoIMG.BlackJack.Card");
+            cardsDealer(card4G, card4Groupier, "CasinoIMG/BlackJack/Card");
             summeg = 0;
             for (int i = 0; i < dealerCards.size(); i++) {
                 summeg += dealerCards.get(i).getValue();
             }
             if (summeg < 17) {
                 viewModel.holdaction(summeg, cardsDealer);
-                cardsDealer(card5G, card5Groupier, "CasinoIMG.BlackJack.Card");
+                cardsDealer(card5G, card5Groupier, "CasinoIMG/BlackJack/Card");
                 summeg = 0;
                 for (int i = 0; i < dealerCards.size(); i++) {
                     summeg += dealerCards.get(i).getValue();
@@ -429,7 +429,7 @@ public class BlackJackView implements Initializable {
                 System.out.println("Values :" + dealerCards.get(i).getValue());
             }
         } else {
-            cardsDealer(card3G, card3Groupier, "CasinoIMG.BlackJack.Card");
+            cardsDealer(card3G, card3Groupier, "CasinoIMG/BlackJack/Card");
             summeg = 0;
             for (int i = 0; i < dealerCards.size(); i++) {
                 summeg += dealerCards.get(i).getValue();
@@ -437,14 +437,14 @@ public class BlackJackView implements Initializable {
             }
             if (summeg < 17) {
                 viewModel.holdaction(summeg, cardsDealer);
-                cardsDealer(card4G, card4Groupier, "CasinoIMG.BlackJack.Card");
+                cardsDealer(card4G, card4Groupier, "CasinoIMG/BlackJack/Card");
                 summeg = 0;
                 for (int i = 0; i < dealerCards.size(); i++) {
                     summeg += dealerCards.get(i).getValue();
                 }
                 if (summeg < 17) {
                     viewModel.holdaction(summeg, cardsDealer);
-                    cardsDealer(card5G, card5Groupier, "CasinoIMG.BlackJack.Card");
+                    cardsDealer(card5G, card5Groupier, "CasinoIMG/BlackJack/Card");
                     summeg = 0;
                     for (int i = 0; i < dealerCards.size(); i++) {
                         summeg += dealerCards.get(i).getValue();
@@ -489,7 +489,7 @@ public class BlackJackView implements Initializable {
             holdBtn.opacityProperty().set(0.5);
 
             viewModel.doubleaction();
-            cardsPlayer(cardDouble, doubleDownCard, "CasinoIMG.BlackJack.CardsDoubleDown");
+            cardsPlayer(cardDouble, doubleDownCard, "CasinoIMG/BlackJack/CardsDoubleDown");
             summep = 0;
             for (int i = 0; i < playerCards.size(); i++) {
                 summep += playerCards.get(i).getValue();
@@ -1336,314 +1336,314 @@ public class BlackJackView implements Initializable {
                 System.out.println("Card 0");
                 break;
             case 1:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/Back.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/Back.png"));
                 cardsTaken++;
                 System.out.println(cardsTaken);
                 dealerCards.add(new Cards(1, 2));
                 break;
             case 2:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/Back.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/Back.png"));
                 cardsTaken++;
                 System.out.println(cardsTaken);
                 dealerCards.add(new Cards(2, 2));
                 break;
 
             case 3:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/Back.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/Back.png"));
                 cardsTaken++;
                 System.out.println(cardsTaken);
                 dealerCards.add(new Cards(3, 2));
                 break;
             case 4:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/Back.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/Back.png"));
                 cardsTaken++;
                 System.out.println(cardsTaken);
                 dealerCards.add(new Cards(4, 2));
                 break;
             case 5:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/Back.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/Back.png"));
                 cardsTaken++;
                 System.out.println(cardsTaken);
                 dealerCards.add(new Cards(5, 3));
                 break;
             case 6:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/Back.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/Back.png"));
                 cardsTaken++;
                 System.out.println(cardsTaken);
                 dealerCards.add(new Cards(6, 3));
                 break;
             case 7:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/Back.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/Back.png"));
                 cardsTaken++;
                 System.out.println(cardsTaken);
                 dealerCards.add(new Cards(7, 3));
                 break;
             case 8:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/Back.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/Back.png"));
                 cardsTaken++;
                 System.out.println(cardsTaken);
                 dealerCards.add(new Cards(8, 3));
                 break;
             case 9:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/Back.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/Back.png"));
                 cardsTaken++;
                 System.out.println(cardsTaken);
                 dealerCards.add(new Cards(9, 4));
                 break;
             case 10:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/Back.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/Back.png"));
                 cardsTaken++;
                 System.out.println(cardsTaken);
                 dealerCards.add(new Cards(10, 4));
                 break;
             case 11:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/Back.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/Back.png"));
                 cardsTaken++;
                 System.out.println(cardsTaken);
                 dealerCards.add(new Cards(11, 4));
                 break;
             case 12:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/Back.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/Back.png"));
                 cardsTaken++;
                 System.out.println(cardsTaken);
                 dealerCards.add(new Cards(12, 4));
                 break;
             case 13:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/Back.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/Back.png"));
                 cardsTaken++;
                 System.out.println(cardsTaken);
                 dealerCards.add(new Cards(13, 5));
                 break;
             case 14:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/Back.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/Back.png"));
                 cardsTaken++;
                 System.out.println(cardsTaken);
                 dealerCards.add(new Cards(14, 5));
                 break;
             case 15:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/Back.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/Back.png"));
                 cardsTaken++;
                 System.out.println(cardsTaken);
                 dealerCards.add(new Cards(15, 5));
                 break;
             case 16:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/Back.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/Back.png"));
                 cardsTaken++;
                 System.out.println(cardsTaken);
                 dealerCards.add(new Cards(16, 5));
                 break;
             case 17:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/Back.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/Back.png"));
                 cardsTaken++;
                 System.out.println(cardsTaken);
                 dealerCards.add(new Cards(17, 6));
                 break;
             case 18:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/Back.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/Back.png"));
                 cardsTaken++;
                 System.out.println(cardsTaken);
                 dealerCards.add(new Cards(18, 6));
                 break;
             case 19:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/Back.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/Back.png"));
                 cardsTaken++;
                 System.out.println(cardsTaken);
                 dealerCards.add(new Cards(19, 6));
                 break;
             case 20:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/Back.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/Back.png"));
                 cardsTaken++;
                 System.out.println(cardsTaken);
                 dealerCards.add(new Cards(20, 6));
                 break;
             case 21:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/Back.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/Back.png"));
                 cardsTaken++;
                 System.out.println(cardsTaken);
                 dealerCards.add(new Cards(21, 7));
                 break;
             case 22:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/Back.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/Back.png"));
                 cardsTaken++;
                 System.out.println(cardsTaken);
                 dealerCards.add(new Cards(22, 7));
                 break;
             case 23:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/Back.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/Back.png"));
                 cardsTaken++;
                 System.out.println(cardsTaken);
                 dealerCards.add(new Cards(23, 7));
                 break;
             case 24:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/Back.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/Back.png"));
                 cardsTaken++;
                 System.out.println(cardsTaken);
                 dealerCards.add(new Cards(24, 7));
                 break;
             case 25:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/Back.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/Back.png"));
                 cardsTaken++;
                 System.out.println(cardsTaken);
                 dealerCards.add(new Cards(25, 8));
                 break;
             case 26:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/Back.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/Back.png"));
                 cardsTaken++;
                 System.out.println(cardsTaken);
                 dealerCards.add(new Cards(26, 8));
                 break;
             case 27:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/Back.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/Back.png"));
                 cardsTaken++;
                 System.out.println(cardsTaken);
                 dealerCards.add(new Cards(27, 8));
                 break;
             case 28:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/Back.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/Back.png"));
                 cardsTaken++;
                 System.out.println(cardsTaken);
                 dealerCards.add(new Cards(28, 8));
                 break;
             case 29:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/Back.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/Back.png"));
                 cardsTaken++;
                 System.out.println(cardsTaken);
                 dealerCards.add(new Cards(29, 9));
                 break;
             case 30:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/Back.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/Back.png"));
                 cardsTaken++;
                 System.out.println(cardsTaken);
                 dealerCards.add(new Cards(30, 9));
                 break;
             case 31:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/Back.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/Back.png"));
                 cardsTaken++;
                 System.out.println(cardsTaken);
                 dealerCards.add(new Cards(31, 9));
                 break;
             case 32:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/Back.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/Back.png"));
                 cardsTaken++;
                 System.out.println(cardsTaken);
                 dealerCards.add(new Cards(32, 9));
                 break;
             case 33:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/1Back.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/1Back.png"));
                 cardsTaken++;
                 System.out.println(cardsTaken);
                 dealerCards.add(new Cards(33, 10));
                 break;
             case 34:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/1Back.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/1Back.png"));
                 cardsTaken++;
                 System.out.println(cardsTaken);
                 dealerCards.add(new Cards(34, 10));
                 break;
             case 35:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/1Back.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/1Back.png"));
                 cardsTaken++;
                 System.out.println(cardsTaken);
                 dealerCards.add(new Cards(35, 10));
                 break;
             case 36:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/1Back.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/1Back.png"));
                 cardsTaken++;
                 System.out.println(cardsTaken);
                 dealerCards.add(new Cards(36, 10));
                 break;
             case 37:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/Back.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/Back.png"));
                 cardsTaken++;
                 System.out.println(cardsTaken);
                 dealerCards.add(new Cards(37, 11));
                 break;
             case 38:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/Back.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/Back.png"));
                 cardsTaken++;
                 System.out.println(cardsTaken);
                 dealerCards.add(new Cards(38, 11));
                 break;
             case 39:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/Back.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/Back.png"));
                 cardsTaken++;
                 System.out.println(cardsTaken);
                 dealerCards.add(new Cards(39, 11));
                 break;
             case 40:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/Back.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/Back.png"));
                 cardsTaken++;
                 System.out.println(cardsTaken);
                 dealerCards.add(new Cards(40, 11));
                 break;
             case 41:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/Back.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/Back.png"));
                 cardsTaken++;
                 System.out.println(cardsTaken);
                 dealerCards.add(new Cards(41, 10));
                 break;
             case 42:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/Back.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/Back.png"));
                 cardsTaken++;
                 System.out.println(cardsTaken);
                 dealerCards.add(new Cards(42, 10));
                 break;
             case 43:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/Back.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/Back.png"));
                 cardsTaken++;
                 System.out.println(cardsTaken);
                 dealerCards.add(new Cards(43, 10));
                 break;
             case 44:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/Back.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/Back.png"));
                 cardsTaken++;
                 System.out.println(cardsTaken);
                 dealerCards.add(new Cards(44, 10));
                 break;
             case 45:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/Back.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/Back.png"));
                 cardsTaken++;
                 System.out.println(cardsTaken);
                 dealerCards.add(new Cards(45, 10));
                 break;
             case 46:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/Back.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/Back.png"));
                 cardsTaken++;
                 System.out.println(cardsTaken);
                 dealerCards.add(new Cards(46, 10));
                 break;
             case 47:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/Back.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/Back.png"));
                 cardsTaken++;
                 System.out.println(cardsTaken);
                 dealerCards.add(new Cards(47, 10));
                 break;
             case 48:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/Back.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/Back.png"));
                 cardsTaken++;
                 System.out.println(cardsTaken);
                 dealerCards.add(new Cards(48, 10));
                 break;
             case 49:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/Back.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/Back.png"));
                 cardsTaken++;
                 System.out.println(cardsTaken);
                 dealerCards.add(new Cards(49, 10));
                 break;
             case 50:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/Back.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/Back.png"));
                 cardsTaken++;
                 System.out.println(cardsTaken);
                 dealerCards.add(new Cards(50, 10));
                 break;
             case 51:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/Back.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/Back.png"));
                 cardsTaken++;
                 System.out.println(cardsTaken);
                 dealerCards.add(new Cards(51, 10));
                 break;
             case 52:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/Back.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/Back.png"));
                 cardsTaken++;
                 System.out.println(cardsTaken);
                 dealerCards.add(new Cards(51, 10));
@@ -1654,170 +1654,170 @@ public class BlackJackView implements Initializable {
     private void card4Show() {
         switch (card2G.get()) {
             case 1:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/2C.png")
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/2C.png")
                 );
                 break;
             case 2:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/2D.png")
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/2D.png")
                 );
                 break;
 
             case 3:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/2H.png")
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/2H.png")
                 );
                 break;
             case 4:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/2S.png")
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/2S.png")
                 );
                 break;
             case 5:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/3C.png")
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/3C.png")
                 );
                 break;
             case 6:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/3D.png")
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/3D.png")
                 );
                 break;
             case 7:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/3H.png")
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/3H.png")
                 );
                 break;
             case 8:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/3S.png")
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/3S.png")
                 );
                 break;
             case 9:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/4C.png")
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/4C.png")
                 );
                 break;
             case 10:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/4D.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/4D.png"));
                 break;
             case 11:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/4H.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/4H.png"));
                 break;
             case 12:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/4S.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/4S.png"));
                 break;
             case 13:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/5C.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/5C.png"));
                 break;
             case 14:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/5D.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/5D.png"));
                 break;
             case 15:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/5H.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/5H.png"));
                 break;
             case 16:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/5S.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/5S.png"));
                 break;
             case 17:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/6C.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/6C.png"));
                 break;
             case 18:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/6D.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/6D.png"));
                 break;
             case 19:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/6H.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/6H.png"));
                 break;
             case 20:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/6S.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/6S.png"));
                 break;
             case 21:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/7C.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/7C.png"));
                 break;
             case 22:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/7D.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/7D.png"));
                 break;
             case 23:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/7H.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/7H.png"));
                 break;
             case 24:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/7S.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/7S.png"));
                 break;
             case 25:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/8C.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/8C.png"));
                 break;
             case 26:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/8D.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/8D.png"));
                 break;
             case 27:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/8H.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/8H.png"));
                 break;
             case 28:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/8S.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/8S.png"));
                 break;
             case 29:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/9C.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/9C.png"));
                 break;
             case 30:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/9D.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/9D.png"));
                 break;
             case 31:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/9H.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/9H.png"));
                 break;
             case 32:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/9S.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/9S.png"));
                 break;
             case 33:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/10C.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/10C.png"));
                 break;
             case 34:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/10D.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/10D.png"));
                 break;
             case 35:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/10H.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/10H.png"));
                 break;
             case 36:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/10S.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/10S.png"));
                 break;
             case 37:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/AC.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/AC.png"));
                 break;
             case 38:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/AD.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/AD.png"));
                 break;
             case 39:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/AH.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/AH.png"));
                 break;
             case 40:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/AS.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/AS.png"));
                 break;
             case 41:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/JC.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/JC.png"));
                 break;
             case 42:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/JD.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/JD.png"));
                 break;
             case 43:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/JH.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/JH.png"));
                 break;
             case 44:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/JS.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/JS.png"));
                 break;
             case 45:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/KC.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/KC.png"));
                 break;
             case 46:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/KD.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/KD.png"));
                 break;
             case 47:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/KH.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/KH.png"));
                 break;
             case 48:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/KS.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/KS.png"));
                 break;
             case 49:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/QC.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/QC.png"));
                 break;
             case 50:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/QD.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/QD.png"));
                 break;
             case 51:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/QH.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/QH.png"));
                 break;
             case 52:
-                card2Groupier.setImage(new Image("CasinoIMG.BlackJack.Card/QS.png"));
+                card2Groupier.setImage(new Image("CasinoIMG/BlackJack/Card/QS.png"));
                 break;
 
         }
@@ -1832,61 +1832,61 @@ public class BlackJackView implements Initializable {
         chip++;
         switch (chip) {
             case 1:
-                chips.setImage(new Image("Chips/Chip10.png"));
+                chips.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip10.png"));
                 break;
             case 2:
-                chips1.setImage(new Image("Chips/Chip10.png"));
+                chips1.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip10.png"));
                 break;
             case 3:
-                chips2.setImage(new Image("Chips/Chip10.png"));
+                chips2.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip10.png"));
                 break;
             case 4:
-                chips3.setImage(new Image("Chips/Chip10.png"));
+                chips3.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip10.png"));
                 break;
             case 5:
-                chips4.setImage(new Image("Chips/Chip10.png"));
+                chips4.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip10.png"));
                 break;
             case 6:
-                chips5.setImage(new Image("Chips/Chip10.png"));
+                chips5.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip10.png"));
                 break;
             case 7:
-                chips6.setImage(new Image("Chips/Chip10.png"));
+                chips6.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip10.png"));
                 break;
             case 8:
-                chips7.setImage(new Image("Chips/Chip10.png"));
+                chips7.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip10.png"));
                 break;
             case 9:
-                chips8.setImage(new Image("Chips/Chip10.png"));
+                chips8.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip10.png"));
                 break;
             case 10:
-                chips9.setImage(new Image("Chips/Chip10.png"));
+                chips9.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip10.png"));
                 break;
             case 11:
-                chips10.setImage(new Image("Chips/Chip10.png"));
+                chips10.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip10.png"));
                 break;
             case 12:
-                chips11.setImage(new Image("Chips/Chip10.png"));
+                chips11.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip10.png"));
                 break;
             case 13:
-                chips12.setImage(new Image("Chips/Chip10.png"));
+                chips12.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip10.png"));
                 break;
             case 14:
-                chips13.setImage(new Image("Chips/Chip10.png"));
+                chips13.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip10.png"));
                 break;
             case 15:
-                chips14.setImage(new Image("Chips/Chip10.png"));
+                chips14.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip10.png"));
                 break;
             case 16:
-                chips15.setImage(new Image("Chips/Chip10.png"));
+                chips15.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip10.png"));
                 break;
             case 18:
-                chips16.setImage(new Image("Chips/Chip10.png"));
+                chips16.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip10.png"));
                 break;
             case 19:
-                chips17.setImage(new Image("Chips/Chip10.png"));
+                chips17.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip10.png"));
                 break;
             case 20:
-                chips18.setImage(new Image("Chips/Chip10.png"));
+                chips18.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip10.png"));
                 break;
 
         }
@@ -1899,61 +1899,61 @@ public class BlackJackView implements Initializable {
         chip++;
         switch (chip) {
             case 1:
-                chips.setImage(new Image("Chips/Chip50.png"));
+                chips.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip50.png"));
                 break;
             case 2:
-                chips1.setImage(new Image("Chips/Chip50.png"));
+                chips1.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip50.png"));
                 break;
             case 3:
-                chips2.setImage(new Image("Chips/Chip50.png"));
+                chips2.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip50.png"));
                 break;
             case 4:
-                chips3.setImage(new Image("Chips/Chip50.png"));
+                chips3.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip50.png"));
                 break;
             case 5:
-                chips4.setImage(new Image("Chips/Chip50.png"));
+                chips4.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip50.png"));
                 break;
             case 6:
-                chips5.setImage(new Image("Chips/Chip50.png"));
+                chips5.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip50.png"));
                 break;
             case 7:
-                chips6.setImage(new Image("Chips/Chip50.png"));
+                chips6.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip50.png"));
                 break;
             case 8:
-                chips7.setImage(new Image("Chips/Chip50.png"));
+                chips7.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip50.png"));
                 break;
             case 9:
-                chips8.setImage(new Image("Chips/Chip50.png"));
+                chips8.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip50.png"));
                 break;
             case 10:
-                chips9.setImage(new Image("Chips/Chip50.png"));
+                chips9.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip50.png"));
                 break;
             case 11:
-                chips10.setImage(new Image("Chips/Chip50.png"));
+                chips10.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip50.png"));
                 break;
             case 12:
-                chips11.setImage(new Image("Chips/Chip50.png"));
+                chips11.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip50.png"));
                 break;
             case 13:
-                chips12.setImage(new Image("Chips/Chip50.png"));
+                chips12.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip50.png"));
                 break;
             case 14:
-                chips13.setImage(new Image("Chips/Chip50.png"));
+                chips13.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip50.png"));
                 break;
             case 15:
-                chips14.setImage(new Image("Chips/Chip50.png"));
+                chips14.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip50.png"));
                 break;
             case 16:
-                chips15.setImage(new Image("Chips/Chip50.png"));
+                chips15.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip50.png"));
                 break;
             case 18:
-                chips16.setImage(new Image("Chips/Chip50.png"));
+                chips16.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip50.png"));
                 break;
             case 19:
-                chips17.setImage(new Image("Chips/Chip50.png"));
+                chips17.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip50.png"));
                 break;
             case 20:
-                chips13.setImage(new Image("Chips/Chip50.png"));
+                chips13.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip50.png"));
                 break;
         }
     }
@@ -1965,43 +1965,43 @@ public class BlackJackView implements Initializable {
         chip++;
         switch (chip) {
             case 1:
-                chips.setImage(new Image("Chips/Chip100.png"));
+                chips.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip100.png"));
                 break;
             case 2:
-                chips1.setImage(new Image("Chips/Chip100.png"));
+                chips1.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip100.png"));
                 break;
             case 3:
-                chips2.setImage(new Image("Chips/Chip100.png"));
+                chips2.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip100.png"));
                 break;
             case 4:
-                chips3.setImage(new Image("Chips/Chip100.png"));
+                chips3.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip100.png"));
                 break;
             case 5:
-                chips4.setImage(new Image("Chips/Chip100.png"));
+                chips4.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip100.png"));
                 break;
             case 6:
-                chips5.setImage(new Image("Chips/Chip100.png"));
+                chips5.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip100.png"));
                 break;
             case 7:
-                chips6.setImage(new Image("Chips/Chip100.png"));
+                chips6.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip100.png"));
                 break;
             case 8:
-                chips7.setImage(new Image("Chips/Chip100.png"));
+                chips7.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip100.png"));
                 break;
             case 9:
-                chips8.setImage(new Image("Chips/Chip100.png"));
+                chips8.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip100.png"));
                 break;
             case 10:
-                chips9.setImage(new Image("Chips/Chip100.png"));
+                chips9.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip100.png"));
                 break;
             case 11:
-                chips10.setImage(new Image("Chips/Chip100.png"));
+                chips10.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip100.png"));
                 break;
             case 12:
-                chips11.setImage(new Image("Chips/Chip100.png"));
+                chips11.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip100.png"));
                 break;
             case 13:
-                chips12.setImage(new Image("Chips/Chip100.png"));
+                chips12.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip100.png"));
                 break;
         }
     }
@@ -2013,43 +2013,43 @@ public class BlackJackView implements Initializable {
         chip++;
         switch (chip) {
             case 1:
-                chips.setImage(new Image("Chips/Chip250.png"));
+                chips.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip250.png"));
                 break;
             case 2:
-                chips1.setImage(new Image("Chips/Chip250.png"));
+                chips1.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip250.png"));
                 break;
             case 3:
-                chips2.setImage(new Image("Chips/Chip250.png"));
+                chips2.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip250.png"));
                 break;
             case 4:
-                chips3.setImage(new Image("Chips/Chip250.png"));
+                chips3.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip250.png"));
                 break;
             case 5:
-                chips4.setImage(new Image("Chips/Chip250.png"));
+                chips4.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip250.png"));
                 break;
             case 6:
-                chips5.setImage(new Image("Chips/Chip250.png"));
+                chips5.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip250.png"));
                 break;
             case 7:
-                chips6.setImage(new Image("Chips/Chip250.png"));
+                chips6.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip250.png"));
                 break;
             case 8:
-                chips7.setImage(new Image("Chips/Chip250.png"));
+                chips7.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip250.png"));
                 break;
             case 9:
-                chips8.setImage(new Image("Chips/Chip250.png"));
+                chips8.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip250.png"));
                 break;
             case 10:
-                chips9.setImage(new Image("Chips/Chip250.png"));
+                chips9.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip250.png"));
                 break;
             case 11:
-                chips10.setImage(new Image("Chips/Chip250.png"));
+                chips10.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip250.png"));
                 break;
             case 12:
-                chips11.setImage(new Image("Chips/Chip250.png"));
+                chips11.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip250.png"));
                 break;
             case 13:
-                chips12.setImage(new Image("Chips/Chip250.png"));
+                chips12.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip250.png"));
                 break;
         }
     }
@@ -2061,43 +2061,43 @@ public class BlackJackView implements Initializable {
         chip++;
         switch (chip) {
             case 1:
-                chips.setImage(new Image("Chips/Chip1000.png"));
+                chips.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip1000.png"));
                 break;
             case 2:
-                chips1.setImage(new Image("Chips/Chip1000.png"));
+                chips1.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip1000.png"));
                 break;
             case 3:
-                chips2.setImage(new Image("Chips/Chip1000.png"));
+                chips2.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip1000.png"));
                 break;
             case 4:
-                chips3.setImage(new Image("Chips/Chip1000.png"));
+                chips3.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip1000.png"));
                 break;
             case 5:
-                chips4.setImage(new Image("Chips/Chip1000.png"));
+                chips4.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip1000.png"));
                 break;
             case 6:
-                chips5.setImage(new Image("Chips/Chip1000.png"));
+                chips5.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip1000.png"));
                 break;
             case 7:
-                chips6.setImage(new Image("Chips/Chip1000.png"));
+                chips6.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip1000.png"));
                 break;
             case 8:
-                chips7.setImage(new Image("Chips/Chip1000.png"));
+                chips7.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip1000.png"));
                 break;
             case 9:
-                chips8.setImage(new Image("Chips/Chip1000.png"));
+                chips8.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip1000.png"));
                 break;
             case 10:
-                chips9.setImage(new Image("Chips/Chip1000.png"));
+                chips9.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip1000.png"));
                 break;
             case 11:
-                chips10.setImage(new Image("Chips/Chip1000.png"));
+                chips10.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip1000.png"));
                 break;
             case 12:
-                chips11.setImage(new Image("Chips/Chip1000.png"));
+                chips11.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip1000.png"));
                 break;
             case 13:
-                chips12.setImage(new Image("Chips/Chip1000.png"));
+                chips12.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip1000.png"));
                 break;
         }
     }
