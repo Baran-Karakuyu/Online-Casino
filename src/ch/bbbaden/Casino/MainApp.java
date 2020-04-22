@@ -5,9 +5,9 @@
  */
 package ch.bbbaden.Casino;
 
-import ch.bbbaden.Casino.Games.Blackjack.BlackJackModel;
-import ch.bbbaden.Casino.Games.Blackjack.BlackJackView;
-import ch.bbbaden.Casino.Games.Blackjack.BlackJackViewModel;
+import ch.bbbaden.Casino.Games.Blackjack.ModelBlackJack;
+import ch.bbbaden.Casino.Games.Blackjack.ViewGameController;
+import ch.bbbaden.Casino.Games.Blackjack.ViewModelBlackJack;
 import ch.bbbaden.Casino.Games.Slots.FXMLSlotsController;
 import ch.bbbaden.Casino.Games.Slots.SlotMachineModel;
 import ch.bbbaden.Casino.Games.Slots.SlotMachineViewModel;
@@ -77,14 +77,14 @@ public class MainApp extends Application {
         stage.show();
     }
     
-    public void startBlackjack()throws IOException, SQLException, ClassNotFoundException{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("Games/BlackJack/BlackJackView.fxml"));
+    public void startBlackjack()throws IOException{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Games/BlackJack/ViewGame.fxml"));
         Parent root;
         root = loader.load();
         
-        BlackJackView view = loader.getController();
-        BlackJackModel model = new BlackJackModel();
-        final BlackJackViewModel viewModel = new BlackJackViewModel(model);
+        ViewGameController view = loader.getController();
+        ModelBlackJack model = new ModelBlackJack();
+        final ViewModelBlackJack viewModel = new ViewModelBlackJack(model);
         view.setViewModel(viewModel);
         model.addPropertyChangeListener(viewModel);
         view.bind();
@@ -92,7 +92,7 @@ public class MainApp extends Application {
         final Scene scene = new Scene(root);
 
         stage.setTitle("");
-        stage.initStyle(StageStyle.TRANSPARENT);
+        
         stage.setScene(scene);
         stage.show();
     }
