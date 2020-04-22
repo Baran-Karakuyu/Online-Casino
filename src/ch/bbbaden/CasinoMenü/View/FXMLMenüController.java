@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package casinomenü;
+package ch.bbbaden.CasinoMenü;
 
 import java.io.IOException;
 import java.net.URL;
@@ -38,22 +38,12 @@ public class FXMLMenüController implements Initializable {
 
     @FXML
     private void YatzyButtonActionHandling(MouseEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("games/FXMLYatzy.fxml"));
-        Stage stage = new Stage();
-        Scene scene = new Scene(root);
         
-        stage.setScene(scene);
-        stage.show();
     }
 
     @FXML
     private void BlackJackButtonActionHandling(MouseEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("games/FXMLBlackJack.fxml"));
-        Stage stage = new Stage();
-        Scene scene = new Scene(root);
         
-        stage.setScene(scene);
-        stage.show();
     }
     
 }
