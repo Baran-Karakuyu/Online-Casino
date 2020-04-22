@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ch.bbbaden.CasinoMenü.View;
+package ch.bbbaden.Casino.View;
 
-import ch.bbbaden.CasinoMenü.ViewModel.ViewModel;
+import ch.bbbaden.Casino.ViewModel.ViewModel;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -19,34 +19,47 @@ import javafx.scene.input.MouseEvent;
  *
  * @author Baran
  */
-public class FXMLMenüController implements Initializable {
-    
+public class FXMLDocumentController implements Initializable {
+
     @FXML
     private Button btnBuyCredits;
     @FXML
     private ImageView btnYatzy;
     @FXML
     private ImageView btnBlackJack;
-    
+
     private ViewModel viewModel;
-    
+    @FXML
+    private Button lblAbmelden;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-
-    @FXML
-    private void YatzyButtonActionHandling(MouseEvent event) throws IOException {
-        viewModel.startSlots();
     }
 
     @FXML
     private void BlackJackButtonActionHandling(MouseEvent event) throws IOException {
-        
+        viewModel.startBlackJack();
     }
-    
-     public void bind() {
-        
+
+    @FXML
+    private void YatzyButtonActionHandling(MouseEvent event) throws IOException {
+        viewModel.startYatzy();
+    }
+
+    @FXML
+    private void RouletteButtonActionHandling(MouseEvent event) throws IOException {
+        viewModel.startRoulette();
+    }
+
+    @FXML
+    private void BingoButtonActionHandling(MouseEvent event) throws IOException {
+        viewModel.startBingo();
+    }
+
+    @FXML
+    private void SlotsButtonActionHandling(MouseEvent event) throws IOException {
+        viewModel.startSlots();
     }
 
     public void setViewModel(ViewModel viewModel) {

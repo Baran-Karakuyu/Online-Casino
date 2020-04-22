@@ -9,9 +9,8 @@ and open the template in the editor.
 */
 
 
-.menu{
-    /*-fx-background-image: url(/ch.bbbaden.CasinoIMG/BlackJack.png);  
-    -fx-background-repeat: stretch;
+.menu {
+    -fx-background-image: url("../CasinoIMG/Background.png"); 
     -fx-background-position: center center;
-    -fx-background-size: 700 500;*/
+    -fx-background-size: cover;
 }

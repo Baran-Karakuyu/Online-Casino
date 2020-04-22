@@ -1,0 +1,42 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package ch.bbbaden.Casino.Model;
+
+import ch.bbbaden.Casino.MainApp;
+import java.io.IOException;
+
+/**
+ *
+ * @author Baran
+ */
+public class Model {
+
+    private MainApp mainApp;
+
+    public void startSlots() throws IOException {
+        mainApp.startSlots();
+    }
+
+    public void startBlackJack() throws IOException {
+        mainApp.startSlots();
+    }
+
+    public void startRoulette() throws IOException {
+        mainApp.startSlots();
+    }
+
+    public void startYatzy() throws IOException {
+        mainApp.startSlots();
+    }
+
+    public void startBingo() throws IOException {
+        mainApp.startSlots();
+    }
+
+    public void setMainApp(MainApp mainApp) {
+        this.mainApp = mainApp;
+    }
+}
