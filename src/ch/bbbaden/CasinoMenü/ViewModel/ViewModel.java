@@ -5,7 +5,8 @@
  */
 package ch.bbbaden.CasinoMenü.ViewModel;
 
-import ch.bbbaden.CasinoMenü.Model;
+import ch.bbbaden.CasinoMenü.Model.Model;
+import java.io.IOException;
 
 /**
  *
@@ -18,7 +19,7 @@ public class ViewModel {
         this.m = m;
     }
     
-    public void startCasino() {
-        
+    public void startSlots() throws IOException {
+        m.startSlots();
     }
 }
