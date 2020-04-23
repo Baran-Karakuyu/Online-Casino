@@ -8,6 +8,7 @@ package ch.bbbaden.Casino.View;
 import ch.bbbaden.Casino.ViewModel.ViewModel;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -38,7 +39,7 @@ public class FXMLDocumentController implements Initializable {
     }
 
     @FXML
-    private void BlackJackButtonActionHandling(MouseEvent event) throws IOException {
+    private void BlackJackButtonActionHandling(MouseEvent event) throws IOException, SQLException, ClassNotFoundException {
         viewModel.startBlackJack();
     }
 

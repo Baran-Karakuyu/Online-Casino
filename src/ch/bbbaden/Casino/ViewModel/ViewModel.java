@@ -7,6 +7,7 @@ package ch.bbbaden.Casino.ViewModel;
 
 import ch.bbbaden.Casino.Model.Model;
 import java.io.IOException;
+import java.sql.SQLException;
 
 /**
  *
@@ -23,7 +24,7 @@ public class ViewModel {
         m.startSlots();
     }
     
-    public void startBlackJack() throws IOException {
+    public void startBlackJack() throws IOException, SQLException, ClassNotFoundException {
         m.startBlackJack();
     }
     
