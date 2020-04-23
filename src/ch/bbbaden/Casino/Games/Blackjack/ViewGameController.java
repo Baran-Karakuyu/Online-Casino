@@ -28,7 +28,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 
-
 /**
  * FXML Controller class
  *
@@ -179,11 +178,11 @@ public class ViewGameController implements Initializable {
     @FXML
     private ChoiceBox<Integer> versichernChoice;
 
-    
     public void setViewModel(ViewModelBlackJack viewModel) {
         this.viewModel = viewModel;
     }
-    public void bind() throws SQLException, ClassNotFoundException{
+
+    public void bind() throws SQLException, ClassNotFoundException {
         cardP.bind(viewModel.getCard1P());
         cardG.bind(viewModel.getCard1G());
         card2P.bind(viewModel.getCard2P());
@@ -200,9 +199,9 @@ public class ViewGameController implements Initializable {
         creditKonto.textProperty().bind(viewModel.getCredit());
         creditHere = Integer.parseInt(creditKonto.getText());
     }
-    
+
     @Override
-   public void initialize(URL url, ResourceBundle rb) {
+    public void initialize(URL url, ResourceBundle rb) {
         versichernChoice.getItems().add(10);
         versichernChoice.getItems().add(50);
         versichernChoice.getItems().add(100);
@@ -307,7 +306,7 @@ public class ViewGameController implements Initializable {
 
         //card4Show();
         cardHide.setImage(null);
-        cardsDealer(card3G, card3Groupier, "CasinoIMG/BlackJack/Card");
+
         summeg = 0;
         for (int i = 0; i < dealerCards.size(); i++) {
             summeg += dealerCards.get(i).getValue();
@@ -316,17 +315,25 @@ public class ViewGameController implements Initializable {
         if (summeg < 17) {
 
             viewModel.holdaction(summeg, cardsDealer);
-            cardsDealer(card4G, card4Groupier, "CasinoIMG/BlackJack/Card");
+            cardsDealer(card3G, card3Groupier, "CasinoIMG/BlackJack/Card");
             summeg = 0;
             for (int i = 0; i < dealerCards.size(); i++) {
                 summeg += dealerCards.get(i).getValue();
             }
             if (summeg < 17) {
                 viewModel.holdaction(summeg, cardsDealer);
-                cardsDealer(card5G, card5Groupier, "CasinoIMG/BlackJack/Card");
+                cardsDealer(card4G, card4Groupier, "CasinoIMG/BlackJack/Card");
                 summeg = 0;
                 for (int i = 0; i < dealerCards.size(); i++) {
                     summeg += dealerCards.get(i).getValue();
+                }
+                if (summeg < 17) {
+                    viewModel.holdaction(summeg, cardsDealer);
+                    cardsDealer(card5G, card5Groupier, "CasinoIMG/BlackJack/Card");
+                    summeg = 0;
+                    for (int i = 0; i < dealerCards.size(); i++) {
+                        summeg += dealerCards.get(i).getValue();
+                    }
                 }
             }
         }
@@ -346,7 +353,7 @@ public class ViewGameController implements Initializable {
         viewModel.updatePlayer();
 
     }
-    
+
     //Dealer Actions after Double or Bust
     private void holding() throws SQLException, ClassNotFoundException {
         doubleBtn.setDisable(true);
@@ -364,8 +371,8 @@ public class ViewGameController implements Initializable {
         viewModel.holdaction(summeg, cardsDealer);
         System.out.println("Summeg ist " + summeg);
 
-       //card4Show();
-       cardHide.setImage(null);
+        //card4Show();
+        cardHide.setImage(null);
         summeg = 0;
         for (int i = 0; i < dealerCards.size(); i++) {
             summeg += dealerCards.get(i).getValue();
@@ -471,14 +478,13 @@ public class ViewGameController implements Initializable {
             cardsPlayer(cardP, card1Player, "CasinoIMG/BlackJack/Card");
             cardsDealer(cardG, card1Groupier, "CasinoIMG/BlackJack/Card");
             cardsPlayer(card2P, card2Player, "CasinoIMG/BlackJack/Card");
-            cardsDealer(card2G,card2Groupier,"CasinoIMG/BlackJack/Card");
+            cardsDealer(card2G, card2Groupier, "CasinoIMG/BlackJack/Card");
             cardHide.setImage(new Image("CasinoIMG/BlackJack/Card/Back.png"));
-
 
             summep = 0;
             summeg = 0;
 
-            if(dealerCards.get(0).getValue()==11){
+            if (dealerCards.get(0).getValue() == 11) {
                 versichernBtn.setDisable(false);
                 versichernBtn.opacityProperty().set(1.0);
                 versichernChoice.setDisable(false);
@@ -590,6 +596,7 @@ public class ViewGameController implements Initializable {
             versicherMoneyPut = versichernChoice.getValue();
         }
     }
+
     //Insurance Methode to Connect with Model
     private void versicherMethode(int credit) throws SQLException, ClassNotFoundException {
         summeg = 0;
@@ -599,12 +606,13 @@ public class ViewGameController implements Initializable {
         }
         viewModel.versichern(credit, summeg);
     }
+
     @FXML
     private void closeBtn(ActionEvent event) {
-              System.exit(0);
+        System.exit(0);
 
     }
-    
+
     @FXML
     private void reset(ActionEvent event) {
         hitBtn.setDisable(false);
@@ -628,7 +636,8 @@ public class ViewGameController implements Initializable {
         versichernChoice.setDisable(true);
         versichernChoice.opacityProperty().set(0.0);
         versichernChoice.getSelectionModel().clearSelection();
-        
+
+        cardHide.setImage(null);
         card1Player.setImage(null);
         card2Player.setImage(null);
         card3Player.setImage(null);
@@ -662,11 +671,6 @@ public class ViewGameController implements Initializable {
         endLbl.setText(null);
         label.setText(null);
         label11.setText(null);
-//        chipsSelection.setDisable(false);
-//        chipsSelection.opacityProperty().set(1.0);
-//        versichernBtn.setDisable(false);
-//        versichernBtn.opacityProperty().set(1.0);
-//        versichernBtn.textFillProperty().set(Color.WHITE);
         playerCards.clear();
         dealerCards.clear();
         versichern = 0;
@@ -682,11 +686,9 @@ public class ViewGameController implements Initializable {
         cardsDealer = 1;
         playTimes = 0;
         cardsTaken = 0;
-        
+
         creditKonto.textProperty().bind(viewModel.getCredit());
         creditHere = Integer.parseInt(creditKonto.getText());
-       
-
     }
 
     @FXML
@@ -920,7 +922,7 @@ public class ViewGameController implements Initializable {
 
     @FXML
     private void chip1000(MouseEvent event) {
-         creditGesetzt += 1000;
+        creditGesetzt += 1000;
         chipsvalue.setText(Integer.toString(creditGesetzt));
         chip++;
         switch (chip) {
@@ -966,7 +968,6 @@ public class ViewGameController implements Initializable {
         }
     }
 
-    
     //Cards Displayer
     private void cardsPlayer(IntegerProperty card, ImageView cardView, String set) {
         cardshit++;

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ch.bbbaden.Casino.Games.Blackjack;
+package Casino.DataBase;
 
 
 import Casino.DataBase.JDBCConnection;
@@ -24,20 +24,17 @@ public class Query {
     private JDBCConnection jdbc = JDBCConnection.getInstance();
 
     private ArrayList<User> users = new ArrayList<>();
-    private String name= "'andrei'";
     
-    private User benutzer = new User(0,"test","email","password");
 
     public void updateUser() throws SQLException, ClassNotFoundException {
         int id = 0;
         String name = "";
         String email = "";
         String password = "";
-        int credits=0;
         
         Connection conn = jdbc.createConnection();
         Statement st = conn.createStatement();
-        ResultSet rs = st.executeQuery("Select * from users where name = 'andrei'");
+        ResultSet rs = st.executeQuery("Select * from users ");
         
         //while theres a new set with id, name, email and password it will be set into the variable
         while(rs.next()){
@@ -45,19 +42,13 @@ public class Query {
             name = rs.getString(2);
             email = rs.getString(3);
             password = rs.getString(4);
-            credits= rs.getInt(5);
             
             users.add(new User (id,name,email,password));
             
-            benutzer.setUid(id);
-            benutzer.setName(name);
-            benutzer.setEmail(email);
-            benutzer.setPassword(password);
-            benutzer.setCredit(credits);
         }
         
     }
-    public void select() throws SQLException, ClassNotFoundException{
+    public void selectUsers() throws SQLException, ClassNotFoundException{
         
         Connection con= jdbc.createConnection();
         Statement st = con.createStatement();
@@ -71,7 +62,7 @@ public class Query {
         }
     }
 
-    public void insert(int id,String name,String email,String password,int credit) throws SQLException, ClassNotFoundException{
+    public void insertUsers(int id,String name,String email,String password,int credit) throws SQLException, ClassNotFoundException{
         Connection con= jdbc.createConnection();
         Statement st = con.createStatement();
         String insert= "Insert into users values('"+id+"','"+name+"','"+email+"','"+password+"','"+credit+"')";
@@ -81,21 +72,28 @@ public class Query {
         users.add(new User(id,name,email,password));        
        
     }
-    public void updateCredit(int credit) throws SQLException, ClassNotFoundException{
-        benutzer.setCredit(credit);
-        
+    public void updateCredit(int credit,String name) throws SQLException, ClassNotFoundException{
+        for(int i = 0; i<users.size();i++){
+            if(users.get(i).getName().equals(name)){
+                users.get(i).setCredit(credit);
+            }else{
+                
+            }
+            System.out.println("Kontostand: " +users.get(i).getCredit());
+            System.out.println("Done");
+        }
         Connection con = jdbc.createConnection();
         Statement st = con.createStatement();
-        String addCredit= "update users set credits = "+credit+" where name ='"+benutzer.getName()+"'";
+        String addCredit= "update users set credits = "+credit+" where name ='"+name+"'";
         
         st.execute(addCredit);
     }
-    public int getCreditUser() throws SQLException, ClassNotFoundException{
+    public int getCreditUser(String name) throws SQLException, ClassNotFoundException{
         int credits=0;
         
         Connection conn = jdbc.createConnection();
         Statement st = conn.createStatement();
-        ResultSet rs= st.executeQuery("Select * from users  where name = "+name+"");
+        ResultSet rs= st.executeQuery("Select * from users  where name = '"+name+"'");
         
         while(rs.next()){
             credits= rs.getInt(5);

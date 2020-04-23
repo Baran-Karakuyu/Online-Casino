@@ -5,6 +5,7 @@
  */
 package ch.bbbaden.Casino.Games.Blackjack;
 
+import Casino.DataBase.Query;
 import Casino.DataBase.User;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
@@ -123,21 +124,21 @@ public class ModelBlackJack {
     public void UserDataTransfer() throws SQLException, ClassNotFoundException{
         String oldcredit="";
         sql.updateUser();
-        sql.select();
-        dbCredit = sql.getCreditUser();
+        sql.selectUsers();
+        dbCredit = sql.getCreditUser("andrei");
         changes.firePropertyChange("credit", oldcredit, Integer.toString(dbCredit));
         creditPlayer= dbCredit;
     }
     //Sets the new Credit 
     public void setNewCredit(int credit) throws SQLException, ClassNotFoundException{
         String oldcredit="";
-        sql.updateCredit(credit);
+        sql.updateCredit(credit,"andrei");
         changes.firePropertyChange("credit", oldcredit, credit);
     }
     
     public void versichern(int credit,int summe) throws SQLException, ClassNotFoundException{
         int credits=0;
-        credits =  sql.getCreditUser();
+        credits =  sql.getCreditUser("andrei");
         if(summe ==21){
             credits+=credit;
         }else{
