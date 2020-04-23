@@ -637,7 +637,8 @@ public class ViewGameController implements Initializable {
         versichernChoice.setDisable(true);
         versichernChoice.opacityProperty().set(0.0);
         versichernChoice.getSelectionModel().clearSelection();
-
+        hitBtn.setDisable(false);
+        hitBtn.setVisible(false);
         cardHide.setImage(null);
         card1Player.setImage(null);
         card2Player.setImage(null);
