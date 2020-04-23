@@ -117,6 +117,8 @@ public class MainApp extends Application {
     public void userData(String email,String password){
         this.email= email;
         this.password= password;
+        System.out.println(this.email);
+        System.out.println(this.password);
     }
     
 }

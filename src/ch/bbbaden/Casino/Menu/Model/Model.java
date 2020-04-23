@@ -5,9 +5,12 @@
  */
 package ch.bbbaden.Casino.Menu.Model;
 
+import Casino.DataBase.Query;
+import Casino.DataBase.User;
 import ch.bbbaden.Casino.MainApp;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -15,6 +18,9 @@ import java.sql.SQLException;
  */
 public class Model {
 
+    Query sql = new Query();
+    ArrayList<User> benutzer = new ArrayList<>();
+    String name="";
     
     private MainApp mainApp;
 
@@ -43,6 +49,18 @@ public class Model {
     }
     
     public void setUser(String email,String password){
-        
+        for(int i=0;i<sql.getUsers().size();i++){
+            benutzer.add(sql.getUsers().get(i));
+        }
+        for(int i= 0;i<sql.getUsers().size();i++){
+            if(benutzer.get(i).getEmail().equals(email)){
+                if(benutzer.get(i).getPassword().equals(password)){
+                    name= benutzer.get(i).getName();
+                    System.out.println(name);
+                }else{
+
+                }
+            }
+        }
     }
 }
