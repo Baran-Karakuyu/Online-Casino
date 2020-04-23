@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -40,6 +41,8 @@ public class FXMLDocumentController implements Initializable {
     private Label lblName;
     
     private ViewModel viewModel;
+    @FXML
+    private Label credit;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -73,9 +76,14 @@ public class FXMLDocumentController implements Initializable {
     
     public void bind() {
         lblName.textProperty().bind(viewModel.getName());
+        credit.textProperty().bind(viewModel.getCredit());
     }
 
     public void setViewModel(ViewModel viewModel) {
         this.viewModel = viewModel;
+    }
+
+    @FXML
+    private void choseStage(ActionEvent event) {
     }
 }

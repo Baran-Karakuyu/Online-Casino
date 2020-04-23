@@ -21,7 +21,8 @@ public class ViewModel implements PropertyChangeListener {
 
     private Model m;
     private StringProperty name = new SimpleStringProperty();
-
+    private StringProperty credit = new SimpleStringProperty();
+    
     public ViewModel(Model m) {
         this.m = m;
     }
@@ -46,6 +47,10 @@ public class ViewModel implements PropertyChangeListener {
         m.startBingo();
     }
 
+    public StringProperty getCredit() {
+        return credit;
+    }
+
     public StringProperty getName() {
         return name;
     }
@@ -56,6 +61,10 @@ public class ViewModel implements PropertyChangeListener {
             case "name":
                 name.set(pce.getNewValue().toString());
                 break;
+            case "credit":
+                credit.set(pce.getNewValue().toString());
+                break;
+                
         }
     }
 }

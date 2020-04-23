@@ -20,6 +20,7 @@ import java.util.ArrayList;
  */
 public class Model {
     String name="";
+    int credit=0;
     protected final PropertyChangeSupport changes = new PropertyChangeSupport(this);
     private Query sql = new Query();
     ArrayList<User> benutzer = new ArrayList<>();
@@ -62,6 +63,7 @@ public class Model {
             if (sql.getUsers().get(i).getEmail().equals(email)) {
                 if (sql.getUsers().get(i).getPassword().equals(password)) {
                     name =sql.getUsers().get(i).getName();
+                    credit= sql.getCreditUser(name);
                     System.out.println(name);
                 } else {
 
@@ -70,6 +72,7 @@ public class Model {
             }
         }
         changes.firePropertyChange("name", oldName, name);
+        changes.firePropertyChange("credit", oldName, credit);
     }
 
     public void addPropertyChangeListener(final PropertyChangeListener listener) {

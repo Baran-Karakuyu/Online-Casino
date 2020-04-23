@@ -44,7 +44,7 @@ public class MainApp extends Application {
         view.setMainApp(this);
 
         this.stage = stage;
-
+//        this.stage.initStyle(StageStyle.TRANSPARENT);
         final Scene scene = new Scene(root);
 
         stage.setScene(scene);
