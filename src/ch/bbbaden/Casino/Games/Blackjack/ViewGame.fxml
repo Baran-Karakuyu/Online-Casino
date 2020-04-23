@@ -12,13 +12,12 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="1030.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.bbbaden.Casino.Games.Blackjack.ViewGameController">
+<AnchorPane id="AnchorPane" prefHeight="1030.0" prefWidth="1920.0" styleClass="menu" stylesheets="@../../../../../CasinoStyleSheet/MenuCSS.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.bbbaden.Casino.Games.Blackjack.ViewGameController">
      <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#503228" height="1030.0" stroke="BLACK" strokeType="INSIDE" width="1920.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <Ellipse fill="#11182b" layoutX="975.0" layoutY="202.0" radiusX="877.0" radiusY="683.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="30.0" />
-      <Ellipse fill="#122138" layoutX="967.0" layoutY="191.0" radiusX="789.0" radiusY="586.0" stroke="#cc9c0a" strokeType="INSIDE" strokeWidth="2.0" />
-      <QuadCurve controlX="105.0" controlY="273.0" endX="-314.0" endY="-135.0" fill="#122138" layoutX="892.0" layoutY="374.0" startX="525.0" startY="-135.0" stroke="#cc9c0a" strokeType="INSIDE" strokeWidth="2.0" />
-      <QuadCurve controlX="105.0" controlY="214.0" endX="-216.0" endY="-76.0" fill="#122138" layoutX="891.0" layoutY="315.0" startX="418.0" startY="-76.0" stroke="#cc9c0a" strokeType="INSIDE" strokeWidth="2.0" />
+      <Ellipse fill="#511312" layoutX="975.0" layoutY="202.0" radiusX="877.0" radiusY="683.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="30.0" />
+      <Ellipse fill="#942626" layoutX="967.0" layoutY="191.0" radiusX="789.0" radiusY="586.0" stroke="#cc9c0a" strokeType="INSIDE" strokeWidth="2.0" />
+      <QuadCurve controlX="105.0" controlY="273.0" endX="-314.0" endY="-135.0" fill="#9a1515" layoutX="892.0" layoutY="374.0" startX="525.0" startY="-135.0" stroke="#cc9c0a" strokeType="INSIDE" strokeWidth="2.0" />
+      <QuadCurve controlX="105.0" controlY="214.0" endX="-216.0" endY="-76.0" fill="#942626" layoutX="891.0" layoutY="315.0" startX="418.0" startY="-76.0" stroke="#cc9c0a" strokeType="INSIDE" strokeWidth="2.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" height="24.0" layoutX="129.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="1688.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#cc9c0a" height="3.0" layoutX="577.0" layoutY="236.0" strokeType="INSIDE" width="98.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#cc9c0a" height="3.0" layoutX="1304.0" layoutY="238.0" strokeType="INSIDE" width="113.0" />
@@ -39,11 +38,11 @@
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#747e80" height="60.0" layoutX="1066.0" layoutY="23.0" strokeType="INSIDE" width="20.2" />
       <Circle fill="#747e80" layoutX="1106.0" layoutY="83.0" radius="11.0" stroke="BLACK" strokeType="INSIDE" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#747e80" height="60.0" layoutX="1096.0" layoutY="23.0" strokeType="INSIDE" width="20.2" />
-      <Circle fill="#122138" layoutX="996.0" layoutY="685.0" radius="70.0" stroke="#cc9c0a" strokeType="INSIDE" />
-      <Circle fill="#122138" layoutX="1334.0" layoutY="592.0" radius="70.0" stroke="#cc9c0a" strokeType="INSIDE" />
-      <Circle fill="#122138" layoutX="646.0" layoutY="592.0" radius="70.0" stroke="#cc9c0a" strokeType="INSIDE" />
-      <Circle fill="#122138" layoutX="391.0" layoutY="427.0" radius="70.0" stroke="#cc9c0a" strokeType="INSIDE" />
-      <Circle fill="#122138" layoutX="1591.0" layoutY="427.0" radius="70.0" stroke="#cc9c0a" strokeType="INSIDE" />
+      <Circle fill="#942626" layoutX="996.0" layoutY="685.0" radius="70.0" stroke="#cc9c0a" strokeType="INSIDE" />
+      <Circle fill="#942626" layoutX="1334.0" layoutY="592.0" radius="70.0" stroke="#cc9c0a" strokeType="INSIDE" />
+      <Circle fill="#942626" layoutX="646.0" layoutY="592.0" radius="70.0" stroke="#cc9c0a" strokeType="INSIDE" />
+      <Circle fill="#942626" layoutX="391.0" layoutY="427.0" radius="70.0" stroke="#cc9c0a" strokeType="INSIDE" />
+      <Circle fill="#942626" layoutX="1591.0" layoutY="427.0" radius="70.0" stroke="#cc9c0a" strokeType="INSIDE" />
       <Label layoutX="844.0" layoutY="191.0" prefHeight="145.0" prefWidth="344.0" text="Blackjack" textFill="#cc9c0a">
          <font>
             <Font name="Harlow Solid Italic" size="78.0" />
