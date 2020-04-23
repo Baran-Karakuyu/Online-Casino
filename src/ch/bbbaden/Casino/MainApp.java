@@ -28,9 +28,9 @@ import javafx.stage.StageStyle;
  * @author Baran
  */
 public class MainApp extends Application {
-    
+
     Stage stage;
-    
+
     @Override
     public void start(Stage stage) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("View/FXMLDocument.fxml"));
@@ -57,7 +57,7 @@ public class MainApp extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    
+
     public void startSlots() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Games/Slots/FXMLDocument.fxml"));
         Parent root;
@@ -76,12 +76,12 @@ public class MainApp extends Application {
         stage.setScene(scene);
         stage.show();
     }
-    
-    public void startBlackjack()throws IOException, SQLException, ClassNotFoundException{
+
+    public void startBlackjack() throws IOException, SQLException, ClassNotFoundException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Games/Blackjack/ViewGame.fxml"));
         Parent root;
         root = loader.load();
-        
+
         ViewGameController view = loader.getController();
         ModelBlackJack model = new ModelBlackJack();
         final ViewModelBlackJack viewModel = new ViewModelBlackJack(model);
@@ -91,8 +91,7 @@ public class MainApp extends Application {
 
         final Scene scene = new Scene(root);
 
-        
-        
+        stage.setMaximized(true);
         stage.setScene(scene);
         stage.show();
     }
