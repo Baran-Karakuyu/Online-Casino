@@ -40,4 +40,8 @@ public class Model {
     public void setMainApp(MainApp mainApp) {
         this.mainApp = mainApp;
     }
+    
+    public void setUser(String email,String password){
+        
+    }
 }

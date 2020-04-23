@@ -8,6 +8,7 @@ package ch.bbbaden.Casino.Login;
 import Casino.DataBase.Query;
 import Casino.DataBase.User;
 import ch.bbbaden.Casino.MainApp;
+import ch.bbbaden.Casino.Model.Model;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -49,7 +50,7 @@ public class LoginViewController implements Initializable {
     ArrayList<User> benutzer = new ArrayList<>();
     @FXML
     private Button close;
-    
+    private Model mo;
     private MainApp mainApp;
 
     @Override
@@ -87,6 +88,7 @@ public class LoginViewController implements Initializable {
             if(benutzer.get(i).getEmail().equals(email)){
                 if(benutzer.get(i).getPassword().equals(password)){
                     System.out.println("Gut");
+                    mo.setUser(benutzer.get(i).getEmail(), benutzer.get(i).getPassword());
                     mainApp.startMenu();
                 }else{
                     System.out.println("Password Falsch");
