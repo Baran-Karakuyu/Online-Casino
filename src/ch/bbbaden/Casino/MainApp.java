@@ -33,6 +33,7 @@ public class MainApp extends Application {
     private Stage stage;
     private String email;
     private String password;
+    private String name;
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -106,6 +107,7 @@ public class MainApp extends Application {
         final ViewModelBlackJack viewModel = new ViewModelBlackJack(model);
         view.setViewModel(viewModel);
         model.addPropertyChangeListener(viewModel);
+        model.setPlayer(name);
         view.bind();
 
         final Scene scene = new Scene(root);
@@ -121,6 +123,10 @@ public class MainApp extends Application {
         this.password = password;
         System.out.println(this.email);
         System.out.println(this.password);
+    }
+    
+    public void setName(String name){
+        this.name= name;
     }
 
 }

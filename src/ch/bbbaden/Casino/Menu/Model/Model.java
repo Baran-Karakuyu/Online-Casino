@@ -19,7 +19,7 @@ import java.util.ArrayList;
  * @author Baran
  */
 public class Model {
-
+    String name="";
     protected final PropertyChangeSupport changes = new PropertyChangeSupport(this);
     private Query sql = new Query();
 
@@ -30,6 +30,7 @@ public class Model {
     }
 
     public void startBlackJack() throws IOException, SQLException, ClassNotFoundException {
+        mainApp.setName(name);
         mainApp.startBlackjack();
     }
 
@@ -51,7 +52,7 @@ public class Model {
 
     public void setUser(String email, String password) throws SQLException, ClassNotFoundException {
         ArrayList<User> benutzer = new ArrayList<>();
-        String name = "";
+        
         String oldName = name;
 
         sql.updateUser();
