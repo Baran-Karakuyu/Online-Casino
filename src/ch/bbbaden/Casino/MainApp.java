@@ -73,7 +73,6 @@ public class MainApp extends Application {
         view.bind();
 
         final Scene scene = new Scene(root);
-
         stage.setTitle("Menü");
         stage.setScene(scene);
         stage.show();
@@ -104,10 +103,12 @@ public class MainApp extends Application {
 
         ViewGameController view = loader.getController();
         ModelBlackJack model = new ModelBlackJack();
+        model.setMainApp(this);
         final ViewModelBlackJack viewModel = new ViewModelBlackJack(model);
         view.setViewModel(viewModel);
         model.addPropertyChangeListener(viewModel);
         model.setPlayer(name);
+        
         view.bind();
 
         final Scene scene = new Scene(root);

@@ -6,6 +6,7 @@
 package ch.bbbaden.Casino.Games.Blackjack;
 
 import java.awt.Event;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -1616,7 +1617,8 @@ public class ViewGameController implements Initializable {
     }
 
     @FXML
-    private void backToMenu(ActionEvent event) {
+    private void backToMenu(ActionEvent event) throws IOException, SQLException, ClassNotFoundException {
+        viewModel.backToMenu();
     }
 
 }

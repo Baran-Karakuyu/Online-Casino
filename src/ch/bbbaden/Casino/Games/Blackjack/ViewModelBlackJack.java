@@ -7,6 +7,7 @@ package ch.bbbaden.Casino.Games.Blackjack;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.io.IOException;
 import java.sql.SQLException;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -171,6 +172,10 @@ public class ViewModelBlackJack implements PropertyChangeListener{
     }
     public void versichern(int credit,int summe) throws SQLException, ClassNotFoundException{
         mo.versichern(credit, summe);
+    }
+
+    public void backToMenu() throws IOException, SQLException, ClassNotFoundException {
+        mo.backToMenu();
     }
     
    

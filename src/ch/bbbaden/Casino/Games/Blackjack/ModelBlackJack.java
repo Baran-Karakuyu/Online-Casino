@@ -5,10 +5,13 @@
  */
 package ch.bbbaden.Casino.Games.Blackjack;
 
+
 import Casino.DataBase.Query;
 import Casino.DataBase.User;
+import ch.bbbaden.Casino.MainApp;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Random;
@@ -19,7 +22,7 @@ import java.util.Random;
  */
 public class ModelBlackJack {
     public final PropertyChangeSupport changes = new PropertyChangeSupport(this);
-    
+    private MainApp mainApp;
     Query sql = new Query();
     ArrayList<User> benutzer = new ArrayList<>();
     int creditPlayer = 0;
@@ -155,6 +158,13 @@ public class ModelBlackJack {
         
     public void setPlayer(String name){
         this.name= name;
+    }
+    public void setMainApp(MainApp mainApp) {
+        this.mainApp = mainApp;
+    }
+
+    public void backToMenu() throws IOException, SQLException, ClassNotFoundException {
+        mainApp.startMenu();
     }
     
 }
