@@ -208,12 +208,12 @@ public class ViewGameController implements Initializable {
 //        versichernChoice.getItems().add(30000);
 //        versichernChoice.getItems().add(40000);
 //        versichernChoice.getItems().add(50000);
-        doubleBtn.setDisable(false);
-        doubleBtn.opacityProperty().set(0.1);
-        versichernBtn.setDisable(true);
-        versichernBtn.opacityProperty().set(0.0);
-        versichernChoice.setDisable(true);
-        versichernChoice.opacityProperty().set(0.0);
+//        doubleBtn.setDisable(false);
+//        doubleBtn.opacityProperty().set(0.1);
+//        versichernBtn.setDisable(true);
+//        versichernBtn.opacityProperty().set(0.0);
+//        versichernChoice.setDisable(true);
+//        versichernChoice.opacityProperty().set(0.0);
     }
 
     @FXML
