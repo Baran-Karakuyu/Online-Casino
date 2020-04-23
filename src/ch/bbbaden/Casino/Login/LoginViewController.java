@@ -8,7 +8,7 @@ package ch.bbbaden.Casino.Login;
 import Casino.DataBase.Query;
 import Casino.DataBase.User;
 import ch.bbbaden.Casino.MainApp;
-import ch.bbbaden.Casino.Model.Model;
+import ch.bbbaden.Casino.Menu.Model.Model;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;

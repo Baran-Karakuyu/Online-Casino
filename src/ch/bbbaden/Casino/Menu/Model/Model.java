@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ch.bbbaden.Casino.Model;
+package ch.bbbaden.Casino.Menu.Model;
 
 import ch.bbbaden.Casino.MainApp;
 import java.io.IOException;

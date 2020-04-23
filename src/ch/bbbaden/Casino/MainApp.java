@@ -12,9 +12,9 @@ import ch.bbbaden.Casino.Games.Slots.FXMLSlotsController;
 import ch.bbbaden.Casino.Games.Slots.SlotMachineModel;
 import ch.bbbaden.Casino.Games.Slots.SlotMachineViewModel;
 import ch.bbbaden.Casino.Login.LoginViewController;
-import ch.bbbaden.Casino.Model.Model;
-import ch.bbbaden.Casino.View.FXMLDocumentController;
-import ch.bbbaden.Casino.ViewModel.ViewModel;
+import ch.bbbaden.Casino.Menu.Model.Model;
+import ch.bbbaden.Casino.Menu.View.FXMLDocumentController;
+import ch.bbbaden.Casino.Menu.ViewModel.ViewModel;
 import java.io.IOException;
 import java.sql.SQLException;
 import javafx.application.Application;
@@ -56,7 +56,7 @@ public class MainApp extends Application {
     }
 
     public void startMenu() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("View/FXMLDocument.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Menu/View/FXMLDocument.fxml"));
         Parent root;
         root = loader.load();
         FXMLDocumentController view = loader.getController();

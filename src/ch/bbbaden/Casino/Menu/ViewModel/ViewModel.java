@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ch.bbbaden.Casino.ViewModel;
+package ch.bbbaden.Casino.Menu.ViewModel;
 
-import ch.bbbaden.Casino.Model.Model;
+import ch.bbbaden.Casino.Menu.Model.Model;
 import java.io.IOException;
 import java.sql.SQLException;
 
