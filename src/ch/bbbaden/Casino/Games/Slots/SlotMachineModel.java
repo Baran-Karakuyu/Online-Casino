@@ -58,7 +58,7 @@ public class SlotMachineModel {
         EinzahlungsChecker = false;
 
         Random r = new Random();
-        cardNr = r.nextInt(10);
+        cardNr = r.nextInt(9)+1;
 
         Symbol oldSymbol = symbol;
         symbol = allSymbols.get(cardNr);
@@ -228,8 +228,21 @@ public class SlotMachineModel {
         changes.firePropertyChange("tenTimes", oldSymbol, symbol);
     }
 
-    public void fruitStop() {
+    public void fruitStop(int randomUpTo) {
+        if (spinnerSelectedSymbol.size() >= 3) {
+            spinnerSelectedSymbol.clear();
+        }
+        
+        Random r = new Random();
+        cardNr = r.nextInt(randomUpTo);
 
+        Symbol oldSymbol = symbol;
+        symbol = allSymbols.get(cardNr);
+
+        //Die Werte in der ArrayList dienen zur Gewinnüberprüfung
+        spinnerSelectedSymbol.add(allSymbols.get(cardNr));
+        
+        changes.firePropertyChange("fruitStop", oldSymbol, symbol);
     }
 
     public void cherryCollection(int randomUpTo) {
@@ -249,7 +262,7 @@ public class SlotMachineModel {
         changes.firePropertyChange("cherryCollect", oldSymbol, symbol);
     }
 
-    public void holdAndStep(int removeNumber, int randomUpTo) {
+    public void holdAndStep(int removeNumber, int randomUpTo) {        
         spinnerSelectedSymbol.remove(removeNumber);
 
         Random r = new Random();
@@ -261,7 +274,7 @@ public class SlotMachineModel {
         //Ein Wert wird in der vorher entfernten Position eingefügt
         spinnerSelectedSymbol.add(removeNumber, allSymbols.get(cardNr));
 
-        changes.firePropertyChange("hold", oldSymbol, symbol);
+        changes.firePropertyChange("holdAndStep", oldSymbol, symbol);
     }
 
     public void holdCherry(int removeNumber, int randomUpTo) {
@@ -276,12 +289,10 @@ public class SlotMachineModel {
         //Ein Wert wird in der vorher entfernten Position eingefügt
         spinnerSelectedSymbol.add(removeNumber, allSymbols.get(cardNr));
 
-        changes.firePropertyChange("hold", oldSymbol, symbol);
+        changes.firePropertyChange("holdAndStep", oldSymbol, symbol);
     }
 
-    public void changeSelected(int removeNumber, String strSymbol) {
-        spinnerSelectedSymbol.remove(removeNumber);
-
+    public void changeSelected(int removeNumber, String strSymbol, boolean firstColumnChecker, String[] addingSymbols) {
         HashMap<String, Integer> changeSymbolOptions = new HashMap<>();
         changeSymbolOptions.put("CHERRY", 0);
         changeSymbolOptions.put("TRAUBE", 1);
@@ -293,6 +304,15 @@ public class SlotMachineModel {
         changeSymbolOptions.put("SIEBEN", 7);
         changeSymbolOptions.put("BAR", 8);
         changeSymbolOptions.put("STERN", 9);
+        
+        if (firstColumnChecker == true) {
+            spinnerSelectedSymbol.clear();
+            spinnerSelectedSymbol.add(0, allSymbols.get(changeSymbolOptions.get(addingSymbols[0])));
+            spinnerSelectedSymbol.add(1, allSymbols.get(changeSymbolOptions.get(addingSymbols[1])));
+            spinnerSelectedSymbol.add(2, allSymbols.get(changeSymbolOptions.get(addingSymbols[2])));
+        }
+        
+        spinnerSelectedSymbol.remove(removeNumber);
 
         //Ein Wert wird Manuel in der vorher entfernten Position eingefügt
         spinnerSelectedSymbol.add(removeNumber, allSymbols.get(changeSymbolOptions.get(strSymbol)));

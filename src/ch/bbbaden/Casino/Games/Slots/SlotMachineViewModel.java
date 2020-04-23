@@ -88,10 +88,14 @@ public class SlotMachineViewModel implements PropertyChangeListener {
         m.holdCherry(removeNumber, randomUpTo);
     }
     
-    public void changeSelected(int removeNumber, String strSymbol) {
-        m.changeSelected(removeNumber, strSymbol);
+    public void changeSelected(int removeNumber, String strSymbol, boolean firstColumnChecker, String[] addingSymbols) {
+        m.changeSelected(removeNumber, strSymbol, firstColumnChecker, addingSymbols);
     }
 
+    public void fruitStop(int randomUpTo) {
+        m.fruitStop(randomUpTo);
+    }
+    
     public StringProperty getEinwurf() {
         return Spielerkonto;
     }
@@ -162,10 +166,13 @@ public class SlotMachineViewModel implements PropertyChangeListener {
         if (evt.getPropertyName().equals("tenTimes")) {
             walzenZahl.set(evt.getNewValue().toString());
         }
+        if (evt.getPropertyName().equals("fruitStop")) {
+            walzenZahl.set(evt.getNewValue().toString());
+        }
         if (evt.getPropertyName().equals("cherryCollect")) {
             walzenZahl.set(evt.getNewValue().toString());
         }
-        if (evt.getPropertyName().equals("hold")) {
+        if (evt.getPropertyName().equals("holdAndStep")) {
             walzenZahl.set(evt.getNewValue().toString());
         }
     }

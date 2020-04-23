@@ -214,6 +214,9 @@ public class FXMLSlotsController implements Initializable {
                 lblM5x.setTextFill(Paint.valueOf("#ff0000"));
             }
         } else {
+            lblM5x.setTextFill(Paint.valueOf("#750000"));
+            lblM2x.setTextFill(Paint.valueOf("#007500"));
+            lblM3x.setTextFill(Paint.valueOf("#000075"));
             lblWIN.setTextFill(Paint.valueOf("#000077"));
         }
     }
@@ -260,37 +263,41 @@ public class FXMLSlotsController implements Initializable {
                     lblM3x.setTextFill(Paint.valueOf("#000075"));
                     lblM5x.setTextFill(Paint.valueOf("#750000"));
                     cherryCollectPaintCounter = 0;
+                    lblFruitStop1.setTextFill(Paint.valueOf("#000088"));
+                    lblFruitStop2.setTextFill(Paint.valueOf("#880000"));
+
+                    spinAnimation(0);
 
                     //Bei drei Sternen wird zufällig eine Funktion vom Pentagon ausgewahlt
                     if (ivWalze1.getImage() == imagesSymbol.get("STERN") && ivWalze2.getImage() == imagesSymbol.get("STERN") && ivWalze3.getImage() == imagesSymbol.get("STERN")) {
                         Random r = new Random();
-                        stopFunctionKey = r.nextInt(4) + 1;
-                    } else {
-                        spinAnimation(0);
+                        stopFunctionKey = r.nextInt(5) + 1;
                     }
                 }
                 break;
             }
             //2x Shuffle
             case 1: {
+                lblShuffleTwo.setTextFill(Paint.valueOf("#00ffff"));
+                spinAnimation(1);
+
                 if (shuffleCounter >= 1) {
                     stopFunctionKey = 0;
                     shuffleCounter = 0;
                     break;
                 }
-                lblShuffleTwo.setTextFill(Paint.valueOf("#00ffff"));
-                spinAnimation(1);
                 break;
             }
             //4x Shuffle
             case 2: {
+                lblShuffleFour.setTextFill(Paint.valueOf("#00ff00"));
+                spinAnimation(1);
+
                 if (shuffleCounter >= 3) {
                     stopFunctionKey = 0;
                     shuffleCounter = 0;
                     break;
                 }
-                lblShuffleFour.setTextFill(Paint.valueOf("#00ff00"));
-                spinAnimation(1);
                 break;
             }
             //10x Shuffle
@@ -311,8 +318,15 @@ public class FXMLSlotsController implements Initializable {
                 }
                 break;
             }
+            //Fruit Stop
+            case 5: {
+                stopFunctionKey = 0;
+                lblFruitStop1.setTextFill(Paint.valueOf("#0000ff"));
+                lblFruitStop2.setTextFill(Paint.valueOf("#ff0000"));
+                spinAnimation(4);
+                break;
+            }
         }
-
     }
 
     @FXML
@@ -368,6 +382,8 @@ public class FXMLSlotsController implements Initializable {
                     tenTimes();
                 } else if (AfterSpinKey == 3) {
                     cherryCollect();
+                } else if (AfterSpinKey == 4) {
+                    fruitStop();
                 }
             }
         });
@@ -424,9 +440,6 @@ public class FXMLSlotsController implements Initializable {
 
         viewModel.gewinnUeberpruefen(0.1 * (Integer.valueOf(lblRisikoZahl.getText())));
 
-        btnStop.setDisable(false);
-        btnBet.setDisable(false);
-        btnAuszahlen.setDisable(false);
         checkButtonUnlock();
     }
 
@@ -476,6 +489,8 @@ public class FXMLSlotsController implements Initializable {
         ivWalze3.setImage(imagesSymbol.get(lblWalze3.getText()));
 
         step--;
+        viewModel.gewinnUeberpruefen(0.1 * (Integer.valueOf(lblRisikoZahl.getText())));
+        checkButtonUnlock();
 
         if (ivWalze1.getImage() == imagesSymbol.get("CHERRY") || ivWalze2.getImage() == imagesSymbol.get("CHERRY") || ivWalze3.getImage() == imagesSymbol.get("CHERRY")) {
             cherryCollectAction();
@@ -488,6 +503,7 @@ public class FXMLSlotsController implements Initializable {
         if (cherryCollectPaintCounter == 0) {
             lblCC5x1.setTextFill(Paint.valueOf("#ffff00"));
             ccBerechnung = (Double.valueOf(lblRisikoZahl.getText()) * 0.1) * 5;
+            viewModel.gewinnUeberpruefen(0.1 * (Integer.valueOf(lblRisikoZahl.getText())));
             viewModel.gewinn(ccBerechnung);
             checkButtonUnlock();
             cherryCollectPaintCounter++;
@@ -518,26 +534,32 @@ public class FXMLSlotsController implements Initializable {
     }
 
     public void hold() {
-        PauseTransition ptSpinner1 = new PauseTransition(Duration.millis(750));
-        ptSpinner1.setOnFinished(event -> {
-            if (selectedSymbolsString.get(0).equals(selectedSymbolsString.get(1))) {
-                lblHold.setTextFill(Paint.valueOf("#ff00ff"));
-                viewModel.holdAndStep(2, 10);
-                ivWalze3.setImage(imagesSymbol.get(lblWalze3.getText()));
-                viewModel.gewinnUeberpruefen(0.1 * (Integer.valueOf(lblRisikoZahl.getText())));
-            } else if (selectedSymbolsString.get(0).equals(selectedSymbolsString.get(2))) {
-                lblHold.setTextFill(Paint.valueOf("#ff00ff"));
-                viewModel.holdAndStep(1, 10);
-                ivWalze2.setImage(imagesSymbol.get(lblWalze2.getText()));
-                viewModel.gewinnUeberpruefen(0.1 * (Integer.valueOf(lblRisikoZahl.getText())));
-            } else if (selectedSymbolsString.get(1).equals(selectedSymbolsString.get(2))) {
-                lblHold.setTextFill(Paint.valueOf("#ff00ff"));
-                viewModel.holdAndStep(0, 10);
-                ivWalze1.setImage(imagesSymbol.get(lblWalze1.getText()));
-                viewModel.gewinnUeberpruefen(0.1 * (Integer.valueOf(lblRisikoZahl.getText())));
-            }
-        });
-        ptSpinner1.play();
+        if (!(selectedSymbolsString.get(0).equals(selectedSymbolsString.get(1)) && (selectedSymbolsString.get(1).equals(selectedSymbolsString.get(2))))) {
+            PauseTransition ptSpinner1 = new PauseTransition(Duration.millis(750));
+            ptSpinner1.setOnFinished(event -> {
+                if (selectedSymbolsString.get(0).equals(selectedSymbolsString.get(1))) {
+                    lblHold.setTextFill(Paint.valueOf("#ff00ff"));
+                    viewModel.changeSelected(2, selectedSymbolsString.get(2), true, new String[]{selectedSymbolsString.get(0), selectedSymbolsString.get(1), selectedSymbolsString.get(2)});
+                    viewModel.holdAndStep(2, 10);
+                    ivWalze3.setImage(imagesSymbol.get(lblWalze3.getText()));
+                    viewModel.gewinnUeberpruefen(0.1 * (Integer.valueOf(lblRisikoZahl.getText())));
+                } else if (selectedSymbolsString.get(0).equals(selectedSymbolsString.get(2))) {
+                    lblHold.setTextFill(Paint.valueOf("#ff00ff"));
+                    viewModel.changeSelected(1, selectedSymbolsString.get(1), true, new String[]{selectedSymbolsString.get(0), selectedSymbolsString.get(1), selectedSymbolsString.get(2)});
+                    viewModel.holdAndStep(1, 10);
+                    ivWalze2.setImage(imagesSymbol.get(lblWalze2.getText()));
+                    viewModel.gewinnUeberpruefen(0.1 * (Integer.valueOf(lblRisikoZahl.getText())));
+                } else if (selectedSymbolsString.get(1).equals(selectedSymbolsString.get(2))) {
+                    lblHold.setTextFill(Paint.valueOf("#ff00ff"));
+                    viewModel.changeSelected(0, selectedSymbolsString.get(0), true, new String[]{selectedSymbolsString.get(0), selectedSymbolsString.get(1), selectedSymbolsString.get(2)});
+                    viewModel.holdAndStep(0, 10);
+                    ivWalze1.setImage(imagesSymbol.get(lblWalze1.getText()));
+                    viewModel.gewinnUeberpruefen(0.1 * (Integer.valueOf(lblRisikoZahl.getText())));
+                }
+                checkButtonUnlock();
+            });
+            ptSpinner1.play();
+        }
     }
 
     public void step() {
@@ -559,7 +581,7 @@ public class FXMLSlotsController implements Initializable {
                     ptSpinners.play();
                     if (spinCounter == 4 || lblWalze3.getText().equals(selectedSymbolsString.get(0))) {
                         ivWalze3.setImage(imagesSymbol.get(selectedSymbolsString.get(0)));
-                        viewModel.changeSelected(2, selectedSymbolsString.get(0));
+                        viewModel.changeSelected(2, selectedSymbolsString.get(0), false, new String[0]);
                         viewModel.gewinnUeberpruefen(0.1 * (Integer.valueOf(lblRisikoZahl.getText())));
                         checkButtonUnlock();
                         ptSpinners.stop();
@@ -577,7 +599,7 @@ public class FXMLSlotsController implements Initializable {
                     ptSpinners.play();
                     if (spinCounter == 5 || lblWalze2.getText().equals(selectedSymbolsString.get(0))) {
                         ivWalze2.setImage(imagesSymbol.get(selectedSymbolsString.get(0)));
-                        viewModel.changeSelected(1, selectedSymbolsString.get(0));
+                        viewModel.changeSelected(1, selectedSymbolsString.get(0), false, new String[0]);
                         viewModel.gewinnUeberpruefen(0.1 * (Integer.valueOf(lblRisikoZahl.getText())));
                         checkButtonUnlock();
                         ptSpinners.stop();
@@ -595,7 +617,7 @@ public class FXMLSlotsController implements Initializable {
                     ptSpinners.play();
                     if (spinCounter == 3 || lblWalze1.getText().equals(selectedSymbolsString.get(1))) {
                         ivWalze1.setImage(imagesSymbol.get(selectedSymbolsString.get(1)));
-                        viewModel.changeSelected(0, selectedSymbolsString.get(1));
+                        viewModel.changeSelected(0, selectedSymbolsString.get(1), false, new String[0]);
                         viewModel.gewinnUeberpruefen(0.1 * (Integer.valueOf(lblRisikoZahl.getText())));
                         checkButtonUnlock();
                         ptSpinners.stop();
@@ -673,6 +695,8 @@ public class FXMLSlotsController implements Initializable {
     }
 
     public void stepCherryChecker(int cherryPosition) {
+        spinCounter = 0;
+        
         //Stepanimation für die Walzen
         if (cherryPosition == 0) {
             PauseTransition ptCherrySpinner1 = new PauseTransition(Duration.millis(500));
@@ -686,8 +710,8 @@ public class FXMLSlotsController implements Initializable {
                 if (spinCounter == 4) {
                     ivWalze2.setImage(imagesSymbol.get("CHERRY"));
                     ivWalze3.setImage(imagesSymbol.get("CHERRY"));
-                    viewModel.changeSelected(1, "CHERRY");
-                    viewModel.changeSelected(2, "CHERRY");
+                    viewModel.changeSelected(1, "CHERRY", false, new String[0]);
+                    viewModel.changeSelected(2, "CHERRY", false, new String[0]);
                     viewModel.gewinnUeberpruefen(0.1 * (Integer.valueOf(lblRisikoZahl.getText())));
                     checkButtonUnlock();
                     ptCherrySpinner1.stop();
@@ -706,8 +730,8 @@ public class FXMLSlotsController implements Initializable {
                 if (spinCounter == 3) {
                     ivWalze1.setImage(imagesSymbol.get("CHERRY"));
                     ivWalze3.setImage(imagesSymbol.get("CHERRY"));
-                    viewModel.changeSelected(0, "CHERRY");
-                    viewModel.changeSelected(2, "CHERRY");
+                    viewModel.changeSelected(0, "CHERRY", false, new String[0]);
+                    viewModel.changeSelected(2, "CHERRY", false, new String[0]);
                     viewModel.gewinnUeberpruefen(0.1 * (Integer.valueOf(lblRisikoZahl.getText())));
                     checkButtonUnlock();
                     ptCherrySpinner2.stop();
@@ -726,8 +750,8 @@ public class FXMLSlotsController implements Initializable {
                 if (spinCounter == 5) {
                     ivWalze1.setImage(imagesSymbol.get("CHERRY"));
                     ivWalze2.setImage(imagesSymbol.get("CHERRY"));
-                    viewModel.changeSelected(0, "CHERRY");
-                    viewModel.changeSelected(1, "CHERRY");
+                    viewModel.changeSelected(0, "CHERRY", false, new String[0]);
+                    viewModel.changeSelected(1, "CHERRY", false, new String[0]);
                     viewModel.gewinnUeberpruefen(0.1 * (Integer.valueOf(lblRisikoZahl.getText())));
                     checkButtonUnlock();
                     ptCherrySpinner3.stop();
@@ -741,6 +765,9 @@ public class FXMLSlotsController implements Initializable {
         if ((Double.valueOf(lblGewinnZahl.getText()) > 0.0)) {
             btnGamble.setDisable(false);
             btnMystery.setDisable(false);
+            btnStop.setDisable(false);
+            btnBet.setDisable(false);
+            btnAuszahlen.setDisable(false);
         } else {
             btnStop.setDisable(false);
             btnBet.setDisable(false);
@@ -748,6 +775,50 @@ public class FXMLSlotsController implements Initializable {
             btnGamble.setDisable(true);
             btnMystery.setDisable(true);
         }
+    }
+
+    public void fruitStop() {
+        ArrayList<String> symbolOptions = new ArrayList<>();
+
+        viewModel.fruitStop(9);
+        ivWalze1.setImage(imagesSymbol.get(lblWalze1.getText()));
+        symbolOptions.add(lblWalze1.getText());
+
+        viewModel.fruitStop(9);
+        ivWalze2.setImage(imagesSymbol.get(lblWalze2.getText()));
+        symbolOptions.add(lblWalze1.getText());
+
+        viewModel.fruitStop(9);
+        ivWalze3.setImage(imagesSymbol.get(lblWalze3.getText()));
+        symbolOptions.add(lblWalze1.getText());
+
+        PauseTransition pause = new PauseTransition(Duration.millis(2500));
+        pause.setOnFinished(event -> {
+            if (btnStop.isPressed() == false) {
+                Random r = new Random();
+                int auswahl = r.nextInt(3);
+
+                if (auswahl == 0) {
+                    ivWalze2.setImage(imagesSymbol.get(symbolOptions.get(0)));
+                    ivWalze3.setImage(imagesSymbol.get(symbolOptions.get(0)));
+                    viewModel.changeSelected(1, symbolOptions.get(0), false, new String[0]);
+                    viewModel.changeSelected(2, symbolOptions.get(0), false, new String[0]);
+                } else if (auswahl == 1) {
+                    ivWalze1.setImage(imagesSymbol.get(symbolOptions.get(1)));
+                    ivWalze3.setImage(imagesSymbol.get(symbolOptions.get(1)));
+                    viewModel.changeSelected(0, symbolOptions.get(1), false, new String[0]);
+                    viewModel.changeSelected(2, symbolOptions.get(1), false, new String[0]);
+                } else if (auswahl == 2) {
+                    ivWalze1.setImage(imagesSymbol.get(symbolOptions.get(2)));
+                    ivWalze2.setImage(imagesSymbol.get(symbolOptions.get(2)));
+                    viewModel.changeSelected(0, symbolOptions.get(2), false, new String[0]);
+                    viewModel.changeSelected(1, symbolOptions.get(2), false, new String[0]);
+                }
+                viewModel.gewinnUeberpruefen(0.1 * (Integer.valueOf(lblRisikoZahl.getText())));
+                checkButtonUnlock();
+            }
+        });
+        pause.play();
     }
 
     public void bind() {
