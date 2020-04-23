@@ -72,6 +72,9 @@ public class Query {
         users.add(new User(id,name,email,password));        
        
     }
+    public void insertStatistic(){
+        
+    }
     public void updateCredit(int credit,String name) throws SQLException, ClassNotFoundException{
         for(int i = 0; i<users.size();i++){
             if(users.get(i).getName().equals(name)){
