@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
+<?import java.net.URL?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -11,7 +13,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="apSlots" prefHeight="910.0" prefWidth="910.0" scaleShape="false" styleClass="apSlots" stylesheets="@../../../../../CasinoStyleSheet/SlotsCSS/SlotsStyle.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.bbbaden.Casino.Games.Slots.FXMLSlotsController">
+<AnchorPane id="AnchorPane" fx:id="apSlots" prefHeight="910.0" prefWidth="910.0" scaleShape="false" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.bbbaden.Casino.Games.Slots.FXMLSlotsController">
    <children>
       <Rectangle fx:id="recUnten" arcHeight="5.0" arcWidth="5.0" fill="#333333" height="440.0" layoutX="131.0" layoutY="456.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" width="770.0" />
       <ImageView fitHeight="434.0" fitWidth="764.0" layoutX="134.0" layoutY="459.0">
@@ -48,20 +50,20 @@
          </image>
       </ImageView>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#090a36" height="36.0" layoutX="343.0" layoutY="410.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="280.0" AnchorPane.leftAnchor="343.0" AnchorPane.rightAnchor="267.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#090a36" height="36.0" layoutX="343.0" layoutY="372.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="280.0" />
-      <Rectangle fx:id="rec5x" arcHeight="5.0" arcWidth="5.0" height="75.0" layoutX="697.0" layoutY="55.0" stroke="BLACK" strokeType="INSIDE" styleClass="rectangle" width="130.0" />
-      <Rectangle fx:id="rec3x" arcHeight="5.0" arcWidth="5.0" height="75.0" layoutX="638.0" layoutY="143.0" stroke="BLACK" strokeType="INSIDE" styleClass="rectangle" width="130.0" />
-      <Rectangle fx:id="rec2x" arcHeight="5.0" arcWidth="5.0" height="75.0" layoutX="730.0" layoutY="231.0" stroke="BLACK" strokeType="INSIDE" styleClass="rectangle" width="130.0" />
-      <Button fx:id="btnAuszahlen" layoutX="235.0" layoutY="398.0" mnemonicParsing="false" onAction="#handleAuszahlenButtonAction" text="Auszahlen" />
-      <Button fx:id="btnEInwerfen" layoutX="766.0" layoutY="398.0" mnemonicParsing="false" onAction="#handleEinwerfenButtonAction" prefHeight="25.0" prefWidth="70.0" text="Einwerfen" />
-      <Spinner fx:id="spnEinwerfen" layoutX="679.0" layoutY="398.0" prefHeight="25.0" prefWidth="80.0" />
-      <Label fx:id="lblSpielerkonto" layoutX="356.0" layoutY="382.0" styleClass="lblSpielerkonto" text="Spielerkonto:" textFill="WHITE" />
-      <Label fx:id="lblGewinn" layoutX="359.0" layoutY="420.0" styleClass="lblGewinn" text="Gewinn:" textFill="WHITE" />
-      <Label fx:id="lblSpielerkontoZahl" layoutX="433.0" layoutY="382.0" styleClass="lblSpielerkontoZahl" text="0" textFill="WHITE">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#090a36" height="36.0" layoutX="351.0" layoutY="373.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="280.0" />
+      <Rectangle fx:id="rec5x" arcHeight="5.0" arcWidth="5.0" height="75.0" layoutX="714.0" layoutY="55.0" stroke="BLACK" strokeType="INSIDE" styleClass="rectangle" width="130.0" />
+      <Rectangle fx:id="rec3x" arcHeight="5.0" arcWidth="5.0" height="75.0" layoutX="655.0" layoutY="143.0" stroke="BLACK" strokeType="INSIDE" styleClass="rectangle" width="130.0" />
+      <Rectangle fx:id="rec2x" arcHeight="5.0" arcWidth="5.0" height="75.0" layoutX="747.0" layoutY="231.0" stroke="BLACK" strokeType="INSIDE" styleClass="rectangle" width="130.0" />
+      <Button fx:id="btnAuszahlen" layoutX="682.0" layoutY="416.0" mnemonicParsing="false" onAction="#handleAuszahlenButtonAction" prefHeight="25.0" prefWidth="158.0" text="Auszahlen" />
+      <Button fx:id="btnEInwerfen" layoutX="769.0" layoutY="378.0" mnemonicParsing="false" onAction="#handleEinwerfenButtonAction" prefHeight="25.0" prefWidth="70.0" text="Einwerfen" />
+      <Spinner fx:id="spnEinwerfen" layoutX="682.0" layoutY="378.0" prefHeight="25.0" prefWidth="80.0" />
+      <Label fx:id="lblSpielerkonto" layoutX="364.0" layoutY="383.0" styleClass="lblSpielerkonto" text="Spielerkonto:" textFill="WHITE" />
+      <Label fx:id="lblGewinn" layoutX="364.0" layoutY="420.0" styleClass="lblGewinn" text="Gewinn:" textFill="WHITE" />
+      <Label fx:id="lblSpielerkontoZahl" layoutX="441.0" layoutY="383.0" styleClass="lblSpielerkontoZahl" text="0" textFill="WHITE">
          <font>
             <Font name="DS-Digital" size="12.0" />
          </font></Label>
-      <Label fx:id="lblGewinnZahl" layoutX="435.0" layoutY="420.0" styleClass="lblGewinnZahl" text="0" textFill="WHITE" />
+      <Label fx:id="lblGewinnZahl" layoutX="440.0" layoutY="420.0" styleClass="lblGewinnZahl" text="0" textFill="WHITE" />
       <Button fx:id="btnMystery" layoutX="140.0" layoutY="806.0" mnemonicParsing="false" onAction="#handleMysteryButtonAction" prefHeight="75.0" prefWidth="130.0" styleClass="btnMystery" text="MYSTERY">
          <font>
             <Font size="20.0" />
@@ -70,11 +72,11 @@
          <font>
             <Font size="20.0" />
          </font></Button>
-      <Button fx:id="btnGamble" layoutX="590.0" layoutY="806.0" mnemonicParsing="false" onAction="#handleGambleButtonAction" prefHeight="75.0" prefWidth="130.0" styleClass="btnGamble" text="GAMBLE">
+      <Button fx:id="btnGamble" layoutX="614.0" layoutY="806.0" mnemonicParsing="false" onAction="#handleGambleButtonAction" prefHeight="75.0" prefWidth="130.0" styleClass="btnGamble" text="GAMBLE">
          <font>
             <Font size="20.0" />
          </font></Button>
-      <Button fx:id="btnStop" defaultButton="true" layoutX="730.0" layoutY="806.0" mnemonicParsing="false" onAction="#handleStopButtonAction" prefHeight="75.0" prefWidth="130.0" styleClass="btnStop" text="STOP">
+      <Button fx:id="btnStop" defaultButton="true" layoutX="760.0" layoutY="806.0" mnemonicParsing="false" onAction="#handleStopButtonAction" prefHeight="75.0" prefWidth="130.0" styleClass="btnStop" text="STOP">
          <font>
             <Font size="20.0" />
          </font>
@@ -85,17 +87,17 @@
       <Button fx:id="btnAbbrechen" layoutX="14.0" layoutY="48.0" mnemonicParsing="false" onAction="#handleAbbrechenButtonAction" prefHeight="50.0" prefWidth="104.0" text="Abbrechen" />
       <Label fx:id="lblKontostand" layoutX="14.0" layoutY="14.0" text="Kontostand:" textFill="WHITE" />
       <Label fx:id="lblKontostandZahl" layoutX="84.0" layoutY="14.0" prefHeight="17.0" prefWidth="43.0" textFill="WHITE" />
-      <Label fx:id="lblM2x" layoutX="776.0" layoutY="241.0" text="2x" textFill="#007500">
+      <Label fx:id="lblM2x" layoutX="793.0" layoutY="241.0" text="2x" textFill="#007500">
          <font>
             <Font size="38.0" />
          </font>
       </Label>
-      <Label fx:id="lblM3x" layoutX="684.0" layoutY="153.0" text="3x" textFill="#000075">
+      <Label fx:id="lblM3x" layoutX="701.0" layoutY="153.0" text="3x" textFill="#000075">
          <font>
             <Font size="38.0" />
          </font>
       </Label>
-      <Label fx:id="lblM5x" layoutX="743.0" layoutY="65.0" text="5x" textFill="#750000">
+      <Label fx:id="lblM5x" layoutX="760.0" layoutY="65.0" text="5x" textFill="#750000">
          <font>
             <Font size="38.0" />
          </font>
@@ -154,7 +156,7 @@
             <Font name="System Bold" size="40.0" />
          </font>
       </Label>
-      <Label fx:id="lblRisikoZahl" layoutX="527.0" layoutY="382.0" styleClass="lblRisiko" text="0" textFill="WHITE" />
+      <Label fx:id="lblRisikoZahl" layoutX="535.0" layoutY="383.0" styleClass="lblRisiko" text="0" textFill="WHITE" />
       <Label fx:id="lblShuffleTwo" layoutX="419.0" layoutY="228.0" rotate="-107.0" text="   2x&#10;Shuffle" textFill="#007575">
          <font>
             <Font size="20.0" />
@@ -223,4 +225,12 @@
          </font>
       </Label>
    </children>
+   <stylesheets>
+      <URL value="@../../../../../CasinoStyleSheet/SlotsCSS/SlotsStyle.css" />
+      <URL value="@../../../../../CasinoStyleSheet/MenuCSS.css" />
+   </stylesheets>
+   <styleClass>
+      <String fx:value="apSlots" />
+      <String fx:value="menu" />
+   </styleClass>
 </AnchorPane>
