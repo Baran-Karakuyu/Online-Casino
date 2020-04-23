@@ -74,7 +74,6 @@ public class MainApp extends Application {
         final Scene scene = new Scene(root);
 
         stage.setTitle("Menü");
-        //stage.initStyle(StageStyle.UNDECORATED);
         stage.setScene(scene);
         stage.show();
     }
@@ -93,7 +92,6 @@ public class MainApp extends Application {
         final Scene scene = new Scene(root);
 
         stage.setTitle("Super Cherry");
-        //stage.initStyle(StageStyle.UNDECORATED);
         stage.setScene(scene);
         stage.show();
     }
@@ -113,6 +111,7 @@ public class MainApp extends Application {
         final Scene scene = new Scene(root);
 
         stage.setMaximized(true);
+        stage.setTitle("BlackJack");
         stage.setScene(scene);
         stage.show();
     }
