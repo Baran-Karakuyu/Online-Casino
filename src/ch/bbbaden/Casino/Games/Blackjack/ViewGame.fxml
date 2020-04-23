@@ -14,7 +14,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="1030.0" prefWidth="1920.0" styleClass="menu" stylesheets="@../../../../../CasinoStyleSheet/MenuCSS.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.bbbaden.Casino.Games.Blackjack.ViewGameController">
      <children>
-      <Ellipse fill="#511312" layoutX="975.0" layoutY="202.0" radiusX="877.0" radiusY="683.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="30.0" />
+      <Ellipse fill="#511312" layoutX="975.0" layoutY="202.0" radiusX="877.0" radiusY="683.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="35.0" />
       <Ellipse fill="#942626" layoutX="967.0" layoutY="191.0" radiusX="789.0" radiusY="586.0" stroke="#cc9c0a" strokeType="INSIDE" strokeWidth="2.0" />
       <QuadCurve controlX="105.0" controlY="273.0" endX="-314.0" endY="-135.0" fill="#9a1515" layoutX="892.0" layoutY="374.0" startX="525.0" startY="-135.0" stroke="#cc9c0a" strokeType="INSIDE" strokeWidth="2.0" />
       <QuadCurve controlX="105.0" controlY="214.0" endX="-216.0" endY="-76.0" fill="#942626" layoutX="891.0" layoutY="315.0" startX="418.0" startY="-76.0" stroke="#cc9c0a" strokeType="INSIDE" strokeWidth="2.0" />
