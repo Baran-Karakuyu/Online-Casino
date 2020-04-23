@@ -5,7 +5,6 @@
  */
 package ch.bbbaden.Casino.Games.Slots;
 
-
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -625,78 +624,12 @@ public class FXMLSlotsController implements Initializable {
                 }
             });
             ptSpinners.play();
-
-            //Stepanimation für die Walzen
-//            if (selectedSymbolsString.get(0).equals(selectedSymbolsString.get(1))) {
-//                lblStep.setTextFill(Paint.valueOf("#00ffff"));
-//                PauseTransition ptSpinner1 = new PauseTransition(Duration.millis(500));
-//                ptSpinner1.setOnFinished(event -> {
-//                    viewModel.holdAndStep(2, 10);
-//                    ivWalze3.setImage(imagesSymbol.get(lblWalze3.getText()));
-//                    if (lblWalze3.getText().equals("CHERRY")) {
-//                        stepCherryChecker(2);
-//                        ptSpinner1.stop();
-//                        return;
-//                    }
-//                    spinCounter++;
-//                    ptSpinner1.play();
-//                    if (spinCounter == 4 || lblWalze3.getText().equals(selectedSymbolsString.get(0))) {
-//                        ivWalze3.setImage(imagesSymbol.get(selectedSymbolsString.get(0)));
-//                        viewModel.changeSelected(2, selectedSymbolsString.get(0));
-//                        viewModel.gewinnUeberpruefen(0.1 * (Integer.valueOf(lblRisikoZahl.getText())));
-//                        ptSpinner1.stop();
-//                    }
-//                });
-//                ptSpinner1.play();
-//            } else if (selectedSymbolsString.get(0).equals(selectedSymbolsString.get(2))) {
-//                lblStep.setTextFill(Paint.valueOf("#00ffff"));
-//                PauseTransition ptSpinner2 = new PauseTransition(Duration.millis(500));
-//                ptSpinner2.setOnFinished(event -> {
-//                    viewModel.holdAndStep(1, 10);
-//                    ivWalze2.setImage(imagesSymbol.get(lblWalze2.getText()));
-//                    if (lblWalze2.getText().equals("CHERRY")) {
-//                        stepCherryChecker(1);
-//                        ptSpinner2.stop();
-//                        return;
-//                    }
-//                    spinCounter++;
-//                    ptSpinner2.play();
-//                    if (spinCounter == 5 || lblWalze2.getText().equals(selectedSymbolsString.get(0))) {
-//                        ivWalze2.setImage(imagesSymbol.get(selectedSymbolsString.get(0)));
-//                        viewModel.changeSelected(1, selectedSymbolsString.get(0));
-//                        viewModel.gewinnUeberpruefen(0.1 * (Integer.valueOf(lblRisikoZahl.getText())));
-//                        ptSpinner2.stop();
-//                    }
-//                });
-//                ptSpinner2.play();
-//            } else if (selectedSymbolsString.get(1).equals(selectedSymbolsString.get(2))) {
-//                lblStep.setTextFill(Paint.valueOf("#00ffff"));
-//                PauseTransition ptSpinner3 = new PauseTransition(Duration.millis(500));
-//                ptSpinner3.setOnFinished(event -> {
-//                    viewModel.holdAndStep(0, 10);
-//                    ivWalze1.setImage(imagesSymbol.get(lblWalze1.getText()));
-//                    if (lblWalze1.getText().equals("CHERRY")) {
-//                        stepCherryChecker(0);
-//                        ptSpinner3.stop();
-//                        return;
-//                    }
-//                    spinCounter++;
-//                    ptSpinner3.play();
-//                    if (spinCounter == 3 || lblWalze1.getText().equals(selectedSymbolsString.get(1))) {
-//                        ivWalze1.setImage(imagesSymbol.get(selectedSymbolsString.get(1)));
-//                        viewModel.changeSelected(0, selectedSymbolsString.get(1));
-//                        viewModel.gewinnUeberpruefen(0.1 * (Integer.valueOf(lblRisikoZahl.getText())));
-//                        ptSpinner3.stop();
-//                    }
-//                });
-//                ptSpinner3.play();
-//            }
         }
     }
 
     public void stepCherryChecker(int cherryPosition) {
         spinCounter = 0;
-        
+
         //Stepanimation für die Walzen
         if (cherryPosition == 0) {
             PauseTransition ptCherrySpinner1 = new PauseTransition(Duration.millis(500));

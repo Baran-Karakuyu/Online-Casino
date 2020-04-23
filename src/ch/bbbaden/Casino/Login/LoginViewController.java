@@ -7,6 +7,7 @@ package ch.bbbaden.Casino.Login;
 
 import Casino.DataBase.Query;
 import Casino.DataBase.User;
+import ch.bbbaden.Casino.MainApp;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -48,6 +49,8 @@ public class LoginViewController implements Initializable {
     ArrayList<User> benutzer = new ArrayList<>();
     @FXML
     private Button close;
+    
+    private MainApp mainApp;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -76,7 +79,7 @@ public class LoginViewController implements Initializable {
     }    
 
     @FXML
-    private void loginaction(ActionEvent event) throws SQLException, ClassNotFoundException {
+    private void loginaction(ActionEvent event) throws SQLException, ClassNotFoundException, IOException {
 //        sql.updateUser();
         email = txtUsername.getText();
         password = txtPassword.getText();
@@ -84,6 +87,7 @@ public class LoginViewController implements Initializable {
             if(benutzer.get(i).getEmail().equals(email)){
                 if(benutzer.get(i).getPassword().equals(password)){
                     System.out.println("Gut");
+                    mainApp.startMenu();
                 }else{
                     System.out.println("Password Falsch");
                 }
@@ -113,5 +117,8 @@ public class LoginViewController implements Initializable {
         sql.selectUsers();
         
     }
-    
+
+    public void setMainApp(MainApp mainApp) {
+        this.mainApp = mainApp;
+    }
 }

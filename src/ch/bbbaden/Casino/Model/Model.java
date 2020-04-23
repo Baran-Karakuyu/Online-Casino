@@ -34,7 +34,7 @@ public class Model {
     }
 
     public void startBingo() throws IOException, SQLException, ClassNotFoundException {
-        mainApp.startLogin();
+        mainApp.startSlots();
     }
 
     public void setMainApp(MainApp mainApp) {

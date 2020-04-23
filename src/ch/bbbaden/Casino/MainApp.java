@@ -11,6 +11,7 @@ import ch.bbbaden.Casino.Games.Blackjack.ViewModelBlackJack;
 import ch.bbbaden.Casino.Games.Slots.FXMLSlotsController;
 import ch.bbbaden.Casino.Games.Slots.SlotMachineModel;
 import ch.bbbaden.Casino.Games.Slots.SlotMachineViewModel;
+import ch.bbbaden.Casino.Login.LoginViewController;
 import ch.bbbaden.Casino.Model.Model;
 import ch.bbbaden.Casino.View.FXMLDocumentController;
 import ch.bbbaden.Casino.ViewModel.ViewModel;
@@ -32,21 +33,17 @@ public class MainApp extends Application {
     Stage stage;
 
     @Override
-    public void start(Stage stage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("View/FXMLDocument.fxml"));
+    public void start(Stage stage) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Login/LoginView.fxml"));
         Parent root;
         root = loader.load();
-        FXMLDocumentController view = loader.getController();
-        Model model = new Model();
-        model.setMainApp(this);
-        final ViewModel viewModel = new ViewModel(model);
-        view.setViewModel(viewModel);
-
+        
         this.stage = stage;
+        LoginViewController lvc = new LoginViewController();
+        lvc.setMainApp(this);
+        
         final Scene scene = new Scene(root);
-
-        stage.setTitle("");
-        //stage.initStyle(StageStyle.UNDECORATED);
+        
         stage.setScene(scene);
         stage.show();
     }
@@ -56,6 +53,24 @@ public class MainApp extends Application {
      */
     public static void main(String[] args) {
         launch(args);
+    }
+
+    public void startMenu() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("View/FXMLDocument.fxml"));
+        Parent root;
+        root = loader.load();
+        FXMLDocumentController view = loader.getController();
+        Model model = new Model();
+        model.setMainApp(this);
+        final ViewModel viewModel = new ViewModel(model);
+        view.setViewModel(viewModel);
+        
+        final Scene scene = new Scene(root);
+
+        stage.setTitle("");
+        //stage.initStyle(StageStyle.UNDECORATED);
+        stage.setScene(scene);
+        stage.show();
     }
 
     public void startSlots() throws IOException {
@@ -92,18 +107,6 @@ public class MainApp extends Application {
         final Scene scene = new Scene(root);
 
         stage.setMaximized(true);
-        stage.setScene(scene);
-        stage.show();
-    }
-    
-    public void startLogin() throws IOException, SQLException, ClassNotFoundException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("Login/LoginView.fxml"));
-        Parent root;
-        root = loader.load();
-
-        final Scene scene = new Scene(root);
-
-        
         stage.setScene(scene);
         stage.show();
     }
