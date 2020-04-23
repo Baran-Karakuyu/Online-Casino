@@ -8,6 +8,8 @@ package ch.bbbaden.Casino.Menu.Model;
 import Casino.DataBase.Query;
 import Casino.DataBase.User;
 import ch.bbbaden.Casino.MainApp;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -17,7 +19,7 @@ import java.util.ArrayList;
  * @author Baran
  */
 public class Model {
-
+    protected final PropertyChangeSupport changes = new PropertyChangeSupport(this);
     Query sql = new Query();
     ArrayList<User> benutzer = new ArrayList<>();
     String name="";
@@ -48,7 +50,8 @@ public class Model {
         this.mainApp = mainApp;
     }
     
-    public void setUser(String email,String password){
+    public void setUser(String email,String password) throws SQLException, ClassNotFoundException{
+        sql.updateUser();
         for(int i=0;i<sql.getUsers().size();i++){
             benutzer.add(sql.getUsers().get(i));
         }
@@ -62,5 +65,11 @@ public class Model {
                 }
             }
         }
+        changes.firePropertyChange("name", "", name);
+    }
+    
+    public void addPropertyChangeListener(final PropertyChangeListener listener) {
+        changes.addPropertyChangeListener(listener);
+
     }
 }

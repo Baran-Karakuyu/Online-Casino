@@ -57,17 +57,19 @@ public class MainApp extends Application {
         launch(args);
     }
 
-    public void startMenu() throws IOException {
+    public void startMenu() throws IOException, SQLException, ClassNotFoundException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Menu/View/FXMLDocument.fxml"));
         Parent root;
         root = loader.load();
+        
         FXMLDocumentController view = loader.getController();
         Model model = new Model();
         model.setMainApp(this);
         model.setUser(email, password);
         final ViewModel viewModel = new ViewModel(model);
         view.setViewModel(viewModel);
-        
+        model.addPropertyChangeListener(viewModel);
+        view.bind();
         final Scene scene = new Scene(root);
 
         stage.setTitle("Menü");

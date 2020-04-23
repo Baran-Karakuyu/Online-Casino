@@ -6,18 +6,26 @@
 package ch.bbbaden.Casino.Menu.ViewModel;
 
 import ch.bbbaden.Casino.Menu.Model.Model;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.io.IOException;
 import java.sql.SQLException;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 
 /**
  *
  * @author Baran
  */
-public class ViewModel {
+public class ViewModel implements PropertyChangeListener{
     Model m;
-
+    StringProperty name= new SimpleStringProperty();
     public ViewModel(Model m) {
         this.m = m;
+    }
+
+    public StringProperty getName() {
+        return name;
     }
     
     public void startSlots() throws IOException {
@@ -38,5 +46,14 @@ public class ViewModel {
     
     public void startBingo() throws IOException, SQLException, ClassNotFoundException {
         m.startBingo();
+    }
+
+    @Override
+    public void propertyChange(PropertyChangeEvent pce) {
+       switch(pce.getPropertyName()){
+           case "name":
+               name.set(pce.getNewValue().toString());
+               break;
+       }
     }
 }

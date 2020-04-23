@@ -13,8 +13,10 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 
 /**
  *
@@ -32,10 +34,15 @@ public class FXMLDocumentController implements Initializable {
     private ViewModel viewModel;
     @FXML
     private Button lblAbmelden;
+    @FXML
+    private Label namelbl;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+    }
+    public void bind(){
+        namelbl.textProperty().bind(viewModel.getName());
     }
 
     @FXML
