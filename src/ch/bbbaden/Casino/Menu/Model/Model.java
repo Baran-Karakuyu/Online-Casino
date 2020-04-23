@@ -22,6 +22,7 @@ public class Model {
     String name="";
     protected final PropertyChangeSupport changes = new PropertyChangeSupport(this);
     private Query sql = new Query();
+    ArrayList<User> benutzer = new ArrayList<>();
 
     private MainApp mainApp;
 
@@ -51,25 +52,22 @@ public class Model {
     }
 
     public void setUser(String email, String password) throws SQLException, ClassNotFoundException {
-        ArrayList<User> benutzer = new ArrayList<>();
-        
+        sql.updateUser();
         String oldName = name;
 
-        sql.updateUser();
         for (int i = 0; i < sql.getUsers().size(); i++) {
             benutzer.add(sql.getUsers().get(i));
         }
         for (int i = 0; i < sql.getUsers().size(); i++) {
-            if (benutzer.get(i).getEmail().equals(email)) {
-                if (benutzer.get(i).getPassword().equals(password)) {
-                    name = benutzer.get(i).getName();
+            if (sql.getUsers().get(i).getEmail().equals(email)) {
+                if (sql.getUsers().get(i).getPassword().equals(password)) {
+                    name =sql.getUsers().get(i).getName();
                     System.out.println(name);
                 } else {
 
                 }
-                break;
+               
             }
-            break;
         }
         changes.firePropertyChange("name", oldName, name);
     }

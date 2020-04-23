@@ -92,9 +92,12 @@ public class LoginViewController implements Initializable {
                     mainApp.userData(email, password);
                     mainApp.startMenu();
                 }else{
-                    System.out.println("Password Falsch");
+                    
                 }
+            }else{
+                System.out.println("Password Falsch");
             }
+            
         }
     }   
 
