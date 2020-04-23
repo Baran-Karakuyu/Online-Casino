@@ -31,6 +31,8 @@ import javafx.stage.StageStyle;
 public class MainApp extends Application {
 
     Stage stage;
+    String email;
+    String password;
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -62,6 +64,7 @@ public class MainApp extends Application {
         FXMLDocumentController view = loader.getController();
         Model model = new Model();
         model.setMainApp(this);
+        model.setUser(email, password);
         final ViewModel viewModel = new ViewModel(model);
         view.setViewModel(viewModel);
         
@@ -110,4 +113,10 @@ public class MainApp extends Application {
         stage.setScene(scene);
         stage.show();
     }
+    
+    public void userData(String email,String password){
+        this.email= email;
+        this.password= password;
+    }
+    
 }

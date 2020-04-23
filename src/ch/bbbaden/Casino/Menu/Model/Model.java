@@ -15,6 +15,7 @@ import java.sql.SQLException;
  */
 public class Model {
 
+    
     private MainApp mainApp;
 
     public void startSlots() throws IOException {
@@ -42,6 +43,6 @@ public class Model {
     }
     
     public void setUser(String email,String password){
-  
-}
+        
+    }
 }
