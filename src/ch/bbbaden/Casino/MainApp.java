@@ -95,4 +95,16 @@ public class MainApp extends Application {
         stage.setScene(scene);
         stage.show();
     }
+    
+    public void startLogin() throws IOException, SQLException, ClassNotFoundException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Login/LoginView.fxml"));
+        Parent root;
+        root = loader.load();
+
+        final Scene scene = new Scene(root);
+
+        
+        stage.setScene(scene);
+        stage.show();
+    }
 }
