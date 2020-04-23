@@ -88,7 +88,7 @@ public class LoginViewController implements Initializable {
             if(benutzer.get(i).getEmail().equals(email)){
                 if(benutzer.get(i).getPassword().equals(password)){
                     System.out.println("Gut");
-                    mo.setUser(benutzer.get(i).getEmail(), benutzer.get(i).getPassword());
+                    //mo.setUser(benutzer.get(i).getEmail(), benutzer.get(i).getPassword());
                     mainApp.startMenu();
                 }else{
                     System.out.println("Password Falsch");
