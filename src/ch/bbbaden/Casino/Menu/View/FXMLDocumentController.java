@@ -54,7 +54,7 @@ public class FXMLDocumentController implements Initializable {
     }
 
     @FXML
-    private void BingoButtonActionHandling(MouseEvent event) throws IOException {
+    private void BingoButtonActionHandling(MouseEvent event) throws IOException, SQLException, ClassNotFoundException {
         viewModel.startBingo();
     }
 

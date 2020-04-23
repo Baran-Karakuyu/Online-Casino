@@ -36,7 +36,7 @@ public class ViewModel {
         m.startYatzy();
     }
     
-    public void startBingo() throws IOException {
+    public void startBingo() throws IOException, SQLException, ClassNotFoundException {
         m.startBingo();
     }
 }

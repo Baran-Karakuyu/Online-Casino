@@ -37,10 +37,10 @@ public class MainApp extends Application {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Login/LoginView.fxml"));
         Parent root;
         root = loader.load();
+        LoginViewController view = loader.getController();
+        view.setMainApp(this);
         
         this.stage = stage;
-        LoginViewController lvc = new LoginViewController();
-        lvc.setMainApp(this);
         
         final Scene scene = new Scene(root);
         
@@ -67,7 +67,7 @@ public class MainApp extends Application {
         
         final Scene scene = new Scene(root);
 
-        stage.setTitle("");
+        stage.setTitle("Menü");
         //stage.initStyle(StageStyle.UNDECORATED);
         stage.setScene(scene);
         stage.show();
