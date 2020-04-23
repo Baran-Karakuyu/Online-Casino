@@ -1614,4 +1614,8 @@ public class ViewGameController implements Initializable {
         }
     }
 
+    @FXML
+    private void backToMenu(ActionEvent event) {
+    }
+
 }

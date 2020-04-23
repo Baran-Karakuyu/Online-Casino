@@ -12,7 +12,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="1030.0" prefWidth="1920.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="ch.bbbaden.Casino.Games.Blackjack.ViewGameController">
+<AnchorPane id="AnchorPane" prefHeight="1030.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.bbbaden.Casino.Games.Blackjack.ViewGameController">
      <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#503228" height="1030.0" stroke="BLACK" strokeType="INSIDE" width="1920.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <Ellipse fill="#11182b" layoutX="975.0" layoutY="202.0" radiusX="877.0" radiusY="683.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="30.0" />
@@ -82,7 +82,7 @@
          <font>
             <Font name="Harlow Solid Italic" size="40.0" />
          </font></Button>
-      <Button fx:id="backBtn" layoutX="14.0" layoutY="25.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Back" textFill="WHITE">
+      <Button fx:id="backBtn" layoutX="14.0" layoutY="25.0" mnemonicParsing="false" onAction="#backToMenu" style="-fx-background-color: transparent;" text="Back" textFill="WHITE">
          <font>
             <Font name="Harlow Solid Italic" size="32.0" />
          </font>
@@ -103,16 +103,16 @@
       <ImageView fx:id="doubleDownCard" fitHeight="120.0" fitWidth="180.0" layoutX="993.0" layoutY="518.0" pickOnBounds="true" preserveRatio="true" />
       <Label fx:id="label" layoutX="1293.0" layoutY="59.0" prefHeight="50.0" prefWidth="82.0" textFill="WHITE">
          <font>
-            <Font name="Arial Black" size="23.0" />
+            <Font name="Harlow Solid Italic" size="28.0" />
          </font></Label>
       <Label fx:id="label11" layoutX="1293.0" layoutY="13.0" prefHeight="50.0" prefWidth="82.0" textFill="WHITE">
          <font>
-            <Font name="Arial Black" size="21.0" />
+            <Font name="Harlow Solid Italic" size="28.0" />
          </font>
       </Label>
       <Label fx:id="creditKonto" layoutX="436.0" layoutY="43.0" prefHeight="60.0" prefWidth="180.0" text="your value" textFill="#aeaeae">
          <font>
-            <Font name="Arial Black" size="30.0" />
+            <Font name="Harlow Solid Italic" size="30.0" />
          </font></Label>
       <Button layoutX="1836.0" layoutY="15.0" mnemonicParsing="false" onAction="#closeBtn" prefHeight="60.0" prefWidth="63.0" style="-fx-background-color: transparent;" text="X" textFill="WHITE">
          <cursor>
@@ -141,9 +141,9 @@
       <ImageView fx:id="chip100" fitHeight="250.0" fitWidth="250.0" layoutX="1654.0" layoutY="760.0" onMouseClicked="#chip100" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="780.0" />
       <ImageView fx:id="chip250" fitHeight="250.0" fitWidth="250.0" layoutX="1670.0" layoutY="467.0" onMouseClicked="#chip250" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="313.0" AnchorPane.rightAnchor="0.0" />
       <ImageView fx:id="chip1000" fitHeight="250.0" fitWidth="250.0" layoutX="1502.0" layoutY="575.0" onMouseClicked="#chip1000" pickOnBounds="true" preserveRatio="true" />
-      <Label fx:id="chipsvalue" layoutX="783.0" layoutY="117.0" text="put" textFill="#9e9e9e">
+      <Label fx:id="chipsvalue" layoutX="782.0" layoutY="92.0" text="put" textFill="#9e9e9e">
          <font>
-            <Font name="Arial Black" size="27.0" />
+            <Font name="Harlow Solid Italic" size="41.0" />
          </font>
       </Label>
       <Label layoutX="562.0" layoutY="93.0" text="Credit put" textFill="WHITE">
