@@ -77,7 +77,7 @@ public class MainApp extends Application {
         stage.show();
     }
     
-    public void startBlackjack()throws IOException{
+    public void startBlackjack()throws IOException, SQLException, ClassNotFoundException{
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Games/Blackjack/ViewGame.fxml"));
         Parent root;
         root = loader.load();
