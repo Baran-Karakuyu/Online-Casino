@@ -275,7 +275,7 @@ public class ViewGameController implements Initializable {
         viewModel.holdaction(summeg, cardsDealer);
         System.out.println("Summeg ist " + summeg);
 
-        card4Show();
+        //card4Show();
         cardsDealer(card3G, card3Groupier, "CasinoIMG/BlackJack/Card");
         summeg = 0;
         for (int i = 0; i < dealerCards.size(); i++) {
@@ -333,7 +333,7 @@ public class ViewGameController implements Initializable {
         viewModel.holdaction(summeg, cardsDealer);
         System.out.println("Summeg ist " + summeg);
 
-        card4Show();
+//        card4Show();
 
         summeg = 0;
         for (int i = 0; i < dealerCards.size(); i++) {
