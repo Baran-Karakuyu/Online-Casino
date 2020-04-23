@@ -44,7 +44,7 @@ public class MainApp extends Application {
 
         this.stage = stage;
         final Scene scene = new Scene(root);
-        
+
         stage.setTitle("");
         //stage.initStyle(StageStyle.UNDECORATED);
         stage.setScene(scene);

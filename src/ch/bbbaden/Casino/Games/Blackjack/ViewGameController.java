@@ -228,6 +228,10 @@ public class ViewGameController implements Initializable {
         chip1000.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip1000.png"));
         doubleBtn.setDisable(false);
         doubleBtn.opacityProperty().set(0.1);
+        versichernBtn.setDisable(true);
+        versichernChoice.setDisable(true);
+        versichernBtn.opacityProperty().set(0.0);
+        versichernChoice.opacityProperty().set(0.0);
     }
 
     @FXML
@@ -455,10 +459,10 @@ public class ViewGameController implements Initializable {
 
     @FXML
     private void putAction(ActionEvent event) throws SQLException, ClassNotFoundException {
-//        versichernBtn.setDisable(true);
-//        versichernChoice.setDisable(true);
-//        versichernBtn.opacityProperty().set(0.5);
-//        versichernChoice.opacityProperty().set(0.5);
+        versichernBtn.setDisable(true);
+        versichernChoice.setDisable(true);
+        versichernBtn.opacityProperty().set(0.0);
+        versichernChoice.opacityProperty().set(0.0);
         if (creditGesetzt == 0) {
             System.out.println("Setzte Geld");
         } else {
@@ -475,10 +479,10 @@ public class ViewGameController implements Initializable {
             summeg = 0;
 
             if(dealerCards.get(0).getValue()==11){
-//                versichernBtn.setDisable(false);
-//                versichernBtn.opacityProperty().set(1.0);
-//                versichernChoice.setDisable(false);
-//                versichernChoice.opacityProperty().set(1.0);
+                versichernBtn.setDisable(false);
+                versichernBtn.opacityProperty().set(1.0);
+                versichernChoice.setDisable(false);
+                versichernChoice.opacityProperty().set(1.0);
             }
             for (int i = 0; i < playerCards.size(); i++) {
                 summep += playerCards.get(i).getValue();
@@ -603,6 +607,86 @@ public class ViewGameController implements Initializable {
     
     @FXML
     private void reset(ActionEvent event) {
+        hitBtn.setDisable(false);
+        hitBtn.opacityProperty().set(1.0);
+        hitBtn.textFillProperty().set(Color.WHITE);
+        holdBtn.setDisable(false);
+        holdBtn.opacityProperty().set(1.0);
+        holdBtn.textFillProperty().set(Color.WHITE);
+        doubleBtn.setDisable(false);
+        doubleBtn.opacityProperty().set(1.0);
+        doubleBtn.textFillProperty().set(Color.WHITE);
+        putBtn.setDisable(false);
+        putBtn.opacityProperty().set(1.0);
+        putBtn.textFillProperty().set(Color.WHITE);
+        backBtn.setDisable(false);
+        backBtn.opacityProperty().set(1.0);
+        backBtn.textFillProperty().set(Color.WHITE);
+        versichernBtn.setDisable(true);
+        versichernBtn.opacityProperty().set(0.0);
+        versichernBtn.textFillProperty().set(Color.WHITE);
+        versichernChoice.setDisable(true);
+        versichernChoice.opacityProperty().set(0.0);
+        versichernChoice.getSelectionModel().clearSelection();
+        
+        card1Player.setImage(null);
+        card2Player.setImage(null);
+        card3Player.setImage(null);
+        card4Player.setImage(null);
+        card5Player.setImage(null);
+        card1Groupier.setImage(null);
+        card2Groupier.setImage(null);
+        card3Groupier.setImage(null);
+        card4Groupier.setImage(null);
+        card5Groupier.setImage(null);
+        doubleDownCard.setImage(null);
+        chips.setImage(null);
+        chips1.setImage(null);
+        chips2.setImage(null);
+        chips3.setImage(null);
+        chips4.setImage(null);
+        chips5.setImage(null);
+        chips6.setImage(null);
+        chips7.setImage(null);
+        chips8.setImage(null);
+        chips9.setImage(null);
+        chips10.setImage(null);
+        chips11.setImage(null);
+        chips12.setImage(null);
+        chips13.setImage(null);
+        chips14.setImage(null);
+        chips15.setImage(null);
+        chips16.setImage(null);
+        chips17.setImage(null);
+        chips18.setImage(null);
+        endLbl.setText(null);
+        label.setText(null);
+        label11.setText(null);
+//        chipsSelection.setDisable(false);
+//        chipsSelection.opacityProperty().set(1.0);
+//        versichernBtn.setDisable(false);
+//        versichernBtn.opacityProperty().set(1.0);
+//        versichernBtn.textFillProperty().set(Color.WHITE);
+        playerCards.clear();
+        dealerCards.clear();
+        versichern = 0;
+        doub = false;
+        versicherV = false;
+        versicherMoneyPut = 0;
+        zwischensum = 0;
+        creditGesetzt = 0;
+        creditGoV = 0;
+        chip = 0;
+        chipsvalue.setText(null);
+        cardshit = 0;
+        cardsDealer = 1;
+        playTimes = 0;
+        cardsTaken = 0;
+        
+        creditKonto.textProperty().bind(viewModel.getCredit());
+        creditHere = Integer.parseInt(creditKonto.getText());
+       
+
     }
 
     @FXML

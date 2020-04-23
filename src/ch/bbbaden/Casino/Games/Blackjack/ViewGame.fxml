@@ -170,9 +170,9 @@
       <ImageView fx:id="chips16" fitHeight="100.0" fitWidth="100.0" layoutX="820.0" layoutY="590.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="chips17" fitHeight="100.0" fitWidth="100.0" layoutX="821.0" layoutY="552.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="chips18" fitHeight="100.0" fitWidth="100.0" layoutX="833.0" layoutY="562.0" pickOnBounds="true" preserveRatio="true" />
-      <Label fx:id="endLbl" layoutX="314.0" layoutY="105.0" prefHeight="583.0" prefWidth="1360.0" textAlignment="CENTER" textFill="#ee0404">
+      <Label fx:id="endLbl" layoutX="231.0" layoutY="169.0" prefHeight="250.0" prefWidth="532.0" textAlignment="CENTER" textFill="#ee0404">
          <font>
-            <Font size="230.0" />
+            <Font size="120.0" />
          </font>
       </Label>
       <Button fx:id="resetBtn" layoutX="33.0" layoutY="581.0" mnemonicParsing="false" onAction="#reset" style="-fx-background-color: transparent;" text="Play again" textFill="WHITE">
