@@ -30,19 +30,20 @@ public class FXMLDocumentController implements Initializable {
     private ImageView btnYatzy;
     @FXML
     private ImageView btnBlackJack;
-
+    @FXML
+    private Button btnAbmelden;
+    @FXML
+    private Label lblWillkommen;
+    @FXML
+    private Label lblGuthaben;
+    @FXML
+    private Label lblName;
+    
     private ViewModel viewModel;
-    @FXML
-    private Button lblAbmelden;
-    @FXML
-    private Label namelbl;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }
-    public void bind(){
-        namelbl.textProperty().bind(viewModel.getName());
     }
 
     @FXML
@@ -68,6 +69,10 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void SlotsButtonActionHandling(MouseEvent event) throws IOException {
         viewModel.startSlots();
+    }
+    
+    public void bind() {
+        lblName.textProperty().bind(viewModel.getName());
     }
 
     public void setViewModel(ViewModel viewModel) {

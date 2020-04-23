@@ -17,43 +17,45 @@ import javafx.beans.property.StringProperty;
  *
  * @author Baran
  */
-public class ViewModel implements PropertyChangeListener{
-    Model m;
-    StringProperty name= new SimpleStringProperty();
+public class ViewModel implements PropertyChangeListener {
+
+    private Model m;
+    private StringProperty name = new SimpleStringProperty();
+
     public ViewModel(Model m) {
         this.m = m;
+    }
+
+    public void startSlots() throws IOException {
+        m.startSlots();
+    }
+
+    public void startBlackJack() throws IOException, SQLException, ClassNotFoundException {
+        m.startBlackJack();
+    }
+
+    public void startRoulette() throws IOException {
+        m.startRoulette();
+    }
+
+    public void startYatzy() throws IOException {
+        m.startYatzy();
+    }
+
+    public void startBingo() throws IOException, SQLException, ClassNotFoundException {
+        m.startBingo();
     }
 
     public StringProperty getName() {
         return name;
     }
-    
-    public void startSlots() throws IOException {
-        m.startSlots();
-    }
-    
-    public void startBlackJack() throws IOException, SQLException, ClassNotFoundException {
-        m.startBlackJack();
-    }
-    
-    public void startRoulette() throws IOException {
-        m.startRoulette();
-    }
-    
-    public void startYatzy() throws IOException {
-        m.startYatzy();
-    }
-    
-    public void startBingo() throws IOException, SQLException, ClassNotFoundException {
-        m.startBingo();
-    }
 
     @Override
     public void propertyChange(PropertyChangeEvent pce) {
-       switch(pce.getPropertyName()){
-           case "name":
-               name.set(pce.getNewValue().toString());
-               break;
-       }
+        switch (pce.getPropertyName()) {
+            case "name":
+                name.set(pce.getNewValue().toString());
+                break;
+        }
     }
 }
