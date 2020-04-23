@@ -85,5 +85,6 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void choseStage(ActionEvent event) {
+        System.exit(0);
     }
 }
