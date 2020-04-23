@@ -78,7 +78,7 @@ public class MainApp extends Application {
     }
     
     public void startBlackjack()throws IOException{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("Games/BlackJack/ViewGame.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Games/Blackjack/ViewGame.fxml"));
         Parent root;
         root = loader.load();
         
