@@ -42,6 +42,6 @@ public class Model {
     }
     
     public void setUser(String email,String password){
-        
-    }
+  
+}
 }
