@@ -29,7 +29,7 @@ public class ModelBlackJack {
     Random r = new Random();
 
     public void play() throws SQLException, ClassNotFoundException {
-//        sql.updateUser();
+        sql.updateUser();
         int oldcard = card;
         card = r.nextInt((52)+1) + 1;
         changes.firePropertyChange("card1P", oldcard, card);
@@ -122,22 +122,22 @@ public class ModelBlackJack {
     //Sets the Credit from DB to View
     public void UserDataTransfer() throws SQLException, ClassNotFoundException{
         String oldcredit="";
-//        sql.updateUser();
-//        sql.select();
-        dbCredit = 100000;//sql.getCreditUser();
+        sql.updateUser();
+        sql.select();
+        dbCredit = sql.getCreditUser();
         changes.firePropertyChange("credit", oldcredit, Integer.toString(dbCredit));
         creditPlayer= dbCredit;
     }
     //Sets the new Credit 
     public void setNewCredit(int credit) throws SQLException, ClassNotFoundException{
         String oldcredit="";
-//        sql.updateCredit(credit);
+        sql.updateCredit(credit);
         changes.firePropertyChange("credit", oldcredit, credit);
     }
     
     public void versichern(int credit,int summe) throws SQLException, ClassNotFoundException{
         int credits=0;
-        credits =  100000;//sql.getCreditUser();
+        credits =  sql.getCreditUser();
         if(summe ==21){
             credits+=credit;
         }else{
