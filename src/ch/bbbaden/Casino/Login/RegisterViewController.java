@@ -66,12 +66,13 @@ public class RegisterViewController implements Initializable {
         email = emailField.getText();
         password = passwordField.getText();
         try{
-            credits= Integer.parseInt(creditField.getText());
+        credits= Integer.parseInt(creditField.getText());
         }catch(Exception ee){
             System.out.println("Geben sie richtiges Format ein");
         }
         
-        if (nameField.getText().isEmpty()!=true&&emailField.getText().isEmpty()!=true&&passwordField.getText().isEmpty()!=true) {
+        if (nameField.getText().isEmpty()!=true&&emailField.getText().isEmpty()!=true&&passwordField.getText().isEmpty()!=true&&creditField.getText().isEmpty()!=true) {
+            
             mainApp.startLogin();
             controller1.createUser(name, email, password,credits);
             
