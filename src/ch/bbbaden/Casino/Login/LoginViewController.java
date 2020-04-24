@@ -35,17 +35,17 @@ import javafx.stage.Stage;
  */
 public class LoginViewController implements Initializable {
 
-   @FXML
+    @FXML
     private Button btnSubmit;
     @FXML
     private TextField txtUsername;
     @FXML
     private PasswordField txtPassword;
-    
-    private String name="";
+
+    private String name = "";
     private String email = "";
     private String password = "";
-    private int id= 0;
+    private int id = 0;
     Query sql = new Query();
     ArrayList<User> benutzer = new ArrayList<>();
     @FXML
@@ -55,77 +55,74 @@ public class LoginViewController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       try {
-           // TODO
-           sql.updateUser();
-       } catch (SQLException ex) {
-           Logger.getLogger(LoginViewController.class.getName()).log(Level.SEVERE, null, ex);
-       } catch (ClassNotFoundException ex) {
-           Logger.getLogger(LoginViewController.class.getName()).log(Level.SEVERE, null, ex);
-       }
-        
+        try {
+            // TODO
+            sql.updateUser();
+        } catch (SQLException ex) {
+            Logger.getLogger(LoginViewController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(LoginViewController.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
-        for(int i=0;i<sql.getUsers().size();i++){
+        for (int i = 0; i < sql.getUsers().size(); i++) {
             benutzer.add(sql.getUsers().get(i));
         }
-        
-       try {
-           sql.selectUsers();
-       } catch (SQLException ex) {
-           Logger.getLogger(LoginViewController.class.getName()).log(Level.SEVERE, null, ex);
-       } catch (ClassNotFoundException ex) {
-           Logger.getLogger(LoginViewController.class.getName()).log(Level.SEVERE, null, ex);
-       }
-        
-    }    
+
+        try {
+            sql.selectUsers();
+        } catch (SQLException ex) {
+            Logger.getLogger(LoginViewController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(LoginViewController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
 
     @FXML
     private void loginaction(ActionEvent event) throws SQLException, ClassNotFoundException, IOException {
         benutzer.clear();
         sql.updateUser();
-        for(int i=0;i<sql.getUsers().size();i++){
+        for (int i = 0; i < sql.getUsers().size(); i++) {
             benutzer.add(sql.getUsers().get(i));
         }
         email = txtUsername.getText();
         password = txtPassword.getText();
-        for(int i= 0;i<sql.getUsers().size();i++){
-            if(benutzer.get(i).getEmail().equals(email)){
-                if(benutzer.get(i).getPassword().equals(password)){
+        for (int i = 0; i < sql.getUsers().size(); i++) {
+            if (benutzer.get(i).getEmail().equals(email)) {
+                if (benutzer.get(i).getPassword().equals(password)) {
                     System.out.println("Gut");
                     //mo.setUser(benutzer.get(i).getEmail(), benutzer.get(i).getPassword());
                     mainApp.userData(email, password);
                     mainApp.startMenu();
-                }else{
-                    
+                } else {
+
                 }
-            }else{
+            } else {
                 System.out.println("Password Falsch");
             }
-            
+
         }
-    }   
+    }
 
     @FXML
     private void signUp(ActionEvent event) throws IOException {
         Parent tableViewParent = FXMLLoader.load(getClass().getResource("RegisterView.fxml"));
         Scene tableViewScene = new Scene(tableViewParent);
-        
+
         //This line gets the Stage information
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
         window.setScene(tableViewScene);
         window.show();
-        
-        
-        
+
     }
-    
-    public void createUser(String name,String email,String password,int credits) throws SQLException, ClassNotFoundException{
-                
-        sql.insertUsers(id, name, email, password, credits);
+
+    public void createUser(String name, String email, String password, int credits) throws SQLException, ClassNotFoundException {
+
+        sql.insertUsers(id, name, email, password, credits, "normal");
         sql.updateUser();
         sql.selectUsers();
-        
+
     }
 
     public void setMainApp(MainApp mainApp) {

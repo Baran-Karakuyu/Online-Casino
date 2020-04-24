@@ -17,20 +17,19 @@ public class User {
     private int credit;
     private String role;
 
-    public User(int uid, String name, String email, String password, int credit) {
+    public User(int uid, String name, String email, String password, int credit, String role) {
         this.uid = uid;
         this.name = name;
         this.email = email;
         this.password = password;
         this.credit = credit;
+        this.role = role;
     }
 
     public String getRole() {
         return role;
     }
-
     
-
     public int getUid() {
         return uid;
     }
