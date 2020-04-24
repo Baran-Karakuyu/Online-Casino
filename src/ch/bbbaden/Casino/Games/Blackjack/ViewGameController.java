@@ -179,6 +179,7 @@ public class ViewGameController implements Initializable {
     @FXML
     private ChoiceBox<Integer> versichernChoice;
     boolean checkPlayer= false;
+    boolean blackjack=false;
 
     public void setViewModel(ViewModelBlackJack viewModel) {
         this.viewModel = viewModel;
@@ -564,13 +565,16 @@ public class ViewGameController implements Initializable {
             }
             if (summep > 20) {
                 holding();
+                blackjack=true;
                 hitBtn.opacityProperty().set(0.5);
             }
 
 //            creditHere = Integer.parseInt(creditKonto.getText());
             putBtn.opacityProperty().set(0.0);
         }
-
+        if(card1Player.getImage() == null||card2Player.getImage() == null||card1Groupier.getImage() == null||card1Groupier.getImage() == null){
+            System.out.println("Fehler");
+        }
         viewModel.updatePlayer();
 
     }
@@ -603,7 +607,12 @@ public class ViewGameController implements Initializable {
                 creditHere += creditGesetzt;
                 creditHere += creditGesetzt;
             } else {
-                creditHere += creditGesetzt;
+                if(blackjack==true){
+                    creditHere+=creditGesetzt;
+                    creditHere+=(creditGesetzt/2);
+                }else{
+                    creditHere += creditGesetzt;
+                }
             }
             viewModel.setNewCredit(creditHere);
         } else {
@@ -618,7 +627,12 @@ public class ViewGameController implements Initializable {
                     creditHere += creditGesetzt;
                     creditHere += creditGesetzt;
                 } else {
-                    creditHere += creditGesetzt;
+                    if(blackjack==true){
+                    creditHere+=creditGesetzt;
+                    creditHere+=(creditGesetzt/2);
+                    } else {
+                        creditHere += creditGesetzt;
+                    }
                 }
                 viewModel.setNewCredit(creditHere);
             } else if (21 - sumP > 21 - sumG) {
@@ -691,8 +705,8 @@ public class ViewGameController implements Initializable {
         holdBtn.setDisable(false);
         holdBtn.opacityProperty().set(1.0);
         holdBtn.textFillProperty().set(Color.WHITE);
-        doubleBtn.setDisable(false);
-        doubleBtn.opacityProperty().set(1.0);
+        doubleBtn.setDisable(true);
+        doubleBtn.opacityProperty().set(0.1);
         doubleBtn.textFillProperty().set(Color.WHITE);
         putBtn.setDisable(false);
         putBtn.opacityProperty().set(1.0);
