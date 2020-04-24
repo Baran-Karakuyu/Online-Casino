@@ -678,7 +678,13 @@ public class ViewGameController implements Initializable {
     }
 
     @FXML
-    private void reset(ActionEvent event) {
+    private void reset(ActionEvent event) throws IOException, SQLException, ClassNotFoundException {
+        if(checkPlayer==true){
+            viewModel.backToMenu();
+        }else{
+            creditHere -= creditGesetzt;
+            viewModel.setNewCredit(creditHere);
+        }
         hitBtn.setDisable(false);
         hitBtn.opacityProperty().set(1.0);
         hitBtn.textFillProperty().set(Color.WHITE);
