@@ -15,13 +15,21 @@ public class User {
     private String email;
     private String password;
     private int credit;
+    private String role;
 
-    public User(int uid, String name, String email, String password) {
+    public User(int uid, String name, String email, String password, int credit) {
         this.uid = uid;
         this.name = name;
         this.email = email;
         this.password = password;
+        this.credit = credit;
     }
+
+    public String getRole() {
+        return role;
+    }
+
+    
 
     public int getUid() {
         return uid;

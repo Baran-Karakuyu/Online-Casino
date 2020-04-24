@@ -31,6 +31,7 @@ public class Query {
         String name = "";
         String email = "";
         String password = "";
+        int credits=0;
         
         Connection conn = jdbc.createConnection();
         Statement st = conn.createStatement();
@@ -42,8 +43,9 @@ public class Query {
             name = rs.getString(2);
             email = rs.getString(3);
             password = rs.getString(4);
+            credits=rs.getInt(5);
             
-            users.add(new User (id,name,email,password));
+            users.add(new User (id,name,email,password,credits));
             
         }
         
@@ -69,7 +71,7 @@ public class Query {
 
         st.executeUpdate(insert);
         
-        users.add(new User(id,name,email,password));        
+        users.add(new User(id,name,email,password,credit));        
        
     }
     public void insertStatistic(){

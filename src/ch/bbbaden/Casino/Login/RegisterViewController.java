@@ -19,6 +19,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -40,9 +41,14 @@ public class RegisterViewController implements Initializable {
     String name = "";
     String email = "";
     String password = "";
+    int credits=0;
     LoginViewController controller1 = new LoginViewController();
     @FXML
     private Button close;
+    @FXML
+    private Label StartMoneyField;
+    @FXML
+    private TextField creditField;
 
     /**
      * Initializes the controller class.
@@ -57,8 +63,14 @@ public class RegisterViewController implements Initializable {
         name = nameField.getText();
         email = emailField.getText();
         password = passwordField.getText();
+        try{
+            credits= Integer.parseInt(creditField.getText());
+        }catch(Exception ee){
+            System.out.println("Geben sie richtiges Format ein");
+        }
+        
         if (nameField.getText().isEmpty()!=true&&emailField.getText().isEmpty()!=true&&passwordField.getText().isEmpty()!=true) {
-            controller1.createUser(name, email, password);
+            controller1.createUser(name, email, password,credits);
 
             //Go Back to View 1
             Stage stage = (Stage) close.getScene().getWindow();

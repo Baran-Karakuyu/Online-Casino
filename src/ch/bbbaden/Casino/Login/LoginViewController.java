@@ -81,7 +81,11 @@ public class LoginViewController implements Initializable {
 
     @FXML
     private void loginaction(ActionEvent event) throws SQLException, ClassNotFoundException, IOException {
-//        sql.updateUser();
+        benutzer.clear();
+        sql.updateUser();
+        for(int i=0;i<sql.getUsers().size();i++){
+            benutzer.add(sql.getUsers().get(i));
+        }
         email = txtUsername.getText();
         password = txtPassword.getText();
         for(int i= 0;i<sql.getUsers().size();i++){
@@ -116,9 +120,9 @@ public class LoginViewController implements Initializable {
         
     }
     
-    public void createUser(String name,String email,String password) throws SQLException, ClassNotFoundException{
+    public void createUser(String name,String email,String password,int credits) throws SQLException, ClassNotFoundException{
                 
-        sql.insertUsers(id, name, email, password, 0);
+        sql.insertUsers(id, name, email, password, credits);
         sql.updateUser();
         sql.selectUsers();
         
