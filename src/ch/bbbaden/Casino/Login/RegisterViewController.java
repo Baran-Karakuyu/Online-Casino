@@ -5,24 +5,18 @@
  */
 package ch.bbbaden.Casino.Login;
 
-import Casino.DataBase.User;
 import ch.bbbaden.Casino.MainApp;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
+import javax.swing.JOptionPane;
 
 /**
  * FXML Controller class
@@ -31,25 +25,19 @@ import javafx.stage.Stage;
  */
 public class RegisterViewController implements Initializable {
 
-  @FXML
+    @FXML
     private TextField nameField;
     @FXML
     private TextField emailField;
     @FXML
     private TextField passwordField;
-
-    ArrayList<User> benutzer = new ArrayList<>();
-    String name = "";
-    String email = "";
-    String password = "";
-    int credits=0;
-    LoginViewController controller1 = new LoginViewController();
     @FXML
     private Button close;
     @FXML
     private Label StartMoneyField;
     @FXML
     private TextField creditField;
+
     private MainApp mainApp;
 
     /**
@@ -62,24 +50,76 @@ public class RegisterViewController implements Initializable {
 
     @FXML
     private void signUp(ActionEvent event) throws SQLException, ClassNotFoundException, IOException {
-        name = nameField.getText();
-        email = emailField.getText();
-        password = passwordField.getText();
-        try{
-        credits= Integer.parseInt(creditField.getText());
-        }catch(Exception ee){
-            System.out.println("Geben sie richtiges Format ein");
+        String name = "";
+        String email = "";
+        String password = "";
+        int credits = 0;
+        LoginViewController controller1 = new LoginViewController();
+        String AllowedChars = "[a-zA-Z0-9]";
+        boolean validChecker = false;
+
+        //Check name for unallowed chars
+        try {
+            if (nameField.getText().matches(AllowedChars)) {
+                name = nameField.getText();
+                validChecker = false;
+            } else {
+                JOptionPane.showMessageDialog(null, "Bitte geben Sie einen Namen ein!", "Fehler", JOptionPane.ERROR_MESSAGE);
+                validChecker = true;
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Bitte verwenden Sie nur Buchstaben und Zahlen!", "Fehler", JOptionPane.ERROR_MESSAGE);
+            
         }
-        
-        if (nameField.getText().isEmpty()!=true&&emailField.getText().isEmpty()!=true&&passwordField.getText().isEmpty()!=true&&creditField.getText().isEmpty()!=true) {
-            
+
+        //Check email for unallowed chars
+        try {
+            if (emailField.getText().matches("@") && emailField.getText().matches(AllowedChars)) {
+                email = emailField.getText();
+                validChecker = false;
+            } else {
+                JOptionPane.showMessageDialog(null, "Bitte geben Sie eine Email an!", "Fehler", JOptionPane.ERROR_MESSAGE);
+                validChecker = true;
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Bitte verwenden Sie nur Buchstaben und Zahlen!", "Fehler", JOptionPane.ERROR_MESSAGE);
+            validChecker = true;
+        }
+
+        //Check password for unallowed chars
+        try {
+            if (passwordField.getText().matches(AllowedChars) && (!(passwordField.getText().isEmpty()))) {
+                password = passwordField.getText();
+                validChecker = false;
+            } else {
+                JOptionPane.showMessageDialog(null, "Bitte geben Sie ein Passwort ein ein!", "Fehler", JOptionPane.ERROR_MESSAGE);
+                validChecker = true;
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Bitte verwenden Sie nur Buchstaben und Zahlen!", "Fehler", JOptionPane.ERROR_MESSAGE);
+            validChecker = true;
+        }
+
+        //Check if credits are int
+        try {
+            validChecker = false;
+            credits = Integer.parseInt(creditField.getText());
+        } catch (NumberFormatException ee) {
+            if (creditField.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Bitte geben Sie Ihr Startgeld ein!", "Fehler", JOptionPane.ERROR_MESSAGE);
+                validChecker = true;
+            } else {
+                JOptionPane.showMessageDialog(null, "Bitte geben Sie nur Zahlen ein!", "Fehler", JOptionPane.ERROR_MESSAGE);
+                validChecker = true;
+            }
+        }
+
+        if (nameField.getText().isEmpty() != true && emailField.getText().isEmpty() != true && passwordField.getText().isEmpty() != true && creditField.getText().isEmpty() != true && validChecker == false) {
             mainApp.startLogin();
-            controller1.createUser(name, email, password,credits);
-            
+            controller1.createUser(name, email, password, credits);
         } else {
             System.out.println("Kein neuer User");
         }
-
     }
 
     public void setMainApp(MainApp mainApp) {
