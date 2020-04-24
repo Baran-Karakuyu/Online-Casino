@@ -27,6 +27,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javax.swing.JOptionPane;
 
 /**
  * FXML Controller class
@@ -82,25 +83,55 @@ public class LoginViewController implements Initializable {
     private void loginaction(ActionEvent event) throws SQLException, ClassNotFoundException, IOException {
         benutzer.clear();
         sql.updateUser();
+        String AllowedChars = "[a-zA-Z0-9]";
+        boolean invalidChecker = false;
+
         for (int i = 0; i < sql.getUsers().size(); i++) {
             benutzer.add(sql.getUsers().get(i));
         }
-        email = txtUsername.getText();
-        password = txtPassword.getText();
-        for (int i = 0; i < sql.getUsers().size(); i++) {
-            if (benutzer.get(i).getEmail().equals(email)) {
-                if (benutzer.get(i).getPassword().equals(password)) {
-                    System.out.println("Gut");
-                    //mo.setUser(benutzer.get(i).getEmail(), benutzer.get(i).getPassword());
-                    mainApp.userData(email, password);
-                    mainApp.startMenu();
-                } else {
 
-                }
+        //Check email for unallowed chars
+        try {
+            if (txtUsername.getText().matches(AllowedChars)) {
+                email = txtUsername.getText();
+                invalidChecker = false;
             } else {
-                System.out.println("Password Falsch");
+                JOptionPane.showMessageDialog(null, "Bitte geben Sie eine Mail ein!", "Fehler", JOptionPane.ERROR_MESSAGE);
+                invalidChecker = true;
             }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Bitte verwenden Sie nur Buchstaben und Zahlen!", "Fehler", JOptionPane.ERROR_MESSAGE);
+            invalidChecker = true;
+        }
 
+        try {
+            if (txtPassword.getText().matches(AllowedChars)) {
+                password = txtPassword.getText();
+                invalidChecker = false;
+            } else {
+                JOptionPane.showMessageDialog(null, "Bitte geben Sie ein Passwort ein!", "Fehler", JOptionPane.ERROR_MESSAGE);
+                invalidChecker = true;
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Bitte verwenden Sie nur Buchstaben und Zahlen!", "Fehler", JOptionPane.ERROR_MESSAGE);
+            invalidChecker = true;
+        }
+
+        if (invalidChecker == false) {
+            for (int i = 0; i < sql.getUsers().size(); i++) {
+                if (benutzer.get(i).getEmail().equals(email)) {
+                    if (benutzer.get(i).getPassword().equals(password)) {
+                        System.out.println("Gut");
+                        //mo.setUser(benutzer.get(i).getEmail(), benutzer.get(i).getPassword());
+                        mainApp.userData(email, password);
+                        mainApp.startMenu();
+                    } else {
+
+                    }
+                } else {
+                    System.out.println("Password Falsch");
+                }
+            }
         }
     }
 
