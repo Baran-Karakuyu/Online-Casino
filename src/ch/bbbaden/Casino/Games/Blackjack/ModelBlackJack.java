@@ -32,17 +32,19 @@ public class ModelBlackJack {
     private String name;
     int dbCredit=0;
     Random r = new Random();
+    ArrayList<Integer> allCards= new ArrayList<>();
 
     public void play() throws SQLException, ClassNotFoundException {
+        allCards.clear();
         sql.updateUser();
         int oldcard = card;
-        card = r.nextInt((52)+1) + 1;
+        card = newCard();
         changes.firePropertyChange("card1P", oldcard, card);
-        card = r.nextInt((52)+1) + 1;
+        card = newCard();
         changes.firePropertyChange("card1G", oldcard, card);
-        card = r.nextInt((52)+1) + 1;
+        card = newCard();
         changes.firePropertyChange("card2P", oldcard, card);
-        card = r.nextInt((52)+1) + 1;
+        card =newCard();
         changes.firePropertyChange("card2G", oldcard, card);
     }
 
@@ -54,15 +56,15 @@ public class ModelBlackJack {
         int oldcard = card;
         switch (cardshit) {
             case 2:
-                card = r.nextInt(52) + 1;
+                card = newCard();
                 changes.firePropertyChange("card3P", oldcard, card);
                 break;
             case 3:
-                card = r.nextInt(52) + 1;
+                card =  newCard();
                 changes.firePropertyChange("card4P", oldcard, card);
                 break;
             case 4:
-                card = r.nextInt(52) + 1;
+                card =  newCard();
                 changes.firePropertyChange("card5P", oldcard, card);
                 break;
         }
@@ -71,14 +73,14 @@ public class ModelBlackJack {
     public void holdaction(int summeGroupier, int idcard) {
         int oldcard = card;
         if (summeGroupier < 17) {
-            card = r.nextInt(52) + 1;
+            card =  newCard();
             changes.firePropertyChange("card" + idcard + "G", oldcard, card);
         }
     }
 
     public void doubleAction() {
         int oldcard = card;
-        card = r.nextInt(52) + 1;
+        card =  newCard();
         changes.firePropertyChange("cardDouble", oldcard, card);
     }
     public void checkPlayer(int sumP,int sumG,int creditPut,int creditNow){
@@ -166,5 +168,19 @@ public class ModelBlackJack {
     public void backToMenu() throws IOException, SQLException, ClassNotFoundException {
         mainApp.startMenu();
     }
+   
     
+    private int newCard(){
+        int cardTaken=0;
+        cardTaken=43;
+        for (Integer allCard : allCards) {
+            if(allCard.equals(cardTaken)){
+                cardTaken=r.nextInt((52)+1) + 1;
+            }else{
+                
+            }
+        }
+        allCards.add(cardTaken);
+        return cardTaken;
+    }
 }
