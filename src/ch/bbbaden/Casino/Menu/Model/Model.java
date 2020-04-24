@@ -77,6 +77,7 @@ public class Model {
         }
         changes.firePropertyChange("name", oldName, name);
         changes.firePropertyChange("credit", oldName, credit);
+        mainApp.setName(name);
     }
 
     public void addPropertyChangeListener(final PropertyChangeListener listener) {
