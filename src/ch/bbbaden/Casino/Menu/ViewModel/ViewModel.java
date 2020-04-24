@@ -46,6 +46,10 @@ public class ViewModel implements PropertyChangeListener {
     public void startBingo() throws IOException, SQLException, ClassNotFoundException {
         m.startBingo();
     }
+    
+    public void openBuyCredits() throws IOException, SQLException, ClassNotFoundException {
+        m.openBuyCredits();
+    }
 
     public StringProperty getCredit() {
         return credit;

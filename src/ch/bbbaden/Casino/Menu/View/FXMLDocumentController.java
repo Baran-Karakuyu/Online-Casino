@@ -39,10 +39,10 @@ public class FXMLDocumentController implements Initializable {
     private Label lblGuthaben;
     @FXML
     private Label lblName;
-    
-    private ViewModel viewModel;
     @FXML
-    private Label credit;
+    private Label lblCredit;
+
+    private ViewModel viewModel;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -73,18 +73,31 @@ public class FXMLDocumentController implements Initializable {
     private void SlotsButtonActionHandling(MouseEvent event) throws IOException {
         viewModel.startSlots();
     }
-    
+
+    @FXML
+    private void choseStage(ActionEvent event) {
+        System.exit(0);
+    }
+
+    @FXML
+    private void BuyButtonActionHandling(ActionEvent event) throws IOException, SQLException, ClassNotFoundException {
+        viewModel.openBuyCredits();
+    }
+
+    @FXML
+    private void logOutButtonActionHandling(ActionEvent event) {
+    }
+
     public void bind() {
         lblName.textProperty().bind(viewModel.getName());
-        credit.textProperty().bind(viewModel.getCredit());
+        lblCredit.textProperty().bind(viewModel.getCredit());
     }
 
     public void setViewModel(ViewModel viewModel) {
         this.viewModel = viewModel;
     }
 
-    @FXML
-    private void choseStage(ActionEvent event) {
-        System.exit(0);
+    public Label getLblCredit() {
+        return lblCredit;
     }
 }

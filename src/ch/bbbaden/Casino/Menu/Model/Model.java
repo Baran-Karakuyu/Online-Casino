@@ -47,6 +47,10 @@ public class Model {
     public void startBingo() throws IOException, SQLException, ClassNotFoundException {
         mainApp.startSlots();
     }
+    
+    public void openBuyCredits() throws IOException, SQLException, ClassNotFoundException {
+        mainApp.openBuyCredits();
+    }
 
     public void setMainApp(MainApp mainApp) {
         this.mainApp = mainApp;

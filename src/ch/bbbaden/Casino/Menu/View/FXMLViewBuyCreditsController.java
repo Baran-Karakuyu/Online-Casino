@@ -6,7 +6,9 @@
 package ch.bbbaden.Casino.Menu.View;
 
 import ch.bbbaden.Casino.Menu.ViewModel.ViewModelBuyCredits;
+import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -24,17 +26,13 @@ import javax.swing.JOptionPane;
 public class FXMLViewBuyCreditsController implements Initializable {
 
     @FXML
-    private Label lblBuyCreditsTitle;
-    @FXML
-    private Button btnBuy;
-    @FXML
-    private Button btnCancel;
-    @FXML
     private TextField tfAmountNumber;
-    @FXML
-    private Label lblEnterAmount;
 
     ViewModelBuyCredits vm;
+    @FXML
+    private Button btnBuyCredits;
+    @FXML
+    private Button btnCancel;
 
     /**
      * Initializes the controller class.
@@ -45,8 +43,8 @@ public class FXMLViewBuyCreditsController implements Initializable {
     }
 
     @FXML
-    private void BuyButtonActionHandling(ActionEvent event) {
-        int amount;
+    private void BuyButtonActionHandling(ActionEvent event) throws SQLException, ClassNotFoundException, IOException {
+        int amount = 0;
         boolean numberChecker = false;
 
         try {
@@ -56,8 +54,8 @@ public class FXMLViewBuyCreditsController implements Initializable {
             numberChecker = true;
             JOptionPane.showMessageDialog(null, "Bitte nur Zahlen eingeben!", "Fehler", JOptionPane.ERROR_MESSAGE);
         }
-        
-        if(numberChecker == false) {
+
+        if (numberChecker == false) {
             vm.buyCredits(amount);
         }
     }

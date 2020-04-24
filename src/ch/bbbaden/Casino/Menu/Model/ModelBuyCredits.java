@@ -22,8 +22,8 @@ public class ModelBuyCredits {
     private MainApp mainApp;
     
     public void buyCredits(int amount) throws SQLException, ClassNotFoundException, IOException {
-        int currentBalance = sql.getCreditUser(viewMenu.getLblName().getText());
-        sql.updateCredit(currentBalance + amount, viewMenu.getLblName().toString());
+        int currentBalance = Integer.valueOf(viewMenu.getLblCredit().getText());
+        sql.updateCredit(currentBalance + amount, mainApp.getName());
         mainApp.startMenu();
     }
 

@@ -13,8 +13,11 @@ import ch.bbbaden.Casino.Games.Slots.SlotMachineModel;
 import ch.bbbaden.Casino.Games.Slots.SlotMachineViewModel;
 import ch.bbbaden.Casino.Login.LoginViewController;
 import ch.bbbaden.Casino.Menu.Model.Model;
+import ch.bbbaden.Casino.Menu.Model.ModelBuyCredits;
 import ch.bbbaden.Casino.Menu.View.FXMLDocumentController;
+import ch.bbbaden.Casino.Menu.View.FXMLViewBuyCreditsController;
 import ch.bbbaden.Casino.Menu.ViewModel.ViewModel;
+import ch.bbbaden.Casino.Menu.ViewModel.ViewModelBuyCredits;
 import java.io.IOException;
 import java.sql.SQLException;
 import javafx.application.Application;
@@ -34,6 +37,7 @@ public class MainApp extends Application {
     private String email;
     private String password;
     private String name;
+    private FXMLDocumentController viewMenu;
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -63,14 +67,14 @@ public class MainApp extends Application {
         Parent root;
         root = loader.load();
 
-        FXMLDocumentController view = loader.getController();
+        viewMenu = loader.getController();
         Model model = new Model();
         model.setMainApp(this);
         final ViewModel viewModel = new ViewModel(model);
-        view.setViewModel(viewModel);
+        viewMenu.setViewModel(viewModel);
         model.addPropertyChangeListener(viewModel);
         model.setUser(email, password);
-        view.bind();
+        viewMenu.bind();
 
         final Scene scene = new Scene(root);
         stage.setTitle("Menü");
@@ -108,13 +112,31 @@ public class MainApp extends Application {
         view.setViewModel(viewModel);
         model.addPropertyChangeListener(viewModel);
         model.setPlayer(name);
-        
+
         view.bind();
 
         final Scene scene = new Scene(root);
 
         stage.setMaximized(true);
         stage.setTitle("BlackJack");
+        stage.setScene(scene);
+        stage.show();
+    }
+    
+    public void openBuyCredits() throws IOException, SQLException, ClassNotFoundException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Menu/View/FXMLViewBuyCredits.fxml"));
+        Parent root;
+        root = loader.load();
+
+        FXMLViewBuyCreditsController view = loader.getController();
+        ModelBuyCredits model = new ModelBuyCredits();
+        model.setViewMenu(viewMenu);
+        model.setMainApp(this);
+        final ViewModelBuyCredits viewModel = new ViewModelBuyCredits(model);
+        view.setVm(viewModel);
+
+        final Scene scene = new Scene(root);
+        stage.setTitle("Credits kaufen");
         stage.setScene(scene);
         stage.show();
     }
@@ -125,9 +147,12 @@ public class MainApp extends Application {
         System.out.println(this.email);
         System.out.println(this.password);
     }
-    
-    public void setName(String name){
-        this.name= name;
+
+    public void setName(String name) {
+        this.name = name;
     }
 
+    public String getName() {
+        return name;
+    }
 }
