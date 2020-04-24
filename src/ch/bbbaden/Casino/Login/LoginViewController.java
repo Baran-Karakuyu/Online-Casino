@@ -152,4 +152,13 @@ public class LoginViewController implements Initializable {
     public void setMainApp(MainApp mainApp) {
         this.mainApp = mainApp;
     }
+
+    @FXML
+    private void close(ActionEvent event) {
+        System.exit(0);
+    }
+
+    @FXML
+    private void minimize(ActionEvent event) {
+    }
 }
