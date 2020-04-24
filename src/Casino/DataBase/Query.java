@@ -33,7 +33,7 @@ public class Query {
 
         Connection conn = jdbc.createConnection();
         Statement st = conn.createStatement();
-        ResultSet rs = st.executeQuery("Select * from users ");
+        ResultSet rs = st.executeQuery("Select * from users;");
 
         //while theres a new set with id, name, email and password it will be set into the variable
         while (rs.next()) {
@@ -53,7 +53,7 @@ public class Query {
 
         Connection con = jdbc.createConnection();
         Statement st = con.createStatement();
-        ResultSet rs = st.executeQuery("Select * from users");
+        ResultSet rs = st.executeQuery("Select * from users;");
         while (rs.next()) {
             for (int i = 1; i < 7; i++) {
                 System.out.println("| " + rs.getString(i));
@@ -66,7 +66,7 @@ public class Query {
     public void insertUsers(int id, String name, String email, String password, int credit, String role) throws SQLException, ClassNotFoundException {
         Connection con = jdbc.createConnection();
         Statement st = con.createStatement();
-        String insert = "Insert into users values('" + id + "','" + name + "','" + email + "','" + password + "','" + credit + "','" + role + "')";
+        String insert = "Insert into users values('" + id + "','" + name + "','" + email + "','" + password + "','" + credit + "','" + role + "');";
 
         st.executeUpdate(insert);
 
@@ -90,7 +90,7 @@ public class Query {
         }
         Connection con = jdbc.createConnection();
         Statement st = con.createStatement();
-        String addCredit = "update users set credits = " + credit + " where name ='" + name + "'";
+        String addCredit = "update users set credits = " + credit + " where name ='" + name + "';";
 
         st.execute(addCredit);
     }
@@ -100,7 +100,7 @@ public class Query {
 
         Connection conn = jdbc.createConnection();
         Statement st = conn.createStatement();
-        ResultSet rs = st.executeQuery("Select * from users  where name = '" + name + "'");
+        ResultSet rs = st.executeQuery("Select * from users  where name = '" + name + "';");
 
         while (rs.next()) {
             credits = rs.getInt(5);
