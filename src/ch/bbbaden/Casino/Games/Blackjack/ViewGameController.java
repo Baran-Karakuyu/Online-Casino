@@ -665,9 +665,10 @@ public class ViewGameController implements Initializable {
     }
 
     @FXML
-    private void closeBtn(ActionEvent event) {
-        System.exit(0);
-
+    private void closeBtn(ActionEvent event) throws SQLException, ClassNotFoundException {
+        creditHere -= creditGesetzt;
+        viewModel.setNewCredit(creditHere);
+        System.exit(0);        
     }
 
     @FXML
@@ -1676,6 +1677,8 @@ public class ViewGameController implements Initializable {
 
     @FXML
     private void backToMenu(ActionEvent event) throws IOException, SQLException, ClassNotFoundException {
+        creditHere -= creditGesetzt;
+        viewModel.setNewCredit(creditHere);
         viewModel.backToMenu();
     }
 
