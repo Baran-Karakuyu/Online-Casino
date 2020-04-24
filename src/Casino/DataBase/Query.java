@@ -21,7 +21,7 @@ public class Query {
 
     //Connects jdbc with query
     private JDBCConnection jdbc = JDBCConnection.getInstance();
-
+    //Hallo
     private ArrayList<User> users = new ArrayList<>();
 
     public void updateUser() throws SQLException, ClassNotFoundException {
