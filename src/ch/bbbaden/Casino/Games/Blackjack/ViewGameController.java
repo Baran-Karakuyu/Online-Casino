@@ -178,6 +178,7 @@ public class ViewGameController implements Initializable {
     private Button versichernBtn;
     @FXML
     private ChoiceBox<Integer> versichernChoice;
+    boolean checkPlayer= false;
 
     public void setViewModel(ViewModelBlackJack viewModel) {
         this.viewModel = viewModel;
@@ -641,6 +642,7 @@ public class ViewGameController implements Initializable {
         } else {
             System.out.println("");
         }
+        checkPlayer= true;
     }
 
     @FXML
@@ -666,9 +668,13 @@ public class ViewGameController implements Initializable {
 
     @FXML
     private void closeBtn(ActionEvent event) throws SQLException, ClassNotFoundException {
+        if(checkPlayer=true){
+            System.exit(0);   
+        }else{
         creditHere -= creditGesetzt;
         viewModel.setNewCredit(creditHere);
-        System.exit(0);        
+        System.exit(0);     
+        }
     }
 
     @FXML
@@ -732,6 +738,7 @@ public class ViewGameController implements Initializable {
         label.setText(null);
         label11.setText(null);
         playerCards.clear();
+        checkPlayer= false;
         dealerCards.clear();
         versichern = 0;
         doub = false;
@@ -1677,9 +1684,13 @@ public class ViewGameController implements Initializable {
 
     @FXML
     private void backToMenu(ActionEvent event) throws IOException, SQLException, ClassNotFoundException {
-        creditHere -= creditGesetzt;
-        viewModel.setNewCredit(creditHere);
-        viewModel.backToMenu();
+        if(checkPlayer==true){
+            viewModel.backToMenu();
+        }else{
+            creditHere -= creditGesetzt;
+            viewModel.setNewCredit(creditHere);
+            viewModel.backToMenu();
+        }
     }
 
 }

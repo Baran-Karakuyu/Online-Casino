@@ -55,7 +55,7 @@ public class Query {
         Statement st = con.createStatement();
         ResultSet rs = st.executeQuery("Select * from users");
         while (rs.next()) {
-            for (int i = 1; i < 6; i++) {
+            for (int i = 1; i < 7; i++) {
                 System.out.println("| " + rs.getString(i));
 
             }
