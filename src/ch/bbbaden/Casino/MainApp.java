@@ -12,6 +12,7 @@ import ch.bbbaden.Casino.Games.Slots.FXMLSlotsController;
 import ch.bbbaden.Casino.Games.Slots.SlotMachineModel;
 import ch.bbbaden.Casino.Games.Slots.SlotMachineViewModel;
 import ch.bbbaden.Casino.Login.LoginViewController;
+import ch.bbbaden.Casino.Login.RegisterViewController;
 import ch.bbbaden.Casino.Menu.Model.Model;
 import ch.bbbaden.Casino.Menu.Model.ModelBuyCredits;
 import ch.bbbaden.Casino.Menu.View.FXMLDocumentController;
@@ -45,9 +46,10 @@ public class MainApp extends Application {
         Parent root;
         root = loader.load();
         LoginViewController view = loader.getController();
-        view.setMainApp(this);
+
 
         this.stage = stage;
+        view.setMainApp(this);
 //        this.stage.initStyle(StageStyle.TRANSPARENT);
         final Scene scene = new Scene(root);
 
@@ -138,6 +140,31 @@ public class MainApp extends Application {
 
         final Scene scene = new Scene(root);
         stage.setTitle("Credits kaufen");
+        stage.setScene(scene);
+        stage.show();
+    }
+    
+    public void registerStart() throws IOException, SQLException, ClassNotFoundException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Login/RegisterView.fxml"));
+        Parent root;
+        root = loader.load();
+        RegisterViewController view = loader.getController();
+
+        view.setMainApp(this);
+        final Scene scene = new Scene(root);
+
+        stage.setScene(scene);
+        stage.show();
+    }
+    public void startLogin() throws IOException{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Login/LoginView.fxml"));
+        Parent root;
+        root = loader.load();
+        LoginViewController view = loader.getController();
+
+        view.setMainApp(this);
+        final Scene scene = new Scene(root);
+
         stage.setScene(scene);
         stage.show();
     }

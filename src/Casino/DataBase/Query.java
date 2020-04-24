@@ -25,6 +25,7 @@ public class Query {
     private ArrayList<User> users = new ArrayList<>();
 
     public void updateUser() throws SQLException, ClassNotFoundException {
+        users.clear();
         int id = 0;
         String name = "";
         String email = "";

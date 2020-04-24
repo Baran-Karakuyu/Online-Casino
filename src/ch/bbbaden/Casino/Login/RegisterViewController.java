@@ -6,6 +6,7 @@
 package ch.bbbaden.Casino.Login;
 
 import Casino.DataBase.User;
+import ch.bbbaden.Casino.MainApp;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -49,6 +50,7 @@ public class RegisterViewController implements Initializable {
     private Label StartMoneyField;
     @FXML
     private TextField creditField;
+    private MainApp mainApp;
 
     /**
      * Initializes the controller class.
@@ -70,23 +72,17 @@ public class RegisterViewController implements Initializable {
         }
         
         if (nameField.getText().isEmpty()!=true&&emailField.getText().isEmpty()!=true&&passwordField.getText().isEmpty()!=true) {
+            mainApp.startLogin();
             controller1.createUser(name, email, password,credits);
-
-            //Go Back to View 1
-            Stage stage = (Stage) close.getScene().getWindow();
-
-            Parent tableViewParent = FXMLLoader.load(getClass().getResource("LoginView.fxml"));
-            Scene tableViewScene = new Scene(tableViewParent);
-
-            //This line gets the Stage information
-            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-            window.setScene(tableViewScene);
-            window.show();
             
         } else {
             System.out.println("Kein neuer User");
         }
 
     }
+
+    public void setMainApp(MainApp mainApp) {
+        this.mainApp = mainApp;
+    }
+    
 }

@@ -105,15 +105,8 @@ public class LoginViewController implements Initializable {
     }
 
     @FXML
-    private void signUp(ActionEvent event) throws IOException {
-        Parent tableViewParent = FXMLLoader.load(getClass().getResource("RegisterView.fxml"));
-        Scene tableViewScene = new Scene(tableViewParent);
-
-        //This line gets the Stage information
-        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-        window.setScene(tableViewScene);
-        window.show();
+    private void signUp(ActionEvent event) throws IOException, SQLException, ClassNotFoundException {
+        mainApp.registerStart();
 
     }
 
