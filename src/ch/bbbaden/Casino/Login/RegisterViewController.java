@@ -56,65 +56,65 @@ public class RegisterViewController implements Initializable {
         int credits = 0;
         LoginViewController controller1 = new LoginViewController();
         String AllowedChars = "[a-zA-Z0-9]";
-        boolean validChecker = false;
+        boolean invalidChecker = false;
 
         //Check name for unallowed chars
         try {
             if (nameField.getText().matches(AllowedChars)) {
                 name = nameField.getText();
-                validChecker = false;
+                invalidChecker = false;
             } else {
                 JOptionPane.showMessageDialog(null, "Bitte geben Sie einen Namen ein!", "Fehler", JOptionPane.ERROR_MESSAGE);
-                validChecker = true;
+                invalidChecker = true;
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Bitte verwenden Sie nur Buchstaben und Zahlen!", "Fehler", JOptionPane.ERROR_MESSAGE);
-            
+            invalidChecker = true;
         }
 
         //Check email for unallowed chars
         try {
             if (emailField.getText().matches("@") && emailField.getText().matches(AllowedChars)) {
                 email = emailField.getText();
-                validChecker = false;
+                invalidChecker = false;
             } else {
                 JOptionPane.showMessageDialog(null, "Bitte geben Sie eine Email an!", "Fehler", JOptionPane.ERROR_MESSAGE);
-                validChecker = true;
+                invalidChecker = true;
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Bitte verwenden Sie nur Buchstaben und Zahlen!", "Fehler", JOptionPane.ERROR_MESSAGE);
-            validChecker = true;
+            invalidChecker = true;
         }
 
         //Check password for unallowed chars
         try {
             if (passwordField.getText().matches(AllowedChars) && (!(passwordField.getText().isEmpty()))) {
                 password = passwordField.getText();
-                validChecker = false;
+                invalidChecker = false;
             } else {
                 JOptionPane.showMessageDialog(null, "Bitte geben Sie ein Passwort ein ein!", "Fehler", JOptionPane.ERROR_MESSAGE);
-                validChecker = true;
+                invalidChecker = true;
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Bitte verwenden Sie nur Buchstaben und Zahlen!", "Fehler", JOptionPane.ERROR_MESSAGE);
-            validChecker = true;
+            invalidChecker = true;
         }
 
         //Check if credits are int
         try {
-            validChecker = false;
+            invalidChecker = false;
             credits = Integer.parseInt(creditField.getText());
         } catch (NumberFormatException ee) {
             if (creditField.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Bitte geben Sie Ihr Startgeld ein!", "Fehler", JOptionPane.ERROR_MESSAGE);
-                validChecker = true;
+                invalidChecker = true;
             } else {
                 JOptionPane.showMessageDialog(null, "Bitte geben Sie nur Zahlen ein!", "Fehler", JOptionPane.ERROR_MESSAGE);
-                validChecker = true;
+                invalidChecker = true;
             }
         }
 
-        if (nameField.getText().isEmpty() != true && emailField.getText().isEmpty() != true && passwordField.getText().isEmpty() != true && creditField.getText().isEmpty() != true && validChecker == false) {
+        if (nameField.getText().isEmpty() != true && emailField.getText().isEmpty() != true && passwordField.getText().isEmpty() != true && creditField.getText().isEmpty() != true && invalidChecker == false) {
             mainApp.startLogin();
             controller1.createUser(name, email, password, credits);
         } else {
