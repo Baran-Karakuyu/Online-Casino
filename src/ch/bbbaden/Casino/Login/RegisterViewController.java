@@ -55,7 +55,7 @@ public class RegisterViewController implements Initializable {
         String password = "";
         int credits = 0;
         LoginViewController controller1 = new LoginViewController();
-        String AllowedChars = "[a-zA-Z0-9]";
+        String AllowedChars = "[a-zA-Z0-9@.]*";
         boolean invalidChecker = false;
 
         //Check name for unallowed chars
@@ -74,7 +74,7 @@ public class RegisterViewController implements Initializable {
 
         //Check email for unallowed chars
         try {
-            if (emailField.getText().matches("@") && emailField.getText().matches(AllowedChars)) {
+            if (emailField.getText().matches(AllowedChars)) {
                 email = emailField.getText();
                 invalidChecker = false;
             } else {

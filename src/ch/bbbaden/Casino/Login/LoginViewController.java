@@ -83,7 +83,7 @@ public class LoginViewController implements Initializable {
     private void loginaction(ActionEvent event) throws SQLException, ClassNotFoundException, IOException {
         benutzer.clear();
         sql.updateUser();
-        String AllowedChars = "[a-zA-Z0-9]";
+        String AllowedChars = "[a-zA-Z0-9@.]*";
         boolean invalidChecker = false;
 
         for (int i = 0; i < sql.getUsers().size(); i++) {
