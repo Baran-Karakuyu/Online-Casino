@@ -133,6 +133,7 @@ public class MainApp extends Application {
         model.setViewMenu(viewMenu);
         model.setMainApp(this);
         final ViewModelBuyCredits viewModel = new ViewModelBuyCredits(model);
+        System.out.println(name);
         view.setVm(viewModel);
 
         final Scene scene = new Scene(root);

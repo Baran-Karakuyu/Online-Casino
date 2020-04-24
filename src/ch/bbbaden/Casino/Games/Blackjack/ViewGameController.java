@@ -241,12 +241,19 @@ public class ViewGameController implements Initializable {
         viewModel.hitaction(cardshit);
         if (summep > 20) {
             holding();
-            hitBtn.opacityProperty().set(0.0);
-            hitBtn.layoutXProperty().set(500.0);
+            hitBtn.opacityProperty().set(0.1);
         } else {
             switch (cardshit) {
                 case 2:
-                    cardsPlayer(card3P, card3Player, "CasinoIMG/BlackJack/Card");
+                    summep = 0;
+                    for (int i = 0; i < playerCards.size(); i++) {
+                        summep += playerCards.get(i).getValue();
+                    }
+                    if (summep > 10) {
+                        cardsPlayer(card3P, card3Player, "CasinoIMG/BlackJack/Card", 1);
+                    } else {
+                        cardsPlayer(card3P, card3Player, "CasinoIMG/BlackJack/Card", 11);
+                    }
                     summep = 0;
                     for (int i = 0; i < playerCards.size(); i++) {
                         summep += playerCards.get(i).getValue();
@@ -258,7 +265,15 @@ public class ViewGameController implements Initializable {
                     }
                     break;
                 case 3:
-                    cardsPlayer(card4P, card4Player, "CasinoIMG/BlackJack/Card");
+                    summep = 0;
+                    for (int i = 0; i < playerCards.size(); i++) {
+                        summep += playerCards.get(i).getValue();
+                    }
+                    if (summep > 10) {
+                        cardsPlayer(card4P, card4Player, "CasinoIMG/BlackJack/Card", 1);
+                    } else {
+                        cardsPlayer(card4P, card4Player, "CasinoIMG/BlackJack/Card", 11);
+                    }
                     summep = 0;
                     for (int i = 0; i < playerCards.size(); i++) {
                         summep += playerCards.get(i).getValue();
@@ -269,7 +284,15 @@ public class ViewGameController implements Initializable {
                     }
                     break;
                 case 4:
-                    cardsPlayer(card5P, card5Player, "CasinoIMG/BlackJack/Card");
+                    summep = 0;
+                    for (int i = 0; i < playerCards.size(); i++) {
+                        summep += playerCards.get(i).getValue();
+                    }
+                    if (summep > 10) {
+                        cardsPlayer(card5P, card5Player, "CasinoIMG/BlackJack/Card", 1);
+                    } else {
+                        cardsPlayer(card5P, card5Player, "CasinoIMG/BlackJack/Card", 11);
+                    }
                     summep = 0;
                     for (int i = 0; i < playerCards.size(); i++) {
                         summep += playerCards.get(i).getValue();
@@ -316,21 +339,33 @@ public class ViewGameController implements Initializable {
         if (summeg < 17) {
 
             viewModel.holdaction(summeg, cardsDealer);
-            cardsDealer(card3G, card3Groupier, "CasinoIMG/BlackJack/Card");
+            if (summeg > 10) {
+                cardsDealer(card3G, card3Groupier, "CasinoIMG/BlackJack/Card", 1);
+            } else {
+                cardsDealer(card3G, card3Groupier, "CasinoIMG/BlackJack/Card", 11);
+            }
             summeg = 0;
             for (int i = 0; i < dealerCards.size(); i++) {
                 summeg += dealerCards.get(i).getValue();
             }
             if (summeg < 17) {
                 viewModel.holdaction(summeg, cardsDealer);
-                cardsDealer(card4G, card4Groupier, "CasinoIMG/BlackJack/Card");
+                if (summeg > 10) {
+                    cardsDealer(card4G, card4Groupier, "CasinoIMG/BlackJack/Card", 1);
+                } else {
+                    cardsDealer(card4G, card4Groupier, "CasinoIMG/BlackJack/Card", 11);
+                }
                 summeg = 0;
                 for (int i = 0; i < dealerCards.size(); i++) {
                     summeg += dealerCards.get(i).getValue();
                 }
                 if (summeg < 17) {
                     viewModel.holdaction(summeg, cardsDealer);
-                    cardsDealer(card5G, card5Groupier, "CasinoIMG/BlackJack/Card");
+                    if (summeg > 10) {
+                        cardsDealer(card5G, card5Groupier, "CasinoIMG/BlackJack/Card", 1);
+                    } else {
+                        cardsDealer(card5G, card5Groupier, "CasinoIMG/BlackJack/Card", 11);
+                    }
                     summeg = 0;
                     for (int i = 0; i < dealerCards.size(); i++) {
                         summeg += dealerCards.get(i).getValue();
@@ -391,7 +426,11 @@ public class ViewGameController implements Initializable {
                 System.out.println("Values :" + dealerCards.get(i).getValue());
             }
         } else {
-            cardsDealer(card3G, card3Groupier, "CasinoIMG/BlackJack/Card");
+            if (summeg > 10) {
+                cardsDealer(card3G, card3Groupier, "CasinoIMG/BlackJack/Card", 1);
+            } else {
+                cardsDealer(card3G, card3Groupier, "CasinoIMG/BlackJack/Card", 11);
+            }
             summeg = 0;
             for (int i = 0; i < dealerCards.size(); i++) {
                 summeg += dealerCards.get(i).getValue();
@@ -399,14 +438,22 @@ public class ViewGameController implements Initializable {
             }
             if (summeg < 17) {
                 viewModel.holdaction(summeg, cardsDealer);
-                cardsDealer(card4G, card4Groupier, "CasinoIMG/BlackJack/Card");
+                if (summeg > 10) {
+                    cardsDealer(card4G, card4Groupier, "CasinoIMG/BlackJack/Card", 1);
+                } else {
+                    cardsDealer(card4G, card4Groupier, "CasinoIMG/BlackJack/Card", 11);
+                }
                 summeg = 0;
                 for (int i = 0; i < dealerCards.size(); i++) {
                     summeg += dealerCards.get(i).getValue();
                 }
                 if (summeg < 17) {
                     viewModel.holdaction(summeg, cardsDealer);
-                    cardsDealer(card5G, card5Groupier, "CasinoIMG/BlackJack/Card");
+                    if (summeg > 10) {
+                        cardsDealer(card5G, card5Groupier, "CasinoIMG/BlackJack/Card", 1);
+                    } else {
+                        cardsDealer(card5G, card5Groupier, "CasinoIMG/BlackJack/Card", 11);
+                    }
                     summeg = 0;
                     for (int i = 0; i < dealerCards.size(); i++) {
                         summeg += dealerCards.get(i).getValue();
@@ -450,7 +497,7 @@ public class ViewGameController implements Initializable {
             holdBtn.opacityProperty().set(0.5);
 
             viewModel.doubleaction();
-            cardsPlayer(cardDouble, doubleDownCard, "CasinoIMG/BlackJack/CardsDoubleDown");
+            cardsPlayer(cardDouble, doubleDownCard, "CasinoIMG/BlackJack/CardsDoubleDown", 11);
             summep = 0;
             for (int i = 0; i < playerCards.size(); i++) {
                 summep += playerCards.get(i).getValue();
@@ -476,10 +523,19 @@ public class ViewGameController implements Initializable {
         } else {
             viewModel.play();
 
-            cardsPlayer(cardP, card1Player, "CasinoIMG/BlackJack/Card");
-            cardsDealer(cardG, card1Groupier, "CasinoIMG/BlackJack/Card");
-            cardsPlayer(card2P, card2Player, "CasinoIMG/BlackJack/Card");
-            cardsDealer(card2G, card2Groupier, "CasinoIMG/BlackJack/Card");
+            cardsPlayer(cardP, card1Player, "CasinoIMG/BlackJack/Card", 11);
+            cardsDealer(cardG, card1Groupier, "CasinoIMG/BlackJack/Card", 11);
+            if (playerCards.get(0).getValue() == 11) {
+                cardsPlayer(card2P, card2Player, "CasinoIMG/BlackJack/Card", 1);
+            } else {
+                cardsPlayer(card2P, card2Player, "CasinoIMG/BlackJack/Card", 11);
+            }
+
+            if (dealerCards.get(0).getValue() == 11) {
+                cardsDealer(card2G, card2Groupier, "CasinoIMG/BlackJack/Card", 1);
+            } else {
+                cardsDealer(card2G, card2Groupier, "CasinoIMG/BlackJack/Card", 11);
+            }
             cardHide.setImage(new Image("CasinoIMG/BlackJack/Card/Back.png"));
 
             summep = 0;
@@ -638,7 +694,8 @@ public class ViewGameController implements Initializable {
         versichernChoice.opacityProperty().set(0.0);
         versichernChoice.getSelectionModel().clearSelection();
         hitBtn.setDisable(false);
-        hitBtn.setVisible(false);
+        hitBtn.setVisible(true);
+        hitBtn.opacityProperty().set(1.0);
         cardHide.setImage(null);
         card1Player.setImage(null);
         card2Player.setImage(null);
@@ -971,7 +1028,7 @@ public class ViewGameController implements Initializable {
     }
 
     //Cards Displayer
-    private void cardsPlayer(IntegerProperty card, ImageView cardView, String set) {
+    private void cardsPlayer(IntegerProperty card, ImageView cardView, String set, int aceValue) {
         cardshit++;
         switch (card.get()) {
             case 1:
@@ -1195,25 +1252,25 @@ public class ViewGameController implements Initializable {
                 cardView.setImage(new Image(set + "/AC.png"));
                 cardsTaken++;
                 System.out.println(cardsTaken);
-                playerCards.add(new Cards(37, 11));
+                playerCards.add(new Cards(37, aceValue));
                 break;
             case 38:
                 cardView.setImage(new Image(set + "/AD.png"));
                 cardsTaken++;
                 System.out.println(cardsTaken);
-                playerCards.add(new Cards(38, 11));
+                playerCards.add(new Cards(38, aceValue));
                 break;
             case 39:
                 cardView.setImage(new Image(set + "/AH.png"));
                 cardsTaken++;
                 System.out.println(cardsTaken);
-                playerCards.add(new Cards(39, 11));
+                playerCards.add(new Cards(39, aceValue));
                 break;
             case 40:
                 cardView.setImage(new Image(set + "/AS.png"));
                 cardsTaken++;
                 System.out.println(cardsTaken);
-                playerCards.add(new Cards(40, 11));
+                playerCards.add(new Cards(40, aceValue));
                 break;
             case 41:
                 cardView.setImage(new Image(set + "/JC.png"));
@@ -1294,7 +1351,7 @@ public class ViewGameController implements Initializable {
         }
     }
 
-    private void cardsDealer(IntegerProperty card, ImageView cardView, String set) {
+    private void cardsDealer(IntegerProperty card, ImageView cardView, String set, int aceValue) {
         cardsDealer++;
         switch (card.get()) {
             case 1:
@@ -1518,25 +1575,25 @@ public class ViewGameController implements Initializable {
                 cardView.setImage(new Image(set + "/AC.png"));
                 cardsTaken++;
                 System.out.println(cardsTaken);
-                dealerCards.add(new Cards(37, 11));
+                dealerCards.add(new Cards(37, aceValue));
                 break;
             case 38:
                 cardView.setImage(new Image(set + "/AD.png"));
                 cardsTaken++;
                 System.out.println(cardsTaken);
-                dealerCards.add(new Cards(38, 11));
+                dealerCards.add(new Cards(38, aceValue));
                 break;
             case 39:
                 cardView.setImage(new Image(set + "/AH.png"));
                 cardsTaken++;
                 System.out.println(cardsTaken);
-                dealerCards.add(new Cards(39, 11));
+                dealerCards.add(new Cards(39, aceValue));
                 break;
             case 40:
                 cardView.setImage(new Image(set + "/AS.png"));
                 cardsTaken++;
                 System.out.println(cardsTaken);
-                dealerCards.add(new Cards(40, 11));
+                dealerCards.add(new Cards(40, aceValue));
                 break;
             case 41:
                 cardView.setImage(new Image(set + "/JC.png"));
