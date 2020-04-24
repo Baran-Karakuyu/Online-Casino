@@ -85,5 +85,10 @@ public class RegisterViewController implements Initializable {
     public void setMainApp(MainApp mainApp) {
         this.mainApp = mainApp;
     }
+
+    @FXML
+    private void closeBtn(ActionEvent event) {
+        System.exit(0);
+    }
     
 }
