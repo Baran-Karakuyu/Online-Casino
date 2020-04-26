@@ -172,7 +172,7 @@ public class ModelBlackJack {
     
     private int newCard(){
         int cardTaken=0;
-        cardTaken=r.nextInt((52)+1) + 1;;
+        cardTaken=r.nextInt((52)+1) + 1;
         for (Integer allCard : allCards) {
             if(allCard.equals(cardTaken)){
                 cardTaken=r.nextInt((52)+1) + 1;
