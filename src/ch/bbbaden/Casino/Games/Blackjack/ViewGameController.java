@@ -178,8 +178,10 @@ public class ViewGameController implements Initializable {
     private Button versichernBtn;
     @FXML
     private ChoiceBox<Integer> versichernChoice;
-    boolean checkPlayer= false;
-    boolean blackjack=false;
+    boolean checkPlayer = false;
+    boolean blackjack = false;
+    boolean put = false;
+    boolean chipsActive=true;
 
     public void setViewModel(ViewModelBlackJack viewModel) {
         this.viewModel = viewModel;
@@ -238,124 +240,120 @@ public class ViewGameController implements Initializable {
 
     @FXML
     private void hitAction(ActionEvent event) throws SQLException, ClassNotFoundException {
-        doubleBtn.setDisable(true);
-        doubleBtn.opacityProperty().set(0.5);
-        viewModel.hitaction(cardshit);
-        if (summep > 20) {
-            holding();
-            hitBtn.opacityProperty().set(0.1);
+        if (put == false) {
+
         } else {
-            switch (cardshit) {
-                case 2:
-                    summep = 0;
-                    for (int i = 0; i < playerCards.size(); i++) {
-                        summep += playerCards.get(i).getValue();
-                    }
-                    if (summep > 10) {
-                        cardsPlayer(card3P, card3Player, "CasinoIMG/BlackJack/Card", 1);
-                    } else {
-                        cardsPlayer(card3P, card3Player, "CasinoIMG/BlackJack/Card", 11);
-                    }
-                    summep = 0;
-                    for (int i = 0; i < playerCards.size(); i++) {
-                        summep += playerCards.get(i).getValue();
-                    }
+            doubleBtn.setDisable(true);
+            doubleBtn.opacityProperty().set(0.5);
+            viewModel.hitaction(cardshit);
+            if (summep > 20) {
+                holding();
+                hitBtn.opacityProperty().set(0.1);
+            } else {
+                switch (cardshit) {
+                    case 2:
+                        summep = 0;
+                        for (int i = 0; i < playerCards.size(); i++) {
+                            summep += playerCards.get(i).getValue();
+                        }
+                        if (summep > 10) {
+                            cardsPlayer(card3P, card3Player, "CasinoIMG/BlackJack/Card", 1);
+                        } else {
+                            cardsPlayer(card3P, card3Player, "CasinoIMG/BlackJack/Card", 11);
+                        }
+                        summep = 0;
+                        for (int i = 0; i < playerCards.size(); i++) {
+                            summep += playerCards.get(i).getValue();
+                        }
 
-                    if (summep > 21) {
+                        if (summep > 21) {
+                            hitBtn.setDisable(true);
+                            holding();
+                        }
+                        break;
+                    case 3:
+                        summep = 0;
+                        for (int i = 0; i < playerCards.size(); i++) {
+                            summep += playerCards.get(i).getValue();
+                        }
+                        if (summep > 10) {
+                            cardsPlayer(card4P, card4Player, "CasinoIMG/BlackJack/Card", 1);
+                        } else {
+                            cardsPlayer(card4P, card4Player, "CasinoIMG/BlackJack/Card", 11);
+                        }
+                        summep = 0;
+                        for (int i = 0; i < playerCards.size(); i++) {
+                            summep += playerCards.get(i).getValue();
+                        }
+                        if (summep > 21) {
+                            hitBtn.setDisable(true);
+                            holding();
+                        }
+                        break;
+                    case 4:
+                        summep = 0;
+                        for (int i = 0; i < playerCards.size(); i++) {
+                            summep += playerCards.get(i).getValue();
+                        }
+                        if (summep > 10) {
+                            cardsPlayer(card5P, card5Player, "CasinoIMG/BlackJack/Card", 1);
+                        } else {
+                            cardsPlayer(card5P, card5Player, "CasinoIMG/BlackJack/Card", 11);
+                        }
+                        summep = 0;
+                        for (int i = 0; i < playerCards.size(); i++) {
+                            summep += playerCards.get(i).getValue();
+                        }
                         hitBtn.setDisable(true);
                         holding();
-                    }
-                    break;
-                case 3:
-                    summep = 0;
-                    for (int i = 0; i < playerCards.size(); i++) {
-                        summep += playerCards.get(i).getValue();
-                    }
-                    if (summep > 10) {
-                        cardsPlayer(card4P, card4Player, "CasinoIMG/BlackJack/Card", 1);
-                    } else {
-                        cardsPlayer(card4P, card4Player, "CasinoIMG/BlackJack/Card", 11);
-                    }
-                    summep = 0;
-                    for (int i = 0; i < playerCards.size(); i++) {
-                        summep += playerCards.get(i).getValue();
-                    }
-                    if (summep > 21) {
-                        hitBtn.setDisable(true);
-                        holding();
-                    }
-                    break;
-                case 4:
-                    summep = 0;
-                    for (int i = 0; i < playerCards.size(); i++) {
-                        summep += playerCards.get(i).getValue();
-                    }
-                    if (summep > 10) {
-                        cardsPlayer(card5P, card5Player, "CasinoIMG/BlackJack/Card", 1);
-                    } else {
-                        cardsPlayer(card5P, card5Player, "CasinoIMG/BlackJack/Card", 11);
-                    }
-                    summep = 0;
-                    for (int i = 0; i < playerCards.size(); i++) {
-                        summep += playerCards.get(i).getValue();
-                    }
-                    hitBtn.setDisable(true);
-                    holding();
-                    break;
+                        break;
+                }
             }
-        }
 
-        summep = 0;
-        for (int i = 0; i < playerCards.size(); i++) {
-            summep += playerCards.get(i).getValue();
+            summep = 0;
+            for (int i = 0; i < playerCards.size(); i++) {
+                summep += playerCards.get(i).getValue();
+            }
+            label.setText(Integer.toString(summep));
+            viewModel.updatePlayer();
         }
-        label.setText(Integer.toString(summep));
-        viewModel.updatePlayer();
     }
 
     @FXML
     private void holdAction(ActionEvent event) throws SQLException, ClassNotFoundException {
-        doubleBtn.setDisable(true);
-        holdBtn.setDisable(true);
-        hitBtn.setDisable(true);
-        doubleBtn.opacityProperty().set(0.5);
-        hitBtn.opacityProperty().set(0.5);
-        holdBtn.opacityProperty().set(0.5);
+        if (put == false) {
 
-        summeg = 0;
-        for (int i = 0; i < dealerCards.size(); i++) {
-            summeg += dealerCards.get(i).getValue();
-            System.out.println("Values :" + dealerCards.get(i).getValue());
-        }
-        viewModel.holdaction(summeg, cardsDealer);
-        System.out.println("Summeg ist " + summeg);
+        } else {
+            doubleBtn.setDisable(true);
+            holdBtn.setDisable(true);
+            hitBtn.setDisable(true);
+            doubleBtn.opacityProperty().set(0.5);
+            hitBtn.opacityProperty().set(0.5);
+            holdBtn.opacityProperty().set(0.5);
 
-        //card4Show();
-        cardHide.setImage(null);
-
-        summeg = 0;
-        for (int i = 0; i < dealerCards.size(); i++) {
-            summeg += dealerCards.get(i).getValue();
-        }
-        System.out.println("Die Summe bei Hold: " + summeg);
-        if (summeg < 17) {
-
-            viewModel.holdaction(summeg, cardsDealer);
-            if (summeg > 10) {
-                cardsDealer(card3G, card3Groupier, "CasinoIMG/BlackJack/Card", 1);
-            } else {
-                cardsDealer(card3G, card3Groupier, "CasinoIMG/BlackJack/Card", 11);
+            summeg = 0;
+            for (int i = 0; i < dealerCards.size(); i++) {
+                summeg += dealerCards.get(i).getValue();
+                System.out.println("Values :" + dealerCards.get(i).getValue());
             }
+            viewModel.holdaction(summeg, cardsDealer);
+            System.out.println("Summeg ist " + summeg);
+
+            //card4Show();
+            cardHide.setImage(null);
+
             summeg = 0;
             for (int i = 0; i < dealerCards.size(); i++) {
                 summeg += dealerCards.get(i).getValue();
             }
+            System.out.println("Die Summe bei Hold: " + summeg);
             if (summeg < 17) {
+
                 viewModel.holdaction(summeg, cardsDealer);
                 if (summeg > 10) {
-                    cardsDealer(card4G, card4Groupier, "CasinoIMG/BlackJack/Card", 1);
+                    cardsDealer(card3G, card3Groupier, "CasinoIMG/BlackJack/Card", 1);
                 } else {
-                    cardsDealer(card4G, card4Groupier, "CasinoIMG/BlackJack/Card", 11);
+                    cardsDealer(card3G, card3Groupier, "CasinoIMG/BlackJack/Card", 11);
                 }
                 summeg = 0;
                 for (int i = 0; i < dealerCards.size(); i++) {
@@ -364,219 +362,243 @@ public class ViewGameController implements Initializable {
                 if (summeg < 17) {
                     viewModel.holdaction(summeg, cardsDealer);
                     if (summeg > 10) {
-                        cardsDealer(card5G, card5Groupier, "CasinoIMG/BlackJack/Card", 1);
+                        cardsDealer(card4G, card4Groupier, "CasinoIMG/BlackJack/Card", 1);
                     } else {
-                        cardsDealer(card5G, card5Groupier, "CasinoIMG/BlackJack/Card", 11);
+                        cardsDealer(card4G, card4Groupier, "CasinoIMG/BlackJack/Card", 11);
                     }
                     summeg = 0;
                     for (int i = 0; i < dealerCards.size(); i++) {
                         summeg += dealerCards.get(i).getValue();
                     }
+                    if (summeg < 17) {
+                        viewModel.holdaction(summeg, cardsDealer);
+                        if (summeg > 10) {
+                            cardsDealer(card5G, card5Groupier, "CasinoIMG/BlackJack/Card", 1);
+                        } else {
+                            cardsDealer(card5G, card5Groupier, "CasinoIMG/BlackJack/Card", 11);
+                        }
+                        summeg = 0;
+                        for (int i = 0; i < dealerCards.size(); i++) {
+                            summeg += dealerCards.get(i).getValue();
+                        }
+                    }
                 }
             }
-        }
 
-        summeg = 0;
-        for (int i = 0; i < dealerCards.size(); i++) {
-            summeg += dealerCards.get(i).getValue();
-            System.out.println("Values :" + dealerCards.get(i).getValue());
+            summeg = 0;
+            for (int i = 0; i < dealerCards.size(); i++) {
+                summeg += dealerCards.get(i).getValue();
+                System.out.println("Values :" + dealerCards.get(i).getValue());
+            }
+            summep = 0;
+            for (int i = 0; i < playerCards.size(); i++) {
+                summep += playerCards.get(i).getValue();
+            }
+            checkPlayer(summep, summeg);
+            label11.setText(Integer.toString(summeg));
+            summeg = 0;
+            viewModel.updatePlayer();
         }
-        summep = 0;
-        for (int i = 0; i < playerCards.size(); i++) {
-            summep += playerCards.get(i).getValue();
-        }
-        checkPlayer(summep, summeg);
-        label11.setText(Integer.toString(summeg));
-        summeg = 0;
-        viewModel.updatePlayer();
-
     }
 
     //Dealer Actions after Double or Bust
     private void holding() throws SQLException, ClassNotFoundException {
-        doubleBtn.setDisable(true);
-        holdBtn.setDisable(true);
-        hitBtn.setDisable(true);
-        doubleBtn.opacityProperty().set(0.5);
-        hitBtn.opacityProperty().set(0.5);
-        holdBtn.opacityProperty().set(0.5);
+        if (put == false) {
 
-        summeg = 0;
-        for (int i = 0; i < dealerCards.size(); i++) {
-            summeg += dealerCards.get(i).getValue();
-            System.out.println("Values :" + dealerCards.get(i).getValue());
-        }
-        viewModel.holdaction(summeg, cardsDealer);
-        System.out.println("Summeg ist " + summeg);
-
-        //card4Show();
-        cardHide.setImage(null);
-        summeg = 0;
-        for (int i = 0; i < dealerCards.size(); i++) {
-            summeg += dealerCards.get(i).getValue();
-        }
-        System.out.println("Die Summe bei Hold: " + summeg);
-        summep = 0;
-        for (int i = 0; i < playerCards.size(); i++) {
-            summep += playerCards.get(i).getValue();
-        }
-
-        if (summep > 21) {
-            summeg = 0;
-            for (int i = 0; i < dealerCards.size(); i++) {
-                summeg += dealerCards.get(i).getValue();
-                System.out.println("Values :" + dealerCards.get(i).getValue());
-            }
         } else {
-            if (summeg > 10) {
-                cardsDealer(card3G, card3Groupier, "CasinoIMG/BlackJack/Card", 1);
-            } else {
-                cardsDealer(card3G, card3Groupier, "CasinoIMG/BlackJack/Card", 11);
-            }
+            doubleBtn.setDisable(true);
+            holdBtn.setDisable(true);
+            hitBtn.setDisable(true);
+            doubleBtn.opacityProperty().set(0.5);
+            hitBtn.opacityProperty().set(0.5);
+            holdBtn.opacityProperty().set(0.5);
+
             summeg = 0;
             for (int i = 0; i < dealerCards.size(); i++) {
                 summeg += dealerCards.get(i).getValue();
                 System.out.println("Values :" + dealerCards.get(i).getValue());
             }
-            if (summeg < 17) {
-                viewModel.holdaction(summeg, cardsDealer);
+            viewModel.holdaction(summeg, cardsDealer);
+            System.out.println("Summeg ist " + summeg);
+
+            //card4Show();
+            cardHide.setImage(null);
+            summeg = 0;
+            for (int i = 0; i < dealerCards.size(); i++) {
+                summeg += dealerCards.get(i).getValue();
+            }
+            System.out.println("Die Summe bei Hold: " + summeg);
+            summep = 0;
+            for (int i = 0; i < playerCards.size(); i++) {
+                summep += playerCards.get(i).getValue();
+            }
+
+            if (summep > 21) {
+                summeg = 0;
+                for (int i = 0; i < dealerCards.size(); i++) {
+                    summeg += dealerCards.get(i).getValue();
+                    System.out.println("Values :" + dealerCards.get(i).getValue());
+                }
+            } else {
                 if (summeg > 10) {
-                    cardsDealer(card4G, card4Groupier, "CasinoIMG/BlackJack/Card", 1);
+                    cardsDealer(card3G, card3Groupier, "CasinoIMG/BlackJack/Card", 1);
                 } else {
-                    cardsDealer(card4G, card4Groupier, "CasinoIMG/BlackJack/Card", 11);
+                    cardsDealer(card3G, card3Groupier, "CasinoIMG/BlackJack/Card", 11);
                 }
                 summeg = 0;
                 for (int i = 0; i < dealerCards.size(); i++) {
                     summeg += dealerCards.get(i).getValue();
+                    System.out.println("Values :" + dealerCards.get(i).getValue());
                 }
                 if (summeg < 17) {
                     viewModel.holdaction(summeg, cardsDealer);
                     if (summeg > 10) {
-                        cardsDealer(card5G, card5Groupier, "CasinoIMG/BlackJack/Card", 1);
+                        cardsDealer(card4G, card4Groupier, "CasinoIMG/BlackJack/Card", 1);
                     } else {
-                        cardsDealer(card5G, card5Groupier, "CasinoIMG/BlackJack/Card", 11);
+                        cardsDealer(card4G, card4Groupier, "CasinoIMG/BlackJack/Card", 11);
                     }
                     summeg = 0;
                     for (int i = 0; i < dealerCards.size(); i++) {
                         summeg += dealerCards.get(i).getValue();
                     }
+                    if (summeg < 17) {
+                        viewModel.holdaction(summeg, cardsDealer);
+                        if (summeg > 10) {
+                            cardsDealer(card5G, card5Groupier, "CasinoIMG/BlackJack/Card", 1);
+                        } else {
+                            cardsDealer(card5G, card5Groupier, "CasinoIMG/BlackJack/Card", 11);
+                        }
+                        summeg = 0;
+                        for (int i = 0; i < dealerCards.size(); i++) {
+                            summeg += dealerCards.get(i).getValue();
+                        }
+                    }
                 }
             }
-        }
-        summeg = 0;
-        for (int i = 0; i < dealerCards.size(); i++) {
-            summeg += dealerCards.get(i).getValue();
-            System.out.println("Values :" + dealerCards.get(i).getValue());
-        }
-        summep = 0;
-        for (int i = 0; i < playerCards.size(); i++) {
-            summep += playerCards.get(i).getValue();
-        }
-        checkPlayer(summep, summeg);
-        label11.setText(Integer.toString(summeg));
-        viewModel.updatePlayer();
-    }
-
-    @FXML
-    private void doubledownAction(ActionEvent event) throws SQLException, ClassNotFoundException {
-        summep = 0;
-        for (int i = 0; i < playerCards.size(); i++) {
-            summep += playerCards.get(i).getValue();
-        }
-        if (summep > 8 && summep < 12) {
-
-            zwischensum += creditGesetzt;
-            creditGesetzt += creditGesetzt;
-            chipsvalue.setText(Integer.toString(creditGesetzt));
-            creditGesetzt = zwischensum;
-
-            doubleBtn.setTextFill(Color.DARKGOLDENROD);
-            hitBtn.setTextFill(Color.DARKGOLDENROD);
-            holdBtn.setTextFill(Color.DARKGOLDENROD);
-            hitBtn.setDisable(true);
-            holdBtn.setDisable(true);
-            hitBtn.opacityProperty().set(0.5);
-            holdBtn.opacityProperty().set(0.5);
-
-            viewModel.doubleaction();
-            cardsPlayer(cardDouble, doubleDownCard, "CasinoIMG/BlackJack/CardsDoubleDown", 11);
-            summep = 0;
-            for (int i = 0; i < playerCards.size(); i++) {
-                summep += playerCards.get(i).getValue();
-            }
-            label.setText(Integer.toString(summep));
-            doub = true;
-            holding();
-
-        } else {
-
-        }
-
-    }
-
-    @FXML
-    private void putAction(ActionEvent event) throws SQLException, ClassNotFoundException {
-        versichernBtn.setDisable(true);
-        versichernChoice.setDisable(true);
-        versichernBtn.opacityProperty().set(0.0);
-        versichernChoice.opacityProperty().set(0.0);
-        if (creditGesetzt == 0) {
-            System.out.println("Setzte Geld");
-        } else {
-            viewModel.play();
-
-            cardsPlayer(cardP, card1Player, "CasinoIMG/BlackJack/Card", 11);
-            cardsDealer(cardG, card1Groupier, "CasinoIMG/BlackJack/Card", 11);
-            if (playerCards.get(0).getValue() == 11) {
-                cardsPlayer(card2P, card2Player, "CasinoIMG/BlackJack/Card", 1);
-            } else {
-                cardsPlayer(card2P, card2Player, "CasinoIMG/BlackJack/Card", 11);
-            }
-
-            if (dealerCards.get(0).getValue() == 11) {
-                cardsDealer(card2G, card2Groupier, "CasinoIMG/BlackJack/Card", 1);
-            } else {
-                cardsDealer(card2G, card2Groupier, "CasinoIMG/BlackJack/Card", 11);
-            }
-            cardHide.setImage(new Image("CasinoIMG/BlackJack/Card/Back.png"));
-
-            summep = 0;
             summeg = 0;
-
-            if (dealerCards.get(0).getValue() == 11) {
-                versichernBtn.setDisable(false);
-                versichernBtn.opacityProperty().set(1.0);
-                versichernChoice.setDisable(false);
-                versichernChoice.opacityProperty().set(1.0);
-            }
-            for (int i = 0; i < playerCards.size(); i++) {
-                summep += playerCards.get(i).getValue();
-            }
-            if (summep > 8 && summep < 12) {
-                doubleBtn.setDisable(false);
-                doubleBtn.opacityProperty().set(1.0);
-            }
-            label11.setText(Integer.toString(dealerCards.get(0).getValue()));
-            label.setText(Integer.toString(summep));
-
             for (int i = 0; i < dealerCards.size(); i++) {
                 summeg += dealerCards.get(i).getValue();
                 System.out.println("Values :" + dealerCards.get(i).getValue());
             }
-            if (summep > 20) {
-                holding();
-                blackjack=true;
-                hitBtn.opacityProperty().set(0.5);
+            summep = 0;
+            for (int i = 0; i < playerCards.size(); i++) {
+                summep += playerCards.get(i).getValue();
             }
+            checkPlayer(summep, summeg);
+            label11.setText(Integer.toString(summeg));
+            viewModel.updatePlayer();
+        }
+    }
+
+    @FXML
+    private void doubledownAction(ActionEvent event) throws SQLException, ClassNotFoundException {
+        if (put == false) {
+
+        } else {
+            summep = 0;
+            for (int i = 0; i < playerCards.size(); i++) {
+                summep += playerCards.get(i).getValue();
+            }
+            if (summep > 8 && summep < 12) {
+
+                zwischensum += creditGesetzt;
+                creditGesetzt += creditGesetzt;
+                chipsvalue.setText(Integer.toString(creditGesetzt));
+                creditGesetzt = zwischensum;
+
+                doubleBtn.setTextFill(Color.DARKGOLDENROD);
+                hitBtn.setTextFill(Color.DARKGOLDENROD);
+                holdBtn.setTextFill(Color.DARKGOLDENROD);
+                hitBtn.setDisable(true);
+                holdBtn.setDisable(true);
+                hitBtn.opacityProperty().set(0.5);
+                holdBtn.opacityProperty().set(0.5);
+
+                viewModel.doubleaction();
+                cardsPlayer(cardDouble, doubleDownCard, "CasinoIMG/BlackJack/CardsDoubleDown", 11);
+                summep = 0;
+                for (int i = 0; i < playerCards.size(); i++) {
+                    summep += playerCards.get(i).getValue();
+                }
+                label.setText(Integer.toString(summep));
+                doub = true;
+                holding();
+
+            } else {
+
+            }
+        }
+    }
+
+    @FXML
+    private void putAction(ActionEvent event) throws SQLException, ClassNotFoundException {
+        putBtn.setDisable(true);
+        versichernBtn.setDisable(true);
+        versichernChoice.setDisable(true);
+        versichernBtn.opacityProperty().set(0.0);
+        versichernChoice.opacityProperty().set(0.0);
+        if (Integer.parseInt(creditKonto.getText()) <= 0) {
+            endLbl.setText("BROKE ASS");
+        } else {
+            if (creditGesetzt == 0) {
+                System.out.println("Setzte Geld");
+            } else {
+                put = true;
+                chipsActive=false;
+                viewModel.play();
+
+                cardsPlayer(cardP, card1Player, "CasinoIMG/BlackJack/Card", 11);
+                cardsDealer(cardG, card1Groupier, "CasinoIMG/BlackJack/Card", 11);
+                if (playerCards.get(0).getValue() == 11) {
+                    cardsPlayer(card2P, card2Player, "CasinoIMG/BlackJack/Card", 1);
+                } else {
+                    cardsPlayer(card2P, card2Player, "CasinoIMG/BlackJack/Card", 11);
+                }
+
+                if (dealerCards.get(0).getValue() == 11) {
+                    cardsDealer(card2G, card2Groupier, "CasinoIMG/BlackJack/Card", 1);
+                } else {
+                    cardsDealer(card2G, card2Groupier, "CasinoIMG/BlackJack/Card", 11);
+                }
+                cardHide.setImage(new Image("CasinoIMG/BlackJack/Card/Back.png"));
+
+                summep = 0;
+                summeg = 0;
+
+                if (dealerCards.get(0).getValue() == 11) {
+                    versichernBtn.setDisable(false);
+                    versichernBtn.opacityProperty().set(1.0);
+                    versichernChoice.setDisable(false);
+                    versichernChoice.opacityProperty().set(1.0);
+                }
+                for (int i = 0; i < playerCards.size(); i++) {
+                    summep += playerCards.get(i).getValue();
+                }
+                if (summep > 8 && summep < 12) {
+                    doubleBtn.setDisable(false);
+                    doubleBtn.opacityProperty().set(1.0);
+                }
+                label11.setText(Integer.toString(dealerCards.get(0).getValue()));
+                label.setText(Integer.toString(summep));
+
+                for (int i = 0; i < dealerCards.size(); i++) {
+                    summeg += dealerCards.get(i).getValue();
+                    System.out.println("Values :" + dealerCards.get(i).getValue());
+                }
+                if (summep > 20) {
+                    holding();
+                    blackjack = true;
+                    hitBtn.opacityProperty().set(0.5);
+                }
 
 //            creditHere = Integer.parseInt(creditKonto.getText());
-            putBtn.opacityProperty().set(0.0);
+                putBtn.opacityProperty().set(0.0);
+            }
+            if (card1Player.getImage() == null || card2Player.getImage() == null || card1Groupier.getImage() == null || card1Groupier.getImage() == null) {
+                System.out.println("Fehler");
+            }
+            viewModel.updatePlayer();
         }
-        if(card1Player.getImage() == null||card2Player.getImage() == null||card1Groupier.getImage() == null||card1Groupier.getImage() == null){
-            System.out.println("Fehler");
-        }
-        viewModel.updatePlayer();
-
     }
 
     //Checks who Won and put Money into DataBase
@@ -607,10 +629,10 @@ public class ViewGameController implements Initializable {
                 creditHere += creditGesetzt;
                 creditHere += creditGesetzt;
             } else {
-                if(blackjack==true){
-                    creditHere+=creditGesetzt;
-                    creditHere+=(creditGesetzt/2);
-                }else{
+                if (blackjack == true) {
+                    creditHere += creditGesetzt;
+                    creditHere += (creditGesetzt / 2);
+                } else {
                     creditHere += creditGesetzt;
                 }
             }
@@ -627,9 +649,9 @@ public class ViewGameController implements Initializable {
                     creditHere += creditGesetzt;
                     creditHere += creditGesetzt;
                 } else {
-                    if(blackjack==true){
-                    creditHere+=creditGesetzt;
-                    creditHere+=(creditGesetzt/2);
+                    if (blackjack == true) {
+                        creditHere += creditGesetzt;
+                        creditHere += (creditGesetzt / 2);
                     } else {
                         creditHere += creditGesetzt;
                     }
@@ -656,7 +678,7 @@ public class ViewGameController implements Initializable {
         } else {
             System.out.println("");
         }
-        checkPlayer= true;
+        checkPlayer = true;
     }
 
     @FXML
@@ -677,25 +699,25 @@ public class ViewGameController implements Initializable {
             summeg += dealerCards.get(i).getValue();
             System.out.println("Values :" + dealerCards.get(i).getValue());
         }
-        viewModel.versichern(credit, summeg);
+        viewModel.insurance(credit, summeg);
     }
 
     @FXML
     private void closeBtn(ActionEvent event) throws SQLException, ClassNotFoundException {
-        if(checkPlayer=true){
-            System.exit(0);   
-        }else{
-        creditHere -= creditGesetzt;
-        viewModel.setNewCredit(creditHere);
-        System.exit(0);     
+        if (checkPlayer = true) {
+            System.exit(0);
+        } else {
+            creditHere -= creditGesetzt;
+            viewModel.setNewCredit(creditHere);
+            System.exit(0);
         }
     }
 
     @FXML
     private void reset(ActionEvent event) throws IOException, SQLException, ClassNotFoundException {
-        if(checkPlayer==true){
-            
-        }else{
+        if (checkPlayer == true) {
+
+        } else {
             creditHere -= creditGesetzt;
             viewModel.setNewCredit(creditHere);
         }
@@ -758,7 +780,7 @@ public class ViewGameController implements Initializable {
         label.setText(null);
         label11.setText(null);
         playerCards.clear();
-        checkPlayer= false;
+        checkPlayer = false;
         dealerCards.clear();
         versichern = 0;
         doub = false;
@@ -773,285 +795,327 @@ public class ViewGameController implements Initializable {
         cardsDealer = 1;
         playTimes = 0;
         cardsTaken = 0;
-
+        putBtn.setDisable(false);
+        put = false;
+        chipsActive=true;
         creditKonto.textProperty().bind(viewModel.getCredit());
         creditHere = Integer.parseInt(creditKonto.getText());
     }
 
     @FXML
     private void chip10(MouseEvent event) {
-        creditGesetzt += 10;
-        chipsvalue.setText(Integer.toString(creditGesetzt));
-        chip++;
-        switch (chip) {
-            case 1:
-                chips.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip10.png"));
-                break;
-            case 2:
-                chips1.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip10.png"));
-                break;
-            case 3:
-                chips2.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip10.png"));
-                break;
-            case 4:
-                chips3.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip10.png"));
-                break;
-            case 5:
-                chips4.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip10.png"));
-                break;
-            case 6:
-                chips5.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip10.png"));
-                break;
-            case 7:
-                chips6.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip10.png"));
-                break;
-            case 8:
-                chips7.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip10.png"));
-                break;
-            case 9:
-                chips8.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip10.png"));
-                break;
-            case 10:
-                chips9.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip10.png"));
-                break;
-            case 11:
-                chips10.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip10.png"));
-                break;
-            case 12:
-                chips11.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip10.png"));
-                break;
-            case 13:
-                chips12.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip10.png"));
-                break;
-            case 14:
-                chips13.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip10.png"));
-                break;
-            case 15:
-                chips14.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip10.png"));
-                break;
-            case 16:
-                chips15.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip10.png"));
-                break;
-            case 18:
-                chips16.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip10.png"));
-                break;
-            case 19:
-                chips17.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip10.png"));
-                break;
-            case 20:
-                chips18.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip10.png"));
-                break;
+        if(chipsActive==true){
+        int credit= Integer.parseInt(creditKonto.getText());
+        int sum = creditGesetzt+10;
+        if (credit <= 0||credit<10||credit<sum) {
+            System.out.println("You need Money");
+        } else {
+            creditGesetzt += 10;
+            chipsvalue.setText(Integer.toString(creditGesetzt));
+            chip++;
+            switch (chip) {
+                case 1:
+                    chips.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip10.png"));
+                    break;
+                case 2:
+                    chips1.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip10.png"));
+                    break;
+                case 3:
+                    chips2.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip10.png"));
+                    break;
+                case 4:
+                    chips3.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip10.png"));
+                    break;
+                case 5:
+                    chips4.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip10.png"));
+                    break;
+                case 6:
+                    chips5.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip10.png"));
+                    break;
+                case 7:
+                    chips6.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip10.png"));
+                    break;
+                case 8:
+                    chips7.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip10.png"));
+                    break;
+                case 9:
+                    chips8.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip10.png"));
+                    break;
+                case 10:
+                    chips9.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip10.png"));
+                    break;
+                case 11:
+                    chips10.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip10.png"));
+                    break;
+                case 12:
+                    chips11.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip10.png"));
+                    break;
+                case 13:
+                    chips12.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip10.png"));
+                    break;
+                case 14:
+                    chips13.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip10.png"));
+                    break;
+                case 15:
+                    chips14.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip10.png"));
+                    break;
+                case 16:
+                    chips15.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip10.png"));
+                    break;
+                case 18:
+                    chips16.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip10.png"));
+                    break;
+                case 19:
+                    chips17.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip10.png"));
+                    break;
+                case 20:
+                    chips18.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip10.png"));
+                    break;
 
+            }
+        }
         }
     }
 
     @FXML
     private void chip50(MouseEvent event) {
-        creditGesetzt += 50;
-        chipsvalue.setText(Integer.toString(creditGesetzt));
-        chip++;
-        switch (chip) {
-            case 1:
-                chips.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip50.png"));
-                break;
-            case 2:
-                chips1.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip50.png"));
-                break;
-            case 3:
-                chips2.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip50.png"));
-                break;
-            case 4:
-                chips3.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip50.png"));
-                break;
-            case 5:
-                chips4.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip50.png"));
-                break;
-            case 6:
-                chips5.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip50.png"));
-                break;
-            case 7:
-                chips6.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip50.png"));
-                break;
-            case 8:
-                chips7.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip50.png"));
-                break;
-            case 9:
-                chips8.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip50.png"));
-                break;
-            case 10:
-                chips9.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip50.png"));
-                break;
-            case 11:
-                chips10.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip50.png"));
-                break;
-            case 12:
-                chips11.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip50.png"));
-                break;
-            case 13:
-                chips12.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip50.png"));
-                break;
-            case 14:
-                chips13.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip50.png"));
-                break;
-            case 15:
-                chips14.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip50.png"));
-                break;
-            case 16:
-                chips15.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip50.png"));
-                break;
-            case 18:
-                chips16.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip50.png"));
-                break;
-            case 19:
-                chips17.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip50.png"));
-                break;
-            case 20:
-                chips13.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip50.png"));
-                break;
+        if(chipsActive==true){
+        int credit= Integer.parseInt(creditKonto.getText());
+        int sum = creditGesetzt+50;
+        if (credit <= 0||credit<50||credit<sum) {
+            System.out.println("You need Money");
+        } else {
+            creditGesetzt += 50;
+            chipsvalue.setText(Integer.toString(creditGesetzt));
+            chip++;
+            switch (chip) {
+                case 1:
+                    chips.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip50.png"));
+                    break;
+                case 2:
+                    chips1.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip50.png"));
+                    break;
+                case 3:
+                    chips2.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip50.png"));
+                    break;
+                case 4:
+                    chips3.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip50.png"));
+                    break;
+                case 5:
+                    chips4.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip50.png"));
+                    break;
+                case 6:
+                    chips5.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip50.png"));
+                    break;
+                case 7:
+                    chips6.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip50.png"));
+                    break;
+                case 8:
+                    chips7.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip50.png"));
+                    break;
+                case 9:
+                    chips8.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip50.png"));
+                    break;
+                case 10:
+                    chips9.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip50.png"));
+                    break;
+                case 11:
+                    chips10.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip50.png"));
+                    break;
+                case 12:
+                    chips11.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip50.png"));
+                    break;
+                case 13:
+                    chips12.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip50.png"));
+                    break;
+                case 14:
+                    chips13.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip50.png"));
+                    break;
+                case 15:
+                    chips14.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip50.png"));
+                    break;
+                case 16:
+                    chips15.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip50.png"));
+                    break;
+                case 18:
+                    chips16.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip50.png"));
+                    break;
+                case 19:
+                    chips17.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip50.png"));
+                    break;
+                case 20:
+                    chips13.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip50.png"));
+                    break;
+            }
+        }
         }
     }
 
     @FXML
     private void chip100(MouseEvent event) {
-        creditGesetzt += 100;
-        chipsvalue.setText(Integer.toString(creditGesetzt));
-        chip++;
-        switch (chip) {
-            case 1:
-                chips.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip100.png"));
-                break;
-            case 2:
-                chips1.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip100.png"));
-                break;
-            case 3:
-                chips2.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip100.png"));
-                break;
-            case 4:
-                chips3.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip100.png"));
-                break;
-            case 5:
-                chips4.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip100.png"));
-                break;
-            case 6:
-                chips5.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip100.png"));
-                break;
-            case 7:
-                chips6.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip100.png"));
-                break;
-            case 8:
-                chips7.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip100.png"));
-                break;
-            case 9:
-                chips8.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip100.png"));
-                break;
-            case 10:
-                chips9.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip100.png"));
-                break;
-            case 11:
-                chips10.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip100.png"));
-                break;
-            case 12:
-                chips11.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip100.png"));
-                break;
-            case 13:
-                chips12.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip100.png"));
-                break;
+        if(chipsActive==true){
+        int credit= Integer.parseInt(creditKonto.getText());
+        int sum = creditGesetzt+100;
+        if (credit <= 0||credit<100||credit<sum) {
+            System.out.println("You need Money");
+        } else {
+            creditGesetzt += 100;
+            chipsvalue.setText(Integer.toString(creditGesetzt));
+            chip++;
+            switch (chip) {
+                case 1:
+                    chips.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip100.png"));
+                    break;
+                case 2:
+                    chips1.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip100.png"));
+                    break;
+                case 3:
+                    chips2.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip100.png"));
+                    break;
+                case 4:
+                    chips3.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip100.png"));
+                    break;
+                case 5:
+                    chips4.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip100.png"));
+                    break;
+                case 6:
+                    chips5.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip100.png"));
+                    break;
+                case 7:
+                    chips6.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip100.png"));
+                    break;
+                case 8:
+                    chips7.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip100.png"));
+                    break;
+                case 9:
+                    chips8.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip100.png"));
+                    break;
+                case 10:
+                    chips9.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip100.png"));
+                    break;
+                case 11:
+                    chips10.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip100.png"));
+                    break;
+                case 12:
+                    chips11.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip100.png"));
+                    break;
+                case 13:
+                    chips12.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip100.png"));
+                    break;
+            }
+        }
         }
     }
 
     @FXML
     private void chip250(MouseEvent event) {
-        creditGesetzt += 250;
-        chipsvalue.setText(Integer.toString(creditGesetzt));
-        chip++;
-        switch (chip) {
-            case 1:
-                chips.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip250.png"));
-                break;
-            case 2:
-                chips1.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip250.png"));
-                break;
-            case 3:
-                chips2.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip250.png"));
-                break;
-            case 4:
-                chips3.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip250.png"));
-                break;
-            case 5:
-                chips4.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip250.png"));
-                break;
-            case 6:
-                chips5.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip250.png"));
-                break;
-            case 7:
-                chips6.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip250.png"));
-                break;
-            case 8:
-                chips7.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip250.png"));
-                break;
-            case 9:
-                chips8.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip250.png"));
-                break;
-            case 10:
-                chips9.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip250.png"));
-                break;
-            case 11:
-                chips10.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip250.png"));
-                break;
-            case 12:
-                chips11.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip250.png"));
-                break;
-            case 13:
-                chips12.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip250.png"));
-                break;
+        if(chipsActive==true){
+        int credit= Integer.parseInt(creditKonto.getText());
+        int sum= creditGesetzt+250;
+        if (credit <= 0||credit<250||credit<sum) {
+            System.out.println("You need Money");
+        } else {
+            creditGesetzt += 250;
+            chipsvalue.setText(Integer.toString(creditGesetzt));
+            chip++;
+            switch (chip) {
+                case 1:
+                    chips.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip250.png"));
+                    break;
+                case 2:
+                    chips1.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip250.png"));
+                    break;
+                case 3:
+                    chips2.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip250.png"));
+                    break;
+                case 4:
+                    chips3.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip250.png"));
+                    break;
+                case 5:
+                    chips4.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip250.png"));
+                    break;
+                case 6:
+                    chips5.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip250.png"));
+                    break;
+                case 7:
+                    chips6.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip250.png"));
+                    break;
+                case 8:
+                    chips7.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip250.png"));
+                    break;
+                case 9:
+                    chips8.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip250.png"));
+                    break;
+                case 10:
+                    chips9.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip250.png"));
+                    break;
+                case 11:
+                    chips10.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip250.png"));
+                    break;
+                case 12:
+                    chips11.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip250.png"));
+                    break;
+                case 13:
+                    chips12.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip250.png"));
+                    break;
+            }
+        }
         }
     }
 
     @FXML
     private void chip1000(MouseEvent event) {
-        creditGesetzt += 1000;
-        chipsvalue.setText(Integer.toString(creditGesetzt));
-        chip++;
-        switch (chip) {
-            case 1:
-                chips.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip1000.png"));
-                break;
-            case 2:
-                chips1.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip1000.png"));
-                break;
-            case 3:
-                chips2.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip1000.png"));
-                break;
-            case 4:
-                chips3.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip1000.png"));
-                break;
-            case 5:
-                chips4.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip1000.png"));
-                break;
-            case 6:
-                chips5.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip1000.png"));
-                break;
-            case 7:
-                chips6.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip1000.png"));
-                break;
-            case 8:
-                chips7.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip1000.png"));
-                break;
-            case 9:
-                chips8.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip1000.png"));
-                break;
-            case 10:
-                chips9.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip1000.png"));
-                break;
-            case 11:
-                chips10.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip1000.png"));
-                break;
-            case 12:
-                chips11.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip1000.png"));
-                break;
-            case 13:
-                chips12.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip1000.png"));
-                break;
+        if(chipsActive==true){
+        int credit= Integer.parseInt(creditKonto.getText());
+        int sum = creditGesetzt+1000;
+        if (credit <= 0||credit<1000||credit<sum) {
+            System.out.println("You need Money");
+        } else {
+            creditGesetzt += 1000;
+            chipsvalue.setText(Integer.toString(creditGesetzt));
+            chip++;
+            switch (chip) {
+                case 1:
+                    chips.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip1000.png"));
+                    break;
+                case 2:
+                    chips1.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip1000.png"));
+                    break;
+                case 3:
+                    chips2.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip1000.png"));
+                    break;
+                case 4:
+                    chips3.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip1000.png"));
+                    break;
+                case 5:
+                    chips4.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip1000.png"));
+                    break;
+                case 6:
+                    chips5.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip1000.png"));
+                    break;
+                case 7:
+                    chips6.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip1000.png"));
+                    break;
+                case 8:
+                    chips7.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip1000.png"));
+                    break;
+                case 9:
+                    chips8.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip1000.png"));
+                    break;
+                case 10:
+                    chips9.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip1000.png"));
+                    break;
+                case 11:
+                    chips10.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip1000.png"));
+                    break;
+                case 12:
+                    chips11.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip1000.png"));
+                    break;
+                case 13:
+                    chips12.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip1000.png"));
+                    break;
+            }
+        }
         }
     }
 
@@ -1704,9 +1768,9 @@ public class ViewGameController implements Initializable {
 
     @FXML
     private void backToMenu(ActionEvent event) throws IOException, SQLException, ClassNotFoundException {
-        if(checkPlayer==true){
+        if (checkPlayer == true) {
             viewModel.backToMenu();
-        }else{
+        } else {
             creditHere -= creditGesetzt;
             viewModel.setNewCredit(creditHere);
             viewModel.backToMenu();

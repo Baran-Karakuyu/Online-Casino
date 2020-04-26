@@ -21,21 +21,21 @@ import java.util.Random;
  * @author Andrei Oleniuc
  */
 public class ModelBlackJack {
-    public final PropertyChangeSupport changes = new PropertyChangeSupport(this);
+    protected final PropertyChangeSupport changes = new PropertyChangeSupport(this);
     private MainApp mainApp;
-    Query sql = new Query();
-    ArrayList<User> benutzer = new ArrayList<>();
-    int creditPlayer = 0;
-    String card1 = "";
-    int card = 0;
-    String newCredit="";
+    private final Query sql = new Query();
+    private ArrayList<User> users = new ArrayList<>();
+    private int card = 0;
     private String name;
-    int dbCredit=0;
-    Random r = new Random();
-    ArrayList<Integer> allCards= new ArrayList<>();
+    private int dbCredit=0;
+    private Random r = new Random();
+    private ArrayList<Integer> allCards= new ArrayList<>();
 
     public void play() throws SQLException, ClassNotFoundException {
-        allCards.clear();
+        if(sql.getCreditUser(name)<=0){
+            System.out.println("YOU BROKE ASS");
+        }else{
+           allCards.clear();
         sql.updateUser();
         int oldcard = card;
         card = newCard();
@@ -45,11 +45,12 @@ public class ModelBlackJack {
         card = newCard();
         changes.firePropertyChange("card2P", oldcard, card);
         card =newCard();
-        changes.firePropertyChange("card2G", oldcard, card);
+        changes.firePropertyChange("card2G", oldcard, card); 
+        }
     }
 
     public void credit() throws SQLException, ClassNotFoundException {
-        UserDataTransfer();
+        userDataTransfer();
     }
 
     public void hitaction(int cardshit) {
@@ -70,9 +71,9 @@ public class ModelBlackJack {
         }
     }
 
-    public void holdaction(int summeGroupier, int idcard) {
+    public void holdaction(int sumGroupier, int idcard) {
         int oldcard = card;
-        if (summeGroupier < 17) {
+        if (sumGroupier < 17) {
             card =  newCard();
             changes.firePropertyChange("card" + idcard + "G", oldcard, card);
         }
@@ -83,57 +84,13 @@ public class ModelBlackJack {
         card =  newCard();
         changes.firePropertyChange("cardDouble", oldcard, card);
     }
-    public void checkPlayer(int sumP,int sumG,int creditPut,int creditNow){
-        String oldcredit= newCredit;
-        int a=0;
-        boolean notNegativeP = false;
-        boolean notNegativeG = false;
-        if (21 - sumP < 0) {
-            System.out.println("You Lost");
-            newCredit = Integer.toString(creditNow);
-            notNegativeP = true;
-        } else {
-            notNegativeP = false;
-        }
-
-        if (21 - sumG < 0) {
-            notNegativeG = true;
-            System.out.println("You Won");
-            a+= creditPut;
-            a+= creditPut;
-            creditNow+=a;
-            newCredit = Integer.toString(creditNow);
-        } else {
-            notNegativeG = false;
-        }
-
-        if (notNegativeP == false && notNegativeG == false) {
-            if (21 - sumP < 21 - sumG) {
-                System.out.println("You Won");
-                a+= creditPut;
-                a+= creditPut;
-                creditNow+=a;
-                newCredit = Integer.toString(creditNow);
-            } else if (21 - sumP > 21 - sumG) {
-                System.out.println("You Lost");
-                newCredit = Integer.toString(creditNow);
-            } else {
-                System.out.println("Even");
-                a += creditPut;
-                creditNow= a;
-                newCredit = Integer.toString(creditNow);
-            }
-        }
-        changes.firePropertyChange("credit", oldcredit, newCredit);
-    }
     //Sets the Credit from DB to View
-    public void UserDataTransfer() throws SQLException, ClassNotFoundException{
+    public void userDataTransfer() throws SQLException, ClassNotFoundException{
         String oldcredit="";
         sql.updateUser();
         sql.selectUsers();
         dbCredit = sql.getCreditUser(name);
         changes.firePropertyChange("credit", oldcredit, Integer.toString(dbCredit));
-        creditPlayer= dbCredit;
     }
     //Sets the new Credit 
     public void setNewCredit(int credit) throws SQLException, ClassNotFoundException{
@@ -142,10 +99,10 @@ public class ModelBlackJack {
         changes.firePropertyChange("credit", oldcredit, credit);
     }
     
-    public void versichern(int credit,int summe) throws SQLException, ClassNotFoundException{
+    public void insurance(int credit,int sum) throws SQLException, ClassNotFoundException{
         int credits=0;
         credits =  sql.getCreditUser(name);
-        if(summe ==21){
+        if(sum ==21){
             credits+=credit;
         }else{
             credits-=credit;
@@ -153,7 +110,7 @@ public class ModelBlackJack {
         setNewCredit(credits);
     }
     
-        public void addPropertyChangeListener(final PropertyChangeListener listener) {
+   public void addPropertyChangeListener(final PropertyChangeListener listener) {
         changes.addPropertyChangeListener(listener);
 
     }
