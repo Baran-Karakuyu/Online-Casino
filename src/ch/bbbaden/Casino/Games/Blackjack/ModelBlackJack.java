@@ -179,8 +179,8 @@ public class ModelBlackJack {
                 if(cardTaken==0){
                     cardTaken=r.nextInt((52)+1) + 1;
                 }
+                }
             }    
-        }
         allCards.add(cardTaken);
         return cardTaken;
     }

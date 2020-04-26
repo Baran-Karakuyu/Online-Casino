@@ -36,8 +36,6 @@ public class ViewModelBlackJack implements PropertyChangeListener{
     IntegerProperty card5P = new SimpleIntegerProperty();
     IntegerProperty card5G = new SimpleIntegerProperty();
     IntegerProperty cardDouble = new SimpleIntegerProperty();
-    
-    IntegerProperty creditStart=  new SimpleIntegerProperty();
     StringProperty credit= new SimpleStringProperty();
 
     public void play() throws SQLException, ClassNotFoundException {
@@ -88,13 +86,6 @@ public class ViewModelBlackJack implements PropertyChangeListener{
         return cardDouble;
     }
 
-    
-    
-    
-    public IntegerProperty getCreditStart() {
-        return creditStart;
-    }
-
     public StringProperty getCredit() {
         return credit;
     }
@@ -136,9 +127,6 @@ public class ViewModelBlackJack implements PropertyChangeListener{
                 break;
             case "cardDouble":
                 cardDouble.set((int) pce.getNewValue());
-                break;
-            case "creditGesetzt":
-                creditStart.set((int) pce.getNewValue());
                 break;
             case "credit":
                 credit.set(pce.getNewValue().toString());
