@@ -549,6 +549,7 @@ public class ViewGameController implements Initializable {
 
                 cardsPlayer(cardP, card1Player, "CasinoIMG/BlackJack/Card", 11);
                 cardsDealer(cardG, card1Groupier, "CasinoIMG/BlackJack/Card", 11);
+                //card 0 issue
                 if (playerCards.get(0).getValue() == 11) {
                     cardsPlayer(card2P, card2Player, "CasinoIMG/BlackJack/Card", 1);
                 } else {

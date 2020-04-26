@@ -88,7 +88,6 @@ public class ModelBlackJack {
     public void userDataTransfer() throws SQLException, ClassNotFoundException{
         String oldcredit="";
         sql.updateUser();
-        sql.selectUsers();
         dbCredit = sql.getCreditUser(name);
         changes.firePropertyChange("credit", oldcredit, Integer.toString(dbCredit));
     }
@@ -129,15 +128,18 @@ public class ModelBlackJack {
     
     private int newCard(){
         int cardTaken=0;
-        cardTaken=r.nextInt((52)+1) + 1;
+        boolean isnull= true;
+        do{
+           cardTaken=r.nextInt((52)+1) + 1; 
+           if(cardTaken!=0){
+               isnull=false;
+           }
+        }while(isnull==true);
         for (Integer allCard : allCards) {
             if(allCard.equals(cardTaken)){
                 cardTaken=r.nextInt((52)+1) + 1;
-                if(cardTaken==0){
-                    cardTaken=r.nextInt((52)+1) + 1;
                 }
-                }
-            }    
+            }
         allCards.add(cardTaken);
         return cardTaken;
     }
