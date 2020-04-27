@@ -15,7 +15,7 @@
 <AnchorPane id="AnchorPane" prefHeight="1030.0" prefWidth="1920.0" styleClass="menu" stylesheets="@../../../../../CasinoStyleSheet/MenuCSS.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.bbbaden.Casino.Games.Blackjack.ViewGameController">
      <children>
       <Ellipse fill="#511312" layoutX="975.0" layoutY="202.0" radiusX="877.0" radiusY="683.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="35.0" />
-      <Ellipse fill="#942626" layoutX="967.0" layoutY="191.0" radiusX="789.0" radiusY="586.0" stroke="#cc9c0a" strokeType="INSIDE" strokeWidth="2.0" />
+      <Ellipse fill="#942626" layoutX="967.0" layoutY="181.0" radiusX="789.0" radiusY="586.0" stroke="#cc9c0a" strokeType="INSIDE" strokeWidth="2.0" />
       <QuadCurve controlX="105.0" controlY="273.0" endX="-314.0" endY="-135.0" fill="#9a1515" layoutX="892.0" layoutY="374.0" startX="525.0" startY="-135.0" stroke="#cc9c0a" strokeType="INSIDE" strokeWidth="2.0" />
       <QuadCurve controlX="105.0" controlY="214.0" endX="-216.0" endY="-76.0" fill="#942626" layoutX="891.0" layoutY="315.0" startX="418.0" startY="-76.0" stroke="#cc9c0a" strokeType="INSIDE" strokeWidth="2.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" height="24.0" layoutX="129.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="1688.0" />
@@ -100,11 +100,11 @@
       <ImageView fx:id="card4Player" fitHeight="180.0" fitWidth="120.0" layoutX="979.0" layoutY="536.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="card5Player" fitHeight="180.0" fitWidth="120.0" layoutX="992.0" layoutY="522.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="doubleDownCard" fitHeight="120.0" fitWidth="180.0" layoutX="993.0" layoutY="518.0" pickOnBounds="true" preserveRatio="true" />
-      <Label fx:id="label" layoutX="1293.0" layoutY="59.0" prefHeight="50.0" prefWidth="82.0" textFill="WHITE">
+      <Label fx:id="playerValue" layoutX="1293.0" layoutY="59.0" prefHeight="50.0" prefWidth="82.0" textFill="WHITE">
          <font>
             <Font name="Harlow Solid Italic" size="28.0" />
          </font></Label>
-      <Label fx:id="label11" layoutX="1293.0" layoutY="13.0" prefHeight="50.0" prefWidth="82.0" textFill="WHITE">
+      <Label fx:id="dealerValue" layoutX="1293.0" layoutY="13.0" prefHeight="50.0" prefWidth="82.0" textFill="WHITE">
          <font>
             <Font name="Harlow Solid Italic" size="28.0" />
          </font>
@@ -197,7 +197,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button fx:id="versichernBtn" layoutX="426.0" layoutY="795.0" mnemonicParsing="false" onAction="#versichern" style="-fx-background-color: transparent;" text="Insurance" textFill="WHITE">
+      <Button fx:id="insuranceBtn" layoutX="436.0" layoutY="796.0" mnemonicParsing="false" onAction="#insurance" style="-fx-background-color: transparent;" text="Insurance" textFill="WHITE">
          <font>
             <Font name="Harlow Solid Italic" size="37.0" />
          </font>

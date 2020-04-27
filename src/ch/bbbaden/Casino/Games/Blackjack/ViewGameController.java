@@ -87,19 +87,17 @@ public class ViewGameController implements Initializable {
 
     //Label and ChoiceBox
     @FXML
-    private Label label;
+    private Label playerValue;
     @FXML
-    private Label label11;
-    private ChoiceBox<Integer> chipsSelection;
+    private Label dealerValue;
     //Variables
     private int cardsTaken = 0;
     private ArrayList<Cards> playerCards = new ArrayList<>();
     private ArrayList<Cards> dealerCards = new ArrayList<>();
-    private int cardshit = 0;
+    private int cardsHit = 0;
     private int cardsDealer = 1;
     private int summep;
     private int summeg;
-    private int playTimes = 0;
 
     @FXML
     private ImageView doubleDownCard;
@@ -157,29 +155,29 @@ public class ViewGameController implements Initializable {
     @FXML
     private Label creditKonto;
 
-    private int creditGesetzt;
+    private int creditPut;
     private int creditHere = 0;
-    private int chip = 0;
+    private int chipAmount = 0;
     @FXML
     private Label endLbl;
 
-    private boolean doub = false;
-    private int versichern = 0;
-    private boolean versicherV = false;
-    private int versicherMoneyPut = 0;
-    private int zwischensum = 0;
+    private boolean doubleActive = false;
+    private boolean insuranceActive = false;
+    private int insuranceMoneyPut = 0;
+    private int innerSum = 0;
     @FXML
     private ImageView cardHide;
     @FXML
     private Button resetBtn;
-    @FXML
-    private Button versichernBtn;
     @FXML
     private ChoiceBox<Integer> versichernChoice;
     private boolean checkPlayer = false;
     private boolean blackjack = false;
     private boolean put = false;
     private boolean chipsActive = true;
+    @FXML
+    private Button insuranceBtn;
+
 
     public void setViewModel(ViewModelBlackJack viewModel) {
         this.viewModel = viewModel;
@@ -230,9 +228,9 @@ public class ViewGameController implements Initializable {
         chip1000.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip1000.png"));
         doubleBtn.setDisable(false);
         doubleBtn.opacityProperty().set(0.1);
-        versichernBtn.setDisable(true);
+        insuranceBtn.setDisable(true);
         versichernChoice.setDisable(true);
-        versichernBtn.opacityProperty().set(0.0);
+        insuranceBtn.opacityProperty().set(0.0);
         versichernChoice.opacityProperty().set(0.0);
     }
 
@@ -243,12 +241,12 @@ public class ViewGameController implements Initializable {
         } else {
             doubleBtn.setDisable(true);
             doubleBtn.opacityProperty().set(0.5);
-            viewModel.hitaction(cardshit);
+            viewModel.hitaction(cardsHit);
             if (summep > 20) {
                 holding();
                 hitBtn.opacityProperty().set(0.1);
             } else {
-                switch (cardshit) {
+                switch (cardsHit) {
                     case 2:
                         summep = 0;
                         for (int i = 0; i < playerCards.size(); i++) {
@@ -314,7 +312,7 @@ public class ViewGameController implements Initializable {
             for (int i = 0; i < playerCards.size(); i++) {
                 summep += playerCards.get(i).getValue();
             }
-            label.setText(Integer.toString(summep));
+            playerValue.setText(Integer.toString(summep));
             viewModel.updatePlayer();
         }
     }
@@ -395,7 +393,7 @@ public class ViewGameController implements Initializable {
                 summep += playerCards.get(i).getValue();
             }
             checkPlayer(summep, summeg);
-            label11.setText(Integer.toString(summeg));
+            dealerValue.setText(Integer.toString(summeg));
             summeg = 0;
             viewModel.updatePlayer();
         }
@@ -490,7 +488,7 @@ public class ViewGameController implements Initializable {
                 summep += playerCards.get(i).getValue();
             }
             checkPlayer(summep, summeg);
-            label11.setText(Integer.toString(summeg));
+            dealerValue.setText(Integer.toString(summeg));
             viewModel.updatePlayer();
         }
     }
@@ -506,10 +504,10 @@ public class ViewGameController implements Initializable {
             }
             if (summep > 8 && summep < 12) {
 
-                zwischensum += creditGesetzt;
-                creditGesetzt += creditGesetzt;
-                chipsvalue.setText(Integer.toString(creditGesetzt));
-                creditGesetzt = zwischensum;
+                innerSum += creditPut;
+                creditPut += creditPut;
+                chipsvalue.setText(Integer.toString(creditPut));
+                creditPut = innerSum;
 
                 doubleBtn.setTextFill(Color.DARKGOLDENROD);
                 hitBtn.setTextFill(Color.DARKGOLDENROD);
@@ -525,8 +523,8 @@ public class ViewGameController implements Initializable {
                 for (int i = 0; i < playerCards.size(); i++) {
                     summep += playerCards.get(i).getValue();
                 }
-                label.setText(Integer.toString(summep));
-                doub = true;
+                playerValue.setText(Integer.toString(summep));
+                doubleActive = true;
                 holding();
 
             } else {
@@ -538,14 +536,14 @@ public class ViewGameController implements Initializable {
     @FXML
     private void putAction(ActionEvent event) throws SQLException, ClassNotFoundException {
         putBtn.setDisable(true);
-        versichernBtn.setDisable(true);
+        insuranceBtn.setDisable(true);
         versichernChoice.setDisable(true);
-        versichernBtn.opacityProperty().set(0.0);
+        insuranceBtn.opacityProperty().set(0.0);
         versichernChoice.opacityProperty().set(0.0);
         if (Integer.parseInt(creditKonto.getText()) <= 0) {
             endLbl.setText("BROKE ASS");
         } else {
-            if (creditGesetzt == 0) {
+            if (creditPut == 0) {
                 System.out.println("Setzte Geld");
             } else {
                 put = true;
@@ -572,8 +570,8 @@ public class ViewGameController implements Initializable {
                 summeg = 0;
 
                 if (dealerCards.get(0).getValue() == 11) {
-                    versichernBtn.setDisable(false);
-                    versichernBtn.opacityProperty().set(1.0);
+                    insuranceBtn.setDisable(false);
+                    insuranceBtn.opacityProperty().set(1.0);
                     versichernChoice.setDisable(false);
                     versichernChoice.opacityProperty().set(1.0);
                 }
@@ -584,8 +582,8 @@ public class ViewGameController implements Initializable {
                     doubleBtn.setDisable(false);
                     doubleBtn.opacityProperty().set(1.0);
                 }
-                label11.setText(Integer.toString(dealerCards.get(0).getValue()));
-                label.setText(Integer.toString(summep));
+                dealerValue.setText(Integer.toString(dealerCards.get(0).getValue()));
+                playerValue.setText(Integer.toString(summep));
 
                 for (int i = 0; i < dealerCards.size(); i++) {
                     summeg += dealerCards.get(i).getValue();
@@ -593,8 +591,8 @@ public class ViewGameController implements Initializable {
                 }
                 if (summep > 20) {
                     holding();
-                    versichernBtn.setDisable(true);
-                    versichernBtn.setVisible(false);
+                    insuranceBtn.setDisable(true);
+                    insuranceBtn.setVisible(false);
                     versichernChoice.setDisable(true);
                     versichernChoice.setVisible(false);
                     blackjack = true;
@@ -620,11 +618,11 @@ public class ViewGameController implements Initializable {
             System.out.println("Lost");
             endLbl.setText("LOST");
             notNegativeP = true;
-            if (doub == true) {
-                creditHere -= creditGesetzt;
-                creditHere -= creditGesetzt;
+            if (doubleActive == true) {
+                creditHere -= creditPut;
+                creditHere -= creditPut;
             } else {
-                creditHere -= creditGesetzt;
+                creditHere -= creditPut;
             }
             viewModel.setNewCredit(creditHere);
         } else {
@@ -635,15 +633,15 @@ public class ViewGameController implements Initializable {
             notNegativeG = true;
             System.out.println("You Won");
             endLbl.setText("WON");
-            if (doub == true) {
-                creditHere += creditGesetzt;
-                creditHere += creditGesetzt;
+            if (doubleActive == true) {
+                creditHere += creditPut;
+                creditHere += creditPut;
             } else {
                 if (blackjack == true) {
-                    creditHere += creditGesetzt;
-                    creditHere += (creditGesetzt / 2);
+                    creditHere += creditPut;
+                    creditHere += (creditPut / 2);
                 } else {
-                    creditHere += creditGesetzt;
+                    creditHere += creditPut;
                 }
             }
             viewModel.setNewCredit(creditHere);
@@ -655,26 +653,26 @@ public class ViewGameController implements Initializable {
             if (21 - sumP < 21 - sumG) {
                 System.out.println("Won");
                 endLbl.setText("WON");
-                if (doub == true) {
-                    creditHere += creditGesetzt;
-                    creditHere += creditGesetzt;
+                if (doubleActive == true) {
+                    creditHere += creditPut;
+                    creditHere += creditPut;
                 } else {
                     if (blackjack == true) {
-                        creditHere += creditGesetzt;
-                        creditHere += (creditGesetzt / 2);
+                        creditHere += creditPut;
+                        creditHere += (creditPut / 2);
                     } else {
-                        creditHere += creditGesetzt;
+                        creditHere += creditPut;
                     }
                 }
                 viewModel.setNewCredit(creditHere);
             } else if (21 - sumP > 21 - sumG) {
                 System.out.println("You Lost");
                 endLbl.setText("LOST");
-                if (doub == true) {
-                    creditHere -= creditGesetzt;
-                    creditHere -= creditGesetzt;
+                if (doubleActive == true) {
+                    creditHere -= creditPut;
+                    creditHere -= creditPut;
                 } else {
-                    creditHere -= creditGesetzt;
+                    creditHere -= creditPut;
                 }
                 viewModel.setNewCredit(creditHere);
             } else {
@@ -683,8 +681,8 @@ public class ViewGameController implements Initializable {
                 viewModel.setNewCredit(creditHere);
             }
         }
-        if (versicherV == true) {
-            versicherMethode(versicherMoneyPut);
+        if (insuranceActive == true) {
+            insuranceMethod(insuranceMoneyPut);
         } else {
             System.out.println("");
         }
@@ -692,18 +690,18 @@ public class ViewGameController implements Initializable {
     }
 
     @FXML
-    private void versichern(ActionEvent event) {
+    private void insurance(ActionEvent event) {
         if (versichernChoice.getValue() == 0) {
 
         } else {
-            versichernBtn.setTextFill(Color.FUCHSIA);
-            versicherV = true;
-            versicherMoneyPut = versichernChoice.getValue();
+            insuranceBtn.setTextFill(Color.FUCHSIA);
+            insuranceActive = true;
+            insuranceMoneyPut = versichernChoice.getValue();
         }
     }
 
     //Insurance Methode to Connect with Model
-    private void versicherMethode(int credit) throws SQLException, ClassNotFoundException {
+    private void insuranceMethod(int credit) throws SQLException, ClassNotFoundException {
         summeg = 0;
         for (int i = 0; i < dealerCards.size(); i++) {
             summeg += dealerCards.get(i).getValue();
@@ -717,7 +715,7 @@ public class ViewGameController implements Initializable {
         if (checkPlayer = true) {
             System.exit(0);
         } else {
-            creditHere -= creditGesetzt;
+            creditHere -= creditPut;
             viewModel.setNewCredit(creditHere);
             System.exit(0);
         }
@@ -728,7 +726,7 @@ public class ViewGameController implements Initializable {
         if (checkPlayer == true) {
 
         } else {
-            creditHere -= creditGesetzt;
+            creditHere -= creditPut;
             viewModel.setNewCredit(creditHere);
         }
         hitBtn.setDisable(false);
@@ -746,9 +744,9 @@ public class ViewGameController implements Initializable {
         backBtn.setDisable(false);
         backBtn.opacityProperty().set(1.0);
         backBtn.textFillProperty().set(Color.WHITE);
-        versichernBtn.setDisable(true);
-        versichernBtn.opacityProperty().set(0.0);
-        versichernBtn.textFillProperty().set(Color.WHITE);
+        insuranceBtn.setDisable(true);
+        insuranceBtn.opacityProperty().set(0.0);
+        insuranceBtn.textFillProperty().set(Color.WHITE);
         versichernChoice.setDisable(true);
         versichernChoice.opacityProperty().set(0.0);
         versichernChoice.getSelectionModel().clearSelection();
@@ -787,21 +785,20 @@ public class ViewGameController implements Initializable {
         chips17.setImage(null);
         chips18.setImage(null);
         endLbl.setText(null);
-        label.setText(null);
-        label11.setText(null);
+        playerValue.setText(null);
+        dealerValue.setText(null);
         playerCards.clear();
         checkPlayer = false;
         dealerCards.clear();
-        doub = false;
-        versicherV = false;
-        versicherMoneyPut = 0;
-        zwischensum = 0;
-        creditGesetzt = 0;
-        chip = 0;
+        doubleActive = false;
+        insuranceActive = false;
+        insuranceMoneyPut = 0;
+        innerSum = 0;
+        creditPut = 0;
+        chipAmount = 0;
         chipsvalue.setText(null);
-        cardshit = 0;
+        cardsHit = 0;
         cardsDealer = 1;
-        playTimes = 0;
         cardsTaken = 0;
         putBtn.setDisable(false);
         put = false;
@@ -814,14 +811,14 @@ public class ViewGameController implements Initializable {
     private void chip10(MouseEvent event) {
         if (chipsActive == true) {
             int credit = Integer.parseInt(creditKonto.getText());
-            int sum = creditGesetzt + 10;
+            int sum = creditPut + 10;
             if (credit <= 0 || credit < 10 || credit < sum) {
                 System.out.println("You need Money");
             } else {
-                creditGesetzt += 10;
-                chipsvalue.setText(Integer.toString(creditGesetzt));
-                chip++;
-                switch (chip) {
+                creditPut += 10;
+                chipsvalue.setText(Integer.toString(creditPut));
+                chipAmount++;
+                switch (chipAmount) {
                     case 1:
                         chips.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip10.png"));
                         break;
@@ -889,14 +886,14 @@ public class ViewGameController implements Initializable {
     private void chip50(MouseEvent event) {
         if (chipsActive == true) {
             int credit = Integer.parseInt(creditKonto.getText());
-            int sum = creditGesetzt + 50;
+            int sum = creditPut + 50;
             if (credit <= 0 || credit < 50 || credit < sum) {
                 System.out.println("You need Money");
             } else {
-                creditGesetzt += 50;
-                chipsvalue.setText(Integer.toString(creditGesetzt));
-                chip++;
-                switch (chip) {
+                creditPut += 50;
+                chipsvalue.setText(Integer.toString(creditPut));
+                chipAmount++;
+                switch (chipAmount) {
                     case 1:
                         chips.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip50.png"));
                         break;
@@ -963,14 +960,14 @@ public class ViewGameController implements Initializable {
     private void chip100(MouseEvent event) {
         if (chipsActive == true) {
             int credit = Integer.parseInt(creditKonto.getText());
-            int sum = creditGesetzt + 100;
+            int sum = creditPut + 100;
             if (credit <= 0 || credit < 100 || credit < sum) {
                 System.out.println("You need Money");
             } else {
-                creditGesetzt += 100;
-                chipsvalue.setText(Integer.toString(creditGesetzt));
-                chip++;
-                switch (chip) {
+                creditPut += 100;
+                chipsvalue.setText(Integer.toString(creditPut));
+                chipAmount++;
+                switch (chipAmount) {
                     case 1:
                         chips.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip100.png"));
                         break;
@@ -1019,14 +1016,14 @@ public class ViewGameController implements Initializable {
     private void chip250(MouseEvent event) {
         if (chipsActive == true) {
             int credit = Integer.parseInt(creditKonto.getText());
-            int sum = creditGesetzt + 250;
+            int sum = creditPut + 250;
             if (credit <= 0 || credit < 250 || credit < sum) {
                 System.out.println("You need Money");
             } else {
-                creditGesetzt += 250;
-                chipsvalue.setText(Integer.toString(creditGesetzt));
-                chip++;
-                switch (chip) {
+                creditPut += 250;
+                chipsvalue.setText(Integer.toString(creditPut));
+                chipAmount++;
+                switch (chipAmount) {
                     case 1:
                         chips.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip250.png"));
                         break;
@@ -1075,14 +1072,14 @@ public class ViewGameController implements Initializable {
     private void chip1000(MouseEvent event) {
         if (chipsActive == true) {
             int credit = Integer.parseInt(creditKonto.getText());
-            int sum = creditGesetzt + 1000;
+            int sum = creditPut + 1000;
             if (credit <= 0 || credit < 1000 || credit < sum) {
                 System.out.println("You need Money");
             } else {
-                creditGesetzt += 1000;
-                chipsvalue.setText(Integer.toString(creditGesetzt));
-                chip++;
-                switch (chip) {
+                creditPut += 1000;
+                chipsvalue.setText(Integer.toString(creditPut));
+                chipAmount++;
+                switch (chipAmount) {
                     case 1:
                         chips.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip1000.png"));
                         break;
@@ -1129,7 +1126,7 @@ public class ViewGameController implements Initializable {
 
     //Cards Displayer
     private void cardsPlayer(IntegerProperty card, ImageView cardView, String set, int aceValue) {
-        cardshit++;
+        cardsHit++;
         switch (card.get()) {
             case 1:
                 cardView.setImage(new Image(set + "/2C.png"));
@@ -1779,7 +1776,7 @@ public class ViewGameController implements Initializable {
         if (checkPlayer == true) {
             viewModel.backToMenu();
         } else {
-            creditHere -= creditGesetzt;
+            creditHere -= creditPut;
             viewModel.setNewCredit(creditHere);
             viewModel.backToMenu();
         }
