@@ -18,6 +18,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 /**
  *
@@ -41,8 +42,12 @@ public class FXMLDocumentController implements Initializable {
     private Label lblName;
     @FXML
     private Label lblCredit;
-
+    @FXML
+    private Button btnStatistic;
+    
     private ViewModel viewModel;
+    @FXML
+    private Label lblRole;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -85,12 +90,34 @@ public class FXMLDocumentController implements Initializable {
     }
 
     @FXML
-    private void logOutButtonActionHandling(ActionEvent event) {
+    private void statisticButtonActionHandling(ActionEvent event) throws IOException, SQLException, ClassNotFoundException {
+        Stage stage = (Stage) btnStatistic.getScene().getWindow();
+        stage.close();
+        viewModel.openStatistics();
+    }
+
+    @FXML
+    private void logOutButtonActionHandling(ActionEvent event) throws IOException, SQLException, ClassNotFoundException {
+        Stage stage = (Stage) btnAbmelden.getScene().getWindow();
+        stage.close();
+        viewModel.startLogin();
+    }
+    
+    public void unlockStatistic() {
+        System.out.println(lblRole.getText());
+        if (lblRole.getText().equals("admin")) {
+            btnStatistic.setDisable(false);
+            btnStatistic.setVisible(true);
+        } else {
+            btnStatistic.setDisable(true);
+            btnStatistic.setVisible(false);
+        }
     }
 
     public void bind() {
         lblName.textProperty().bind(viewModel.getName());
         lblCredit.textProperty().bind(viewModel.getCredit());
+        lblRole.textProperty().bind(viewModel.getRole());
     }
 
     public void setViewModel(ViewModel viewModel) {

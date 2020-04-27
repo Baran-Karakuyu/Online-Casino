@@ -19,9 +19,10 @@ import javafx.beans.property.StringProperty;
  */
 public class ViewModel implements PropertyChangeListener {
 
-    private Model m;
-    private StringProperty name = new SimpleStringProperty();
-    private StringProperty credit = new SimpleStringProperty();
+    private final Model m;
+    private final StringProperty name = new SimpleStringProperty();
+    private final StringProperty credit = new SimpleStringProperty();
+    private final StringProperty role = new SimpleStringProperty();
     
     public ViewModel(Model m) {
         this.m = m;
@@ -50,6 +51,14 @@ public class ViewModel implements PropertyChangeListener {
     public void openBuyCredits() throws IOException, SQLException, ClassNotFoundException {
         m.openBuyCredits();
     }
+    
+    public void startLogin() throws IOException, SQLException, ClassNotFoundException {
+        m.startLogin();
+    }
+    
+    public void openStatistics() throws IOException, SQLException, ClassNotFoundException {
+        m.openStatistics();
+    }
 
     public StringProperty getCredit() {
         return credit;
@@ -57,6 +66,10 @@ public class ViewModel implements PropertyChangeListener {
 
     public StringProperty getName() {
         return name;
+    }
+    
+    public StringProperty getRole() {
+        return role;
     }
 
     @Override
@@ -68,7 +81,9 @@ public class ViewModel implements PropertyChangeListener {
             case "credit":
                 credit.set(pce.getNewValue().toString());
                 break;
-                
+            case "role":
+                role.set(pce.getNewValue().toString());
+                break;
         }
     }
 }

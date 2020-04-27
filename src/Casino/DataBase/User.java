@@ -5,6 +5,8 @@
  */
 package Casino.DataBase;
 
+import java.sql.SQLException;
+
 /**
  *
  * @author Andrei Oleniuc
@@ -16,6 +18,7 @@ public class User {
     private String password;
     private int credit;
     private String role;
+    private Query sql = new Query();
 
     public User(int uid, String name, String email, String password, int credit, String role) {
         this.uid = uid;
@@ -70,5 +73,7 @@ public class User {
         this.password = password;
     }
     
-    
+    public void userStats(int gid, int usid, double bet, double win, double lost) throws SQLException, ClassNotFoundException {
+        sql.insertStatistic(gid, usid, bet, win, lost);
+    }
 }

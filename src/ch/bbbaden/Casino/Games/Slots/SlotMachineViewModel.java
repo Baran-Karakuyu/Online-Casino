@@ -7,6 +7,7 @@ package ch.bbbaden.Casino.Games.Slots;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.sql.SQLException;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
@@ -16,47 +17,48 @@ import javafx.beans.property.StringProperty;
  */
 public class SlotMachineViewModel implements PropertyChangeListener {
 
-    SlotMachineModel m;
-    StringProperty Spielerkonto = new SimpleStringProperty();
-    StringProperty kontostandszahl = new SimpleStringProperty();
-    StringProperty walzenZahl = new SimpleStringProperty();
-    StringProperty GewinnZahl = new SimpleStringProperty();
-    StringProperty RisikoBetrag = new SimpleStringProperty();
+    private final SlotMachineModel m;
+    private final StringProperty playerAccountNumber = new SimpleStringProperty();
+    private final StringProperty balanceNumber = new SimpleStringProperty();
+    private final StringProperty spinnerNumber = new SimpleStringProperty();
+    private final StringProperty winNumber = new SimpleStringProperty();
+    private final StringProperty riskNumber = new SimpleStringProperty();
+    private final StringProperty bonusNumber = new SimpleStringProperty();
 
     public SlotMachineViewModel(SlotMachineModel m) {
         this.m = m;
-        kontostandszahl.setValue(String.valueOf(m.getKontostand()));
-        walzenZahl.set("0");
-        GewinnZahl.setValue("0.0");
-        RisikoBetrag.setValue("1");
-        Spielerkonto.setValue("0.0");
+        balanceNumber.setValue(String.valueOf(m.getBalanceNumber()));
+        spinnerNumber.set("0");
+        winNumber.setValue("0.0");
+        riskNumber.setValue("0.0");
+        playerAccountNumber.setValue("0.0");
     }
 
-    public void einwurf(double betrag) {
-        m.spielgeldFuehren(betrag, 0);
+    public void deposit(double insert) {
+        m.managingPlayMoney(insert, 0);
     }
 
-    public void auszahlen(double betrag) {
-        m.spielgeldFuehren(betrag, 1);
+    public void payOut(double insert) {
+        m.managingPlayMoney(insert, 1);
     }
 
-    public void gewinn(double betrag) {
-        m.spielgeldFuehren(betrag, 2);
+    public void win(double insert) {
+        m.managingPlayMoney(insert, 2);
     }
 
-    public void gewinnInsSpielerkonto(double betrag) {
-        m.spielgeldFuehren(betrag, 3);
+    public void winToPlayerAccountNumber(double insert) {
+        m.managingPlayMoney(insert, 3);
     }
 
-    public void walzenDrehen() throws InterruptedException {
-        m.walzenDrehen();
+    public void spinSpinners() throws InterruptedException {
+        m.spinSpinners();
     }
 
     public void bet() {
         m.bet();
     }
 
-    public void gamblen() {
+    public void gamble() {
         m.gamble();
     }
 
@@ -64,8 +66,8 @@ public class SlotMachineViewModel implements PropertyChangeListener {
         m.mystery();
     }
 
-    public void gewinnUeberpruefen(double einsatz) {
-        m.win(einsatz);
+    public void checkWin(double insert) throws SQLException, ClassNotFoundException {
+        m.win(insert);
     }
 
     public void shuffle(int randomUpTo) {
@@ -77,7 +79,7 @@ public class SlotMachineViewModel implements PropertyChangeListener {
     }
 
     public void cherryCollect(int randomUpTo) {
-        m.cherryCollection(randomUpTo);
+        m.cherryCollect(randomUpTo);
     }
 
     public void holdAndStep(int removeNumber, int randomUpTo) {
@@ -96,84 +98,84 @@ public class SlotMachineViewModel implements PropertyChangeListener {
         m.fruitStop(randomUpTo);
     }
     
-    public StringProperty getEinwurf() {
-        return Spielerkonto;
+    public StringProperty getPlayerAccountNumber() {
+        return playerAccountNumber;
     }
 
-    public StringProperty getKontostand() {
-        return kontostandszahl;
+    public StringProperty getBalanceNumber() {
+        return balanceNumber;
     }
 
-    public StringProperty getGewinn() {
-        return GewinnZahl;
+    public StringProperty getWinNumber() {
+        return winNumber;
     }
 
-    public StringProperty getWalzenZahl() {
-        return walzenZahl;
+    public StringProperty getSpinnerNumber() {
+        return spinnerNumber;
     }
 
-    public StringProperty getRisikoBetrag() {
-        return RisikoBetrag;
+    public StringProperty getRiskNumber() {
+        return riskNumber;
     }
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
-        if (evt.getPropertyName().equals("SpielerkontoEinwerfen")) {
-            Spielerkonto.set(evt.getNewValue().toString());
+        if (evt.getPropertyName().equals("PlayerAccountDeposit")) {
+            playerAccountNumber.set(evt.getNewValue().toString());
         }
-        if (evt.getPropertyName().equals("KontoAbheben")) {
-            kontostandszahl.set(evt.getNewValue().toString());
+        if (evt.getPropertyName().equals("BalancePayOut")) {
+            balanceNumber.set(evt.getNewValue().toString());
         }
-        if (evt.getPropertyName().equals("KontoEinzahlen")) {
-            kontostandszahl.set(evt.getNewValue().toString());
+        if (evt.getPropertyName().equals("BalanceDeposit")) {
+            balanceNumber.set(evt.getNewValue().toString());
         }
-        if (evt.getPropertyName().equals("SpielerkontoAuszahlen")) {
-            Spielerkonto.set(evt.getNewValue().toString());
+        if (evt.getPropertyName().equals("PlayerAccountPayOut")) {
+            playerAccountNumber.set(evt.getNewValue().toString());
         }
-        if (evt.getPropertyName().equals("GewinnAuszahlen")) {
-            GewinnZahl.set(evt.getNewValue().toString());
+        if (evt.getPropertyName().equals("WinPayOut")) {
+            winNumber.set(evt.getNewValue().toString());
         }
-        if (evt.getPropertyName().equals("GewinnAuszahlen")) {
-            GewinnZahl.set(evt.getNewValue().toString());
-        }
-        if (evt.getPropertyName().equals("WalzenDrehen")) {
-            walzenZahl.set(evt.getNewValue().toString());
+        if (evt.getPropertyName().equals("spinSpinners")) {
+            spinnerNumber.set(evt.getNewValue().toString());
         }
         if (evt.getPropertyName().equals("GewinnErhöhen")) {
-            GewinnZahl.set(evt.getNewValue().toString());
+            winNumber.set(evt.getNewValue().toString());
         }
         if (evt.getPropertyName().equals("Bet")) {
-            RisikoBetrag.set(evt.getNewValue().toString());
+            riskNumber.set(evt.getNewValue().toString());
         }
         if (evt.getPropertyName().equals("Gamble")) {
-            GewinnZahl.set(evt.getNewValue().toString());
+            winNumber.set(evt.getNewValue().toString());
         }
         if (evt.getPropertyName().equals("Mystery")) {
-            GewinnZahl.set(evt.getNewValue().toString());
+            winNumber.set(evt.getNewValue().toString());
         }
         if (evt.getPropertyName().equals("SpielerkontoerhöhungDurchGewinn")) {
-            Spielerkonto.set(evt.getNewValue().toString());
+            playerAccountNumber.set(evt.getNewValue().toString());
         }
         if (evt.getPropertyName().equals("SpielerkontogeldZumSpielenNutzen")) {
-            Spielerkonto.set(evt.getNewValue().toString());
+            playerAccountNumber.set(evt.getNewValue().toString());
         }
         if (evt.getPropertyName().equals("GewinnInsSpielerkonto")) {
-            GewinnZahl.set(evt.getNewValue().toString());
+            winNumber.set(evt.getNewValue().toString());
         }
         if (evt.getPropertyName().equals("Shuffle")) {
-            walzenZahl.set(evt.getNewValue().toString());
+            spinnerNumber.set(evt.getNewValue().toString());
         }
         if (evt.getPropertyName().equals("tenTimes")) {
-            walzenZahl.set(evt.getNewValue().toString());
+            spinnerNumber.set(evt.getNewValue().toString());
         }
         if (evt.getPropertyName().equals("fruitStop")) {
-            walzenZahl.set(evt.getNewValue().toString());
+            spinnerNumber.set(evt.getNewValue().toString());
         }
         if (evt.getPropertyName().equals("cherryCollect")) {
-            walzenZahl.set(evt.getNewValue().toString());
+            spinnerNumber.set(evt.getNewValue().toString());
         }
         if (evt.getPropertyName().equals("holdAndStep")) {
-            walzenZahl.set(evt.getNewValue().toString());
+            spinnerNumber.set(evt.getNewValue().toString());
+        }
+        if (evt.getPropertyName().equals("Bonus")) {
+            bonusNumber.set(evt.getNewValue().toString());
         }
     }
 }

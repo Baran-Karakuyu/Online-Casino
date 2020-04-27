@@ -5,6 +5,7 @@
  */
 package ch.bbbaden.Casino;
 
+import Casino.DataBase.User;
 import ch.bbbaden.Casino.Games.Blackjack.ModelBlackJack;
 import ch.bbbaden.Casino.Games.Blackjack.ViewGameController;
 import ch.bbbaden.Casino.Games.Blackjack.ViewModelBlackJack;
@@ -15,10 +16,13 @@ import ch.bbbaden.Casino.Login.LoginViewController;
 import ch.bbbaden.Casino.Login.RegisterViewController;
 import ch.bbbaden.Casino.Menu.Model.Model;
 import ch.bbbaden.Casino.Menu.Model.ModelBuyCredits;
+import ch.bbbaden.Casino.Menu.Model.ModelStatistic;
 import ch.bbbaden.Casino.Menu.View.FXMLDocumentController;
 import ch.bbbaden.Casino.Menu.View.FXMLViewBuyCreditsController;
+import ch.bbbaden.Casino.Menu.View.FXMLViewStatisticController;
 import ch.bbbaden.Casino.Menu.ViewModel.ViewModel;
 import ch.bbbaden.Casino.Menu.ViewModel.ViewModelBuyCredits;
+import ch.bbbaden.Casino.Menu.ViewModel.ViewModelStatistic;
 import java.io.IOException;
 import java.sql.SQLException;
 import javafx.application.Application;
@@ -26,7 +30,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 /**
  *
@@ -35,10 +38,11 @@ import javafx.stage.StageStyle;
 public class MainApp extends Application {
 
     private Stage stage;
-    private String email;
-    private String password;
-    private String name;
+//    private String email;
+//    private String password;
+//    private String name;
     private FXMLDocumentController viewMenu;
+    private User user;
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -47,12 +51,10 @@ public class MainApp extends Application {
         root = loader.load();
         LoginViewController view = loader.getController();
 
-
         this.stage = stage;
         view.setMainApp(this);
-//        this.stage.initStyle(StageStyle.TRANSPARENT);
         final Scene scene = new Scene(root);
-
+        
         stage.setScene(scene);
         stage.show();
     }
@@ -75,8 +77,9 @@ public class MainApp extends Application {
         final ViewModel viewModel = new ViewModel(model);
         viewMenu.setViewModel(viewModel);
         model.addPropertyChangeListener(viewModel);
-        model.setUser(email, password);
+        model.setUser(user);
         viewMenu.bind();
+        viewMenu.unlockStatistic();
 
         final Scene scene = new Scene(root);
         stage.setTitle("Menü");
@@ -88,8 +91,11 @@ public class MainApp extends Application {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Games/Slots/FXMLDocument.fxml"));
         Parent root;
         root = loader.load();
+        
         FXMLSlotsController view = loader.getController();
+        view.setMainApp(this);
         SlotMachineModel model = new SlotMachineModel();
+        model.setUser(user);
         final SlotMachineViewModel viewModel = new SlotMachineViewModel(model);
         view.setViewModel(viewModel);
         model.addPropertyChangeListener(viewModel);
@@ -113,7 +119,7 @@ public class MainApp extends Application {
         final ViewModelBlackJack viewModel = new ViewModelBlackJack(model);
         view.setViewModel(viewModel);
         model.addPropertyChangeListener(viewModel);
-        model.setPlayer(name);
+        //model.setUser(user);
 
         view.bind();
 
@@ -135,7 +141,6 @@ public class MainApp extends Application {
         model.setViewMenu(viewMenu);
         model.setMainApp(this);
         final ViewModelBuyCredits viewModel = new ViewModelBuyCredits(model);
-        System.out.println(name);
         view.setVm(viewModel);
 
         final Scene scene = new Scene(root);
@@ -168,19 +173,37 @@ public class MainApp extends Application {
         stage.setScene(scene);
         stage.show();
     }
+    
+    public void openStatistics() throws IOException, SQLException, ClassNotFoundException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Menu/View/FXMLViewStatistic.fxml"));
+        Parent root;
+        root = loader.load();
 
-    public void userData(String email, String password) {
-        this.email = email;
-        this.password = password;
-        System.out.println(this.email);
-        System.out.println(this.password);
+        FXMLViewStatisticController view = loader.getController();
+        ModelStatistic model = new ModelStatistic();
+        model.setMainApp(this);
+        final ViewModelStatistic viewModel = new ViewModelStatistic(model);
+        view.setViewModel(viewModel);
+
+        final Scene scene = new Scene(root);
+        stage.setTitle("Statistik");
+        stage.setScene(scene);
+        stage.show();
+    }
+    
+    public void setUser(User u) {
+        this.user = u;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+//    public void setName(String name) {
+//        this.name = name;
+//    }
+//
+//    public String getName() {
+//        return name;
+//    }
 
-    public String getName() {
-        return name;
+    public User getUser() {
+        return user;
     }
 }

@@ -5,8 +5,10 @@
  */
 package ch.bbbaden.Casino.Games.Slots;
 
+import Casino.DataBase.User;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,21 +20,23 @@ import java.util.Random;
  */
 public class SlotMachineModel {
 
-    private double kontostand = 500;
-    private double spielerkonto = 0;
-    private double gewinn = 0;
-    private int riskCounter = 1;
+    private double balanceNumber = 500;
+    private double playerAccountNumber = 0;
+    private double win = 0;
+    private int riskCounter = -1;
     private int cardNr = 8;
-    private int risk = 1;
-    private boolean EinzahlungsChecker = false;
+    private double risk = 0.0;
+    private boolean depositChecker = false;
     private Symbol symbol = Symbol.CHERRY;
     private final HashMap<Integer, Symbol> allSymbols = new HashMap<>();
     private final ArrayList<Symbol> spinnerSelectedSymbol = new ArrayList<>();
     private final ArrayList<Integer> allRisks = new ArrayList<>();
-    DecimalFormat doubleFormatter = new DecimalFormat("#.##");
+    private final DecimalFormat doubleFormatter = new DecimalFormat("#.##");
+    private User user;
+    private double betNumber;
     protected final PropertyChangeSupport changes = new PropertyChangeSupport(this);
 
-    public void walzenDrehen() throws InterruptedException {
+    public void spinSpinners() throws InterruptedException {
         if (allSymbols.isEmpty()) {
             allSymbols.put(0, Symbol.CHERRY);
             allSymbols.put(1, Symbol.TRAUBE);
@@ -49,16 +53,16 @@ public class SlotMachineModel {
         if (spinnerSelectedSymbol.size() >= 3) {
             spinnerSelectedSymbol.clear();
         }
-        if (spinnerSelectedSymbol.size() < 1 && EinzahlungsChecker == false) {
-            spielgeldFuehren((risk * 0.1), 4);
-            EinzahlungsChecker = true;
+        if (spinnerSelectedSymbol.size() < 1 && depositChecker == false) {
+            managingPlayMoney((risk), 4);
+            depositChecker = true;
             return;
         }
 
-        EinzahlungsChecker = false;
+        depositChecker = false;
 
         Random r = new Random();
-        cardNr = r.nextInt(9)+1;
+        cardNr = r.nextInt(9) + 1;
 
         Symbol oldSymbol = symbol;
         symbol = allSymbols.get(cardNr);
@@ -66,94 +70,106 @@ public class SlotMachineModel {
         //Die Werte in der ArrayList dienen zur Gewinnüberprüfung
         spinnerSelectedSymbol.add(allSymbols.get(cardNr));
 
-        changes.firePropertyChange("WalzenDrehen", oldSymbol, symbol);
+        changes.firePropertyChange("spinSpinners", oldSymbol, symbol);
     }
 
-    public void spielgeldFuehren(double betrag, int schluessel) {
-        switch (schluessel) {
+    public void managingPlayMoney(double insert, int key) {
+        switch (key) {
             //Geld ins Spielerkonto einwerfen
             case 0: {
-                if (kontostand > betrag) {
-                    double oldSpielerkonto = spielerkonto;
-                    double oldKontostand = kontostand;
+                if (balanceNumber > insert) {
+                    double oldPlayerAccountNumber = playerAccountNumber;
+                    double oldBalanceNumber = balanceNumber;
 
-                    spielerkonto = spielerkonto + betrag;
-                    kontostand = kontostand - betrag;
+                    playerAccountNumber = playerAccountNumber + insert;
+                    balanceNumber = balanceNumber - insert;
 
-                    changes.firePropertyChange("SpielerkontoEinwerfen", oldSpielerkonto, spielerkonto);
-                    changes.firePropertyChange("KontoAbheben", oldKontostand, kontostand);
+                    changes.firePropertyChange("PlayerAccountDeposit", oldPlayerAccountNumber, doubleFormatter.format(playerAccountNumber));
+                    changes.firePropertyChange("BalancePayOut", oldBalanceNumber, doubleFormatter.format(balanceNumber));
                 }
                 break;
             }
             //Spielerkonto und Gewinn ins Konto auszahlen
             case 1: {
-                double oldspielerkonto = spielerkonto;
-                double oldKontostand = kontostand;
-                double oldGewinn = betrag - spielerkonto;
+                double oldplayerAccountNumber = playerAccountNumber;
+                double oldBalanceNumber = balanceNumber;
+                double oldGewinn = insert - playerAccountNumber;
 
-                kontostand = kontostand + betrag;
-                spielerkonto = 0;
-                gewinn = 0;
+                balanceNumber = balanceNumber + insert;
+                playerAccountNumber = 0;
+                win = 0;
 
-                changes.firePropertyChange("KontoEinzahlen", oldKontostand, kontostand);
-                changes.firePropertyChange("SpielerkontoAuszahlen", oldspielerkonto, spielerkonto);
-                changes.firePropertyChange("GewinnAuszahlen", oldGewinn, gewinn);
+                changes.firePropertyChange("BalanceDeposit", oldBalanceNumber, doubleFormatter.format(balanceNumber));
+                changes.firePropertyChange("PlayerAccountPayOut", oldplayerAccountNumber, doubleFormatter.format(playerAccountNumber));
+                changes.firePropertyChange("WinPayOut", oldGewinn, doubleFormatter.format(win));
                 break;
             }
             //Gewinn erhöhen
             case 2: {
-                double oldGewinn = gewinn;
+                double oldGewinn = win;
 
-                gewinn = betrag;
+                win = insert;
 
-                changes.firePropertyChange("GewinnErhöhen", oldGewinn, doubleFormatter.format(gewinn));
+                changes.firePropertyChange("GewinnErhöhen", oldGewinn, doubleFormatter.format(win));
                 break;
             }
             //Gewinn ins Spielerkonto übertragen
             case 3: {
-                double oldSpielerkonto = spielerkonto;
-                double oldGewinn = gewinn;
+                double oldSpielerkonto = playerAccountNumber;
+                double oldGewinn = win;
 
-                spielerkonto = spielerkonto + betrag;
-                gewinn = 0;
+                playerAccountNumber = playerAccountNumber + insert;
+                win = 0;
 
-                changes.firePropertyChange("SpielerkontoerhöhungDurchGewinn", oldSpielerkonto, spielerkonto);
-                changes.firePropertyChange("GewinnInsSpielerkonto", oldGewinn, gewinn);
+                changes.firePropertyChange("SpielerkontoerhöhungDurchGewinn", oldSpielerkonto, doubleFormatter.format(playerAccountNumber));
+                changes.firePropertyChange("GewinnInsSpielerkonto", oldGewinn, doubleFormatter.format(win));
                 break;
             }
             //Geld vom Spielerkonto zum Spielen nutzen
             case 4: {
-                double oldSpielerkonto = spielerkonto;
+                double oldSpielerkonto = playerAccountNumber;
 
-                spielerkonto = spielerkonto - betrag;
+                playerAccountNumber = playerAccountNumber - insert;
 
-                changes.firePropertyChange("SpielerkontogeldZumSpielenNutzen", oldSpielerkonto, doubleFormatter.format(spielerkonto));
+                changes.firePropertyChange("SpielerkontogeldZumSpielenNutzen", oldSpielerkonto, doubleFormatter.format(playerAccountNumber));
             }
             default:
                 break;
         }
     }
 
-    public void bonus() {
+    public void bonus() throws SQLException, ClassNotFoundException {
+        Random r = new Random();
+        int randomBonus = r.nextInt(10) + 1;
 
+        double oldBonus = 0;
+        double bonus = 0.1 * allRisks.get(riskCounter);
+
+        //A 10% chance of getting a bonus
+        if (randomBonus == 1) {
+            managingPlayMoney(bonus, 2);
+            changes.firePropertyChange("Bonus", oldBonus, bonus);
+        } else {
+            user.userStats(1, user.getUid(), betNumber, 0, betNumber);
+        }
     }
 
     public void gamble() {
-        double oldGewinn = gewinn;
         Random r = new Random();
         int randomNumber = r.nextInt(100) + 1;
 
+        double oldGewinn = win;
+
         if (randomNumber <= 50) {
-            gewinn = gewinn * 2;
-            changes.firePropertyChange("Gamble", oldGewinn, gewinn);
+            win = win * 2;
+            changes.firePropertyChange("Gamble", oldGewinn, win);
         } else {
-            gewinn = 0;
-            changes.firePropertyChange("Gamble", oldGewinn, gewinn);
+            win = 0;
+            changes.firePropertyChange("Gamble", oldGewinn, win);
         }
     }
 
     public void bet() {
-        //fügt beim ersten mal die Risikowerte in eine ArrayList hinzu
         if (allRisks.isEmpty()) {
             allRisks.add(1);
             allRisks.add(2);
@@ -162,34 +178,36 @@ public class SlotMachineModel {
             allRisks.add(20);
             allRisks.add(50);
         }
+
+        riskCounter++;
+
         if (riskCounter > 5) {
             riskCounter = 0;
         }
 
-        int oldRisk = risk;
-        risk = allRisks.get(riskCounter);
-        riskCounter++;
+        double oldRisk = risk;
+        risk = 0.1 * allRisks.get(riskCounter);
 
         changes.firePropertyChange("Bet", oldRisk, risk);
     }
 
     public void mystery() {
-        double oldGewinn = gewinn;
+        double oldGewinn = win;
 
         Random r = new Random();
         int randomNumber = r.nextInt(100) + 1;
 
         if (randomNumber <= 50) {
-            gewinn = 0;
+            win = 0;
         } else if (randomNumber <= 67 && randomNumber > 50) {
-            gewinn = gewinn * 2;
+            win = win * 2;
         } else if (randomNumber <= 84 && randomNumber > 67) {
-            gewinn = gewinn * 3;
+            win = win * 3;
         } else {
-            gewinn = gewinn * 5;
+            win = win * 5;
         }
 
-        changes.firePropertyChange("Mystery", oldGewinn, gewinn);
+        changes.firePropertyChange("Mystery", oldGewinn, win);
     }
 
     public void shuffle(int randomUpTo) {
@@ -202,6 +220,8 @@ public class SlotMachineModel {
 
         Symbol oldSymbol = symbol;
         symbol = allSymbols.get(cardNr);
+
+        depositChecker = false;
 
         //Die Werte in der ArrayList dienen zur Gewinnüberprüfung
         spinnerSelectedSymbol.add(allSymbols.get(cardNr));
@@ -222,6 +242,8 @@ public class SlotMachineModel {
         Symbol oldSymbol = symbol;
         symbol = allSymbols.get(cardNr);
 
+        depositChecker = false;
+
         //Die Werte in der ArrayList dienen zur Gewinnüberprüfung
         spinnerSelectedSymbol.add(allSymbols.get(cardNr));
 
@@ -232,20 +254,22 @@ public class SlotMachineModel {
         if (spinnerSelectedSymbol.size() >= 3) {
             spinnerSelectedSymbol.clear();
         }
-        
+
         Random r = new Random();
         cardNr = r.nextInt(randomUpTo);
 
         Symbol oldSymbol = symbol;
         symbol = allSymbols.get(cardNr);
 
+        depositChecker = false;
+
         //Die Werte in der ArrayList dienen zur Gewinnüberprüfung
         spinnerSelectedSymbol.add(allSymbols.get(cardNr));
-        
+
         changes.firePropertyChange("fruitStop", oldSymbol, symbol);
     }
 
-    public void cherryCollection(int randomUpTo) {
+    public void cherryCollect(int randomUpTo) {
         if (spinnerSelectedSymbol.size() >= 3) {
             spinnerSelectedSymbol.clear();
         }
@@ -256,13 +280,15 @@ public class SlotMachineModel {
         Symbol oldSymbol = symbol;
         symbol = allSymbols.get(cardNr);
 
+        depositChecker = false;
+
         //Die Werte in der ArrayList dienen zur Gewinnüberprüfung
         spinnerSelectedSymbol.add(allSymbols.get(cardNr));
 
         changes.firePropertyChange("cherryCollect", oldSymbol, symbol);
     }
 
-    public void holdAndStep(int removeNumber, int randomUpTo) {        
+    public void holdAndStep(int removeNumber, int randomUpTo) {
         spinnerSelectedSymbol.remove(removeNumber);
 
         Random r = new Random();
@@ -270,6 +296,8 @@ public class SlotMachineModel {
 
         Symbol oldSymbol = symbol;
         symbol = allSymbols.get(cardNr);
+
+        depositChecker = false;
 
         //Ein Wert wird in der vorher entfernten Position eingefügt
         spinnerSelectedSymbol.add(removeNumber, allSymbols.get(cardNr));
@@ -285,6 +313,8 @@ public class SlotMachineModel {
 
         Symbol oldSymbol = symbol;
         symbol = allSymbols.get(cardNr);
+
+        depositChecker = false;
 
         //Ein Wert wird in der vorher entfernten Position eingefügt
         spinnerSelectedSymbol.add(removeNumber, allSymbols.get(cardNr));
@@ -304,44 +334,58 @@ public class SlotMachineModel {
         changeSymbolOptions.put("SIEBEN", 7);
         changeSymbolOptions.put("BAR", 8);
         changeSymbolOptions.put("STERN", 9);
-        
+
         if (firstColumnChecker == true) {
             spinnerSelectedSymbol.clear();
             spinnerSelectedSymbol.add(0, allSymbols.get(changeSymbolOptions.get(addingSymbols[0])));
             spinnerSelectedSymbol.add(1, allSymbols.get(changeSymbolOptions.get(addingSymbols[1])));
             spinnerSelectedSymbol.add(2, allSymbols.get(changeSymbolOptions.get(addingSymbols[2])));
         }
-        
+
         spinnerSelectedSymbol.remove(removeNumber);
 
         //Ein Wert wird Manuel in der vorher entfernten Position eingefügt
         spinnerSelectedSymbol.add(removeNumber, allSymbols.get(changeSymbolOptions.get(strSymbol)));
     }
 
-    public void win(double einsatz) {
-        //Gewinnüberprüfung vom höchsten zum tiefsten
+    public void win(double bet) throws SQLException, ClassNotFoundException {
+        betNumber = bet;
+        //Winchecking from highest to lowest
         if (spinnerSelectedSymbol.get(0) == Symbol.BAR && spinnerSelectedSymbol.get(1) == Symbol.BAR && spinnerSelectedSymbol.get(2) == Symbol.BAR) {
-            spielgeldFuehren((einsatz * 400), 2);
+            managingPlayMoney((bet * 400), 2);
+            user.userStats(1, user.getUid(), bet, bet * 400, 0);
         } else if (spinnerSelectedSymbol.get(0) == Symbol.SIEBEN && spinnerSelectedSymbol.get(1) == Symbol.SIEBEN && spinnerSelectedSymbol.get(2) == Symbol.SIEBEN) {
-            spielgeldFuehren((einsatz * 50), 2);
+            managingPlayMoney((bet * 50), 2);
+            user.userStats(1, user.getUid(), bet, bet * 50, 0);
         } else if (spinnerSelectedSymbol.get(0) == Symbol.CHERRY && spinnerSelectedSymbol.get(1) == Symbol.CHERRY && spinnerSelectedSymbol.get(2) == Symbol.CHERRY) {
-            spielgeldFuehren((einsatz * 20), 2);
+            managingPlayMoney((bet * 20), 2);
+            user.userStats(1, user.getUid(), bet, bet * 20, 0);
         } else if (spinnerSelectedSymbol.get(0) == Symbol.GLOCKE && spinnerSelectedSymbol.get(1) == Symbol.GLOCKE && spinnerSelectedSymbol.get(2) == Symbol.GLOCKE) {
-            spielgeldFuehren((einsatz * 10), 2);
+            managingPlayMoney((bet * 10), 2);
+            user.userStats(1, user.getUid(), bet, bet * 10, 0);
         } else if (spinnerSelectedSymbol.get(0) == Symbol.MELONE && spinnerSelectedSymbol.get(1) == Symbol.MELONE && spinnerSelectedSymbol.get(2) == Symbol.MELONE) {
-            spielgeldFuehren((einsatz * 10), 2);
+            managingPlayMoney((bet * 10), 2);
+            user.userStats(1, user.getUid(), bet, bet * 10, 0);
         } else if (spinnerSelectedSymbol.get(0) == Symbol.ZITRONE && spinnerSelectedSymbol.get(1) == Symbol.ZITRONE && spinnerSelectedSymbol.get(2) == Symbol.ZITRONE) {
-            spielgeldFuehren((einsatz * 5), 2);
+            managingPlayMoney((bet * 5), 2);
+            user.userStats(1, user.getUid(), bet, bet * 5, 0);
         } else if (spinnerSelectedSymbol.get(0) == Symbol.ORANGE && spinnerSelectedSymbol.get(1) == Symbol.ORANGE && spinnerSelectedSymbol.get(2) == Symbol.ORANGE) {
-            spielgeldFuehren((einsatz * 5), 2);
+            managingPlayMoney((bet * 5), 2);
+            user.userStats(1, user.getUid(), bet, bet * 5, 0);
         } else if (spinnerSelectedSymbol.get(0) == Symbol.BANANE && spinnerSelectedSymbol.get(1) == Symbol.BANANE && spinnerSelectedSymbol.get(2) == Symbol.BANANE) {
-            spielgeldFuehren((einsatz * 2), 2);
+            managingPlayMoney((bet * 2), 2);
+            user.userStats(1, user.getUid(), bet, bet * 2, 0);
         } else if (spinnerSelectedSymbol.get(0) == Symbol.TRAUBE && spinnerSelectedSymbol.get(1) == Symbol.TRAUBE && spinnerSelectedSymbol.get(2) == Symbol.TRAUBE) {
-            spielgeldFuehren((einsatz * 2), 2);
+            managingPlayMoney((bet * 2), 2);
+            user.userStats(1, user.getUid(), bet, bet * 2, 0);
         } else if (spinnerSelectedSymbol.get(0) == Symbol.CHERRY && spinnerSelectedSymbol.get(1) == Symbol.CHERRY) {
-            spielgeldFuehren((einsatz * 4), 2);
+            managingPlayMoney((bet * 4), 2);
+            user.userStats(1, user.getUid(), bet, bet * 4, 0);
         } else if (spinnerSelectedSymbol.get(0) == Symbol.CHERRY || spinnerSelectedSymbol.get(2) == Symbol.CHERRY) {
-            spielgeldFuehren((einsatz * 2), 2);
+            managingPlayMoney((bet * 2), 2);
+            user.userStats(1, user.getUid(), bet, bet * 2, 0);
+        } else {
+            bonus();
         }
     }
 
@@ -349,7 +393,11 @@ public class SlotMachineModel {
         changes.addPropertyChangeListener(listener);
     }
 
-    public double getKontostand() {
-        return kontostand;
+    public double getBalanceNumber() {
+        return balanceNumber;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

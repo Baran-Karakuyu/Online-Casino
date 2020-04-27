@@ -61,7 +61,8 @@ public class FXMLViewBuyCreditsController implements Initializable {
     }
 
     @FXML
-    private void CancelButtonActionHandling(ActionEvent event) {
+    private void CancelButtonActionHandling(ActionEvent event) throws SQLException, ClassNotFoundException, IOException {
+        vm.openMenu();
     }
 
     public void setVm(ViewModelBuyCredits vm) {

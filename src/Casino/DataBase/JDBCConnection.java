@@ -32,7 +32,6 @@ public class JDBCConnection {
         }
         return instance;
     }
-    //Cool
 
     public Connection createConnection() throws SQLException, ClassNotFoundException {
         if (cn == null) {

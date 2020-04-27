@@ -24,4 +24,8 @@ public class ViewModelBuyCredits {
     public void buyCredits(int amount) throws SQLException, ClassNotFoundException, IOException {
         m.buyCredits(amount);
     }
+    
+    public void openMenu() throws SQLException, ClassNotFoundException, IOException {
+        m.openMenu();
+    }
 }

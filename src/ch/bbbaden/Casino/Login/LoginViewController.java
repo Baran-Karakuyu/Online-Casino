@@ -42,15 +42,13 @@ public class LoginViewController implements Initializable {
     private TextField txtUsername;
     @FXML
     private PasswordField txtPassword;
-
-    private String name = "";
-    private String email = "";
-    private String password = "";
-    private int id = 0;
-    Query sql = new Query();
-    ArrayList<User> benutzer = new ArrayList<>();
     @FXML
     private Button close;
+
+    private String email = "";
+    private String password = "";
+    private final Query sql = new Query();
+    private ArrayList<User> benutzer = new ArrayList<>();
     private Model mo;
     private MainApp mainApp;
 
@@ -123,7 +121,7 @@ public class LoginViewController implements Initializable {
                     if (benutzer.get(i).getPassword().equals(password)) {
                         System.out.println("Gut");
                         //mo.setUser(benutzer.get(i).getEmail(), benutzer.get(i).getPassword());
-                        mainApp.userData(email, password);
+                        mainApp.setUser(benutzer.get(i));
                         mainApp.startMenu();
                     } else {
 
@@ -138,14 +136,6 @@ public class LoginViewController implements Initializable {
     @FXML
     private void signUp(ActionEvent event) throws IOException, SQLException, ClassNotFoundException {
         mainApp.registerStart();
-
-    }
-
-    public void createUser(String name, String email, String password, int credits) throws SQLException, ClassNotFoundException {
-
-        sql.insertUsers(id, name, email, password, credits, "normal");
-        sql.updateUser();
-        sql.selectUsers();
 
     }
 
