@@ -698,6 +698,12 @@ public class ViewGameController implements Initializable {
             insuranceBtn.setTextFill(Color.FUCHSIA);
             insuranceActive = true;
             insuranceMoneyPut = versichernChoice.getValue();
+            int bank= Integer.parseInt(creditKonto.getText())-creditPut;
+            if(bank<insuranceMoneyPut){
+                insuranceActive = false;
+                insuranceBtn.setTextFill(Color.WHITE);
+                JOptionPane.showMessageDialog(null, "Not enough Money", "Fehler", JOptionPane.ERROR_MESSAGE);
+            }
         }
     }
 
