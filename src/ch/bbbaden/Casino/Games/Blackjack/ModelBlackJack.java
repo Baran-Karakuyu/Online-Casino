@@ -130,22 +130,10 @@ public class ModelBlackJack {
 
     private int newCard() {
         int cardTaken = 0;
-        boolean isnull = true;
-        do {
-            cardTaken = r.nextInt((52) + 1) + 1;
-            if (cardTaken != 0) {
-                isnull = false;
-            }
-        } while (isnull == true);
+        cardTaken = r.nextInt(52) + 1;
         for (Integer allCard : allCards) {
             if (allCard.equals(cardTaken)) {
-                isnull = true;
-                do {
-                    cardTaken = r.nextInt((52) + 1) + 1;
-                    if (cardTaken != 0) {
-                        isnull = false;
-                    }
-                } while (isnull == true);
+                cardTaken = r.nextInt(52) + 1;
             }
         }
         allCards.add(cardTaken);
