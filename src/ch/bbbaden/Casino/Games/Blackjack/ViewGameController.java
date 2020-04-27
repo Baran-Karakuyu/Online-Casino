@@ -28,6 +28,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
+import javax.swing.JOptionPane;
 
 /**
  * FXML Controller class
@@ -237,7 +238,7 @@ public class ViewGameController implements Initializable {
     @FXML
     private void hitAction(ActionEvent event) throws SQLException, ClassNotFoundException {
         if (put == false) {
-
+            JOptionPane.showMessageDialog(null, "Start the game first with Put", "Fehler", JOptionPane.ERROR_MESSAGE);
         } else {
             doubleBtn.setDisable(true);
             doubleBtn.opacityProperty().set(0.5);
@@ -320,7 +321,7 @@ public class ViewGameController implements Initializable {
     @FXML
     private void holdAction(ActionEvent event) throws SQLException, ClassNotFoundException {
         if (put == false) {
-
+            JOptionPane.showMessageDialog(null, "Start the game first with Put", "Fehler", JOptionPane.ERROR_MESSAGE);
         } else {
             doubleBtn.setDisable(true);
             holdBtn.setDisable(true);
@@ -402,7 +403,7 @@ public class ViewGameController implements Initializable {
     //Dealer Actions after Double or Bust
     private void holding() throws SQLException, ClassNotFoundException {
         if (put == false) {
-
+            JOptionPane.showMessageDialog(null, "Start the game first with Put", "Fehler", JOptionPane.ERROR_MESSAGE);
         } else {
             doubleBtn.setDisable(true);
             holdBtn.setDisable(true);
@@ -496,7 +497,7 @@ public class ViewGameController implements Initializable {
     @FXML
     private void doubledownAction(ActionEvent event) throws SQLException, ClassNotFoundException {
         if (put == false) {
-
+            JOptionPane.showMessageDialog(null, "Start the game first with Put", "Fehler", JOptionPane.ERROR_MESSAGE);
         } else {
             summep = 0;
             for (int i = 0; i < playerCards.size(); i++) {
@@ -541,7 +542,7 @@ public class ViewGameController implements Initializable {
         insuranceBtn.opacityProperty().set(0.0);
         versichernChoice.opacityProperty().set(0.0);
         if (Integer.parseInt(creditKonto.getText()) <= 0) {
-            endLbl.setText("BROKE ASS");
+            JOptionPane.showMessageDialog(null, "Bet Money/Chips first", "Fehler", JOptionPane.ERROR_MESSAGE);
         } else {
             if (creditPut == 0) {
                 System.out.println("Setzte Geld");
@@ -692,7 +693,7 @@ public class ViewGameController implements Initializable {
     @FXML
     private void insurance(ActionEvent event) {
         if (versichernChoice.getValue() == 0) {
-
+            JOptionPane.showMessageDialog(null, "Select amount", "Fehler", JOptionPane.ERROR_MESSAGE);
         } else {
             insuranceBtn.setTextFill(Color.FUCHSIA);
             insuranceActive = true;
@@ -724,7 +725,7 @@ public class ViewGameController implements Initializable {
     @FXML
     private void reset(ActionEvent event) throws IOException, SQLException, ClassNotFoundException {
         if (checkPlayer == true) {
-
+            
         } else {
             creditHere -= creditPut;
             viewModel.setNewCredit(creditHere);
@@ -813,7 +814,7 @@ public class ViewGameController implements Initializable {
             int credit = Integer.parseInt(creditKonto.getText());
             int sum = creditPut + 10;
             if (credit <= 0 || credit < 10 || credit < sum) {
-                System.out.println("You need Money");
+               JOptionPane.showMessageDialog(null, "You need Money", "Fehler", JOptionPane.ERROR_MESSAGE);
             } else {
                 creditPut += 10;
                 chipsvalue.setText(Integer.toString(creditPut));
@@ -888,7 +889,7 @@ public class ViewGameController implements Initializable {
             int credit = Integer.parseInt(creditKonto.getText());
             int sum = creditPut + 50;
             if (credit <= 0 || credit < 50 || credit < sum) {
-                System.out.println("You need Money");
+               JOptionPane.showMessageDialog(null, "You need Money", "Fehler", JOptionPane.ERROR_MESSAGE);
             } else {
                 creditPut += 50;
                 chipsvalue.setText(Integer.toString(creditPut));
@@ -962,7 +963,7 @@ public class ViewGameController implements Initializable {
             int credit = Integer.parseInt(creditKonto.getText());
             int sum = creditPut + 100;
             if (credit <= 0 || credit < 100 || credit < sum) {
-                System.out.println("You need Money");
+                JOptionPane.showMessageDialog(null, "You need Money", "Fehler", JOptionPane.ERROR_MESSAGE);
             } else {
                 creditPut += 100;
                 chipsvalue.setText(Integer.toString(creditPut));
@@ -1018,7 +1019,7 @@ public class ViewGameController implements Initializable {
             int credit = Integer.parseInt(creditKonto.getText());
             int sum = creditPut + 250;
             if (credit <= 0 || credit < 250 || credit < sum) {
-                System.out.println("You need Money");
+               JOptionPane.showMessageDialog(null, "You need Money", "Fehler", JOptionPane.ERROR_MESSAGE);
             } else {
                 creditPut += 250;
                 chipsvalue.setText(Integer.toString(creditPut));
@@ -1074,7 +1075,7 @@ public class ViewGameController implements Initializable {
             int credit = Integer.parseInt(creditKonto.getText());
             int sum = creditPut + 1000;
             if (credit <= 0 || credit < 1000 || credit < sum) {
-                System.out.println("You need Money");
+                JOptionPane.showMessageDialog(null, "You need Money", "Fehler", JOptionPane.ERROR_MESSAGE);
             } else {
                 creditPut += 1000;
                 chipsvalue.setText(Integer.toString(creditPut));
