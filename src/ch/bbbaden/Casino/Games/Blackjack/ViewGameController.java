@@ -72,18 +72,18 @@ public class ViewGameController implements Initializable {
     private ImageView card5Groupier;
 
     //Card Ids
-    IntegerProperty cardP = new SimpleIntegerProperty();
-    IntegerProperty card2P = new SimpleIntegerProperty();
-    IntegerProperty card3P = new SimpleIntegerProperty();
-    IntegerProperty card4P = new SimpleIntegerProperty();
-    IntegerProperty card5P = new SimpleIntegerProperty();
-    IntegerProperty cardDouble = new SimpleIntegerProperty();
+    private IntegerProperty cardP = new SimpleIntegerProperty();
+    private IntegerProperty card2P = new SimpleIntegerProperty();
+    private IntegerProperty card3P = new SimpleIntegerProperty();
+    private IntegerProperty card4P = new SimpleIntegerProperty();
+    private IntegerProperty card5P = new SimpleIntegerProperty();
+    private IntegerProperty cardDouble = new SimpleIntegerProperty();
 
-    IntegerProperty cardG = new SimpleIntegerProperty();
-    IntegerProperty card2G = new SimpleIntegerProperty();
-    IntegerProperty card3G = new SimpleIntegerProperty();
-    IntegerProperty card4G = new SimpleIntegerProperty();
-    IntegerProperty card5G = new SimpleIntegerProperty();
+    private IntegerProperty cardG = new SimpleIntegerProperty();
+    private IntegerProperty card2G = new SimpleIntegerProperty();
+    private IntegerProperty card3G = new SimpleIntegerProperty();
+    private IntegerProperty card4G = new SimpleIntegerProperty();
+    private IntegerProperty card5G = new SimpleIntegerProperty();
 
     //Label and ChoiceBox
     @FXML
@@ -93,13 +93,13 @@ public class ViewGameController implements Initializable {
     private ChoiceBox<Integer> chipsSelection;
     //Variables
     private int cardsTaken = 0;
-    ArrayList<Cards> playerCards = new ArrayList<>();
-    ArrayList<Cards> dealerCards = new ArrayList<>();
+    private ArrayList<Cards> playerCards = new ArrayList<>();
+    private ArrayList<Cards> dealerCards = new ArrayList<>();
     private int cardshit = 0;
     private int cardsDealer = 1;
-    int summep;
-    int summeg;
-    int playTimes = 0;
+    private int summep;
+    private int summeg;
+    private int playTimes = 0;
 
     @FXML
     private ImageView doubleDownCard;
@@ -141,7 +141,6 @@ public class ViewGameController implements Initializable {
     private ImageView chips11;
     @FXML
     private ImageView chips12;
-    int chip = 0;
     @FXML
     private ImageView chips13;
     @FXML
@@ -158,18 +157,17 @@ public class ViewGameController implements Initializable {
     @FXML
     private Label creditKonto;
 
-    int creditGesetzt;
-    int creditGoV;
-    int creditHere = 0;
-
+    private int creditGesetzt;
+    private int creditHere = 0;
+    private int chip = 0;
     @FXML
     private Label endLbl;
 
-    boolean doub = false;
-    int versichern = 0;
-    boolean versicherV = false;
-    int versicherMoneyPut = 0;
-    int zwischensum = 0;
+    private boolean doub = false;
+    private int versichern = 0;
+    private boolean versicherV = false;
+    private int versicherMoneyPut = 0;
+    private int zwischensum = 0;
     @FXML
     private ImageView cardHide;
     @FXML
@@ -178,10 +176,10 @@ public class ViewGameController implements Initializable {
     private Button versichernBtn;
     @FXML
     private ChoiceBox<Integer> versichernChoice;
-    boolean checkPlayer = false;
-    boolean blackjack = false;
-    boolean put = false;
-    boolean chipsActive = true;
+    private boolean checkPlayer = false;
+    private boolean blackjack = false;
+    private boolean put = false;
+    private boolean chipsActive = true;
 
     public void setViewModel(ViewModelBlackJack viewModel) {
         this.viewModel = viewModel;
@@ -794,13 +792,11 @@ public class ViewGameController implements Initializable {
         playerCards.clear();
         checkPlayer = false;
         dealerCards.clear();
-        versichern = 0;
         doub = false;
         versicherV = false;
         versicherMoneyPut = 0;
         zwischensum = 0;
         creditGesetzt = 0;
-        creditGoV = 0;
         chip = 0;
         chipsvalue.setText(null);
         cardshit = 0;
