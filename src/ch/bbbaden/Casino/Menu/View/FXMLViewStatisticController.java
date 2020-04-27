@@ -5,10 +5,13 @@
  */
 package ch.bbbaden.Casino.Menu.View;
 
+import Casino.DataBase.Query;
+import Casino.DataBase.User;
 import ch.bbbaden.Casino.Menu.ViewModel.ViewModelStatistic;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -37,7 +40,9 @@ public class FXMLViewStatisticController implements Initializable {
     @FXML
     private Button btnCancel;
 
+    private Query sql = new Query();
     private ViewModelStatistic viewModel;
+    private ArrayList<User> allUser = new ArrayList<>();
     
     /**
      * Initializes the controller class.
@@ -50,6 +55,14 @@ public class FXMLViewStatisticController implements Initializable {
         cbGames.getItems().add("Roulette");
         cbGames.getItems().add("Bingo");
         cbGames.getItems().add("Yatzy");
+        
+        allUser = sql.getUsers();
+        
+        for (User user : allUser) {
+            cbPlayers.getItems().add(user.getName());
+        }
+        
+        //lvPlayers.getItems().add(sql.getUserStatistics(cbPlayers.getValue()));
     }    
 
     @FXML

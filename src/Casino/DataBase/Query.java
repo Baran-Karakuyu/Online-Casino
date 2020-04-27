@@ -43,7 +43,7 @@ public class Query {
             password = rs.getString(4);
             credits = rs.getInt(5);
             role = rs.getString(6);
-            
+
             users.add(new User(id, name, email, password, credits, role));
         }
 
@@ -52,9 +52,9 @@ public class Query {
     }
 
     public void selectUsers() throws SQLException, ClassNotFoundException {
-
         Connection conn = jdbc.createConnection();
         Statement st = conn.createStatement();
+
         ResultSet rs = st.executeQuery("Select * from users;");
         while (rs.next()) {
             for (int i = 1; i < 7; i++) {
@@ -103,6 +103,28 @@ public class Query {
         jdbc.closeConnection();
     }
 
+    public void getUserStatistics(String user) throws ClassNotFoundException, SQLException {
+        Connection conn = jdbc.createConnection();
+        Statement st = conn.createStatement();
+        
+        ArrayList<String> output = new ArrayList<>();
+        String queryStatistic = "Select game.name, statistic.bet, statistic.win, statistic.lost from statistic where ";
+        ResultSet rs = st.executeQuery(queryStatistic);
+        
+        int columns = rs.getMetaData().getColumnCount();
+        while (rs.next()) {
+            String input = "";
+            for (int i = 1; i < columns; i++) {
+                input += String.format("%-15s", rs.getString(i));
+            }
+            output.add(input);
+        }
+        rs.close();
+        st.close();
+        conn.close();
+        jdbc.closeConnection();
+    }
+
     public void updateCredit(int credit, String name) throws SQLException, ClassNotFoundException {
         for (int i = 0; i < users.size(); i++) {
             if (users.get(i).getName().equals(name)) {
@@ -140,20 +162,20 @@ public class Query {
 
         return credits;
     }
-    
+
     public int getUserId(String name) throws SQLException, ClassNotFoundException {
         Connection conn = jdbc.createConnection();
         Statement st = conn.createStatement();
         int id = 0;
-        
+
         ResultSet rs = st.executeQuery("Select * from users where name = '" + name + "';");
         System.out.println(rs.getInt(0));
         System.out.println(rs.getInt(1));
         id = rs.getInt(1);
-        
+
         conn.close();
         jdbc.closeConnection();
-    
+
         return id;
     }
 
