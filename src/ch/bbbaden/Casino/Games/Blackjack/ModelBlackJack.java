@@ -116,7 +116,6 @@ public class ModelBlackJack {
 
     }
 
-
     public void setMainApp(MainApp mainApp) {
         this.mainApp = mainApp;
     }
@@ -131,6 +130,12 @@ public class ModelBlackJack {
         for (Integer allCard : allCards) {
             if (allCard.equals(cardTaken)) {
                 cardTaken = r.nextInt(52) + 1;
+                if (allCard.equals(cardTaken)) {
+                    cardTaken = r.nextInt(52) + 1;
+                    if (allCard.equals(cardTaken)) {
+                        cardTaken = r.nextInt(52) + 1;
+                    }
+                }
             }
         }
         allCards.add(cardTaken);
