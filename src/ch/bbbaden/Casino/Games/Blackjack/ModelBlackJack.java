@@ -29,11 +29,10 @@ public class ModelBlackJack {
     private String name;
     private int dbCredit = 0;
     private Random r = new Random();
-    private User player;
     private ArrayList<Integer> allCards = new ArrayList<>();
 
     public void play() throws SQLException, ClassNotFoundException {
-        if (sql.getCreditUser(player.getName()) <= 0) {
+        if (sql.getCreditUser(name) <= 0) {
             System.out.println("YOU BROKE ASS");
         } else {
             allCards.clear();
@@ -90,20 +89,20 @@ public class ModelBlackJack {
     public void userDataTransfer() throws SQLException, ClassNotFoundException {
         String oldcredit = "";
         sql.updateUser();
-        dbCredit = sql.getCreditUser(player.getName());
+        dbCredit = sql.getCreditUser(name);
         changes.firePropertyChange("credit", oldcredit, Integer.toString(dbCredit));
     }
 
     //Sets the new Credit 
     public void setNewCredit(int credit) throws SQLException, ClassNotFoundException {
         String oldcredit = "";
-        sql.updateCredit(credit, player.getName());
+        sql.updateCredit(credit, name);
         changes.firePropertyChange("credit", oldcredit, credit);
     }
 
     public void insurance(int credit, int sum) throws SQLException, ClassNotFoundException {
         int credits = 0;
-        credits = sql.getCreditUser(player.getName());
+        credits = sql.getCreditUser(name);
         if (sum == 21) {
             credits += credit;
         } else {
@@ -117,9 +116,9 @@ public class ModelBlackJack {
 
     }
 
-//    public void setPlayer(String name) {
-//        this.name = name;
-//    }
+    public void setPlayer(String name) {
+        this.name = name;
+    }
 
     public void setMainApp(MainApp mainApp) {
         this.mainApp = mainApp;
@@ -139,9 +138,5 @@ public class ModelBlackJack {
         }
         allCards.add(cardTaken);
         return cardTaken;
-    }
-
-    public void setUser(User user) {
-        player = user;
     }
 }

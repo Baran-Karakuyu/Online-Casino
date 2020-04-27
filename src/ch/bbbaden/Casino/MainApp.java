@@ -119,7 +119,7 @@ public class MainApp extends Application {
         final ViewModelBlackJack viewModel = new ViewModelBlackJack(model);
         view.setViewModel(viewModel);
         model.addPropertyChangeListener(viewModel);
-        model.setUser(user);
+        //model.setUser(user);
 
         view.bind();
 
