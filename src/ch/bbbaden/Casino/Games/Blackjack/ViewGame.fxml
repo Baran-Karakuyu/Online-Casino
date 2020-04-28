@@ -12,7 +12,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="1030.0" prefWidth="1920.0" styleClass="menu" stylesheets="@../../../../../CasinoStyleSheet/MenuCSS.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.bbbaden.Casino.Games.Blackjack.ViewGameController">
+<AnchorPane id="AnchorPane" prefHeight="1030.0" prefWidth="1920.0" styleClass="menu" stylesheets="@../../../../../CasinoStyleSheet/BlackJack.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.bbbaden.Casino.Games.Blackjack.ViewGameController">
      <children>
       <Ellipse fill="#511312" layoutX="975.0" layoutY="202.0" radiusX="877.0" radiusY="683.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="35.0" />
       <Ellipse fill="#942626" layoutX="967.0" layoutY="181.0" radiusX="789.0" radiusY="586.0" stroke="#cc9c0a" strokeType="INSIDE" strokeWidth="2.0" />
@@ -53,33 +53,33 @@
             <Font name="Harlow Solid Italic" size="17.0" />
          </font>
       </Label>
-      <Button fx:id="hitBtn" layoutX="37.0" layoutY="803.0" mnemonicParsing="false" onAction="#hitAction" prefHeight="100.0" prefWidth="157.0" style="-fx-background-color: transparent;" text="Hit" textFill="WHITE" AnchorPane.bottomAnchor="140.0" AnchorPane.leftAnchor="0.0">
+      <Button fx:id="hitBtn" layoutX="20.0" layoutY="761.0" mnemonicParsing="false" onAction="#hitAction" prefHeight="100.0" prefWidth="233.0" style="-fx-background-color: transparent;" text="Hit" textFill="WHITE" AnchorPane.bottomAnchor="169.0" AnchorPane.leftAnchor="0.0">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
          <font>
-            <Font name="Harlow Solid Italic" size="35.0" />
+            <Font name="Harlow Solid Italic" size="42.0" />
          </font></Button>
-      <Button fx:id="holdBtn" layoutX="32.0" layoutY="685.0" mnemonicParsing="false" onAction="#holdAction" prefHeight="100.0" prefWidth="150.0" style="-fx-background-color: transparent;" text="Stand" textFill="WHITE" AnchorPane.bottomAnchor="260.0" AnchorPane.leftAnchor="0.0">
+      <Button fx:id="holdBtn" layoutX="20.0" layoutY="685.0" mnemonicParsing="false" onAction="#holdAction" prefHeight="100.0" prefWidth="233.0" style="-fx-background-color: transparent;" text="Stand" textFill="WHITE" AnchorPane.bottomAnchor="265.0" AnchorPane.leftAnchor="10.0">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
          <font>
-            <Font name="Harlow Solid Italic" size="35.0" />
+            <Font name="Harlow Solid Italic" size="42.0" />
          </font></Button>
-      <Button fx:id="doubleBtn" layoutX="32.0" layoutY="918.0" mnemonicParsing="false" onAction="#doubledownAction" prefHeight="86.0" prefWidth="293.0" style="-fx-background-color: transparent;" text="Double Down" textFill="WHITE" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="0.0">
+      <Button fx:id="doubleBtn" layoutX="20.0" layoutY="918.0" mnemonicParsing="false" onAction="#doubledownAction" prefHeight="86.0" prefWidth="366.0" style="-fx-background-color: transparent;" text="Double Down" textFill="WHITE" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="0.0">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
          <font>
-            <Font name="Harlow Solid Italic" size="35.0" />
+            <Font name="Harlow Solid Italic" size="42.0" />
          </font></Button>
       <Button fx:id="putBtn" layoutX="1830.0" layoutY="393.0" mnemonicParsing="false" onAction="#putAction" style="-fx-background-color: transparent;" text="Put" textFill="WHITE" AnchorPane.bottomAnchor="578.0" AnchorPane.rightAnchor="0.0">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
          <font>
-            <Font name="Harlow Solid Italic" size="28.0" />
+            <Font name="Harlow Solid Italic" size="41.0" />
          </font></Button>
       <Button fx:id="backBtn" layoutX="14.0" layoutY="19.0" mnemonicParsing="false" onAction="#backToMenu" prefHeight="50.0" prefWidth="121.0" style="-fx-background-color: transparent;" text="Back" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <font>
@@ -189,7 +189,7 @@
             <Font size="120.0" />
          </font>
       </Label>
-      <Button fx:id="resetBtn" layoutX="28.0" layoutY="572.0" mnemonicParsing="false" onAction="#reset" style="-fx-background-color: transparent;" text="Play again" textFill="WHITE" AnchorPane.bottomAnchor="400.0" AnchorPane.leftAnchor="0.0">
+      <Button fx:id="resetBtn" layoutX="20.0" layoutY="572.0" mnemonicParsing="false" onAction="#reset" prefHeight="100.0" prefWidth="233.0" style="-fx-background-color: transparent;" text="Play again" textFill="WHITE" AnchorPane.bottomAnchor="389.0" AnchorPane.leftAnchor="0.0">
          <font>
             <Font name="Harlow Solid Italic" size="35.0" />
          </font>
@@ -199,7 +199,7 @@
       </Button>
       <Button fx:id="insuranceBtn" layoutX="401.0" layoutY="810.0" mnemonicParsing="false" onAction="#insurance" style="-fx-background-color: transparent;" text="Insurance" textFill="WHITE" AnchorPane.bottomAnchor="140.0">
          <font>
-            <Font name="Harlow Solid Italic" size="35.0" />
+            <Font name="Harlow Solid Italic" size="36.0" />
          </font>
       </Button>
       <ChoiceBox fx:id="insuranceChoice" layoutX="423.0" layoutY="954.0" prefWidth="150.0" AnchorPane.bottomAnchor="55.0" />
