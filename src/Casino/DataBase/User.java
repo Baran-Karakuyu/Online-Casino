@@ -17,7 +17,7 @@ public class User {
     private String name;
     private String email;
     private String password;
-    private int credit;
+    private double credit;
     private String role;
     private final Query sql = new Query();
 
@@ -50,12 +50,13 @@ public class User {
         return password;
     }
 
-    public int getCredit() {
+    public double getCredit() {
         return credit;
     }
 
-    public void setCredit(int credit) {
-        this.credit += credit;
+    public void setCredit(double credit) throws SQLException, ClassNotFoundException {
+        this.credit = credit;
+        sql.updateCredit(credit, name);
     }
 
     public void setUid(int uid) {

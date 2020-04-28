@@ -27,7 +27,7 @@ public class ModelBlackJack {
     private ArrayList<User> users = new ArrayList<>();
     private int card = 0;
     private User player;
-    private int dbCredit = 0;
+    private Double dbCredit = 0.0;
     private Random r = new Random();
     private ArrayList<Integer> allCards = new ArrayList<>();
 
@@ -90,18 +90,18 @@ public class ModelBlackJack {
         String oldcredit = "";
         sql.updateUser();
         dbCredit = sql.getCreditUser(player.getName());
-        changes.firePropertyChange("credit", oldcredit, Integer.toString(dbCredit));
+        changes.firePropertyChange("credit", oldcredit, Double.toString(dbCredit));
     }
 
     //Sets the new Credit 
-    public void setNewCredit(int credit) throws SQLException, ClassNotFoundException {
+    public void setNewCredit(double credit) throws SQLException, ClassNotFoundException {
         String oldcredit = "";
         sql.updateCredit(credit, player.getName());
         changes.firePropertyChange("credit", oldcredit, credit);
     }
 
     public void insurance(int credit, int sum) throws SQLException, ClassNotFoundException {
-        int credits = 0;
+        double credits = 0;
         credits = sql.getCreditUser(player.getName());
         if (sum == 21) {
             credits += credit;

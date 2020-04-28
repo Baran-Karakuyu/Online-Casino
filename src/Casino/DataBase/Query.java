@@ -105,9 +105,8 @@ public class Query {
 
     public ArrayList<String> getUserStatistics(String name) throws ClassNotFoundException, SQLException {
         ArrayList<String> output = new ArrayList<>();
-        //String queryStatistic = String.format("Select games.name, statistic.bet, statistic.win, lost from statistic, games, users where users.name = '%s' && users.usid = statistic.usid;", name);
-        String queryStatistic = String.format("Select bet, win, lose from statistic;", name);
-        System.out.println(queryStatistic);
+        String queryStatistic = String.format("Select games.name, statistic.bet, statistic.win, statistic.lost from statistic, games, users where users.name = '%s' && users.usid = statistic.usid;", name);
+
         Connection conn = jdbc.createConnection();
         Statement st = conn.createStatement();
 
@@ -116,7 +115,7 @@ public class Query {
         int columns = rs.getMetaData().getColumnCount();
         while (rs.next()) {
             String input = "";
-            for (int i = 1; i < columns; i++) {
+            for (int i = 0; i < columns; i++) {
                 input += String.format("%-15s", rs.getString(i));
             }
             output.add(input);
@@ -130,7 +129,7 @@ public class Query {
         return output;
     }
 
-    public void updateCredit(int credit, String name) throws SQLException, ClassNotFoundException {
+    public void updateCredit(double credit, String name) throws SQLException, ClassNotFoundException {
         for (int i = 0; i < users.size(); i++) {
             if (users.get(i).getName().equals(name)) {
                 users.get(i).setCredit(credit);
@@ -151,7 +150,7 @@ public class Query {
         jdbc.closeConnection();
     }
 
-    public int getCreditUser(String name) throws SQLException, ClassNotFoundException {
+    public double getCreditUser(String name) throws SQLException, ClassNotFoundException {
         int credits = 0;
 
         Connection conn = jdbc.createConnection();
@@ -190,7 +189,7 @@ public class Query {
 
     public ArrayList<String> getGameStatistics(String game) throws SQLException, ClassNotFoundException {
         ArrayList<String> output = new ArrayList<>();
-        String queryStatistic = String.format("Select users.name, games.name, statistic.bet, statistic.win, lose from statistic, games, users where games.name = '%s' && games.gid = statistic.gid;", game);
+        String queryStatistic = String.format("Select users.name, games.name, statistic.bet, statistic.win, lost from statistic, games, users where games.name = '%s' && users.usid = statistic.usid;", game);
 
         Connection conn = jdbc.createConnection();
         Statement st = conn.createStatement();
@@ -200,7 +199,7 @@ public class Query {
         int columns = rs.getMetaData().getColumnCount();
         while (rs.next()) {
             String input = "";
-            for (int i = 1; i < columns; i++) {
+            for (int i = 0; i < columns; i++) {
                 input += String.format("%-15s", rs.getString(i));
             }
             output.add(input);

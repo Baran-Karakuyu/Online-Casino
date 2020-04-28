@@ -19,8 +19,7 @@ import java.util.Random;
  * @author Baran
  */
 public class SlotMachineModel {
-
-    private double balanceNumber = 500;
+    
     private double playerAccountNumber = 0;
     private double win = 0;
     private int riskCounter = -1;
@@ -35,6 +34,7 @@ public class SlotMachineModel {
     private User user;
     private double betNumber;
     protected final PropertyChangeSupport changes = new PropertyChangeSupport(this);
+    private double balanceNumber;
 
     public void spinSpinners() throws InterruptedException {
         if (allSymbols.isEmpty()) {
@@ -151,6 +151,7 @@ public class SlotMachineModel {
             changes.firePropertyChange("Bonus", oldBonus, bonus);
         } else {
             user.userStats(1, user.getUid(), betNumber, 0, betNumber);
+            user.setCredit(balanceNumber - betNumber);
         }
     }
 
@@ -354,36 +355,47 @@ public class SlotMachineModel {
         if (spinnerSelectedSymbol.get(0) == Symbol.BAR && spinnerSelectedSymbol.get(1) == Symbol.BAR && spinnerSelectedSymbol.get(2) == Symbol.BAR) {
             managingPlayMoney((bet * 400), 2);
             user.userStats(1, user.getUid(), bet, bet * 400, 0);
+            user.setCredit(balanceNumber + bet * 400);
         } else if (spinnerSelectedSymbol.get(0) == Symbol.SIEBEN && spinnerSelectedSymbol.get(1) == Symbol.SIEBEN && spinnerSelectedSymbol.get(2) == Symbol.SIEBEN) {
             managingPlayMoney((bet * 50), 2);
             user.userStats(1, user.getUid(), bet, bet * 50, 0);
+            user.setCredit(balanceNumber + bet * 50);
         } else if (spinnerSelectedSymbol.get(0) == Symbol.CHERRY && spinnerSelectedSymbol.get(1) == Symbol.CHERRY && spinnerSelectedSymbol.get(2) == Symbol.CHERRY) {
             managingPlayMoney((bet * 20), 2);
             user.userStats(1, user.getUid(), bet, bet * 20, 0);
+            user.setCredit(balanceNumber + bet * 20);
         } else if (spinnerSelectedSymbol.get(0) == Symbol.GLOCKE && spinnerSelectedSymbol.get(1) == Symbol.GLOCKE && spinnerSelectedSymbol.get(2) == Symbol.GLOCKE) {
             managingPlayMoney((bet * 10), 2);
             user.userStats(1, user.getUid(), bet, bet * 10, 0);
+            user.setCredit(balanceNumber + bet * 10);
         } else if (spinnerSelectedSymbol.get(0) == Symbol.MELONE && spinnerSelectedSymbol.get(1) == Symbol.MELONE && spinnerSelectedSymbol.get(2) == Symbol.MELONE) {
             managingPlayMoney((bet * 10), 2);
             user.userStats(1, user.getUid(), bet, bet * 10, 0);
+            user.setCredit(balanceNumber + bet * 10);
         } else if (spinnerSelectedSymbol.get(0) == Symbol.ZITRONE && spinnerSelectedSymbol.get(1) == Symbol.ZITRONE && spinnerSelectedSymbol.get(2) == Symbol.ZITRONE) {
             managingPlayMoney((bet * 5), 2);
             user.userStats(1, user.getUid(), bet, bet * 5, 0);
+            user.setCredit(balanceNumber + bet * 5);
         } else if (spinnerSelectedSymbol.get(0) == Symbol.ORANGE && spinnerSelectedSymbol.get(1) == Symbol.ORANGE && spinnerSelectedSymbol.get(2) == Symbol.ORANGE) {
             managingPlayMoney((bet * 5), 2);
             user.userStats(1, user.getUid(), bet, bet * 5, 0);
+            user.setCredit(balanceNumber + bet * 5);
         } else if (spinnerSelectedSymbol.get(0) == Symbol.BANANE && spinnerSelectedSymbol.get(1) == Symbol.BANANE && spinnerSelectedSymbol.get(2) == Symbol.BANANE) {
             managingPlayMoney((bet * 2), 2);
             user.userStats(1, user.getUid(), bet, bet * 2, 0);
+            user.setCredit(balanceNumber + bet * 2);
         } else if (spinnerSelectedSymbol.get(0) == Symbol.TRAUBE && spinnerSelectedSymbol.get(1) == Symbol.TRAUBE && spinnerSelectedSymbol.get(2) == Symbol.TRAUBE) {
             managingPlayMoney((bet * 2), 2);
             user.userStats(1, user.getUid(), bet, bet * 2, 0);
+            user.setCredit(balanceNumber + bet * 2);
         } else if (spinnerSelectedSymbol.get(0) == Symbol.CHERRY && spinnerSelectedSymbol.get(1) == Symbol.CHERRY) {
             managingPlayMoney((bet * 4), 2);
             user.userStats(1, user.getUid(), bet, bet * 4, 0);
+            user.setCredit(balanceNumber + bet * 4);
         } else if (spinnerSelectedSymbol.get(0) == Symbol.CHERRY || spinnerSelectedSymbol.get(2) == Symbol.CHERRY) {
             managingPlayMoney((bet * 2), 2);
             user.userStats(1, user.getUid(), bet, bet * 2, 0);
+            user.setCredit(balanceNumber + bet * 2);
         } else {
             bonus();
         }
@@ -399,5 +411,6 @@ public class SlotMachineModel {
 
     public void setUser(User user) {
         this.user = user;
+        balanceNumber = user.getCredit();
     }
 }

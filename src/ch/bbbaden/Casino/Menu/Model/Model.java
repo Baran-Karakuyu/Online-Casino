@@ -68,13 +68,13 @@ public class Model {
 
     public void setUser(User user) throws SQLException, ClassNotFoundException {
         String name = "";
-        int credit = 0;
+        double credit = 0;
         String role = "";
 
         sql.updateUser();
         this.user = user;
         
-        int oldCredits = credit;
+        double oldCredits = credit;
         String oldName = name;
         String oldRole = role;
 

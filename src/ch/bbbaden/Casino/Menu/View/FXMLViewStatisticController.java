@@ -73,24 +73,6 @@ public class FXMLViewStatisticController implements Initializable {
         //adding all Users to combobox and getting all stats
         for (User user : allUser) {
             cbPlayers.getItems().add(user.getName());
-            try {
-                userRecords.addAll(sql.getUserStatistics(user.getName()));
-            } catch (SQLException ex) {
-                Logger.getLogger(FXMLViewStatisticController.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(FXMLViewStatisticController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-
-        //getting all stats from games
-        for (String game : cbGames.getItems()) {
-            try {
-                gameRecords.addAll(sql.getGameStatistics(game));
-            } catch (SQLException ex) {
-                Logger.getLogger(FXMLViewStatisticController.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(FXMLViewStatisticController.class.getName()).log(Level.SEVERE, null, ex);
-            }
         }
     }
 
@@ -109,14 +91,14 @@ public class FXMLViewStatisticController implements Initializable {
     @FXML
     private void PlayerComboboxActionHandling(ActionEvent event) throws ClassNotFoundException, SQLException {
         lvPlayers.getItems().clear();
-        
+
         //creating topbar
         userRecords = sql.getUserStatistics(cbPlayers.getValue());
         String topList = String.format("%-18s", "Spiel");
         topList += String.format("%-18s", "Bet");
         topList += String.format("%-18s", "Win");
         topList += String.format("%-18s", "Lost");
-        
+
         //adding topbar
         lvPlayers.getItems().add(topList);
         lvPlayers.getItems().addAll(userRecords);
@@ -125,7 +107,7 @@ public class FXMLViewStatisticController implements Initializable {
     @FXML
     private void GameComboboxActionHandling(ActionEvent event) throws ClassNotFoundException, SQLException {
         lvGames.getItems().clear();
-        
+
         //creating topbar
         gameRecords = sql.getGameStatistics(cbGames.getValue());
         String topList = String.format("%-18s", "Spieler");
@@ -133,7 +115,7 @@ public class FXMLViewStatisticController implements Initializable {
         topList += String.format("%-18s", "Bet");
         topList += String.format("%-18s", "Win");
         topList += String.format("%-18s", "Lost");
-        
+
         //adding topbar
         lvGames.getItems().add(topList);
         lvGames.getItems().addAll(gameRecords);
