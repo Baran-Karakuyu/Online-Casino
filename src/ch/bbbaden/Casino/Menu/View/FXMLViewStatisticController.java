@@ -45,8 +45,8 @@ public class FXMLViewStatisticController implements Initializable {
     private Query sql = new Query();
     private ViewModelStatistic viewModel;
     private ArrayList<User> allUser = new ArrayList<>();
-    private final ArrayList<String> userRecords = new ArrayList<>();
-    private final ArrayList<String> gameRecords = new ArrayList<>();
+    private ArrayList<String> userRecords = new ArrayList<>();
+    private ArrayList<String> gameRecords = new ArrayList<>();
 
     /**
      * Initializes the controller class.
@@ -70,19 +70,27 @@ public class FXMLViewStatisticController implements Initializable {
 
         allUser = sql.getUsers();
 
+        //adding all Users to combobox and getting all stats
         for (User user : allUser) {
             cbPlayers.getItems().add(user.getName());
             try {
-                userRecords.addAll(user.getUserStats(user.getName()));
+                userRecords.addAll(sql.getUserStatistics(user.getName()));
             } catch (SQLException ex) {
                 Logger.getLogger(FXMLViewStatisticController.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(FXMLViewStatisticController.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        
-        for (User user : allUser) {
-            
+
+        //getting all stats from games
+        for (String game : cbGames.getItems()) {
+            try {
+                gameRecords.addAll(sql.getGameStatistics(game));
+            } catch (SQLException ex) {
+                Logger.getLogger(FXMLViewStatisticController.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(FXMLViewStatisticController.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
 
@@ -99,25 +107,35 @@ public class FXMLViewStatisticController implements Initializable {
     }
 
     @FXML
-    private void PlayerComboboxActionHandling(ActionEvent event) {
-        for (int i = 0; i < allUser.size(); i++) {
-            for (String userRecord : userRecords) {
-                System.out.println(userRecord);
-                if (cbPlayers.getSelectionModel().getSelectedItem().equals(allUser.get(i).getName())) {
-                    lvPlayers.getItems().add(userRecord);
-                }
-            }
-        }
+    private void PlayerComboboxActionHandling(ActionEvent event) throws ClassNotFoundException, SQLException {
+        lvPlayers.getItems().clear();
+        
+        //creating topbar
+        userRecords = sql.getUserStatistics(cbPlayers.getValue());
+        String topList = String.format("%-18s", "Spiel");
+        topList += String.format("%-18s", "Bet");
+        topList += String.format("%-18s", "Win");
+        topList += String.format("%-18s", "Lost");
+        
+        //adding topbar
+        lvPlayers.getItems().add(topList);
+        lvPlayers.getItems().addAll(userRecords);
     }
 
     @FXML
-    private void GameComboboxActionHandling(ActionEvent event) {
-        for (int i = 0; i < allUser.size(); i++) {
-            for (String gameRecord : gameRecords) {
-                if (sql.getGameStatistics(cbGames.getSelectionModel().getSelectedItem()))) {
-                    lvGames.getItems().add(userRecord);
-                }
-            }
-        }
+    private void GameComboboxActionHandling(ActionEvent event) throws ClassNotFoundException, SQLException {
+        lvGames.getItems().clear();
+        
+        //creating topbar
+        gameRecords = sql.getGameStatistics(cbGames.getValue());
+        String topList = String.format("%-18s", "Spieler");
+        topList += String.format("%-18s", "Spiel");
+        topList += String.format("%-18s", "Bet");
+        topList += String.format("%-18s", "Win");
+        topList += String.format("%-18s", "Lost");
+        
+        //adding topbar
+        lvGames.getItems().add(topList);
+        lvGames.getItems().addAll(gameRecords);
     }
 }

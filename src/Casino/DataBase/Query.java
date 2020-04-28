@@ -105,8 +105,9 @@ public class Query {
 
     public ArrayList<String> getUserStatistics(String name) throws ClassNotFoundException, SQLException {
         ArrayList<String> output = new ArrayList<>();
-        String queryStatistic = String.format("Select users.name, games.name, statistic.bet, statistic.win, statistic.Lost from statistic, games, users where users.name = '%s' && users.usid = statistic.usid;", name);
-
+        //String queryStatistic = String.format("Select games.name, statistic.bet, statistic.win, lost from statistic, games, users where users.name = '%s' && users.usid = statistic.usid;", name);
+        String queryStatistic = String.format("Select bet, win, lose from statistic;", name);
+        System.out.println(queryStatistic);
         Connection conn = jdbc.createConnection();
         Statement st = conn.createStatement();
 
@@ -120,6 +121,7 @@ public class Query {
             }
             output.add(input);
         }
+        System.out.println(output);
         rs.close();
         st.close();
         conn.close();
@@ -188,7 +190,7 @@ public class Query {
 
     public ArrayList<String> getGameStatistics(String game) throws SQLException, ClassNotFoundException {
         ArrayList<String> output = new ArrayList<>();
-        String queryStatistic = String.format("Select user.name, games.name, statistic.bet, statistic.win, statistic.Lost from statistic, games, users where game.name = '%s' && users.usid = statistic.usid;;", game);
+        String queryStatistic = String.format("Select users.name, games.name, statistic.bet, statistic.win, lose from statistic, games, users where games.name = '%s' && games.gid = statistic.gid;", game);
 
         Connection conn = jdbc.createConnection();
         Statement st = conn.createStatement();
@@ -203,7 +205,7 @@ public class Query {
             }
             output.add(input);
         }
-
+        System.out.println(output);
         rs.close();
         st.close();
         conn.close();
