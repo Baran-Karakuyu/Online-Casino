@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="332.0" prefWidth="599.0" stylesheets="@../styles/Bingo.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.bbbaden.ims.programmierwochen.bingo.View.UebersichtsSeiteController">
+   <children>
+      <ImageView fitHeight="381.0" fitWidth="599.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Background.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="81.0" layoutY="28.0" prefHeight="72.0" prefWidth="34.0" text="B">
+         <font>
+            <Font name="Algerian" size="96.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0" startX="0.5687023392160431" startY="0.35877857499450216">
+               <stops>
+                  <Stop color="#b50202" />
+                  <Stop color="#c50101" offset="0.02748091603053436" />
+                  <Stop color="#f00000" offset="0.1114503816793893" />
+                  <Stop color="RED" offset="0.9389312977099237" />
+                  <Stop color="#9b8058" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <Label layoutX="191.0" layoutY="28.0" prefHeight="81.0" prefWidth="34.0" text="I">
+         <font>
+            <Font name="Algerian" size="96.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="0.8778625663000209" endY="0.629770990546423" startX="0.6488549891318984" startY="0.28244280633125596">
+               <stops>
+                  <Stop color="RED" />
+                  <Stop color="RED" offset="0.1236641221374046" />
+                  <Stop color="#ea740d" offset="0.6702290076335878" />
+                  <Stop color="#ea740d" offset="0.9969465648854957" />
+                  <Stop color="#ea740d" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <Label layoutX="268.0" layoutY="25.0" prefHeight="79.0" prefWidth="51.0" text="N">
+         <font>
+            <Font name="Bodoni MT Black" size="96.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="0.8778625663000209" endY="0.629770990546423" startX="0.6488549891318984" startY="0.3129771283564677">
+               <stops>
+                  <Stop color="#ea740d" />
+                  <Stop color="#ea740d" offset="0.14809160305343516" />
+                  <Stop color="#ffee00" offset="0.9908396946564886" />
+                  <Stop color="#ffee00" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <Label layoutX="382.0" layoutY="30.0" prefHeight="87.0" prefWidth="51.0" text="G">
+         <font>
+            <Font name="Algerian" size="93.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="0.8778625663000209" endY="1.0" startX="0.7442747909604138" startY="0.5152672483720853">
+               <stops>
+                  <Stop color="#ffee00" />
+                  <Stop color="#acfa00" offset="0.10839694656488541" />
+                  <Stop color="#ecca07" offset="0.8717557251908397" />
+                  <Stop color="#ecca07" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <Label layoutX="471.0" layoutY="28.0" prefHeight="86.0" prefWidth="51.0" text="O">
+         <font>
+            <Font name="Algerian" size="96.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="0.8778625663000209" endY="0.7175572437184458" startX="0.7442747909604138">
+               <stops>
+                  <Stop color="#acfa00" />
+                  <Stop color="#affa00" offset="0.18013698630136976" />
+                  <Stop color="#00a3ff" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <Button id="button" fx:id="btnStart" layoutX="244.0" layoutY="168.0" mnemonicParsing="false" onAction="#ActionStart" prefHeight="48.0" prefWidth="110.0" stylesheets="@Bingo.css" text="STARTEN" textFill="#005904">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="37.0" fitWidth="34.0" layoutX="551.0" layoutY="14.0" onMouseClicked="#ActionVerlassen" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/exit.jpg" />
+         </image>
+      </ImageView>
+      <Label fx:id="lblCredits" layoutX="130.0" layoutY="294.0" prefHeight="30.0" prefWidth="94.0" text="Credits" textAlignment="RIGHT" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="294.0" text="Kontostand:" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="400.0" layoutY="264.0" text="Sieg: 200 Credits&#10;Niederlage: 0 Credits" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="37.0" fitWidth="34.0" layoutX="551.0" layoutY="13.0" onMouseClicked="#ActionVerlassen" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/exit.png" />
+         </image>
+      </ImageView>
+      <Button id="button" fx:id="btnRegeln" layoutX="244.0" layoutY="227.0" mnemonicParsing="false" onAction="#ActionRegeln" prefHeight="48.0" prefWidth="110.0" stylesheets="@Bingo.css" text="REGELN" textFill="#005904">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

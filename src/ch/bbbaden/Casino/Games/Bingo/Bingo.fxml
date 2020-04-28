@@ -1,0 +1,508 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="590.0" prefWidth="753.0" stylesheets="@../styles/Bingo.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.bbbaden.ims.programmierwochen.bingo.View.BingoController">
+   <children>
+      <ImageView fitHeight="426.0" fitWidth="764.0" layoutX="-2.0" layoutY="172.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Background.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="426.0" fitWidth="764.0" layoutX="-4.0" layoutY="-11.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Background.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="168.0" fitWidth="166.0" layoutX="372.0" layoutY="61.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);;">
+         <image>
+            <Image url="@../images/number.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="302.0" fitWidth="242.0" layoutX="60.0" layoutY="145.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);;">
+         <image>
+            <Image url="@../images/bingo.JPG" />
+         </image>
+      </ImageView>
+      <Button fx:id="btnCross1" layoutX="74.0" layoutY="168.0" mnemonicParsing="false" onAction="#ActionCross1" prefHeight="39.0" prefWidth="34.0" style="-fx-background-color: white;" stylesheets="@../styles/Bingo.css">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnCross6" layoutX="118.0" layoutY="168.0" mnemonicParsing="false" onAction="#ActionCross6" prefHeight="39.0" prefWidth="34.0" style="-fx-background-color: white;" stylesheets="@../styles/Bingo.css">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnCross11" layoutX="164.0" layoutY="168.0" mnemonicParsing="false" onAction="#ActionCross11" prefHeight="39.0" prefWidth="34.0" style="-fx-background-color: white;" stylesheets="@../styles/Bingo.css">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnCross16" layoutX="214.0" layoutY="168.0" mnemonicParsing="false" onAction="#ActionCross16" prefHeight="39.0" prefWidth="34.0" style="-fx-background-color: white;" stylesheets="@../styles/Bingo.css">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnCross21" layoutX="259.0" layoutY="168.0" mnemonicParsing="false" onAction="#ActionCross21" prefHeight="39.0" prefWidth="34.0" style="-fx-background-color: white;" stylesheets="@../styles/Bingo.css">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnCross2" layoutX="74.0" layoutY="225.0" mnemonicParsing="false" onAction="#ActionCross2" prefHeight="39.0" prefWidth="34.0" style="-fx-background-color: white;" stylesheets="@../styles/Bingo.css">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnCross7" layoutX="118.0" layoutY="225.0" mnemonicParsing="false" onAction="#ActionCross7" prefHeight="39.0" prefWidth="34.0" style="-fx-background-color: white;" stylesheets="@../styles/Bingo.css">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnCross12" layoutX="164.0" layoutY="225.0" mnemonicParsing="false" onAction="#ActionCross12" prefHeight="39.0" prefWidth="34.0" style="-fx-background-color: white;" stylesheets="@../styles/Bingo.css">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnCross17" layoutX="214.0" layoutY="225.0" mnemonicParsing="false" onAction="#ActionCross17" prefHeight="39.0" prefWidth="34.0" style="-fx-background-color: white;" stylesheets="@../styles/Bingo.css">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnCross22" layoutX="259.0" layoutY="225.0" mnemonicParsing="false" onAction="#ActionCross22" prefHeight="39.0" prefWidth="34.0" style="-fx-background-color: white;" stylesheets="@../styles/Bingo.css">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnCross3" layoutX="74.0" layoutY="287.0" mnemonicParsing="false" onAction="#ActionCross3" prefHeight="39.0" prefWidth="34.0" style="-fx-background-color: white;" stylesheets="@../styles/Bingo.css">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnCross8" layoutX="118.0" layoutY="287.0" mnemonicParsing="false" onAction="#ActionCross8" prefHeight="39.0" prefWidth="34.0" style="-fx-background-color: white;" stylesheets="@../styles/Bingo.css">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnCross13" layoutX="163.0" layoutY="287.0" mnemonicParsing="false" onAction="#ActionCross13" prefHeight="39.0" prefWidth="34.0" style="-fx-background-color: white;" stylesheets="@../styles/Bingo.css">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnCross18" layoutX="214.0" layoutY="287.0" mnemonicParsing="false" onAction="#ActionCross18" prefHeight="39.0" prefWidth="34.0" style="-fx-background-color: white;" stylesheets="@../styles/Bingo.css">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnCross23" layoutX="259.0" layoutY="287.0" mnemonicParsing="false" onAction="#ActionCross23" prefHeight="39.0" prefWidth="34.0" style="-fx-background-color: white;" stylesheets="@../styles/Bingo.css">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnCross4" layoutX="74.0" layoutY="343.0" mnemonicParsing="false" onAction="#ActionCross4" prefHeight="39.0" prefWidth="34.0" style="-fx-background-color: white;" stylesheets="@../styles/Bingo.css">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnCross9" layoutX="118.0" layoutY="343.0" mnemonicParsing="false" onAction="#ActionCross9" prefHeight="39.0" prefWidth="34.0" style="-fx-background-color: white;" stylesheets="@../styles/Bingo.css">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnCross14" layoutX="164.0" layoutY="343.0" mnemonicParsing="false" onAction="#ActionCross14" prefHeight="39.0" prefWidth="34.0" style="-fx-background-color: white;" stylesheets="@../styles/Bingo.css">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnCross19" layoutX="214.0" layoutY="343.0" mnemonicParsing="false" onAction="#ActionCross19" prefHeight="39.0" prefWidth="34.0" style="-fx-background-color: white;" stylesheets="@../styles/Bingo.css">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnCross24" layoutX="259.0" layoutY="343.0" mnemonicParsing="false" onAction="#ActionCross24" prefHeight="39.0" prefWidth="34.0" style="-fx-background-color: white;" stylesheets="@../styles/Bingo.css">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnCross5" layoutX="74.0" layoutY="400.0" mnemonicParsing="false" onAction="#ActionCross5" prefHeight="39.0" prefWidth="34.0" style="-fx-background-color: white;" stylesheets="@../styles/Bingo.css">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnCross10" layoutX="118.0" layoutY="400.0" mnemonicParsing="false" onAction="#ActionCross10" prefHeight="39.0" prefWidth="34.0" style="-fx-background-color: white;" stylesheets="@../styles/Bingo.css">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnCross15" layoutX="164.0" layoutY="400.0" mnemonicParsing="false" onAction="#ActionCross15" prefHeight="39.0" prefWidth="34.0" style="-fx-background-color: white;" stylesheets="@../styles/Bingo.css">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnCross20" layoutX="214.0" layoutY="400.0" mnemonicParsing="false" onAction="#ActionCross20" prefHeight="39.0" prefWidth="34.0" style="-fx-background-color: white;" stylesheets="@../styles/Bingo.css">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnCross25" layoutX="259.0" layoutY="400.0" mnemonicParsing="false" onAction="#ActionCross25" prefHeight="39.0" prefWidth="34.0" style="-fx-background-color: white;" stylesheets="@../styles/Bingo.css">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <Button id="button" layoutX="111.0" layoutY="454.0" mnemonicParsing="false" onAction="#ActionBingo" prefHeight="66.0" prefWidth="138.0" stylesheets="@../styles/Bingo.css" text="BINGO!" textFill="#005904" />
+      <Label layoutX="22.0" layoutY="542.0" text="Kontostand:" textFill="WHITE">
+         <font>
+            <Font size="26.0" />
+         </font></Label>
+      <Label fx:id="lblZeit" layoutX="91.0" layoutY="48.0" prefHeight="66.0" prefWidth="222.0" text="30 Sekunden" textFill="WHITE">
+         <font>
+            <Font name="Algerian" size="32.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblAktuelleNummer" alignment="CENTER" layoutX="418.0" layoutY="107.0" prefHeight="39.0" prefWidth="64.0" textFill="RED">
+         <font>
+            <Font name="System Bold" size="52.0" />
+         </font>
+      </Label>
+      <Label layoutX="35.0" layoutY="-18.0" prefHeight="108.0" prefWidth="414.0" text="Nächste Nummer in:" textFill="WHITE" underline="true" wrapText="true">
+         <font>
+            <Font name="Algerian" size="32.0" />
+         </font>
+      </Label>
+      <Label layoutX="387.0" layoutY="-18.0" prefHeight="108.0" prefWidth="414.0" text="Gezogene Nummer:" textFill="WHITE" underline="true">
+         <font>
+            <Font name="Algerian" size="32.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="75.0" fitWidth="74.0" layoutX="372.0" layoutY="258.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);;" AnchorPane.rightAnchor="316.53719329833984">
+         <image>
+            <Image url="@../images/bot1.JPG" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="85.0" fitWidth="64.0" layoutX="450.0" layoutY="258.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);;">
+         <image>
+            <Image url="@../images/bot2.JPG" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="96.0" fitWidth="64.0" layoutX="523.0" layoutY="255.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);;">
+         <image>
+            <Image url="@../images/bot3.JPG" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="80.0" fitWidth="74.0" layoutX="599.0" layoutY="256.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);;" AnchorPane.rightAnchor="86.98429107666016">
+         <image>
+            <Image url="@../images/bot4.JPG" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="80.0" fitWidth="74.0" layoutX="676.0" layoutY="255.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);;">
+         <image>
+            <Image url="@../images/bot5.JPG" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="261.0" fitWidth="196.0" layoutX="457.0" layoutY="343.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/bingo.JPG" />
+         </image>
+      </ImageView>
+      <Button layoutX="469.0" layoutY="360.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="25.0" style="-fx-background-color: white;" stylesheets="@../styles/Bingo.css">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <Button layoutX="505.0" layoutY="360.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="25.0" style="-fx-background-color: white;" stylesheets="@../styles/Bingo.css">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <Button layoutX="542.0" layoutY="360.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="25.0" style="-fx-background-color: white;" stylesheets="@../styles/Bingo.css">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <Button layoutX="581.0" layoutY="360.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="25.0" style="-fx-background-color: white;" stylesheets="@../styles/Bingo.css">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <Button layoutX="620.0" layoutY="360.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="25.0" style="-fx-background-color: white;" stylesheets="@../styles/Bingo.css">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <Button layoutX="469.0" layoutY="411.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="25.0" style="-fx-background-color: white;" stylesheets="@../styles/Bingo.css">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <Button layoutX="505.0" layoutY="411.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="25.0" style="-fx-background-color: white;" stylesheets="@../styles/Bingo.css">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <Button layoutX="542.0" layoutY="411.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="25.0" style="-fx-background-color: white;" stylesheets="@../styles/Bingo.css">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <Button layoutX="581.0" layoutY="411.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="25.0" style="-fx-background-color: white;" stylesheets="@../styles/Bingo.css">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <Button layoutX="620.0" layoutY="411.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="25.0" style="-fx-background-color: white;" stylesheets="@../styles/Bingo.css">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <Button layoutX="469.0" layoutY="457.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="25.0" style="-fx-background-color: white;" stylesheets="@../styles/Bingo.css">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <Button layoutX="505.0" layoutY="457.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="25.0" style="-fx-background-color: white;" stylesheets="@../styles/Bingo.css">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <Button layoutX="542.0" layoutY="457.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="25.0" style="-fx-background-color: white;" stylesheets="@../styles/Bingo.css">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <Button layoutX="581.0" layoutY="457.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="25.0" style="-fx-background-color: white;" stylesheets="@../styles/Bingo.css">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <Button layoutX="620.0" layoutY="457.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="25.0" style="-fx-background-color: white;" stylesheets="@../styles/Bingo.css">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <Button layoutX="469.0" layoutY="502.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="25.0" style="-fx-background-color: white;" stylesheets="@../styles/Bingo.css">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <Button layoutX="505.0" layoutY="502.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="25.0" style="-fx-background-color: white;" stylesheets="@../styles/Bingo.css">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <Button layoutX="542.0" layoutY="502.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="25.0" style="-fx-background-color: white;" stylesheets="@../styles/Bingo.css">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <Button layoutX="579.0" layoutY="502.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="25.0" style="-fx-background-color: white;" stylesheets="@../styles/Bingo.css">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <Button layoutX="620.0" layoutY="502.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="25.0" style="-fx-background-color: white;" stylesheets="@../styles/Bingo.css">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <Button layoutX="469.0" layoutY="546.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="25.0" style="-fx-background-color: white;" stylesheets="@../styles/Bingo.css">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <Button layoutX="505.0" layoutY="546.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="25.0" style="-fx-background-color: white;" stylesheets="@../styles/Bingo.css">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <Button layoutX="542.0" layoutY="546.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="25.0" style="-fx-background-color: white;" stylesheets="@../styles/Bingo.css">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <Button layoutX="581.0" layoutY="546.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="25.0" style="-fx-background-color: white;" stylesheets="@../styles/Bingo.css">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <Button layoutX="620.0" layoutY="546.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="25.0" style="-fx-background-color: white;" stylesheets="@../styles/Bingo.css">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="37.0" fitWidth="34.0" layoutX="705.0" layoutY="14.0" onMouseClicked="#ActionVerlassen" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/exit.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="lblCredits" layoutX="175.0" layoutY="543.0" text="Credits" textFill="WHITE">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <Label layoutX="527.0" layoutY="57.0" text="Alle Nummern:" textFill="WHITE" underline="true">
+         <font>
+            <Font size="32.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblAlleNummer" layoutX="527.0" layoutY="107.0" prefHeight="142.0" prefWidth="212.0" textFill="WHITE" wrapText="true">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="11.0" fitWidth="19.0" layoutX="75.0" layoutY="151.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../../Desktop/bw.JPG" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="11.0" fitWidth="19.0" layoutX="89.0" layoutY="152.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../../Desktop/bw.JPG" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="11.0" fitWidth="19.0" layoutX="125.0" layoutY="151.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../../Desktop/bw.JPG" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="11.0" fitWidth="19.0" layoutX="159.0" layoutY="151.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../../Desktop/bw.JPG" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="11.0" fitWidth="19.0" layoutX="183.0" layoutY="152.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../../Desktop/bw.JPG" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="11.0" fitWidth="19.0" layoutX="211.0" layoutY="151.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../../Desktop/bw.JPG" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="11.0" fitWidth="19.0" layoutX="117.0" layoutY="151.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../../Desktop/bw.JPG" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="11.0" fitWidth="19.0" layoutX="138.0" layoutY="151.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../../Desktop/bw.JPG" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="11.0" fitWidth="19.0" layoutX="223.0" layoutY="151.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../../Desktop/bw.JPG" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="11.0" fitWidth="19.0" layoutX="231.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../../Desktop/bw.JPG" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="11.0" fitWidth="19.0" layoutX="255.0" layoutY="149.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../../Desktop/bw.JPG" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="11.0" fitWidth="19.0" layoutX="272.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../../Desktop/bw.JPG" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="11.0" fitWidth="19.0" layoutX="279.0" layoutY="151.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../../Desktop/bw.JPG" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="11.0" fitWidth="19.0" layoutX="167.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../../Desktop/bw.JPG" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="11.0" fitWidth="19.0" layoutX="464.0" layoutY="347.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../../Desktop/bw.JPG" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="8.0" fitWidth="20.0" layoutX="480.0" layoutY="348.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../../Desktop/bw.JPG" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="14.0" fitWidth="14.0" layoutX="514.0" layoutY="347.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../../Desktop/bw.JPG" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="11.0" fitWidth="19.0" layoutX="548.0" layoutY="347.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../../Desktop/bw.JPG" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="11.0" fitWidth="19.0" layoutX="572.0" layoutY="348.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../../Desktop/bw.JPG" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="7.0" fitWidth="16.0" layoutX="595.0" layoutY="348.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../../Desktop/bw.JPG" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="11.0" fitWidth="19.0" layoutX="506.0" layoutY="347.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../../Desktop/bw.JPG" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="11.0" fitWidth="19.0" layoutX="527.0" layoutY="347.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../../Desktop/bw.JPG" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="11.0" fitWidth="19.0" layoutX="612.0" layoutY="347.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../../Desktop/bw.JPG" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="11.0" fitWidth="19.0" layoutX="620.0" layoutY="346.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../../Desktop/bw.JPG" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="11.0" fitWidth="19.0" layoutX="633.0" layoutY="346.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../../Desktop/bw.JPG" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="7.0" fitWidth="13.0" layoutX="586.0" layoutY="348.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../../Desktop/bw.JPG" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="14.0" fitWidth="13.0" layoutX="536.0" layoutY="348.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../../Desktop/bw.JPG" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="11.0" fitWidth="19.0" layoutX="556.0" layoutY="346.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../../Desktop/bw.JPG" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="7.0" fitWidth="12.0" layoutX="599.0" layoutY="347.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../../Desktop/bw.JPG" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="8.0" fitWidth="20.0" layoutX="485.0" layoutY="349.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../../Desktop/bw.JPG" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

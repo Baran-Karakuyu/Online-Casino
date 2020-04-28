@@ -44,8 +44,6 @@ public class BingoModel {
     String str25 = "";
     PropertyChangeSupport changes = new PropertyChangeSupport(this);
 
-    
-
     public BingoModel(MainApp mainApp, SpielkarteAuswahlModel model) {
         this.mainApp = mainApp;
         this.spielkarteAuswahlModel = model;
