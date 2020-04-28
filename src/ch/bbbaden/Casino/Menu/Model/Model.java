@@ -41,8 +41,8 @@ public class Model {
         mainApp.startSlots();
     }
 
-    public void startYatzy() throws IOException {
-        mainApp.startSlots();
+    public void startYatzy() throws IOException, SQLException, ClassNotFoundException {
+        mainApp.startYatzy();
     }
 
     public void startBingo() throws IOException, SQLException, ClassNotFoundException {
