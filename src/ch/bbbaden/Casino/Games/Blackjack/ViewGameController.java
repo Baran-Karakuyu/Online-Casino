@@ -424,8 +424,8 @@ public class ViewGameController implements Initializable {
             for (int i = 0; i < playerCards.size(); i++) {
                 sumP += playerCards.get(i).getValue();
             }
-
-            if (sumP > 21 || sumG == 21) {
+            //if(sumP>21||sumP==21)
+            if (sumP > 21 ) {
                 sumG = 0;
                 for (int i = 0; i < dealerCards.size(); i++) {
                     sumG += dealerCards.get(i).getValue();
