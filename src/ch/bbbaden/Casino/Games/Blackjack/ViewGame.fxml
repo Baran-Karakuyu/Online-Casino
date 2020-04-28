@@ -43,12 +43,12 @@
       <Circle fill="#942626" layoutX="646.0" layoutY="592.0" radius="70.0" stroke="#cc9c0a" strokeType="INSIDE" />
       <Circle fill="#942626" layoutX="391.0" layoutY="427.0" radius="70.0" stroke="#cc9c0a" strokeType="INSIDE" />
       <Circle fill="#942626" layoutX="1591.0" layoutY="427.0" radius="70.0" stroke="#cc9c0a" strokeType="INSIDE" />
-      <Label layoutX="844.0" layoutY="191.0" prefHeight="145.0" prefWidth="344.0" text="Blackjack" textFill="#cc9c0a">
+      <Label layoutX="835.0" layoutY="149.0" prefHeight="145.0" prefWidth="343.0" text="Blackjack" textFill="#cc9c0a">
          <font>
             <Font name="Harlow Solid Italic" size="78.0" />
          </font>
       </Label>
-      <Label layoutX="962.0" layoutY="331.0" prefHeight="47.0" prefWidth="89.0" text="Pays 2 to 1" textFill="#daabac">
+      <Label layoutX="930.0" layoutY="271.0" prefHeight="47.0" prefWidth="168.0" text="Blackjack Pays 3 to 2" textFill="#daabac">
          <font>
             <Font name="Harlow Solid Italic" size="17.0" />
          </font>
@@ -104,7 +104,7 @@
          <font>
             <Font name="Harlow Solid Italic" size="28.0" />
          </font></Label>
-      <Label fx:id="dealerValue" layoutX="1293.0" layoutY="13.0" prefHeight="50.0" prefWidth="82.0" textFill="WHITE" AnchorPane.topAnchor="18.0">
+      <Label fx:id="dealerValue" layoutX="1293.0" layoutY="21.0" prefHeight="50.0" prefWidth="82.0" textFill="WHITE" AnchorPane.topAnchor="21.0">
          <font>
             <Font name="Harlow Solid Italic" size="28.0" />
          </font>
@@ -211,6 +211,26 @@
       <Label fx:id="username" layoutX="1557.0" layoutY="37.0" textFill="WHITE" AnchorPane.topAnchor="25.0">
          <font>
             <Font name="Harlow Solid Italic" size="39.0" />
+         </font>
+      </Label>
+      <Label layoutX="745.0" layoutY="320.0" rotate="29.1" text="2 to 1" textFill="#daabac">
+         <font>
+            <Font name="Harlow Solid Italic" size="34.0" />
+         </font>
+      </Label>
+      <Label layoutX="911.0" layoutY="360.0" text="Insurance" textFill="#daabac">
+         <font>
+            <Font name="Harlow Solid Italic" size="45.0" />
+         </font>
+      </Label>
+      <Label layoutX="1169.0" layoutY="320.0" rotate="-32.5" text="2 to 1" textFill="#daabac">
+         <font>
+            <Font name="Harlow Solid Italic" size="34.0" />
+         </font>
+      </Label>
+      <Label layoutX="855.0" layoutY="318.0" text="Dealer must draw to 16 and stand with 17s" textFill="#cc9c0a">
+         <font>
+            <Font name="Harlow Solid Italic" size="18.0" />
          </font>
       </Label>
    </children>

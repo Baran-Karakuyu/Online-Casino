@@ -36,7 +36,7 @@ public class ViewModel implements PropertyChangeListener {
         m.startBlackJack();
     }
 
-    public void startRoulette() throws IOException {
+    public void startRoulette() throws IOException, SQLException, ClassNotFoundException {
         m.startRoulette();
     }
 
