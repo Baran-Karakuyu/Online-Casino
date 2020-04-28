@@ -91,9 +91,11 @@ public class FXMLViewStatisticController implements Initializable {
     @FXML
     private void PlayerComboboxActionHandling(ActionEvent event) throws ClassNotFoundException, SQLException {
         lvPlayers.getItems().clear();
-
+        userRecords.clear();
+        
         //creating topbar
         userRecords = sql.getUserStatistics(cbPlayers.getValue());
+
         String topList = String.format("%-18s", "Spiel");
         topList += String.format("%-18s", "Bet");
         topList += String.format("%-18s", "Win");
@@ -107,9 +109,11 @@ public class FXMLViewStatisticController implements Initializable {
     @FXML
     private void GameComboboxActionHandling(ActionEvent event) throws ClassNotFoundException, SQLException {
         lvGames.getItems().clear();
+        gameRecords.clear();
 
         //creating topbar
         gameRecords = sql.getGameStatistics(cbGames.getValue());
+        
         String topList = String.format("%-18s", "Spieler");
         topList += String.format("%-18s", "Spiel");
         topList += String.format("%-18s", "Bet");

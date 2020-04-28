@@ -115,12 +115,12 @@ public class Query {
         int columns = rs.getMetaData().getColumnCount();
         while (rs.next()) {
             String input = "";
-            for (int i = 0; i < columns; i++) {
+            for (int i = 1; i < columns + 1; i++) {
                 input += String.format("%-15s", rs.getString(i));
             }
             output.add(input);
         }
-        System.out.println(output);
+
         rs.close();
         st.close();
         conn.close();
@@ -195,21 +195,24 @@ public class Query {
         Statement st = conn.createStatement();
 
         ResultSet rs = st.executeQuery(queryStatistic);
-
+        int c = 0;
+        
+        
         int columns = rs.getMetaData().getColumnCount();
         while (rs.next()) {
             String input = "";
-            for (int i = 0; i < columns; i++) {
+            for (int i = 1; i < columns + 1; i++) {
                 input += String.format("%-15s", rs.getString(i));
             }
             output.add(input);
         }
+
         System.out.println(output);
         rs.close();
         st.close();
         conn.close();
         jdbc.closeConnection();
-        
+
         return output;
     }
 }
