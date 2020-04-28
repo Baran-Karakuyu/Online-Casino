@@ -97,10 +97,11 @@ public class ModelBlackJack {
     public void setNewCredit(double credit) throws SQLException, ClassNotFoundException {
         String oldcredit = "";
         sql.updateCredit(credit, player.getName());
-        changes.firePropertyChange("credit", oldcredit, credit);
+        changes.firePropertyChange("credit", oldcredit, Double.toString(credit));
     }
-
-    public void insurance(int credit, int sum) throws SQLException, ClassNotFoundException {
+    
+    //todo
+    public void insurance(double credit, int sum) throws SQLException, ClassNotFoundException {
         double credits = 0;
         credits = sql.getCreditUser(player.getName());
         if (sum == 21) {
@@ -113,7 +114,6 @@ public class ModelBlackJack {
 
     public void addPropertyChangeListener(final PropertyChangeListener listener) {
         changes.addPropertyChangeListener(listener);
-
     }
 
     public void setMainApp(MainApp mainApp) {
@@ -146,11 +146,11 @@ public class ModelBlackJack {
         this.player = user;
     }
 
-    public void statistics(int creditput, boolean winorlose) throws SQLException, ClassNotFoundException {
+    public void statistics(double creditput, boolean winorlose) throws SQLException, ClassNotFoundException {
         if(winorlose==true){
-            player.userStats(2, player.getUid(), creditput, creditput, 0);
+            player.userStats(2, player.getUid(), creditput, creditput, 0.0);
         }else{
-            player.userStats(2, player.getUid(), creditput, 0, creditput);
+            player.userStats(2, player.getUid(), creditput, 0.0, creditput);
         }
     }
 }

@@ -156,22 +156,22 @@ public class ViewGameController implements Initializable {
     @FXML
     private Label creditKonto;
 
-    private int creditPut;
-    private int creditHere = 0;
+    private double creditPut;
+    private double creditHere = 0;
     private int chipAmount = 0;
     @FXML
     private Label endLbl;
 
     private boolean doubleActive = false;
     private boolean insuranceActive = false;
-    private int insuranceMoneyPut = 0;
-    private int innerSum = 0;
+    private double insuranceMoneyPut = 0;
+    private double innerSum = 0;
     @FXML
     private ImageView cardHide;
     @FXML
     private Button resetBtn;
     @FXML
-    private ChoiceBox<Integer> versichernChoice;
+    private ChoiceBox<Double> versichernChoice;
     private boolean checkPlayer = false;
     private boolean blackjack = false;
     private boolean put = false;
@@ -199,29 +199,29 @@ public class ViewGameController implements Initializable {
 
         viewModel.credit();
         creditKonto.textProperty().bind(viewModel.getCredit());
-        creditHere = Integer.parseInt(creditKonto.getText());
+        creditHere = Double.parseDouble(creditKonto.getText());
     }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        versichernChoice.getItems().add(10);
-        versichernChoice.getItems().add(50);
-        versichernChoice.getItems().add(100);
-        versichernChoice.getItems().add(250);
-        versichernChoice.getItems().add(1000);
-        versichernChoice.getItems().add(2000);
-        versichernChoice.getItems().add(3000);
-        versichernChoice.getItems().add(4000);
-        versichernChoice.getItems().add(5000);
-        versichernChoice.getItems().add(6000);
-        versichernChoice.getItems().add(7000);
-        versichernChoice.getItems().add(8000);
-        versichernChoice.getItems().add(9000);
-        versichernChoice.getItems().add(10000);
-        versichernChoice.getItems().add(20000);
-        versichernChoice.getItems().add(30000);
-        versichernChoice.getItems().add(40000);
-        versichernChoice.getItems().add(50000);
+        versichernChoice.getItems().add(10.0);
+        versichernChoice.getItems().add(50.0);
+        versichernChoice.getItems().add(100.0);
+        versichernChoice.getItems().add(250.0);
+        versichernChoice.getItems().add(1000.0);
+        versichernChoice.getItems().add(2000.0);
+        versichernChoice.getItems().add(3000.0);
+        versichernChoice.getItems().add(4000.0);
+        versichernChoice.getItems().add(5000.0);
+        versichernChoice.getItems().add(6000.0);
+        versichernChoice.getItems().add(7000.0);
+        versichernChoice.getItems().add(8000.0);
+        versichernChoice.getItems().add(9000.0);
+        versichernChoice.getItems().add(10000.0);
+        versichernChoice.getItems().add(20000.0);
+        versichernChoice.getItems().add(30000.0);
+        versichernChoice.getItems().add(40000.0);
+        versichernChoice.getItems().add(50000.0);
         chip10.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip10.png"));
         chip50.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip50.png"));
         chip100.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip100.png"));
@@ -507,7 +507,7 @@ public class ViewGameController implements Initializable {
 
                 innerSum += creditPut;
                 creditPut += creditPut;
-                chipsvalue.setText(Integer.toString(creditPut));
+                chipsvalue.setText(Double.toString(creditPut));
                 creditPut = innerSum;
 
                 doubleBtn.setTextFill(Color.DARKGOLDENROD);
@@ -541,10 +541,10 @@ public class ViewGameController implements Initializable {
         versichernChoice.setDisable(true);
         insuranceBtn.opacityProperty().set(0.0);
         versichernChoice.opacityProperty().set(0.0);
-        if (Integer.parseInt(creditKonto.getText()) <= 0) {
+        if (Double.parseDouble(creditKonto.getText()) <= 0.0) {
             JOptionPane.showMessageDialog(null, "Bet Money/Chips first", "Fehler", JOptionPane.ERROR_MESSAGE);
         } else {
-            if (creditPut == 0) {
+            if (creditPut == 0.0) {
                 System.out.println("Setzte Geld");
             } else {
                 put = true;
@@ -599,8 +599,6 @@ public class ViewGameController implements Initializable {
                     blackjack = true;
                     hitBtn.opacityProperty().set(0.5);
                 }
-
-//            creditHere = Integer.parseInt(creditKonto.getText());
                 putBtn.opacityProperty().set(0.0);
             }
             if (card1Player.getImage() == null || card2Player.getImage() == null || card1Groupier.getImage() == null || card1Groupier.getImage() == null) {
@@ -708,7 +706,7 @@ public class ViewGameController implements Initializable {
             insuranceBtn.setTextFill(Color.FUCHSIA);
             insuranceActive = true;
             insuranceMoneyPut = versichernChoice.getValue();
-            int bank= Integer.parseInt(creditKonto.getText())-creditPut;
+            double bank= Double.parseDouble(creditKonto.getText())-creditPut;
             if(bank<insuranceMoneyPut){
                 insuranceActive = false;
                 insuranceBtn.setTextFill(Color.WHITE);
@@ -718,7 +716,7 @@ public class ViewGameController implements Initializable {
     }
 
     //Insurance Methode to Connect with Model
-    private void insuranceMethod(int credit) throws SQLException, ClassNotFoundException {
+    private void insuranceMethod(double credit) throws SQLException, ClassNotFoundException {
         summeg = 0;
         for (int i = 0; i < dealerCards.size(); i++) {
             summeg += dealerCards.get(i).getValue();
@@ -809,9 +807,9 @@ public class ViewGameController implements Initializable {
         dealerCards.clear();
         doubleActive = false;
         insuranceActive = false;
-        insuranceMoneyPut = 0;
+        insuranceMoneyPut = 0.0;
         innerSum = 0;
-        creditPut = 0;
+        creditPut = 0.0;
         chipAmount = 0;
         chipsvalue.setText(null);
         cardsHit = 0;
@@ -821,19 +819,19 @@ public class ViewGameController implements Initializable {
         put = false;
         chipsActive = true;
         creditKonto.textProperty().bind(viewModel.getCredit());
-        creditHere = Integer.parseInt(creditKonto.getText());
+        creditHere = Double.parseDouble(creditKonto.getText());
     }
 
     @FXML
     private void chip10(MouseEvent event) {
         if (chipsActive == true) {
-            int credit = Integer.parseInt(creditKonto.getText());
-            int sum = creditPut + 10;
-            if (credit <= 0 || credit < 10 || credit < sum) {
+            double credit = Double.parseDouble(creditKonto.getText());
+            double sum = creditPut + 10.0;
+            if (credit <= 0.0 || credit < 10.0 || credit < sum) {
                JOptionPane.showMessageDialog(null, "You need Money", "Fehler", JOptionPane.ERROR_MESSAGE);
             } else {
-                creditPut += 10;
-                chipsvalue.setText(Integer.toString(creditPut));
+                creditPut += 10.0;
+                chipsvalue.setText(Double.toString(creditPut));
                 chipAmount++;
                 switch (chipAmount) {
                     case 1:
@@ -902,13 +900,13 @@ public class ViewGameController implements Initializable {
     @FXML
     private void chip50(MouseEvent event) {
         if (chipsActive == true) {
-            int credit = Integer.parseInt(creditKonto.getText());
-            int sum = creditPut + 50;
-            if (credit <= 0 || credit < 50 || credit < sum) {
+            double credit = Double.parseDouble(creditKonto.getText());
+            double sum = creditPut + 50.0;
+            if (credit <= 0.0 || credit < 50.0 || credit < sum) {
                JOptionPane.showMessageDialog(null, "You need Money", "Fehler", JOptionPane.ERROR_MESSAGE);
             } else {
-                creditPut += 50;
-                chipsvalue.setText(Integer.toString(creditPut));
+                creditPut += 50.0;
+                chipsvalue.setText(Double.toString(creditPut));
                 chipAmount++;
                 switch (chipAmount) {
                     case 1:
@@ -976,13 +974,13 @@ public class ViewGameController implements Initializable {
     @FXML
     private void chip100(MouseEvent event) {
         if (chipsActive == true) {
-            int credit = Integer.parseInt(creditKonto.getText());
-            int sum = creditPut + 100;
-            if (credit <= 0 || credit < 100 || credit < sum) {
+            double credit = Double.parseDouble(creditKonto.getText());
+            double sum = creditPut + 100.0;
+            if (credit <= 0.0 || credit < 100.0 || credit < sum) {
                 JOptionPane.showMessageDialog(null, "You need Money", "Fehler", JOptionPane.ERROR_MESSAGE);
             } else {
-                creditPut += 100;
-                chipsvalue.setText(Integer.toString(creditPut));
+                creditPut += 100.0;
+                chipsvalue.setText(Double.toString(creditPut));
                 chipAmount++;
                 switch (chipAmount) {
                     case 1:
@@ -1032,13 +1030,13 @@ public class ViewGameController implements Initializable {
     @FXML
     private void chip250(MouseEvent event) {
         if (chipsActive == true) {
-            int credit = Integer.parseInt(creditKonto.getText());
-            int sum = creditPut + 250;
-            if (credit <= 0 || credit < 250 || credit < sum) {
+            double credit = Double.parseDouble(creditKonto.getText());
+            double sum = creditPut + 250.0;
+            if (credit <= 0.0 || credit < 250.0 || credit < sum) {
                JOptionPane.showMessageDialog(null, "You need Money", "Fehler", JOptionPane.ERROR_MESSAGE);
             } else {
-                creditPut += 250;
-                chipsvalue.setText(Integer.toString(creditPut));
+                creditPut += 250.0;
+                chipsvalue.setText(Double.toString(creditPut));
                 chipAmount++;
                 switch (chipAmount) {
                     case 1:
@@ -1088,13 +1086,13 @@ public class ViewGameController implements Initializable {
     @FXML
     private void chip1000(MouseEvent event) {
         if (chipsActive == true) {
-            int credit = Integer.parseInt(creditKonto.getText());
-            int sum = creditPut + 1000;
-            if (credit <= 0 || credit < 1000 || credit < sum) {
+            double credit = Double.parseDouble(creditKonto.getText());
+            double sum = creditPut + 1000.0;
+            if (credit <= 0.0 || credit < 1000.0 || credit < sum) {
                 JOptionPane.showMessageDialog(null, "You need Money", "Fehler", JOptionPane.ERROR_MESSAGE);
             } else {
-                creditPut += 1000;
-                chipsvalue.setText(Integer.toString(creditPut));
+                creditPut += 1000.0;
+                chipsvalue.setText(Double.toString(creditPut));
                 chipAmount++;
                 switch (chipAmount) {
                     case 1:
