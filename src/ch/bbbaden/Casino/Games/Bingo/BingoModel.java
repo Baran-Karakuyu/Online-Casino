@@ -6,6 +6,7 @@
 package ch.bbbaden.Casino.Games.Bingo;
 
 //import ch.bbbaden.ims.programmierwochen.bingo.MainApp;
+import ch.bbbaden.Casino.MainApp;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
@@ -17,32 +18,33 @@ public class BingoModel {
 
 //    private MainApp mainApp;
     private SpielkarteAuswahlModel spielkarteAuswahlModel;
-    String str1 = "";
-    String str2 = "";
-    String str3 = "";
-    String str4 = "";
-    String str5 = "";
-    String str6 = "";
-    String str7 = "";
-    String str8 = "";
-    String str9 = "";
-    String str10 = "";
-    String str11 = "";
-    String str12 = "";
-    String str13 = "";
-    String str14 = "";
-    String str15 = "";
-    String str16 = "";
-    String str17 = "";
-    String str18 = "";
-    String str19 = "";
-    String str20 = "";
-    String str21 = "";
-    String str22 = "";
-    String str23 = "";
-    String str24 = "";
-    String str25 = "";
-    PropertyChangeSupport changes = new PropertyChangeSupport(this);
+    private MainApp mainApp;
+    private String str1 = "";
+    private String str2 = "";
+    private String str3 = "";
+    private String str4 = "";
+    private String str5 = "";
+    private String str6 = "";
+    private String str7 = "";
+    private String str8 = "";
+    private String str9 = "";
+    private String str10 = "";
+    private String str11 = "";
+    private String str12 = "";
+    private String str13 = "";
+    private String str14 = "";
+    private String str15 = "";
+    private String str16 = "";
+    private String str17 = "";
+    private String str18 = "";
+    private String str19 = "";
+    private String str20 = "";
+    private String str21 = "";
+    private String str22 = "";
+    private String str23 = "";
+    private String str24 = "";
+    private String str25 = "";
+    private PropertyChangeSupport changes = new PropertyChangeSupport(this);
 
     public BingoModel(MainApp mainApp, SpielkarteAuswahlModel model) {
         this.mainApp = mainApp;

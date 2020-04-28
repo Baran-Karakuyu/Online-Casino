@@ -6,6 +6,7 @@
 package ch.bbbaden.Casino.Games.Bingo;
 
 import ch.bbbaden.Casino.Games.Bingo.SpielkarteAuswahlViewModel;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Random;
@@ -238,10 +239,8 @@ public class SpielkarteAuswahlController implements Initializable {
     }
 
     @FXML
-    private void ActionAuswaehlen(ActionEvent event) {
-
+    private void ActionAuswaehlen(ActionEvent event) throws IOException {
         viewModel.showBingo();
-
     }
 
     public void setViewModel(SpielkarteAuswahlViewModel viewModel) {

@@ -6,6 +6,11 @@
 package ch.bbbaden.Casino;
 
 import Casino.DataBase.User;
+import ch.bbbaden.Casino.Games.Bingo.SpielkarteAuswahlController;
+import ch.bbbaden.Casino.Games.Bingo.SpielkarteAuswahlViewModel;
+import ch.bbbaden.Casino.Games.Bingo.UebersichtsSeiteController;
+import ch.bbbaden.Casino.Games.Bingo.UebersichtsSeiteModel;
+import ch.bbbaden.Casino.Games.Bingo.UebersichtsSeiteViewModel;
 import ch.bbbaden.Casino.Games.Blackjack.ModelBlackJack;
 import ch.bbbaden.Casino.Games.Blackjack.ViewGameController;
 import ch.bbbaden.Casino.Games.Blackjack.ViewModelBlackJack;
@@ -55,7 +60,7 @@ public class MainApp extends Application {
         this.stage = stage;
         view.setMainApp(this);
         final Scene scene = new Scene(root);
-        
+
         stage.setScene(scene);
         stage.show();
     }
@@ -93,7 +98,7 @@ public class MainApp extends Application {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Games/Slots/FXMLDocument.fxml"));
         Parent root;
         root = loader.load();
-        
+
         FXMLSlotsController view = loader.getController();
         view.setMainApp(this);
         SlotMachineModel model = new SlotMachineModel();
@@ -133,12 +138,12 @@ public class MainApp extends Application {
         stage.setScene(scene);
         stage.show();
     }
-    
+
     public void startYatzy() throws IOException, SQLException, ClassNotFoundException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Games/Yatzy/FXMLStartscreen.fxml"));
         Parent root;
         root = loader.load();
-        
+
         FXMLStartscreenController view = loader.getController();
 
         //view.setMainApp(this);
@@ -148,29 +153,48 @@ public class MainApp extends Application {
         stage.setScene(scene);
         stage.show();
     }
-    
+
     public void startBingo() throws IOException, SQLException, ClassNotFoundException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("Games/Slots/FXMLDocument.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Games/Bingo/UebersichtsSeite.fxml"));
         Parent root;
         root = loader.load();
-        
-        FXMLSlotsController view = loader.getController();
+
+        UebersichtsSeiteController view = loader.getController();
         view.setMainApp(this);
-        SlotMachineModel model = new SlotMachineModel();
+        UebersichtsSeiteModel model = new UebersichtsSeiteModel();
         model.setUser(user);
-        final SlotMachineViewModel viewModel = new SlotMachineViewModel(model);
-        view.setViewModel(viewModel);
-        model.addPropertyChangeListener(viewModel);
+        model.setStage(stage);
+        final UebersichtsSeiteViewModel viewModel = new UebersichtsSeiteViewModel(model);
+        view.setUebersichtsSeiteViewModel(viewModel);
+        model.addPropertyChangeListner(viewModel);
         view.bind();
 
         final Scene scene = new Scene(root);
 
-        stage.setTitle("Super Cherry");
+        stage.setTitle("Bingo");
         stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
     }
-    
+
+//    public void openNextBingo() throws IOException {
+//        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/SpielKarteAuswahl.fxml"));
+//        Parent root;
+//        root = loader.load();
+//        SpielkarteAuswahlController view = loader.getController();
+//        this.model = new SpielkarteAuswahlModel(this);
+//        SpielkarteAuswahlViewModel viewModel = new SpielkarteAuswahlViewModel(model, this);
+//        view.setViewModel(viewModel);
+//        model.addPropertyChangeListner(viewModel);
+//        view.bind();
+//        Scene scene = new Scene(root);
+//        stage.resizableProperty().setValue(Boolean.FALSE);
+//        scene.getStylesheets().add("/styles/Bingo.css");
+//        stage.setScene(scene);
+//        stage.initStyle(StageStyle.UNDECORATED);
+//        stage.show();
+//    }
+
     public void openBuyCredits() throws IOException, SQLException, ClassNotFoundException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Menu/View/FXMLViewBuyCredits.fxml"));
         Parent root;
@@ -188,7 +212,7 @@ public class MainApp extends Application {
         stage.setScene(scene);
         stage.show();
     }
-    
+
     public void registerStart() throws IOException, SQLException, ClassNotFoundException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Login/RegisterView.fxml"));
         Parent root;
@@ -202,8 +226,8 @@ public class MainApp extends Application {
         stage.setScene(scene);
         stage.show();
     }
-    
-    public void startLogin() throws IOException{
+
+    public void startLogin() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Login/LoginView.fxml"));
         Parent root;
         root = loader.load();
@@ -216,7 +240,7 @@ public class MainApp extends Application {
         stage.setScene(scene);
         stage.show();
     }
-    
+
     public void openStatistics() throws IOException, SQLException, ClassNotFoundException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Menu/View/FXMLViewStatistic.fxml"));
         Parent root;
@@ -233,7 +257,7 @@ public class MainApp extends Application {
         stage.setScene(scene);
         stage.show();
     }
-    
+
     public void setUser(User u) {
         this.user = u;
     }

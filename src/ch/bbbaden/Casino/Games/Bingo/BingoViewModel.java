@@ -5,8 +5,7 @@
  */
 package ch.bbbaden.Casino.Games.Bingo;
 
-import ch.bbbaden.Casino.Games.MainApp;
-import ch.bbbaden.Casino.Games.Bingo.BingoModel;
+import ch.bbbaden.Casino.MainApp;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import javafx.beans.property.SimpleStringProperty;

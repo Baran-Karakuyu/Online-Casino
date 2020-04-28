@@ -5,10 +5,10 @@
  */
 package ch.bbbaden.Casino.Games.Bingo;
 
-import ch.bbbaden.Casino.Games.MainApp;
-import ch.bbbaden.Casino.Games.Bingo.SpielkarteAuswahlModel;
+import ch.bbbaden.Casino.MainApp;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.io.IOException;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
@@ -18,34 +18,34 @@ import javafx.beans.property.StringProperty;
  */
 public class SpielkarteAuswahlViewModel implements PropertyChangeListener {
 
-    StringProperty str1 = new SimpleStringProperty();
-    StringProperty str2 = new SimpleStringProperty();
-    StringProperty str3 = new SimpleStringProperty();
-    StringProperty str4 = new SimpleStringProperty();
-    StringProperty str5 = new SimpleStringProperty();
-    StringProperty str6 = new SimpleStringProperty();
-    StringProperty str7 = new SimpleStringProperty();
-    StringProperty str8 = new SimpleStringProperty();
-    StringProperty str9 = new SimpleStringProperty();
-    StringProperty str10 = new SimpleStringProperty();
-    StringProperty str11 = new SimpleStringProperty();
-    StringProperty str12 = new SimpleStringProperty();
-    StringProperty str13 = new SimpleStringProperty();
-    StringProperty str14 = new SimpleStringProperty();
-    StringProperty str15 = new SimpleStringProperty();
-    StringProperty str16 = new SimpleStringProperty();
-    StringProperty str17 = new SimpleStringProperty();
-    StringProperty str18 = new SimpleStringProperty();
-    StringProperty str19 = new SimpleStringProperty();
-    StringProperty str20 = new SimpleStringProperty();
-    StringProperty str21 = new SimpleStringProperty();
-    StringProperty str22 = new SimpleStringProperty();
-    StringProperty str23 = new SimpleStringProperty();
-    StringProperty str24 = new SimpleStringProperty();
-    StringProperty str25 = new SimpleStringProperty();
+    private final StringProperty str1 = new SimpleStringProperty();
+    private final StringProperty str2 = new SimpleStringProperty();
+    private final StringProperty str3 = new SimpleStringProperty();
+    private final StringProperty str4 = new SimpleStringProperty();
+    private final StringProperty str5 = new SimpleStringProperty();
+    private final StringProperty str6 = new SimpleStringProperty();
+    private final StringProperty str7 = new SimpleStringProperty();
+    private final StringProperty str8 = new SimpleStringProperty();
+    private final StringProperty str9 = new SimpleStringProperty();
+    private final StringProperty str10 = new SimpleStringProperty();
+    private final StringProperty str11 = new SimpleStringProperty();
+    private final StringProperty str12 = new SimpleStringProperty();
+    private final StringProperty str13 = new SimpleStringProperty();
+    private final StringProperty str14 = new SimpleStringProperty();
+    private final StringProperty str15 = new SimpleStringProperty();
+    private final StringProperty str16 = new SimpleStringProperty();
+    private final StringProperty str17 = new SimpleStringProperty();
+    private final StringProperty str18 = new SimpleStringProperty();
+    private final StringProperty str19 = new SimpleStringProperty();
+    private final StringProperty str20 = new SimpleStringProperty();
+    private final StringProperty str21 = new SimpleStringProperty();
+    private final StringProperty str22 = new SimpleStringProperty();
+    private final StringProperty str23 = new SimpleStringProperty();
+    private final StringProperty str24 = new SimpleStringProperty();
+    private final StringProperty str25 = new SimpleStringProperty();
 
-    SpielkarteAuswahlModel spielkarteAuswahlModel;
-    MainApp mainApp;
+    private final SpielkarteAuswahlModel spielkarteAuswahlModel;
+    private final MainApp mainApp;
 
     public SpielkarteAuswahlViewModel(SpielkarteAuswahlModel spielkarteAuswahlModel, MainApp mainApp) {
         this.spielkarteAuswahlModel = spielkarteAuswahlModel;
@@ -164,10 +164,8 @@ public class SpielkarteAuswahlViewModel implements PropertyChangeListener {
         }
     }
 
-    public void showBingo() {
-
+    public void showBingo() throws IOException {
         spielkarteAuswahlModel.showBingo();
-
     }
 
     public StringProperty getStr1() {

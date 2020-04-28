@@ -5,9 +5,10 @@
  */
 package ch.bbbaden.Casino.Games.Bingo;
 
-import ch.bbbaden.ims.programmierwochen.bingo.ViewModel.UebersichtsSeiteViewModel;
+import ch.bbbaden.Casino.MainApp;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -32,6 +33,8 @@ public class UebersichtsSeiteController implements Initializable {
     @FXML
     private Button btnRegeln;
 
+    private MainApp mainApp;
+
     public void setUebersichtsSeiteViewModel(UebersichtsSeiteViewModel uebersichtsSeiteViewModel) {
         this.uebersichtsSeiteViewModel = uebersichtsSeiteViewModel;
     }
@@ -46,7 +49,7 @@ public class UebersichtsSeiteController implements Initializable {
 
     @FXML
     private void ActionStart(ActionEvent event) throws IOException {
-
+        uebersichtsSeiteViewModel.setMainApp(mainApp);
         uebersichtsSeiteViewModel.showSpielkarteAuswahl();
     }
 
@@ -55,8 +58,8 @@ public class UebersichtsSeiteController implements Initializable {
     }
 
     @FXML
-    private void ActionVerlassen(MouseEvent event) {
-        System.exit(0);
+    private void ActionVerlassen(MouseEvent event) throws IOException, SQLException, ClassNotFoundException {
+        mainApp.startMenu();
     }
 
     @FXML
@@ -76,4 +79,7 @@ public class UebersichtsSeiteController implements Initializable {
                 JOptionPane.INFORMATION_MESSAGE);
     }
 
+    public void setMainApp(MainApp mainApp) {
+        this.mainApp = mainApp;
+    }
 }

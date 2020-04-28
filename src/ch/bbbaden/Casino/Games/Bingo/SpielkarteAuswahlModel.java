@@ -5,11 +5,17 @@
  */
 package ch.bbbaden.Casino.Games.Bingo;
 
-import ch.bbbaden.Casino.Games.MainApp;
+import ch.bbbaden.Casino.MainApp;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 /**
  *
@@ -17,36 +23,37 @@ import java.util.Collections;
  */
 public class SpielkarteAuswahlModel {
 
-    ArrayList<Integer> randomNumbers = new ArrayList<>();
-
-    String str1;
-    String str2;
-    String str3;
-    String str4;
-    String str5;
-    String str6;
-    String str7;
-    String str8;
-    String str9;
-    String str10;
-    String str11;
-    String str12;
-    String str13;
-    String str14;
-    String str15;
-    String str16;
-    String str17;
-    String str18;
-    String str19;
-    String str20;
-    String str21;
-    String str22;
-    String str23;
-    String str24;
-    String str25;
-    PropertyChangeSupport changes = new PropertyChangeSupport(this);
-
-    MainApp mainApp;
+    private ArrayList<Integer> randomNumbers = new ArrayList<>();
+    
+    private Stage stage;
+    public String str1;
+    public String str2;
+    public String str3;
+    public String str4;
+    public String str5;
+    public String str6;
+    public String str7;
+    public String str8;
+    public String str9;
+    public String str10;
+    public String str11;
+    public String str12;
+    public String str13;
+    public String str14;
+    public String str15;
+    public String str16;
+    public String str17;
+    public String str18;
+    public String str19;
+    public String str20;
+    public String str21;
+    public String str22;
+    public String str23;
+    public String str24;
+    public String str25;
+    private PropertyChangeSupport changes = new PropertyChangeSupport(this);
+    private BingoModel bingoModel;
+    private MainApp mainApp;
 
     public SpielkarteAuswahlModel(MainApp mainApp) {
         this.mainApp = mainApp;
@@ -64,9 +71,29 @@ public class SpielkarteAuswahlModel {
 
     }
 
-    public void showBingo() {
+    public void showBingo() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Bingo.fxml"));
+        Parent root;
 
-        mainApp.showBingo();
+        root = loader.load();
+
+        BingoController view = loader.getController();
+
+        bingoModel = new BingoModel(mainApp, this);
+
+        BingoViewModel bingoViewModel = new BingoViewModel(bingoModel);
+        view.setViewModel(bingoViewModel);
+        bingoModel.addPropertyChangeListner(bingoViewModel);
+        view.bind();
+
+        view.startTimer();
+        bingoModel.showCards();
+        Scene scene = new Scene(root);
+        stage.resizableProperty().setValue(Boolean.FALSE);
+        scene.getStylesheets().add("/styles/Bingo.css");
+        stage.setScene(scene);
+        stage.initStyle(StageStyle.UNDECORATED);
+        stage.show();
     }
 
     public void ActionAendern() {
@@ -196,6 +223,10 @@ public class SpielkarteAuswahlModel {
         str25 = list.get(24).toString();
         changes.firePropertyChange("bingoNumbers25", oldstr25, str25);
 
+    }
+
+    public void setStage(Stage stage) {
+        this.stage = stage;
     }
 
     public void addPropertyChangeListner(PropertyChangeListener l) {

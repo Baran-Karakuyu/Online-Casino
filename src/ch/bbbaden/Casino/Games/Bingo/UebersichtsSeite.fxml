@@ -9,7 +9,7 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="332.0" prefWidth="599.0" stylesheets="@../styles/Bingo.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.bbbaden.ims.programmierwochen.bingo.View.UebersichtsSeiteController">
+<AnchorPane id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="332.0" prefWidth="599.0" stylesheets="@../styles/Bingo.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.bbbaden.Casino.Games.Bingo.UebersichtsSeiteController">
    <children>
       <ImageView fitHeight="381.0" fitWidth="599.0" pickOnBounds="true" preserveRatio="true">
          <image>
