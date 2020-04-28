@@ -149,6 +149,28 @@ public class MainApp extends Application {
         stage.show();
     }
     
+    public void startBingo() throws IOException, SQLException, ClassNotFoundException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Games/Slots/FXMLDocument.fxml"));
+        Parent root;
+        root = loader.load();
+        
+        FXMLSlotsController view = loader.getController();
+        view.setMainApp(this);
+        SlotMachineModel model = new SlotMachineModel();
+        model.setUser(user);
+        final SlotMachineViewModel viewModel = new SlotMachineViewModel(model);
+        view.setViewModel(viewModel);
+        model.addPropertyChangeListener(viewModel);
+        view.bind();
+
+        final Scene scene = new Scene(root);
+
+        stage.setTitle("Super Cherry");
+        stage.setResizable(false);
+        stage.setScene(scene);
+        stage.show();
+    }
+    
     public void openBuyCredits() throws IOException, SQLException, ClassNotFoundException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Menu/View/FXMLViewBuyCredits.fxml"));
         Parent root;
