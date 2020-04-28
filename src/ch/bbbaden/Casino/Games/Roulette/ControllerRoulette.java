@@ -1,8 +1,11 @@
 package ch.bbbaden.Casino.Games.Roulette;
 
+import Casino.DataBase.Query;
 import Casino.DataBase.User;
 import ch.bbbaden.Casino.MainApp;
+import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -330,10 +333,12 @@ public class ControllerRoulette implements Initializable {
     private Label PlaceholderGuthaben;
     @FXML
     private Label lblNumber;
-
+    private Query sql = new Query();
     RouletteBetType rbt = new RouletteBetType();
-    public int konto = 10000;
+    public int konto ;
     public int ChipValue = 0;
+    private User user;
+    private MainApp mainApp;
     @FXML
     private Label lblBlack;
     @FXML
@@ -343,7 +348,7 @@ public class ControllerRoulette implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        PlaceholderGuthaben.setText(Integer.toString(konto));
+        
     }
 
     public void start(Stage primaryStage) {
@@ -1637,14 +1642,19 @@ public class ControllerRoulette implements Initializable {
     }
 
     @FXML
-    private void ButtonHandlingLeaveToMenu(ActionEvent event) {
+    private void ButtonHandlingLeaveToMenu(ActionEvent event) throws IOException, SQLException, ClassNotFoundException {
+        mainApp.startMenu();
     }
 
     public void setUser(User user) {
-       
+       this.user= user;
     }
 
     public void setMainApp(MainApp aThis) {
-       
+       this.mainApp= aThis;
+    }
+    public void setCreditUser() throws SQLException, ClassNotFoundException{
+        konto= (int) sql.getCreditUser(user.getName());
+        PlaceholderGuthaben.setText(Integer.toString(konto));        
     }
 }

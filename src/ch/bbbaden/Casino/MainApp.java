@@ -185,6 +185,7 @@ public class MainApp extends Application {
         ControllerRoulette view= loader.getController();
         view.setUser(user);
         view.setMainApp(this);
+        view.setCreditUser();
         
         final Scene scene= new Scene(root);
         
