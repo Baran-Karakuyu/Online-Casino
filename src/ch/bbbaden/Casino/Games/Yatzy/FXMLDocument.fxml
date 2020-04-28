@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="903.0" prefWidth="1493.0" style="-fx-background-color: green;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.bbbaden.Casino.Games.Yatzy.FXMLDocumentController">
+    <children>
+      <ImageView fitHeight="719.0" fitWidth="1215.0" layoutX="320.0" layoutY="79.0" pickOnBounds="true">
+         <image>
+            <Image url="@../img/457790-PFCW4R-344.jpg" />
+         </image>
+      </ImageView>
+      <Pane layoutX="-2.0" layoutY="-5.0" prefHeight="795.0" prefWidth="322.0" style="-fx-background-color: black;">
+         <children>
+            <ImageView fitHeight="795.0" fitWidth="313.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../img/greenfelt2.jpg" />
+               </image>
+            </ImageView>
+              <CheckBox fx:id="halten1" disable="true" layoutX="154.0" layoutY="194.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="90.0" style="-fx-background-color: white;" text="Halten">
+               <font>
+                  <Font name="Arial Black" size="12.0" />
+               </font>
+            </CheckBox>
+              <ImageView fx:id="würfel2" fitHeight="83.0" fitWidth="76.0" layoutX="55.0" layoutY="275.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                      <Image url="@../img/1.png" />
+                  </image>
+              </ImageView>
+              <ImageView fx:id="würfel1" fitHeight="83.0" fitWidth="76.0" layoutX="55.0" layoutY="174.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                      <Image url="@../img/1.png" />
+                  </image>
+              </ImageView>
+              <ImageView fx:id="würfel3" fitHeight="83.0" fitWidth="76.0" layoutX="55.0" layoutY="373.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                      <Image url="@../img/1.png" />
+                  </image>
+              </ImageView>
+              <ImageView fx:id="würfel4" fitHeight="83.0" fitWidth="76.0" layoutX="55.0" layoutY="473.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                      <Image url="@../img/1.png" />
+                  </image>
+              </ImageView>
+              <ImageView fx:id="würfel5" fitHeight="83.0" fitWidth="76.0" layoutX="55.0" layoutY="567.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                      <Image url="@../img/1.png" />
+                  </image>
+              </ImageView>
+            <CheckBox fx:id="halten2" disable="true" layoutX="154.0" layoutY="295.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="90.0" style="-fx-background-color: white;" text="Halten">
+               <font>
+                  <Font name="Arial Black" size="12.0" />
+               </font>
+            </CheckBox>
+            <CheckBox fx:id="halten3" disable="true" layoutX="154.0" layoutY="393.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="90.0" style="-fx-background-color: white;" text="Halten">
+               <font>
+                  <Font name="Arial Black" size="12.0" />
+               </font>
+            </CheckBox>
+            <CheckBox fx:id="halten4" disable="true" layoutX="154.0" layoutY="493.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="90.0" style="-fx-background-color: white;" text="Halten">
+               <font>
+                  <Font name="Arial Black" size="12.0" />
+               </font>
+            </CheckBox>
+            <CheckBox fx:id="halten5" disable="true" layoutX="154.0" layoutY="587.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="90.0" style="-fx-background-color: white;" text="Halten">
+               <font>
+                  <Font name="Arial Black" size="12.0" />
+               </font>
+            </CheckBox>
+              <Button fx:id="buttonWürfeln" disable="true" layoutX="63.0" layoutY="104.0" onAction="#würfeln" prefHeight="58.0" prefWidth="196.0" style="-fx-border-color: black; -fx-border-width: 5;" text="Würfeln">
+               <font>
+                  <Font name="Arial Black" size="14.0" />
+               </font>
+            </Button>
+              <Label fx:id="verbleibend" alignment="CENTER" layoutX="63.0" layoutY="667.0" prefHeight="17.0" prefWidth="196.0" text="Verbleibende Züge: 3" textAlignment="CENTER" textFill="WHITE" underline="true">
+                  <font>
+                      <Font name="Arial Black" size="14.0" />
+                  </font>
+              </Label>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" height="85.0" layoutY="3.0" stroke="BLACK" strokeType="INSIDE" width="1541.0" />
+            <Label fx:id="verbleibend3" layoutX="14.0" layoutY="20.0" prefHeight="17.0" prefWidth="196.0" text="YATZY" textFill="WHITE">
+               <font>
+                  <Font name="Arial Black" size="39.0" />
+               </font>
+            </Label>
+            <Pane layoutY="74.0" prefHeight="741.0" prefWidth="12.0" style="-fx-background-color: black;" />
+            <Label layoutX="685.0" layoutY="20.0" prefHeight="58.0" prefWidth="171.0" style="-fx-background-color: white;" text="Runde:">
+               <font>
+                  <Font name="Arial Black" size="30.0" />
+               </font>
+            </Label>
+            <Label fx:id="rundenzahl" alignment="CENTER" layoutX="805.0" layoutY="20.0" prefHeight="58.0" prefWidth="49.0" text="0" textFill="RED">
+               <font>
+                  <Font name="Arial Black" size="30.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="113.0" layoutY="790.0" stroke="BLACK" strokeType="INSIDE" width="1535.0" />
+        <Button fx:id="buttonNext" disable="true" layoutX="1267.0" layoutY="709.0" onAction="#nächsterZug" prefHeight="58.0" prefWidth="196.0" style="-fx-border-color: black; -fx-border-width: 5;" text="Nächster Zug">
+         <font>
+            <Font name="Arial Black" size="12.0" />
+         </font></Button>
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff1f1f" height="363.0" layoutX="347.0" layoutY="160.0" stroke="BLACK" strokeType="INSIDE" width="553.0" />
+        <Button fx:id="einer" disable="true" layoutX="385.0" layoutY="177.0" onAction="#einer" prefHeight="36.0" prefWidth="122.0" text="Einer">
+         <font>
+            <Font name="Arial Black" size="12.0" />
+         </font></Button>
+        <Button fx:id="zweier" disable="true" layoutX="385.0" layoutY="219.0" onAction="#zweier" prefHeight="36.0" prefWidth="122.0" text="Zweier">
+         <font>
+            <Font name="Arial Black" size="12.0" />
+         </font></Button>
+        <Button fx:id="dreier" disable="true" layoutX="385.0" layoutY="260.0" onAction="#dreier" prefHeight="36.0" prefWidth="122.0" text="Dreier">
+         <font>
+            <Font name="Arial Black" size="12.0" />
+         </font></Button>
+        <Button fx:id="vierer" disable="true" layoutX="385.0" layoutY="302.0" onAction="#vierer" prefHeight="36.0" prefWidth="122.0" text="Vierer">
+         <font>
+            <Font name="Arial Black" size="12.0" />
+         </font></Button>
+        <Button fx:id="fünfer" disable="true" layoutX="385.0" layoutY="343.0" onAction="#fünfer" prefHeight="36.0" prefWidth="122.0" text="Fünfer">
+         <font>
+            <Font name="Arial Black" size="12.0" />
+         </font></Button>
+        <Button fx:id="sechser" disable="true" layoutX="385.0" layoutY="383.0" onAction="#sechser" prefHeight="36.0" prefWidth="122.0" text="Sechser">
+         <font>
+            <Font name="Arial Black" size="12.0" />
+         </font></Button>
+        <TextField fx:id="txtEiner" editable="false" layoutX="535.0" layoutY="184.0" prefHeight="25.0" prefWidth="76.0" />
+        <TextField fx:id="txtZweier" editable="false" layoutX="535.0" layoutY="226.0" prefHeight="25.0" prefWidth="76.0" />
+        <TextField fx:id="txtDreier" editable="false" layoutX="535.0" layoutY="268.0" prefHeight="25.0" prefWidth="76.0" />
+        <TextField fx:id="txtVierer" editable="false" layoutX="535.0" layoutY="308.0" prefHeight="22.0" prefWidth="76.0" />
+        <TextField fx:id="txtFünfer" editable="false" layoutX="535.0" layoutY="349.0" prefHeight="25.0" prefWidth="76.0" />
+        <TextField fx:id="txtSechser" editable="false" layoutX="535.0" layoutY="390.0" prefHeight="25.0" prefWidth="76.0" />
+        <Button fx:id="dreierPasch" disable="true" layoutX="639.0" layoutY="178.0" onAction="#dreierPasch" prefHeight="36.0" prefWidth="122.0" text="Dreierpasch">
+         <font>
+            <Font name="Arial Black" size="12.0" />
+         </font></Button>
+        <Button fx:id="viererPasch" disable="true" layoutX="639.0" layoutY="221.0" onAction="#viererPasch" prefHeight="36.0" prefWidth="122.0" text="Viererpasch">
+         <font>
+            <Font name="Arial Black" size="12.0" />
+         </font></Button>
+        <Button fx:id="fullHouse" disable="true" layoutX="639.0" layoutY="262.0" onAction="#fullHouse" prefHeight="36.0" prefWidth="122.0" text="Full House">
+         <font>
+            <Font name="Arial Black" size="12.0" />
+         </font></Button>
+        <Button fx:id="kleineStrasse" disable="true" layoutX="639.0" layoutY="304.0" onAction="#kleineStrasse" prefHeight="36.0" prefWidth="122.0" text="Kleine Strasse">
+         <font>
+            <Font name="Arial Black" size="12.0" />
+         </font></Button>
+        <Button fx:id="grosseStrasse" disable="true" layoutX="639.0" layoutY="344.0" onAction="#grosseStrasse" prefHeight="36.0" prefWidth="122.0" text="Grosse Strasse">
+         <font>
+            <Font name="Arial Black" size="12.0" />
+         </font></Button>
+        <Button fx:id="yatzy" disable="true" layoutX="639.0" layoutY="385.0" onAction="#yatzy" prefHeight="36.0" prefWidth="122.0" text="Yatzy">
+         <font>
+            <Font name="Arial Black" size="12.0" />
+         </font></Button>
+        <Button fx:id="chance" disable="true" layoutX="639.0" layoutY="426.0" onAction="#chance" prefHeight="36.0" prefWidth="122.0" text="Chance">
+         <font>
+            <Font name="Arial Black" size="12.0" />
+         </font></Button>
+        <TextField fx:id="txtBonus" editable="false" layoutX="535.0" layoutY="430.0" prefHeight="25.0" prefWidth="76.0" />
+        <TextField fx:id="txtdreierPasch" editable="false" layoutX="780.0" layoutY="184.0" prefHeight="25.0" prefWidth="76.0" />
+        <TextField fx:id="txtviererPasch" editable="false" layoutX="780.0" layoutY="227.0" prefHeight="25.0" prefWidth="76.0" />
+        <TextField fx:id="txtfullHouse" editable="false" layoutX="780.0" layoutY="268.0" prefHeight="25.0" prefWidth="76.0" />
+        <TextField fx:id="txtkleineStrasse" editable="false" layoutX="780.0" layoutY="310.0" prefHeight="25.0" prefWidth="76.0" />
+        <TextField fx:id="txtgrosseStrasse" editable="false" layoutX="780.0" layoutY="350.0" prefHeight="25.0" prefWidth="76.0" />
+        <TextField fx:id="txtYatzy" editable="false" layoutX="780.0" layoutY="391.0" prefHeight="25.0" prefWidth="76.0" />
+        <TextField fx:id="txtChance" editable="false" layoutX="780.0" layoutY="431.0" prefHeight="25.0" prefWidth="76.0" />
+        <Label fx:id="verbleibend1" layoutX="413.0" layoutY="434.0" prefHeight="17.0" prefWidth="70.0" text="Bonus:" textFill="WHITE">
+            <font>
+                <Font name="Arial Black" size="12.0" />
+            </font>
+        </Label>
+      <Label fx:id="verbleibend11" layoutX="410.0" layoutY="488.0" prefHeight="17.0" prefWidth="76.0" text="Total:" textFill="WHITE" underline="true">
+         <font>
+            <Font name="Arial Black" size="14.0" />
+         </font>
+      </Label>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="3.0" layoutX="385.0" layoutY="468.0" stroke="BLACK" strokeType="INSIDE" width="471.0" />
+      <TextField fx:id="txtTotal" editable="false" layoutX="535.0" layoutY="484.0" prefHeight="25.0" prefWidth="76.0" />
+      <Label fx:id="verbleibend31" layoutX="348.0" layoutY="105.0" prefHeight="17.0" prefWidth="196.0" text="Spieler" textFill="WHITE">
+         <font>
+            <Font name="Arial Black" size="30.0" />
+         </font>
+      </Label>
+      <Label fx:id="verbleibend311" layoutX="1023.0" layoutY="105.0" prefHeight="44.0" prefWidth="333.0" text="Gegenspieler" textFill="WHITE">
+         <font>
+            <Font name="Arial Black" size="30.0" />
+         </font>
+      </Label>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff1f1f" height="363.0" layoutX="1023.0" layoutY="162.0" stroke="BLACK" strokeType="INSIDE" width="440.0" />
+      <TextField fx:id="botZweier" editable="false" layoutX="1141.0" layoutY="228.0" prefHeight="25.0" prefWidth="76.0" />
+      <TextField fx:id="botDreier" editable="false" layoutX="1141.0" layoutY="270.0" prefHeight="25.0" prefWidth="76.0" />
+      <TextField fx:id="botVierer" editable="false" layoutX="1141.0" layoutY="310.0" prefHeight="22.0" prefWidth="76.0" />
+      <TextField fx:id="botFünfer" editable="false" layoutX="1141.0" layoutY="351.0" prefHeight="25.0" prefWidth="76.0" />
+      <TextField fx:id="botSechser" editable="false" layoutX="1141.0" layoutY="392.0" prefHeight="25.0" prefWidth="76.0" />
+      <TextField fx:id="botBonus" editable="false" layoutX="1141.0" layoutY="432.0" prefHeight="25.0" prefWidth="76.0" />
+      <TextField fx:id="botDreierPasch" editable="false" layoutX="1362.0" layoutY="186.0" prefHeight="25.0" prefWidth="76.0" />
+      <TextField fx:id="botViererPasch" editable="false" layoutX="1362.0" layoutY="229.0" prefHeight="25.0" prefWidth="76.0" />
+      <TextField fx:id="botFullHouse" editable="false" layoutX="1362.0" layoutY="268.0" prefHeight="25.0" prefWidth="76.0" />
+      <TextField fx:id="botKleineStrasse" editable="false" layoutX="1362.0" layoutY="312.0" prefHeight="25.0" prefWidth="76.0" />
+      <TextField fx:id="botGrosseStrasse" editable="false" layoutX="1362.0" layoutY="352.0" prefHeight="25.0" prefWidth="76.0" />
+      <TextField fx:id="botYatzy" editable="false" layoutX="1362.0" layoutY="393.0" prefHeight="25.0" prefWidth="76.0" />
+      <Label fx:id="verbleibend12" layoutX="1057.0" layoutY="436.0" prefHeight="17.0" prefWidth="70.0" text="Bonus:" textFill="WHITE">
+         <font>
+            <Font name="Arial Black" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="verbleibend111" layoutX="1054.0" layoutY="488.0" prefHeight="17.0" prefWidth="76.0" text="Total:" textFill="WHITE" underline="true">
+         <font>
+            <Font name="Arial Black" size="14.0" />
+         </font>
+      </Label>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="3.0" layoutX="1058.0" layoutY="470.0" stroke="BLACK" strokeType="INSIDE" width="385.0" />
+      <TextField fx:id="botTotal" editable="false" layoutX="1141.0" layoutY="486.0" prefHeight="25.0" prefWidth="76.0" />
+      <TextField fx:id="botEiner" editable="false" layoutX="1141.0" layoutY="186.0" prefHeight="25.0" prefWidth="76.0" />
+      <Label alignment="CENTER" layoutX="1059.0" layoutY="186.0" prefHeight="25.0" prefWidth="61.0" style="-fx-background-color: white;" text="Einer" textAlignment="CENTER">
+         <font>
+            <Font name="Arial Black" size="12.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="1059.0" layoutY="229.0" prefHeight="25.0" prefWidth="61.0" style="-fx-background-color: white;" text="Zweier" textAlignment="CENTER">
+         <font>
+            <Font name="Arial Black" size="12.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="1059.0" layoutY="270.0" prefHeight="25.0" prefWidth="61.0" style="-fx-background-color: white;" text="Dreier" textAlignment="CENTER">
+         <font>
+            <Font name="Arial Black" size="12.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="1059.0" layoutY="312.0" prefHeight="25.0" prefWidth="61.0" style="-fx-background-color: white;" text="Vierer" textAlignment="CENTER">
+         <font>
+            <Font name="Arial Black" size="12.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="1059.0" layoutY="352.0" prefHeight="25.0" prefWidth="61.0" style="-fx-background-color: white;" text="Fünfer" textAlignment="CENTER">
+         <font>
+            <Font name="Arial Black" size="12.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="1059.0" layoutY="393.0" prefHeight="25.0" prefWidth="61.0" style="-fx-background-color: white;" text="Sechser" textAlignment="CENTER">
+         <font>
+            <Font name="Arial Black" size="12.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="1238.0" layoutY="186.0" prefHeight="25.0" prefWidth="101.0" style="-fx-background-color: white;" text="Dreierpasch" textAlignment="CENTER">
+         <font>
+            <Font name="Arial Black" size="12.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="1238.0" layoutY="229.0" prefHeight="25.0" prefWidth="101.0" style="-fx-background-color: white;" text="Viererpasch" textAlignment="CENTER">
+         <font>
+            <Font name="Arial Black" size="12.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="1236.0" layoutY="270.0" prefHeight="25.0" prefWidth="101.0" style="-fx-background-color: white;" text="Full House" textAlignment="CENTER">
+         <font>
+            <Font name="Arial Black" size="12.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="1238.0" layoutY="310.0" prefHeight="25.0" prefWidth="101.0" style="-fx-background-color: white;" text="Kleine Strasse" textAlignment="CENTER">
+         <font>
+            <Font name="Arial Black" size="12.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="1238.0" layoutY="349.0" prefHeight="25.0" prefWidth="101.0" style="-fx-background-color: white;" text="Grosse Strasse" textAlignment="CENTER">
+         <font>
+            <Font name="Arial Black" size="12.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="1238.0" layoutY="392.0" prefHeight="25.0" prefWidth="101.0" style="-fx-background-color: white;" text="Yatzy" textAlignment="CENTER">
+         <font>
+            <Font name="Arial Black" size="12.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="1238.0" layoutY="432.0" prefHeight="25.0" prefWidth="101.0" style="-fx-background-color: white;" text="Chance" textAlignment="CENTER">
+         <font>
+            <Font name="Arial Black" size="12.0" />
+         </font>
+      </Label>
+      <TextField fx:id="botChance" editable="false" layoutX="1362.0" layoutY="430.0" prefHeight="25.0" prefWidth="76.0" />
+      <Pane layoutX="59.0" layoutY="818.0" prefHeight="58.0" prefWidth="200.0">
+         <children>
+            <Button fx:id="starten" mnemonicParsing="false" onAction="#starten" prefHeight="58.0" prefWidth="196.0" style="-fx-border-color: black; -fx-border-width: 5;" text="Starten">
+               <font>
+                  <Font name="Arial Black" size="12.0" />
+               </font>
+            </Button>
+            <Button fx:id="wettsystem" mnemonicParsing="false" onAction="#wettsystemöffnen" prefHeight="58.0" prefWidth="196.0" style="-fx-border-color: black; -fx-border-width: 5;" text="Wetteinsatz wählen">
+               <font>
+                  <Font name="Arial Black" size="12.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+      <Pane fx:id="winscreen" disable="true" layoutX="468.0" layoutY="90.0" prefHeight="677.0" prefWidth="624.0" style="-fx-background-color: white;" visible="false">
+         <children>
+            <Label layoutX="199.0" layoutY="49.0" text="Spiel beendet">
+               <font>
+                  <Font name="Arial Black" size="30.0" />
+               </font>
+            </Label>
+            <Label fx:id="gewinner" layoutX="242.0" layoutY="144.0" text="Verloren" textFill="RED">
+               <font>
+                  <Font name="Arial Black" size="30.0" />
+               </font>
+            </Label>
+            <Label layoutX="80.0" layoutY="242.0" text="Ihre Punkte:">
+               <font>
+                  <Font name="Arial Black" size="30.0" />
+               </font>
+            </Label>
+            <Label layoutX="331.0" layoutY="242.0" text="Gegner Punkte:">
+               <font>
+                  <Font name="Arial Black" size="30.0" />
+               </font>
+            </Label>
+            <Label fx:id="gewonnenesGeld" layoutX="185.0" layoutY="362.0" text="Verorenes Geld:">
+               <font>
+                  <Font name="Arial Black" size="30.0" />
+               </font>
+            </Label>
+            <Label layoutX="165.0" layoutY="469.0" text="neuer Kontostand">
+               <font>
+                  <Font name="Arial Black" size="30.0" />
+               </font>
+            </Label>
+            <Label fx:id="Punkte" contentDisplay="CENTER" layoutX="95.0" layoutY="278.0" text="Verloren" textFill="RED">
+               <font>
+                  <Font name="Arial Black" size="30.0" />
+               </font>
+            </Label>
+            <Label fx:id="botPunkte" alignment="CENTER" layoutX="403.0" layoutY="278.0" text="Verloren" textFill="RED">
+               <font>
+                  <Font name="Arial Black" size="30.0" />
+               </font>
+            </Label>
+            <Label fx:id="gewonnenesWert" alignment="CENTER" layoutX="185.0" layoutY="406.0" prefHeight="44.0" prefWidth="263.0" text="Verloren" textFill="RED">
+               <font>
+                  <Font name="Arial Black" size="30.0" />
+               </font>
+            </Label>
+            <Label fx:id="neuerKontostand" alignment="CENTER" layoutX="180.0" layoutY="513.0" prefHeight="44.0" prefWidth="263.0" text="Verloren" textFill="RED">
+               <font>
+                  <Font name="Arial Black" size="30.0" />
+               </font>
+            </Label>
+            <Button fx:id="beenden" layoutX="87.0" layoutY="579.0" mnemonicParsing="false" onAction="#beenden" prefHeight="58.0" prefWidth="196.0" style="-fx-border-color: black; -fx-border-width: 5;" text="Beenden">
+               <font>
+                  <Font name="Arial Black" size="12.0" />
+               </font>
+            </Button>
+            <Button fx:id="neueRunde" layoutX="375.0" layoutY="579.0" mnemonicParsing="false" onAction="#neustart" prefHeight="58.0" prefWidth="196.0" style="-fx-border-color: black; -fx-border-width: 5;" text="Neue Runde">
+               <font>
+                  <Font name="Arial Black" size="12.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+      <Label layoutX="562.0" layoutY="818.0" prefHeight="58.0" prefWidth="398.0" style="-fx-background-color: white;" text="Wetteinsatz:">
+         <font>
+            <Font name="Arial Black" size="30.0" />
+         </font>
+      </Label>
+      <Label fx:id="wetteinsatz" alignment="CENTER" layoutX="778.0" layoutY="818.0" prefHeight="58.0" prefWidth="181.0" text="0" textFill="RED">
+         <font>
+            <Font name="Arial Black" size="30.0" />
+         </font>
+      </Label>
+      <Button fx:id="ablauf" layoutX="1015.0" layoutY="818.0" mnemonicParsing="false" onAction="#info" prefHeight="58.0" prefWidth="225.0" style="-fx-border-color: black; -fx-border-width: 5;" text="Ablauf und Kombinationen">
+         <font>
+            <Font name="Arial Black" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="beenden" layoutX="1267.0" layoutY="818.0" mnemonicParsing="false" onAction="#beenden" prefHeight="58.0" prefWidth="196.0" style="-fx-border-color: black; -fx-border-width: 5;" text="Beenden">
+         <font>
+            <Font name="Arial Black" size="12.0" />
+         </font>
+      </Button>
+    </children>
+</AnchorPane>
