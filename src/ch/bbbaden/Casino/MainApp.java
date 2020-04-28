@@ -12,6 +12,7 @@ import ch.bbbaden.Casino.Games.Blackjack.ViewModelBlackJack;
 import ch.bbbaden.Casino.Games.Slots.FXMLSlotsController;
 import ch.bbbaden.Casino.Games.Slots.SlotMachineModel;
 import ch.bbbaden.Casino.Games.Slots.SlotMachineViewModel;
+import ch.bbbaden.Casino.Games.Yatzy.FXMLStartscreenController;
 import ch.bbbaden.Casino.Login.LoginViewController;
 import ch.bbbaden.Casino.Login.RegisterViewController;
 import ch.bbbaden.Casino.Menu.Model.Model;
@@ -138,12 +139,10 @@ public class MainApp extends Application {
         Parent root;
         root = loader.load();
         
-        //FXMLStartscreenController view = loader.getController();
+        FXMLStartscreenController view = loader.getController();
 
         //view.setMainApp(this);
         final Scene scene = new Scene(root);
-
-        //view.bind();
 
         stage.setTitle("Yatzy");
         stage.setScene(scene);

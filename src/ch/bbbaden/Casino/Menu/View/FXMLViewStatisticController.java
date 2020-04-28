@@ -47,6 +47,7 @@ public class FXMLViewStatisticController implements Initializable {
     private ArrayList<User> allUser = new ArrayList<>();
     private ArrayList<String> userRecords = new ArrayList<>();
     private ArrayList<String> gameRecords = new ArrayList<>();
+    private ArrayList<String> gameRecordsHalf = new ArrayList<>();
 
     /**
      * Initializes the controller class.
