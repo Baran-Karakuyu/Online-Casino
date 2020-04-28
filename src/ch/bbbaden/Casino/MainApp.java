@@ -14,6 +14,7 @@ import ch.bbbaden.Casino.Games.Bingo.UebersichtsSeiteViewModel;
 import ch.bbbaden.Casino.Games.Blackjack.ModelBlackJack;
 import ch.bbbaden.Casino.Games.Blackjack.ViewGameController;
 import ch.bbbaden.Casino.Games.Blackjack.ViewModelBlackJack;
+import ch.bbbaden.Casino.Games.Roulette.ControllerRoulette;
 import ch.bbbaden.Casino.Games.Slots.FXMLSlotsController;
 import ch.bbbaden.Casino.Games.Slots.SlotMachineModel;
 import ch.bbbaden.Casino.Games.Slots.SlotMachineViewModel;
@@ -173,6 +174,21 @@ public class MainApp extends Application {
 
         stage.setTitle("Bingo");
         stage.setResizable(false);
+        stage.setScene(scene);
+        stage.show();
+    }
+    public void startRoulette()throws IOException, SQLException, ClassNotFoundException {
+        FXMLLoader loader=  new FXMLLoader(getClass().getResource("Games/Roulette/Scene.fxml"));
+        Parent root;
+        root= loader.load();
+        
+        ControllerRoulette view= loader.getController();
+        view.setUser(user);
+        view.setMainApp(this);
+        
+        final Scene scene= new Scene(root);
+        
+        stage.setTitle("Roulette");
         stage.setScene(scene);
         stage.show();
     }

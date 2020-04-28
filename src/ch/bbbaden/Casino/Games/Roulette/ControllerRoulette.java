@@ -1,5 +1,7 @@
 package ch.bbbaden.Casino.Games.Roulette;
 
+import Casino.DataBase.User;
+import ch.bbbaden.Casino.MainApp;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -14,7 +16,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
-public class FXMLController implements Initializable {
+public class ControllerRoulette implements Initializable {
 
     @FXML
     private AnchorPane AnchorPane;
@@ -1636,5 +1638,13 @@ public class FXMLController implements Initializable {
 
     @FXML
     private void ButtonHandlingLeaveToMenu(ActionEvent event) {
+    }
+
+    public void setUser(User user) {
+       
+    }
+
+    public void setMainApp(MainApp aThis) {
+       
     }
 }

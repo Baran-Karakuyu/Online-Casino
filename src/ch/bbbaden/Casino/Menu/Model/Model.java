@@ -37,8 +37,8 @@ public class Model {
         mainApp.startBlackjack();
     }
 
-    public void startRoulette() throws IOException {
-        mainApp.startSlots();
+    public void startRoulette() throws IOException, SQLException, ClassNotFoundException {
+        mainApp.startRoulette();
     }
 
     public void startYatzy() throws IOException, SQLException, ClassNotFoundException {
