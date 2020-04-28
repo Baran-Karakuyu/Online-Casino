@@ -53,21 +53,21 @@
             <Font name="Harlow Solid Italic" size="17.0" />
          </font>
       </Label>
-      <Button fx:id="hitBtn" layoutX="44.0" layoutY="759.0" mnemonicParsing="false" onAction="#hitAction" prefHeight="128.0" prefWidth="180.0" style="-fx-background-color: transparent;" text="Hit" textFill="WHITE">
+      <Button fx:id="hitBtn" layoutX="26.0" layoutY="775.0" mnemonicParsing="false" onAction="#hitAction" prefHeight="135.0" prefWidth="225.0" style="-fx-background-color: transparent;" text="Hit" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
          <font>
             <Font name="Harlow Solid Italic" size="56.0" />
          </font></Button>
-      <Button fx:id="holdBtn" layoutX="36.0" layoutY="650.0" mnemonicParsing="false" onAction="#holdAction" prefHeight="133.0" prefWidth="217.0" style="-fx-background-color: transparent;" text="Stand" textFill="WHITE">
+      <Button fx:id="holdBtn" layoutX="26.0" layoutY="635.0" mnemonicParsing="false" onAction="#holdAction" prefHeight="133.0" prefWidth="217.0" style="-fx-background-color: transparent;" text="Stand" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
          <font>
             <Font name="Harlow Solid Italic" size="56.0" />
          </font></Button>
-      <Button fx:id="doubleBtn" layoutX="16.0" layoutY="886.0" mnemonicParsing="false" onAction="#doubledownAction" prefHeight="108.0" prefWidth="416.0" style="-fx-background-color: transparent;" text="Double Down" textFill="WHITE">
+      <Button fx:id="doubleBtn" layoutX="14.0" layoutY="900.0" mnemonicParsing="false" onAction="#doubledownAction" prefHeight="108.0" prefWidth="416.0" style="-fx-background-color: transparent;" text="Double Down" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -189,7 +189,7 @@
             <Font size="120.0" />
          </font>
       </Label>
-      <Button fx:id="resetBtn" layoutX="33.0" layoutY="581.0" mnemonicParsing="false" onAction="#reset" style="-fx-background-color: transparent;" text="Play again" textFill="WHITE">
+      <Button fx:id="resetBtn" layoutX="17.0" layoutY="542.0" mnemonicParsing="false" onAction="#reset" style="-fx-background-color: transparent;" text="Play again" textFill="WHITE">
          <font>
             <Font name="Harlow Solid Italic" size="39.0" />
          </font>
@@ -197,11 +197,11 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button fx:id="insuranceBtn" layoutX="436.0" layoutY="796.0" mnemonicParsing="false" onAction="#insurance" style="-fx-background-color: transparent;" text="Insurance" textFill="WHITE">
+      <Button fx:id="insuranceBtn" layoutX="451.0" layoutY="825.0" mnemonicParsing="false" onAction="#insurance" style="-fx-background-color: transparent;" text="Insurance" textFill="WHITE">
          <font>
             <Font name="Harlow Solid Italic" size="37.0" />
          </font>
       </Button>
-      <ChoiceBox fx:id="versichernChoice" layoutX="461.0" layoutY="930.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="versichernChoice" layoutX="487.0" layoutY="961.0" prefWidth="150.0" />
    </children>
 </AnchorPane>

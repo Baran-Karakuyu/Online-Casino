@@ -145,4 +145,12 @@ public class ModelBlackJack {
     public void setUser(User user) {
         this.player = user;
     }
+
+    public void statistics(int creditput, boolean winorlose) throws SQLException, ClassNotFoundException {
+        if(winorlose==true){
+            player.userStats(2, player.getUid(), creditput, creditput, 0);
+        }else{
+            player.userStats(2, player.getUid(), creditput, 0, creditput);
+        }
+    }
 }

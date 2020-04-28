@@ -622,8 +622,10 @@ public class ViewGameController implements Initializable {
             if (doubleActive == true) {
                 creditHere -= creditPut;
                 creditHere -= creditPut;
+                viewModel.setNewStatitcs((creditPut*2),false);
             } else {
                 creditHere -= creditPut;
+                viewModel.setNewStatitcs(creditPut,false);
             }
             viewModel.setNewCredit(creditHere);
         } else {
@@ -637,12 +639,15 @@ public class ViewGameController implements Initializable {
             if (doubleActive == true) {
                 creditHere += creditPut;
                 creditHere += creditPut;
+                viewModel.setNewStatitcs((creditPut*2),true);
             } else {
                 if (blackjack == true) {
                     creditHere += creditPut;
                     creditHere += (creditPut / 2);
+                    viewModel.setNewStatitcs(creditPut+(creditPut/2),true);
                 } else {
                     creditHere += creditPut;
+                    viewModel.setNewStatitcs(creditPut,true);
                 }
             }
             viewModel.setNewCredit(creditHere);
@@ -657,12 +662,15 @@ public class ViewGameController implements Initializable {
                 if (doubleActive == true) {
                     creditHere += creditPut;
                     creditHere += creditPut;
+                    viewModel.setNewStatitcs((creditPut*2),true);
                 } else {
                     if (blackjack == true) {
                         creditHere += creditPut;
                         creditHere += (creditPut / 2);
+                        viewModel.setNewStatitcs(creditPut+(creditPut/2),true);
                     } else {
                         creditHere += creditPut;
+                        viewModel.setNewStatitcs(creditPut,true);
                     }
                 }
                 viewModel.setNewCredit(creditHere);
@@ -672,8 +680,10 @@ public class ViewGameController implements Initializable {
                 if (doubleActive == true) {
                     creditHere -= creditPut;
                     creditHere -= creditPut;
+                    viewModel.setNewStatitcs((creditPut*2),false);
                 } else {
                     creditHere -= creditPut;
+                    viewModel.setNewStatitcs(creditPut,false);
                 }
                 viewModel.setNewCredit(creditHere);
             } else {

@@ -162,6 +162,10 @@ public class ViewModelBlackJack implements PropertyChangeListener{
     public void backToMenu() throws IOException, SQLException, ClassNotFoundException {
         mo.backToMenu();
     }
+
+    public void setNewStatitcs(int creditput,boolean winorlose) throws SQLException, ClassNotFoundException {
+        mo.statistics(creditput,winorlose);
+    }
     
    
 }
