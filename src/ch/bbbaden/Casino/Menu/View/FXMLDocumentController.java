@@ -65,7 +65,7 @@ public class FXMLDocumentController implements Initializable {
     }
 
     @FXML
-    private void RouletteButtonActionHandling(MouseEvent event) throws IOException {
+    private void RouletteButtonActionHandling(MouseEvent event) throws IOException, SQLException, SQLException, ClassNotFoundException {
         viewModel.startRoulette();
     }
 
