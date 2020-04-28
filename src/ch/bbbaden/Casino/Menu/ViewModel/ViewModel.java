@@ -40,7 +40,7 @@ public class ViewModel implements PropertyChangeListener {
         m.startRoulette();
     }
 
-    public void startYatzy() throws IOException {
+    public void startYatzy() throws IOException, SQLException, ClassNotFoundException {
         m.startYatzy();
     }
 

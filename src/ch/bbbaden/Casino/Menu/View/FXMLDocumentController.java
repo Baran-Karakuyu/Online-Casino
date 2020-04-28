@@ -60,7 +60,7 @@ public class FXMLDocumentController implements Initializable {
     }
 
     @FXML
-    private void YatzyButtonActionHandling(MouseEvent event) throws IOException {
+    private void YatzyButtonActionHandling(MouseEvent event) throws IOException, SQLException, ClassNotFoundException {
         viewModel.startYatzy();
     }
 

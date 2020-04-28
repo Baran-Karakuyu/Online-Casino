@@ -80,6 +80,7 @@ public class MainApp extends Application {
         model.setUser(user);
         viewMenu.bind();
         viewMenu.unlockStatistic();
+        model.setNewCredit();
 
         final Scene scene = new Scene(root);
         stage.setTitle("Menü");

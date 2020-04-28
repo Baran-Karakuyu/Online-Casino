@@ -78,9 +78,7 @@ public class Model {
         String oldName = name;
         String oldRole = role;
 
-        for (int i = 0;
-                i < sql.getUsers()
-                        .size(); i++) {
+        for (int i = 0;i < sql.getUsers().size(); i++) {
             benutzer.add(sql.getUsers().get(i));
         }
 
@@ -117,5 +115,11 @@ public class Model {
     public void addPropertyChangeListener(final PropertyChangeListener listener) {
         changes.addPropertyChangeListener(listener);
 
+    }
+    
+    public void setNewCredit() throws SQLException, ClassNotFoundException{
+        String oldCredits= "";
+        double credit= sql.getCreditUser(user.getName());
+        changes.firePropertyChange("credit", oldCredits, credit);
     }
 }
