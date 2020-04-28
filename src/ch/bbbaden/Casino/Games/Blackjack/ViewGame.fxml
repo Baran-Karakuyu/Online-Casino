@@ -202,6 +202,6 @@
             <Font name="Harlow Solid Italic" size="35.0" />
          </font>
       </Button>
-      <ChoiceBox fx:id="versichernChoice" layoutX="423.0" layoutY="954.0" prefWidth="150.0" AnchorPane.bottomAnchor="55.0" />
+      <ChoiceBox fx:id="insuranceChoice" layoutX="423.0" layoutY="954.0" prefWidth="150.0" AnchorPane.bottomAnchor="55.0" />
    </children>
 </AnchorPane>
