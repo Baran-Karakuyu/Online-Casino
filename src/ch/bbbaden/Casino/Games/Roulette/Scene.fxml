@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="PaneView" fx:id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="653.0" prefWidth="1170.0" styleClass="root" stylesheets="@../../../../../CasinoStyleSheet/RouletteStyles.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.bbbaden.Casino.Games.Roulette.FXMLController">
+    <children>
+      <ImageView id="BackgroundTable" fx:id="BackgroundImage" fitHeight="653.0" fitWidth="1168.0" layoutX="1.0" styleClass="root">
+         <image>
+            <Image url="@../../../../../CasinoIMG/Roulette/Images/Trysumthing.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="btnQuit" layoutX="1005.0" layoutY="593.0" mnemonicParsing="false" onAction="#ButtonHandlingQuit" prefHeight="47.0" prefWidth="162.0" text="Quit Game">
+         <textFill>
+            <RadialGradient centerX="0.4943181818181818" centerY="0.46116504854368934" radius="1.0">
+               <stops>
+                  <Stop color="#260202" />
+                  <Stop color="WHITE" offset="1.0" />
+               </stops>
+            </RadialGradient>
+         </textFill></Button>
+      <Button fx:id="btnConfirm" layoutX="1005.0" layoutY="546.0" mnemonicParsing="false" onAction="#ConfirmBets" prefHeight="47.0" prefWidth="162.0" text="Confirm Bets">
+         <textFill>
+            <RadialGradient centerX="0.4943181818181818" centerY="0.46116504854368934" radius="1.0">
+               <stops>
+                  <Stop color="#260202" />
+                  <Stop color="WHITE" offset="1.0" />
+               </stops>
+            </RadialGradient>
+         </textFill></Button>
+      <ImageView fx:id="TenChip" fitHeight="79.0" fitWidth="85.0" layoutX="267.0" layoutY="554.0" onMouseClicked="#UseChip10">
+         <image>
+            <Image url="@../../../../../CasinoIMG/Chips4All/Chip10.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="OneHundredChip" fitHeight="79.0" fitWidth="85.0" layoutX="451.0" layoutY="554.0" onMouseClicked="#UseChip100">
+         <image>
+            <Image url="@../../../../../CasinoIMG/Chips4All/Chip100.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="TwoFifthyChip" fitHeight="79.0" fitWidth="85.0" layoutX="546.0" layoutY="554.0" onMouseClicked="#UseChip250">
+         <image>
+            <Image url="@../../../../../CasinoIMG/Chips4All/Chip250.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="ThousandChip" fitHeight="79.0" fitWidth="85.0" layoutX="641.0" layoutY="554.0" onMouseClicked="#UseChip1000">
+         <image>
+            <Image url="@../../../../../CasinoIMG/Chips4All/Chip1000.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="FifthyChip" fitHeight="79.0" fitWidth="85.0" layoutX="366.0" layoutY="554.0" onMouseClicked="#UseChip50">
+         <image>
+            <Image url="@../../../../../CasinoIMG/Chips4All/Chip50.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="lblGuthaben" layoutX="794.0" layoutY="35.0" prefHeight="47.0" prefWidth="118.0" text="Guthaben :" textFill="WHITE">
+         <font>
+            <Font name="Berlin Sans FB" size="25.0" />
+         </font></Label>
+      <Label fx:id="lblUser" layoutX="794.0" layoutY="14.0" prefHeight="29.0" prefWidth="118.0" text="Username :" textFill="WHITE">
+         <font>
+            <Font name="Berlin Sans FB" size="25.0" />
+         </font></Label>
+      <Label fx:id="lblCornerFiveToNine" layoutX="585.0" layoutY="291.0" onMouseClicked="#CornerBet5To9" prefHeight="21.0" prefWidth="28.0" textFill="#f2e9e9" />
+      <Label fx:id="lblCornerOneToFive" layoutX="541.0" layoutY="340.0" onMouseClicked="#CornerBet1To5" prefHeight="21.0" prefWidth="28.0" textFill="#f2e9e9" />
+      <Label fx:id="lblCornerTwoToSix" layoutX="541.0" layoutY="291.0" onMouseClicked="#CornerBet2To6" prefHeight="21.0" prefWidth="28.0" textFill="#f2e9e9" />
+      <Label fx:id="lbl5Splitt6" layoutX="566.0" layoutY="291.0" onMouseClicked="#SplittBet5To6" prefHeight="21.0" prefWidth="28.0" textFill="#f2e9e9" />
+      <Label fx:id="lbl2Splitt3" layoutX="513.0" layoutY="291.0" onMouseClicked="#SplittBet2To3" prefHeight="21.0" prefWidth="37.0" textFill="#f2e9e9" />
+      <Label fx:id="lbl3Splitt6" layoutX="549.0" layoutY="253.0" onMouseClicked="#SplittBet3To6" prefHeight="36.0" prefWidth="13.0" textFill="#f2e9e9" />
+      <Label fx:id="lblField3" layoutX="516.0" layoutY="254.0" onMouseClicked="#BetField3" prefHeight="47.0" prefWidth="28.0" />
+      <Label fx:id="lb0" layoutX="471.0" layoutY="253.0" onMouseClicked="#BetField0" prefHeight="146.0" prefWidth="37.0" />
+      <Button fx:id="btnReset" layoutX="831.0" layoutY="546.0" mnemonicParsing="false" onAction="#ButtonHandlingResetBets" prefHeight="47.0" prefWidth="172.0" text="Reset">
+         <textFill>
+            <RadialGradient centerX="0.4943181818181818" centerY="0.46116504854368934" radius="1.0">
+               <stops>
+                  <Stop color="#260202" />
+                  <Stop color="WHITE" offset="1.0" />
+               </stops>
+            </RadialGradient>
+         </textFill></Button>
+      <Label fx:id="lbl1Splitt2" layoutX="513.0" layoutY="344.0" onMouseClicked="#SplittBet1To2" prefHeight="21.0" prefWidth="37.0" textFill="#f2e9e9" />
+      <Label fx:id="lbl18to19" layoutX="509.0" layoutY="217.0" onMouseClicked="#BetField1to18" prefHeight="36.0" prefWidth="92.0" />
+      <Label fx:id="lbl19to36" layoutX="940.0" layoutY="217.0" onMouseClicked="#BetField19to36" prefHeight="36.0" prefWidth="85.0" />
+      <Label fx:id="lblEven" layoutX="599.0" layoutY="217.0" onMouseClicked="#BetFieldEven" prefHeight="36.0" prefWidth="85.0" />
+      <Label fx:id="lblOdd" layoutX="855.0" layoutY="217.0" onMouseClicked="#BetFieldOdd" prefHeight="36.0" prefWidth="85.0" />
+      <Label fx:id="lblBlack" layoutX="770.0" layoutY="217.0" onMouseClicked="#BetFieldBlack" prefHeight="36.0" prefWidth="85.0" />
+      <Label fx:id="lblRed" layoutX="684.0" layoutY="217.0" onMouseClicked="#BetFieldRed" prefHeight="36.0" prefWidth="85.0" />
+      <Label fx:id="lbl18to191" layoutX="515.0" layoutY="408.0" onMouseClicked="#BetField1to18" prefHeight="36.0" prefWidth="92.0" />
+      <Label fx:id="lblStreet1" layoutX="521.0" layoutY="398.0" onMouseClicked="#StreetBet1" prefHeight="21.0" prefWidth="28.0" textFill="#f2e9e9" />
+      <Label fx:id="lblStreet2" layoutX="566.0" layoutY="398.0" onMouseClicked="#StreetBet2" prefHeight="21.0" prefWidth="28.0" textFill="#f2e9e9" />
+      <Label fx:id="lblStreet3" layoutX="607.0" layoutY="398.0" onMouseClicked="#StreetBet3" prefHeight="21.0" prefWidth="28.0" textFill="#f2e9e9" />
+      <Label fx:id="lblStreet4" layoutX="647.0" layoutY="398.0" onMouseClicked="#StreetBet4" prefHeight="21.0" prefWidth="28.0" textFill="#f2e9e9" />
+      <Label fx:id="lblStreet5" layoutX="693.0" layoutY="398.0" onMouseClicked="#StreetBet5" prefHeight="21.0" prefWidth="28.0" textFill="#f2e9e9" />
+      <Label fx:id="lblStreet6" layoutX="734.0" layoutY="398.0" onMouseClicked="#StreetBet6" prefHeight="21.0" prefWidth="28.0" textFill="#f2e9e9" />
+      <Label fx:id="lblStreet7" layoutX="771.0" layoutY="398.0" onMouseClicked="#StreetBet7" prefHeight="21.0" prefWidth="37.0" textFill="#f2e9e9" />
+      <Label fx:id="lblStreet8" layoutX="818.0" layoutY="398.0" onMouseClicked="#StreetBet8" prefHeight="21.0" prefWidth="28.0" textFill="#f2e9e9" />
+      <Label fx:id="lblStreet9" layoutX="857.0" layoutY="398.0" onMouseClicked="#StreetBet9" prefHeight="21.0" prefWidth="37.0" textFill="#f2e9e9" />
+      <Label fx:id="lblField2" layoutX="516.0" layoutY="307.0" onMouseClicked="#BetField2" prefHeight="36.0" prefWidth="28.0" />
+      <Label fx:id="lblStreet10" layoutX="898.0" layoutY="398.0" onMouseClicked="#StreetBet10" prefHeight="21.0" prefWidth="37.0" textFill="#f2e9e9" />
+      <Label fx:id="lblStreet11" layoutX="947.0" layoutY="398.0" onMouseClicked="#StreetBet11" prefHeight="21.0" prefWidth="28.0" textFill="#f2e9e9" />
+      <Label fx:id="lblStreet12" layoutX="991.0" layoutY="398.0" onMouseClicked="#StreetBet12" prefHeight="21.0" prefWidth="28.0" textFill="#f2e9e9" />
+      <Label fx:id="lblThird1" layoutX="515.0" layoutY="408.0" onMouseClicked="#BetFieldThird1" prefHeight="29.0" prefWidth="172.0" />
+      <Label fx:id="lblThird2" layoutX="685.0" layoutY="408.0" onMouseClicked="#BetFieldThird2" prefHeight="29.0" prefWidth="172.0" />
+      <Label fx:id="lblThird3" layoutX="854.0" layoutY="408.0" onMouseClicked="#BetFieldThird3" prefHeight="29.0" prefWidth="172.0" />
+      <Label fx:id="lbl2to1One" layoutX="1026.0" layoutY="354.0" onMouseClicked="#BetField2To1One" prefHeight="47.0" prefWidth="44.0" />
+      <Label fx:id="lbl2to1Two" layoutX="1026.0" layoutY="303.0" onMouseClicked="#BetField2To1Two" prefHeight="47.0" prefWidth="44.0" />
+      <Label fx:id="lbl2to1Three" layoutX="1026.0" layoutY="254.0" onMouseClicked="#BetField2To1Three" prefHeight="47.0" prefWidth="44.0" />
+      <Label fx:id="lblCornerFEightToOneTwo" layoutX="628.0" layoutY="291.0" onMouseClicked="#CornerBet8To12" prefHeight="21.0" prefWidth="28.0" textFill="#f2e9e9" />
+      <Label fx:id="lblCornerOneOnetoOneFive" layoutX="670.0" layoutY="291.0" onMouseClicked="#CornerBet11To15" prefHeight="21.0" prefWidth="28.0" textFill="#f2e9e9" />
+      <Label fx:id="lblCornerOneFourToOneEight" layoutX="713.0" layoutY="291.0" onMouseClicked="#CornerBet14To18" prefHeight="21.0" prefWidth="28.0" textFill="#f2e9e9" />
+      <Label fx:id="lblCornerOneSevenToTwoOne" layoutX="755.0" layoutY="291.0" onMouseClicked="#CornerBet17To21" prefHeight="21.0" prefWidth="28.0" textFill="#f2e9e9" />
+      <Label fx:id="lblCornerTwoZeroToTwoFour" layoutX="799.0" layoutY="291.0" onMouseClicked="#CornerBet20To24" prefHeight="21.0" prefWidth="28.0" textFill="#f2e9e9" />
+      <Label fx:id="lblCornerTwoThreeToTwoSeven" layoutX="840.0" layoutY="291.0" onMouseClicked="#CornerBet23To27" prefHeight="21.0" prefWidth="28.0" textFill="#f2e9e9" />
+      <Label fx:id="lblCornerTwoSixToThreeZero" layoutX="884.0" layoutY="291.0" onMouseClicked="#CornerBet26To30" prefHeight="21.0" prefWidth="28.0" textFill="#f2e9e9" />
+      <Label fx:id="lblCornerTwoNineToThreeThree" layoutX="926.0" layoutY="291.0" onMouseClicked="#CornerBet29To33" prefHeight="21.0" prefWidth="28.0" textFill="#f2e9e9" />
+      <Label fx:id="lblCornerThreeTwoToThreeSix" layoutX="969.0" layoutY="291.0" onMouseClicked="#CornerBet32To36" prefHeight="21.0" prefWidth="28.0" textFill="#f2e9e9" />
+      <Label fx:id="lblCornerThreeOneToThreeFive" layoutX="969.0" layoutY="340.0" onMouseClicked="#CornerBet31To35" prefHeight="21.0" prefWidth="28.0" textFill="#f2e9e9" />
+      <Label fx:id="lblCornerTwoEightToThreeTwo" layoutX="926.0" layoutY="340.0" onMouseClicked="#CornerBet28To32" prefHeight="21.0" prefWidth="28.0" textFill="#f2e9e9" />
+      <Label fx:id="lblCornerTwoFiveToTwoNine" layoutX="884.0" layoutY="340.0" onMouseClicked="#CornerBet25To29" prefHeight="21.0" prefWidth="28.0" textFill="#f2e9e9" />
+      <Label fx:id="lblCornerOneNineToTwoThree" layoutX="799.0" layoutY="340.0" onMouseClicked="#CornerBet19To23" prefHeight="21.0" prefWidth="28.0" textFill="#f2e9e9" />
+      <Label fx:id="lblCornerTwoTwoToTwoSix" layoutX="841.0" layoutY="340.0" onMouseClicked="#CornerBet22To26" prefHeight="21.0" prefWidth="28.0" textFill="#f2e9e9" />
+      <Label fx:id="lblCornerOneSixToTwoZero" layoutX="755.0" layoutY="340.0" onMouseClicked="#CornerBet16To20" prefHeight="21.0" prefWidth="28.0" textFill="#f2e9e9" />
+      <Label fx:id="lblCornerOneThreeToOneSeven" layoutX="713.0" layoutY="340.0" onMouseClicked="#CornerBet13To17" prefHeight="21.0" prefWidth="28.0" textFill="#f2e9e9" />
+      <Label fx:id="lblCornerOneZeroToOneFour" layoutX="670.0" layoutY="340.0" onMouseClicked="#CornerBet10To14" prefHeight="21.0" prefWidth="28.0" textFill="#f2e9e9" />
+      <Label fx:id="lblCornerSevenToEleven" layoutX="627.0" layoutY="340.0" onMouseClicked="#CornerBet7To11" prefHeight="21.0" prefWidth="28.0" textFill="#f2e9e9" />
+      <Label fx:id="lblCornerFourToEight" layoutX="585.0" layoutY="340.0" onMouseClicked="#CornerBet4To8" prefHeight="21.0" prefWidth="28.0" textFill="#f2e9e9" />
+      <Label fx:id="lbl4Splitt5" layoutX="566.0" layoutY="340.0" onMouseClicked="#SplittBet4To5" prefHeight="21.0" prefWidth="28.0" textFill="#f2e9e9" />
+      <Label fx:id="lbl8Splitt9" layoutX="607.0" layoutY="291.0" onMouseClicked="#SplittBet8To9" prefHeight="21.0" prefWidth="28.0" textFill="#f2e9e9" />
+      <Label fx:id="lbl11Splitt12" layoutX="647.0" layoutY="291.0" onMouseClicked="#SplittBet11To12" prefHeight="21.0" prefWidth="28.0" textFill="#f2e9e9" />
+      <Label fx:id="lbl14Splitt15" layoutX="693.0" layoutY="291.0" onMouseClicked="#SplittBet14To15" prefHeight="21.0" prefWidth="28.0" textFill="#f2e9e9" />
+      <Label fx:id="lbl17Splitt18" layoutX="734.0" layoutY="291.0" onMouseClicked="#SplittBet17To18" prefHeight="21.0" prefWidth="28.0" textFill="#f2e9e9" />
+      <Label fx:id="lbl20Splitt21" layoutX="776.0" layoutY="291.0" onMouseClicked="#SplittBet20To21" prefHeight="21.0" prefWidth="28.0" textFill="#f2e9e9" />
+      <Label fx:id="lbl23Splitt24" layoutX="818.0" layoutY="291.0" onMouseClicked="#SplittBet23To24" prefHeight="21.0" prefWidth="28.0" textFill="#f2e9e9" />
+      <Label fx:id="lbl26Splitt27" layoutX="862.0" layoutY="291.0" onMouseClicked="#SplittBet26To27" prefHeight="21.0" prefWidth="28.0" textFill="#f2e9e9" />
+      <Label fx:id="lbl29Splitt30" layoutX="903.0" layoutY="291.0" onMouseClicked="#SplittBet29To30" prefHeight="21.0" prefWidth="28.0" textFill="#f2e9e9" />
+      <Label fx:id="lbl32Splitt33" layoutX="947.0" layoutY="291.0" onMouseClicked="#SplittBet32To33" prefHeight="21.0" prefWidth="28.0" textFill="#f2e9e9" />
+      <Label fx:id="lbl35Splitt36" layoutX="991.0" layoutY="291.0" onMouseClicked="#SplittBet35To36" prefHeight="21.0" prefWidth="28.0" textFill="#f2e9e9" />
+      <Label fx:id="lbl34Splitt35" layoutX="991.0" layoutY="340.0" onMouseClicked="#SplittBet34To35" prefHeight="21.0" prefWidth="28.0" textFill="#f2e9e9" />
+      <Label fx:id="lbl31Splitt32" layoutX="947.0" layoutY="340.0" onMouseClicked="#SplittBet31To32" prefHeight="21.0" prefWidth="28.0" textFill="#f2e9e9" />
+      <Label fx:id="lbl28Splitt29" layoutX="903.0" layoutY="340.0" onMouseClicked="#SplittBet28To29" prefHeight="21.0" prefWidth="28.0" textFill="#f2e9e9" />
+      <Label fx:id="lbl25Splitt26" layoutX="862.0" layoutY="340.0" onMouseClicked="#SplittBet25To26" prefHeight="21.0" prefWidth="28.0" textFill="#f2e9e9" />
+      <Label fx:id="lbl22Splitt23" layoutX="818.0" layoutY="340.0" onMouseClicked="#SplittBet22To23" prefHeight="21.0" prefWidth="28.0" textFill="#f2e9e9" />
+      <Label fx:id="lbl19Splitt20" layoutX="776.0" layoutY="340.0" onMouseClicked="#SplittBet19To20" prefHeight="21.0" prefWidth="28.0" textFill="#f2e9e9" />
+      <Label fx:id="lbl16Splitt17" layoutX="734.0" layoutY="340.0" onMouseClicked="#SplittBet16To17" prefHeight="21.0" prefWidth="28.0" textFill="#f2e9e9" />
+      <Label fx:id="lbl13Splitt14" layoutX="693.0" layoutY="340.0" onMouseClicked="#SplittBet13To14" prefHeight="21.0" prefWidth="28.0" textFill="#f2e9e9" />
+      <Label fx:id="lbl10Splitt11" layoutX="647.0" layoutY="340.0" onMouseClicked="#SplittBet10To11" prefHeight="21.0" prefWidth="28.0" textFill="#f2e9e9" />
+      <Label fx:id="lbl7Splitt8" layoutX="607.0" layoutY="340.0" onMouseClicked="#SplittBet7To8" prefHeight="21.0" prefWidth="28.0" textFill="#f2e9e9" />
+      <Label fx:id="lbl1Splitt4" layoutX="549.0" layoutY="360.0" onMouseClicked="#SplittBet1To4" prefHeight="36.0" prefWidth="13.0" textFill="#f2e9e9" />
+      <Label fx:id="lbl4Splitt7" layoutX="593.0" layoutY="360.0" onMouseClicked="#SplittBet4To7" prefHeight="36.0" prefWidth="13.0" textFill="#f2e9e9" />
+      <Label fx:id="lbl7Splitt10" layoutX="635.0" layoutY="360.0" onMouseClicked="#SplittBet7To10" prefHeight="36.0" prefWidth="13.0" textFill="#f2e9e9" />
+      <Label fx:id="lbl10Splitt13" layoutX="678.0" layoutY="360.0" onMouseClicked="#SplittBet10To13" prefHeight="36.0" prefWidth="13.0" textFill="#f2e9e9" />
+      <Label fx:id="lbl13Splitt16" layoutX="720.0" layoutY="360.0" onMouseClicked="#SplittBet13To16" prefHeight="36.0" prefWidth="13.0" textFill="#f2e9e9" />
+      <Label fx:id="lbl16Splitt19" layoutX="764.0" layoutY="360.0" onMouseClicked="#SplittBet16To19" prefHeight="36.0" prefWidth="13.0" textFill="#f2e9e9" />
+      <Label fx:id="lbl19Splitt22" layoutX="806.0" layoutY="360.0" onMouseClicked="#SplittBet19To22" prefHeight="36.0" prefWidth="13.0" textFill="#f2e9e9" />
+      <Label fx:id="lbl22Splitt25" layoutX="849.0" layoutY="360.0" onMouseClicked="#SplittBet22To25" prefHeight="36.0" prefWidth="13.0" textFill="#f2e9e9" />
+      <Label fx:id="lbl25Splitt28" layoutX="892.0" layoutY="360.0" onMouseClicked="#SplittBet25To28" prefHeight="36.0" prefWidth="13.0" textFill="#f2e9e9" />
+      <Label fx:id="lbl28Splitt31" layoutX="934.0" layoutY="360.0" onMouseClicked="#SplittBet28To31" prefHeight="36.0" prefWidth="13.0" textFill="#f2e9e9" />
+      <Label fx:id="lblField1" layoutX="516.0" layoutY="354.0" onMouseClicked="#BetField1" prefHeight="47.0" prefWidth="28.0" />
+      <Label fx:id="lbl31Splitt34" layoutX="977.0" layoutY="360.0" onMouseClicked="#SplittBet31To34" prefHeight="36.0" prefWidth="13.0" textFill="#f2e9e9" />
+      <Label fx:id="lbl32Splitt35" layoutX="976.0" layoutY="311.0" onMouseClicked="#SplittBet32To35" prefHeight="29.0" prefWidth="13.0" textFill="#f2e9e9" />
+      <Label fx:id="lbl29Splitt32" layoutX="934.0" layoutY="312.0" onMouseClicked="#SplittBet29To32" prefHeight="29.0" prefWidth="13.0" textFill="#f2e9e9" />
+      <Label fx:id="lbl26Splitt29" layoutX="891.0" layoutY="312.0" onMouseClicked="#SplittBet26To29" prefHeight="29.0" prefWidth="13.0" textFill="#f2e9e9" />
+      <Label fx:id="lbl23Splitt26" layoutX="848.0" layoutY="311.0" onMouseClicked="#SplittBet23To26" prefHeight="29.0" prefWidth="13.0" textFill="#f2e9e9" />
+      <Label fx:id="lbl20Splitt23" layoutX="806.0" layoutY="311.0" onMouseClicked="#SplittBet20To23" prefHeight="29.0" prefWidth="13.0" textFill="#f2e9e9" />
+      <Label fx:id="lbl17Splitt20" layoutX="763.0" layoutY="312.0" onMouseClicked="#SplittBet17To20" prefHeight="29.0" prefWidth="13.0" textFill="#f2e9e9" />
+      <Label fx:id="lbl14Splitt17" layoutX="721.0" layoutY="311.0" onMouseClicked="#SplittBet14To17" prefHeight="29.0" prefWidth="13.0" textFill="#f2e9e9" />
+      <Label fx:id="lbl11Splitt14" layoutX="677.0" layoutY="312.0" onMouseClicked="#SplittBet11To14" prefHeight="29.0" prefWidth="13.0" textFill="#f2e9e9" />
+      <Label fx:id="lbl8Splitt11" layoutX="635.0" layoutY="311.0" onMouseClicked="#SplittBet8To11" prefHeight="29.0" prefWidth="13.0" textFill="#f2e9e9" />
+      <Label fx:id="lbl5Splitt8" layoutX="593.0" layoutY="312.0" onMouseClicked="#SplittBet5To8" prefHeight="29.0" prefWidth="13.0" textFill="#f2e9e9" />
+      <Label fx:id="lbl2Splitt5" layoutX="540.0" layoutY="311.0" onMouseClicked="#SplittBet2To5" prefHeight="29.0" prefWidth="28.0" textFill="#f2e9e9" />
+      <Label fx:id="lbl6Splitt9" layoutX="593.0" layoutY="253.0" onMouseClicked="#SplittBet6To9" prefHeight="36.0" prefWidth="13.0" textFill="#f2e9e9" />
+      <Label fx:id="lbl9Splitt12" layoutX="635.0" layoutY="253.0" onMouseClicked="#SplittBet9To12" prefHeight="36.0" prefWidth="13.0" textFill="#f2e9e9" />
+      <Label fx:id="lbl12Splitt15" layoutX="679.0" layoutY="253.0" onMouseClicked="#SplittBet12To15" prefHeight="36.0" prefWidth="13.0" textFill="#f2e9e9" />
+      <Label fx:id="lbl15Splitt18" layoutX="720.0" layoutY="253.0" onMouseClicked="#SplittBet15To18" prefHeight="36.0" prefWidth="13.0" textFill="#f2e9e9" />
+      <Label fx:id="lbl18Splitt21" layoutX="763.0" layoutY="253.0" onMouseClicked="#SplittBet18To21" prefHeight="36.0" prefWidth="13.0" textFill="#f2e9e9" />
+      <Label fx:id="lbl21Splitt24" layoutX="806.0" layoutY="253.0" onMouseClicked="#SplittBet21To24" prefHeight="36.0" prefWidth="13.0" textFill="#f2e9e9" />
+      <Label fx:id="lbl24Splitt27" layoutX="848.0" layoutY="253.0" onMouseClicked="#SplittBet24To27" prefHeight="36.0" prefWidth="13.0" textFill="#f2e9e9" />
+      <Label fx:id="lbl27Splitt30" layoutX="892.0" layoutY="253.0" onMouseClicked="#SplittBet27To30" prefHeight="36.0" prefWidth="13.0" textFill="#f2e9e9" />
+      <Label fx:id="lbl30Splitt33" layoutX="934.0" layoutY="253.0" onMouseClicked="#SplittBet30To33" prefHeight="36.0" prefWidth="13.0" textFill="#f2e9e9" />
+      <Label fx:id="lbl33Splitt36" layoutX="977.0" layoutY="253.0" onMouseClicked="#SplittBet33To36" prefHeight="36.0" prefWidth="13.0" textFill="#f2e9e9" />
+      <Label fx:id="lblField4" layoutX="562.0" layoutY="355.0" onMouseClicked="#BetField4" prefHeight="47.0" prefWidth="28.0" />
+      <Label fx:id="lblField5" layoutX="562.0" layoutY="307.0" onMouseClicked="#BetField5" prefHeight="36.0" prefWidth="28.0" />
+      <Label fx:id="lblField8" layoutX="603.0" layoutY="307.0" onMouseClicked="#BetField8" prefHeight="36.0" prefWidth="28.0" />
+      <Label fx:id="lblField11" layoutX="643.0" layoutY="307.0" onMouseClicked="#BetField11" prefHeight="36.0" prefWidth="28.0" />
+      <Label fx:id="lblField14" layoutX="689.0" layoutY="307.0" onMouseClicked="#BetField14" prefHeight="36.0" prefWidth="28.0" />
+      <Label fx:id="lblField17" layoutX="730.0" layoutY="308.0" onMouseClicked="#BetField17" prefHeight="36.0" prefWidth="28.0" />
+      <Label fx:id="lblField20" layoutX="771.0" layoutY="307.0" onMouseClicked="#BetField20" prefHeight="36.0" prefWidth="28.0" />
+      <Label fx:id="lblField23" layoutX="814.0" layoutY="307.0" onMouseClicked="#BetField23" prefHeight="36.0" prefWidth="28.0" />
+      <Label fx:id="lblField26" layoutX="858.0" layoutY="309.0" onMouseClicked="#BetField26" prefHeight="36.0" prefWidth="28.0" />
+      <Label fx:id="lblField29" layoutX="898.0" layoutY="309.0" onMouseClicked="#BetField29" prefHeight="36.0" prefWidth="28.0" />
+      <Label fx:id="lblField32" layoutX="943.0" layoutY="307.0" onMouseClicked="#BetField32" prefHeight="36.0" prefWidth="28.0" />
+      <Label fx:id="lblField35" layoutX="987.0" layoutY="307.0" onMouseClicked="#BetField35" prefHeight="36.0" prefWidth="37.0" />
+      <Label fx:id="lblField7" layoutX="603.0" layoutY="354.0" onMouseClicked="#BetField7" prefHeight="47.0" prefWidth="28.0" />
+      <Label fx:id="lblWin" layoutX="49.0" layoutY="44.0" prefHeight="29.0" prefWidth="497.0" textFill="WHITE">
+         <font>
+            <Font name="Berlin Sans FB" size="25.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblField10" layoutX="643.0" layoutY="355.0" onMouseClicked="#BetField10" prefHeight="47.0" prefWidth="28.0" />
+      <Label fx:id="lblField6" layoutX="562.0" layoutY="254.0" onMouseClicked="#BetField6" prefHeight="47.0" prefWidth="28.0" />
+      <Label fx:id="lblField13" layoutX="689.0" layoutY="355.0" onMouseClicked="#BetField13" prefHeight="47.0" prefWidth="37.0" />
+      <Label fx:id="lblField16" layoutX="730.0" layoutY="355.0" onMouseClicked="#BetField16" prefHeight="47.0" prefWidth="28.0" />
+      <Label fx:id="lblField19" layoutX="771.0" layoutY="354.0" onMouseClicked="#BetField19" prefHeight="47.0" prefWidth="28.0" />
+      <Label fx:id="lblField22" layoutX="814.0" layoutY="355.0" onMouseClicked="#BetField22" prefHeight="47.0" prefWidth="28.0" />
+      <Label fx:id="lblField25" layoutX="858.0" layoutY="355.0" onMouseClicked="#BetField25" prefHeight="47.0" prefWidth="28.0" />
+      <Label fx:id="lblField28" layoutX="899.0" layoutY="354.0" onMouseClicked="#BetField28" prefHeight="47.0" prefWidth="28.0" />
+      <Label fx:id="lblField31" layoutX="943.0" layoutY="354.0" onMouseClicked="#BetField31" prefHeight="47.0" prefWidth="28.0" />
+      <Label fx:id="lblField34" layoutX="987.0" layoutY="354.0" onMouseClicked="#BetField34" prefHeight="47.0" prefWidth="37.0" />
+      <Label fx:id="lblField9" layoutX="603.0" layoutY="254.0" onMouseClicked="#BetField9" prefHeight="47.0" prefWidth="28.0" />
+      <Label fx:id="lblField15" layoutX="689.0" layoutY="254.0" onMouseClicked="#BetField15" prefHeight="47.0" prefWidth="28.0" />
+      <Label fx:id="lblField12" layoutX="643.0" layoutY="254.0" onMouseClicked="#BetField12" prefHeight="47.0" prefWidth="28.0" />
+      <Label fx:id="lblField21" layoutX="771.0" layoutY="254.0" onMouseClicked="#BetField21" prefHeight="47.0" prefWidth="28.0" />
+      <Label fx:id="lblField27" layoutX="858.0" layoutY="254.0" onMouseClicked="#BetField27" prefHeight="47.0" prefWidth="28.0" />
+      <Label fx:id="lblField33" layoutX="943.0" layoutY="254.0" onMouseClicked="#BetField33" prefHeight="47.0" prefWidth="28.0" />
+      <Label fx:id="lblField18" layoutX="730.0" layoutY="254.0" onMouseClicked="#BetField18" prefHeight="47.0" prefWidth="28.0" />
+      <Label fx:id="lblNumber" layoutX="49.0" layoutY="14.0" prefHeight="29.0" prefWidth="497.0" textFill="WHITE">
+         <font>
+            <Font name="Berlin Sans FB" size="25.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblField24" layoutX="814.0" layoutY="254.0" onMouseClicked="#BetField24" prefHeight="47.0" prefWidth="28.0" />
+      <Label fx:id="lblField30" layoutX="898.0" layoutY="254.0" onMouseClicked="#BetField30" prefHeight="47.0" prefWidth="28.0" />
+      <Label fx:id="lblField36" layoutX="991.0" layoutY="254.0" onMouseClicked="#BetField36" prefHeight="47.0" prefWidth="37.0" />
+      <Label fx:id="PlaceholderUsername" layoutX="924.0" layoutY="14.0" prefHeight="29.0" prefWidth="151.0" text="[Placeholder]" textFill="WHITE">
+         <font>
+            <Font name="Berlin Sans FB" size="25.0" />
+         </font>
+      </Label>
+      <Label fx:id="PlaceholderGuthaben" layoutX="924.0" layoutY="44.0" prefHeight="29.0" prefWidth="151.0" text="[Placeholder]" textFill="WHITE">
+         <font>
+            <Font name="Berlin Sans FB" size="25.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblText" layoutX="49.0" layoutY="96.0" prefHeight="29.0" prefWidth="740.0" textFill="WHITE">
+         <font>
+            <Font name="Berlin Sans FB" size="25.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnMainMenu" layoutX="831.0" layoutY="593.0" mnemonicParsing="false" onAction="#ButtonHandlingLeaveToMenu" prefHeight="47.0" prefWidth="172.0" text="Return to Lobby">
+         <textFill>
+            <RadialGradient centerX="0.4943181818181818" centerY="0.46116504854368934" radius="1.0">
+               <stops>
+                  <Stop color="#260202" />
+                  <Stop color="WHITE" offset="1.0" />
+               </stops>
+            </RadialGradient>
+         </textFill>
+      </Button>
+    </children>
+</AnchorPane>
