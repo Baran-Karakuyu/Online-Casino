@@ -43,6 +43,8 @@ public class RegisterViewController implements Initializable {
 
     private MainApp mainApp;
     private final Query sql = new Query();
+    @FXML
+    private Button btnCancel;
 
     /**
      * Initializes the controller class.
@@ -136,14 +138,17 @@ public class RegisterViewController implements Initializable {
         sql.updateUser();
         sql.selectUsers();
     }
+    
+    @FXML
+    private void CancelButtonActionHandling(ActionEvent event) throws IOException {
+        mainApp.startLogin();
+    }
 
     public void setMainApp(MainApp mainApp) {
         this.mainApp = mainApp;
     }
 
-    @FXML
     private void closeBtn(ActionEvent event) {
         System.exit(0);
     }
-
 }

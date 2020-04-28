@@ -6,6 +6,7 @@
 package Casino.DataBase;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -54,7 +55,7 @@ public class User {
     }
 
     public void setCredit(int credit) {
-        this.credit = credit;
+        this.credit += credit;
     }
 
     public void setUid(int uid) {
@@ -75,5 +76,9 @@ public class User {
     
     public void userStats(int gid, int usid, double bet, double win, double lost) throws SQLException, ClassNotFoundException {
         sql.insertStatistic(gid, usid, bet, win, lost);
+    }
+    
+    public ArrayList<String> getUserStats(String name) throws SQLException, ClassNotFoundException {
+        return sql.getUserStatistics(name);
     }
 }

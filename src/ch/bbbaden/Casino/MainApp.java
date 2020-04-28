@@ -104,6 +104,7 @@ public class MainApp extends Application {
         final Scene scene = new Scene(root);
 
         stage.setTitle("Super Cherry");
+        stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
     }
@@ -144,7 +145,7 @@ public class MainApp extends Application {
         view.setVm(viewModel);
 
         final Scene scene = new Scene(root);
-        stage.setTitle("Credits kaufen");
+        stage.setTitle("Guthaben kaufen");
         stage.setScene(scene);
         stage.show();
     }
@@ -158,6 +159,7 @@ public class MainApp extends Application {
         view.setMainApp(this);
         final Scene scene = new Scene(root);
 
+        stage.setTitle("Registrieren");
         stage.setScene(scene);
         stage.show();
     }
@@ -170,6 +172,7 @@ public class MainApp extends Application {
         view.setMainApp(this);
         final Scene scene = new Scene(root);
 
+        stage.setTitle("Anmelden");
         stage.setScene(scene);
         stage.show();
     }

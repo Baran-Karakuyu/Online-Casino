@@ -103,14 +103,15 @@ public class Query {
         jdbc.closeConnection();
     }
 
-    public void getUserStatistics(String user) throws ClassNotFoundException, SQLException {
+    public ArrayList<String> getUserStatistics(String name) throws ClassNotFoundException, SQLException {
+        ArrayList<String> output = new ArrayList<>();
+        String queryStatistic = String.format("Select users.name, games.name, statistic.bet, statistic.win, statistic.Lost from statistic, games, users where users.name = '%s' && users.usid = statistic.usid;", name);
+
         Connection conn = jdbc.createConnection();
         Statement st = conn.createStatement();
-        
-        ArrayList<String> output = new ArrayList<>();
-        String queryStatistic = "Select game.name, statistic.bet, statistic.win, statistic.lost from statistic where ";
+
         ResultSet rs = st.executeQuery(queryStatistic);
-        
+
         int columns = rs.getMetaData().getColumnCount();
         while (rs.next()) {
             String input = "";
@@ -123,6 +124,8 @@ public class Query {
         st.close();
         conn.close();
         jdbc.closeConnection();
+
+        return output;
     }
 
     public void updateCredit(int credit, String name) throws SQLException, ClassNotFoundException {
@@ -183,4 +186,29 @@ public class Query {
         return users;
     }
 
+    public ArrayList<String> getGameStatistics(String game) throws SQLException, ClassNotFoundException {
+        ArrayList<String> output = new ArrayList<>();
+        String queryStatistic = String.format("Select user.name, games.name, statistic.bet, statistic.win, statistic.Lost from statistic, games, users where game.name = '%s' && users.usid = statistic.usid;;", game);
+
+        Connection conn = jdbc.createConnection();
+        Statement st = conn.createStatement();
+
+        ResultSet rs = st.executeQuery(queryStatistic);
+
+        int columns = rs.getMetaData().getColumnCount();
+        while (rs.next()) {
+            String input = "";
+            for (int i = 1; i < columns; i++) {
+                input += String.format("%-15s", rs.getString(i));
+            }
+            output.add(input);
+        }
+
+        rs.close();
+        st.close();
+        conn.close();
+        jdbc.closeConnection();
+        
+        return output;
+    }
 }
