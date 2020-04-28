@@ -100,11 +100,11 @@
       <ImageView fx:id="card4Player" fitHeight="180.0" fitWidth="120.0" layoutX="979.0" layoutY="536.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="card5Player" fitHeight="180.0" fitWidth="120.0" layoutX="992.0" layoutY="522.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="doubleDownCard" fitHeight="120.0" fitWidth="180.0" layoutX="993.0" layoutY="518.0" pickOnBounds="true" preserveRatio="true" />
-      <Label fx:id="playerValue" layoutX="1293.0" layoutY="59.0" prefHeight="50.0" prefWidth="82.0" textFill="WHITE">
+      <Label fx:id="playerValue" layoutX="1293.0" layoutY="59.0" prefHeight="50.0" prefWidth="82.0" textFill="WHITE" AnchorPane.topAnchor="58.0">
          <font>
             <Font name="Harlow Solid Italic" size="28.0" />
          </font></Label>
-      <Label fx:id="dealerValue" layoutX="1293.0" layoutY="13.0" prefHeight="50.0" prefWidth="82.0" textFill="WHITE">
+      <Label fx:id="dealerValue" layoutX="1293.0" layoutY="13.0" prefHeight="50.0" prefWidth="82.0" textFill="WHITE" AnchorPane.topAnchor="18.0">
          <font>
             <Font name="Harlow Solid Italic" size="28.0" />
          </font>
@@ -121,11 +121,11 @@
             <Font size="36.0" />
          </font>
       </Button>
-      <Label layoutX="1146.0" layoutY="23.0" text="Dealer Value" textFill="WHITE">
+      <Label layoutX="1146.0" layoutY="23.0" text="Dealer Value" textFill="WHITE" AnchorPane.topAnchor="23.0">
          <font>
             <Font name="Harlow Solid Italic" size="21.0" />
          </font></Label>
-      <Label layoutX="1142.0" layoutY="66.0" text="Player Value" textFill="WHITE">
+      <Label layoutX="1142.0" layoutY="66.0" text="Player Value" textFill="WHITE" AnchorPane.topAnchor="60.0">
          <font>
             <Font name="Harlow Solid Italic" size="23.0" />
          </font>
@@ -135,23 +135,23 @@
             <Font name="Harlow Solid Italic" size="52.0" />
          </font>
       </Label>
-      <ImageView fx:id="chip10" fitHeight="250.0" fitWidth="250.0" layoutX="1167.0" layoutY="780.0" onMouseClicked="#chip10" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="512.0">
+      <ImageView fx:id="chip10" fitHeight="125.0" fitWidth="125.0" layoutX="1142.0" layoutY="718.0" onMouseClicked="#chip10" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="80.0" AnchorPane.rightAnchor="440.0">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></ImageView>
-      <ImageView fx:id="chip50" fitHeight="250.0" fitWidth="250.0" layoutX="1389.0" layoutY="780.0" onMouseClicked="#chip50" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="280.0">
+      <ImageView fx:id="chip50" fitHeight="125.0" fitWidth="125.0" layoutX="1476.0" layoutY="823.0" onMouseClicked="#chip50" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="80.0" AnchorPane.rightAnchor="245.0">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></ImageView>
-      <ImageView fx:id="chip100" fitHeight="250.0" fitWidth="250.0" layoutX="1654.0" layoutY="760.0" onMouseClicked="#chip100" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <ImageView fx:id="chip100" fitHeight="125.0" fitWidth="125.0" layoutX="1713.0" layoutY="831.0" onMouseClicked="#chip100" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="80.0" AnchorPane.rightAnchor="60.0">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></ImageView>
-      <ImageView fx:id="chip250" fitHeight="250.0" fitWidth="250.0" layoutX="1670.0" layoutY="467.0" onMouseClicked="#chip250" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="313.0" AnchorPane.rightAnchor="0.0">
+      <ImageView fx:id="chip250" fitHeight="125.0" fitWidth="125.0" layoutX="1710.0" layoutY="583.0" onMouseClicked="#chip250" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="240.0" AnchorPane.rightAnchor="60.0">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></ImageView>
-      <ImageView fx:id="chip1000" fitHeight="250.0" fitWidth="250.0" layoutX="1502.0" layoutY="575.0" onMouseClicked="#chip1000" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="200.0" AnchorPane.rightAnchor="200.0">
+      <ImageView fx:id="chip1000" fitHeight="125.0" fitWidth="125.0" layoutX="1493.0" layoutY="622.0" onMouseClicked="#chip1000" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="390.0" AnchorPane.rightAnchor="60.0">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></ImageView>
@@ -203,5 +203,15 @@
          </font>
       </Button>
       <ChoiceBox fx:id="insuranceChoice" layoutX="423.0" layoutY="954.0" prefWidth="150.0" AnchorPane.bottomAnchor="55.0" />
+      <Label layoutX="1439.0" layoutY="21.0" text="User : " textFill="WHITE" AnchorPane.topAnchor="30.0">
+         <font>
+            <Font name="Harlow Solid Italic" size="39.0" />
+         </font>
+      </Label>
+      <Label fx:id="username" layoutX="1557.0" layoutY="37.0" textFill="WHITE" AnchorPane.topAnchor="25.0">
+         <font>
+            <Font name="Harlow Solid Italic" size="39.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

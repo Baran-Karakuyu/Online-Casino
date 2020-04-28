@@ -24,7 +24,7 @@ public class ViewModelBlackJack implements PropertyChangeListener{
     public ViewModelBlackJack(ModelBlackJack mo) {
         this.mo = mo;
     }
-    
+    StringProperty name= new SimpleStringProperty();
     IntegerProperty card1P = new SimpleIntegerProperty();
     IntegerProperty card1G = new SimpleIntegerProperty();
     IntegerProperty card2P = new SimpleIntegerProperty();
@@ -89,6 +89,10 @@ public class ViewModelBlackJack implements PropertyChangeListener{
     public StringProperty getCredit() {
         return credit;
     }
+
+    public StringProperty getName() {
+        return name;
+    }
     
 
 
@@ -131,7 +135,9 @@ public class ViewModelBlackJack implements PropertyChangeListener{
             case "credit":
                 credit.set(pce.getNewValue().toString());
                 break;
-                
+            case "name":
+                name.set(pce.getNewValue().toString());
+                break;
         }
     }
 

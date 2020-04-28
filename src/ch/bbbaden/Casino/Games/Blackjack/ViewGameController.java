@@ -178,6 +178,8 @@ public class ViewGameController implements Initializable {
     private boolean chipsActive = true;
     @FXML
     private Button insuranceBtn;
+    @FXML
+    private Label username;
 
     public void setViewModel(ViewModelBlackJack viewModel) {
         this.viewModel = viewModel;
@@ -195,7 +197,7 @@ public class ViewGameController implements Initializable {
         card5P.bind(viewModel.getCard5P());
         card5G.bind(viewModel.getCard5G());
         cardDouble.bind(viewModel.getCardDouble());
-
+        username.textProperty().bind(viewModel.getName());
         viewModel.credit();
         creditKonto.textProperty().bind(viewModel.getCredit());
         creditHere = Double.parseDouble(creditKonto.getText());
@@ -221,11 +223,11 @@ public class ViewGameController implements Initializable {
         insuranceChoice.getItems().add(30000.0);
         insuranceChoice.getItems().add(40000.0);
         insuranceChoice.getItems().add(50000.0);
-        chip10.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip10.png"));
-        chip50.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip50.png"));
-        chip100.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip100.png"));
-        chip250.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip250.png"));
-        chip1000.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip1000.png"));
+        chip10.setImage(new Image("CasinoIMG/Chips4All/Chip10.png"));
+        chip50.setImage(new Image("CasinoIMG/Chips4All/Chip50.png"));
+        chip100.setImage(new Image("CasinoIMG/Chips4All/Chip100.png"));
+        chip250.setImage(new Image("CasinoIMG/Chips4All/Chip250.png"));
+        chip1000.setImage(new Image("CasinoIMG/Chips4All/Chip1000.png"));
         doubleBtn.setDisable(false);
         doubleBtn.opacityProperty().set(0.1);
         insuranceBtn.setDisable(true);

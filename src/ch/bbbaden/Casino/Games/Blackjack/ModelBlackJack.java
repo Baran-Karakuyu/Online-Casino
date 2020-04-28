@@ -144,6 +144,7 @@ public class ModelBlackJack {
 
     public void setUser(User user) {
         this.player = user;
+        changes.firePropertyChange("name", "", this.player.getName());
     }
 
     public void statistics(double creditput, boolean winorlose) throws SQLException, ClassNotFoundException {
