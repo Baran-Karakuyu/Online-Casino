@@ -132,6 +132,23 @@ public class MainApp extends Application {
         stage.show();
     }
     
+    public void startYatzy() throws IOException, SQLException, ClassNotFoundException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Games/Yatzy/FXMLStartscreen.fxml"));
+        Parent root;
+        root = loader.load();
+        
+        //FXMLStartscreenController view = loader.getController();
+
+        //view.setMainApp(this);
+        final Scene scene = new Scene(root);
+
+        //view.bind();
+
+        stage.setTitle("Yatzy");
+        stage.setScene(scene);
+        stage.show();
+    }
+    
     public void openBuyCredits() throws IOException, SQLException, ClassNotFoundException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Menu/View/FXMLViewBuyCredits.fxml"));
         Parent root;
@@ -163,6 +180,7 @@ public class MainApp extends Application {
         stage.setScene(scene);
         stage.show();
     }
+    
     public void startLogin() throws IOException{
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Login/LoginView.fxml"));
         Parent root;
@@ -197,14 +215,6 @@ public class MainApp extends Application {
     public void setUser(User u) {
         this.user = u;
     }
-
-//    public void setName(String name) {
-//        this.name = name;
-//    }
-//
-//    public String getName() {
-//        return name;
-//    }
 
     public User getUser() {
         return user;
