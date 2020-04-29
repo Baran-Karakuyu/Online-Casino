@@ -362,9 +362,25 @@ public class ControllerRoulette implements Initializable {
         primaryStage.show();
 
     }
+    //--------------------------------------------------
+//DB Stuff
 
-    //-------------------------------------------------------------------------------------
-    //Chip Usage
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public void setMainApp(MainApp aThis) {
+        this.mainApp = aThis;
+    }
+
+    public void setCreditUser() throws SQLException, ClassNotFoundException {
+        konto = (Double) sql.getCreditUser(user.getName());
+        PlaceholderGuthaben.setText(Double.toString(konto));
+        PlaceholderUsername.setText(user.getName());
+    }
+//-------------------------------------------------------------------------------------
+//Chip Usage
+
     @FXML
     private void UseChip10(MouseEvent event) {
 
@@ -1720,21 +1736,4 @@ public class ControllerRoulette implements Initializable {
         PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
         lblText.setText("You have confirmed a " + " Splitt Bet on 33,36 " + "for " + ChipValue);
     }
-//--------------------------------------------------
-//DB Stuff
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public void setMainApp(MainApp aThis) {
-        this.mainApp = aThis;
-    }
-
-    public void setCreditUser() throws SQLException, ClassNotFoundException {
-        konto = (Double) sql.getCreditUser(user.getName());
-        PlaceholderGuthaben.setText(Double.toString(konto));
-        PlaceholderUsername.setText(user.getName());
-    }
-
 }
