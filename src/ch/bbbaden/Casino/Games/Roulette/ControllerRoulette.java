@@ -1175,8 +1175,8 @@ public class ControllerRoulette implements Initializable {
     private void CornerBet16To20(MouseEvent event) {
         Integer[] Betnumbers = {16, 17, 19, 20};
         rbt.addbet(Betnumbers, this.ChipValue);
-        konto = konto - this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto));
+        TotalBetValue += this.ChipValue;
+        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
         lblText.setText("You have confirmed a " + " Corner Bet on 22,23- 25,26 " + "for " + ChipValue);
     }
 
