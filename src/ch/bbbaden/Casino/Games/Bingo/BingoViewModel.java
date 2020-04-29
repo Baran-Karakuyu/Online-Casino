@@ -158,10 +158,6 @@ public class BingoViewModel implements PropertyChangeListener {
         }
     }
 
-//    public void showCards() {
-//        bingoModel.showCards();
-//    }
-
     public StringProperty getStr1() {
         return str1;
     }

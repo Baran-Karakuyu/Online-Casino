@@ -163,6 +163,7 @@ public class MainApp extends Application {
 
         UebersichtsSeiteController view = loader.getController();
         view.setMainApp(this);
+        view.setUser(user);
         UebersichtsSeiteModel model = new UebersichtsSeiteModel();
         model.setUser(user);
         model.setStage(stage);

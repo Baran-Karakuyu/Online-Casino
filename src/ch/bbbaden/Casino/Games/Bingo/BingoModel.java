@@ -5,7 +5,6 @@
  */
 package ch.bbbaden.Casino.Games.Bingo;
 
-//import ch.bbbaden.ims.programmierwochen.bingo.MainApp;
 import ch.bbbaden.Casino.MainApp;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
@@ -16,7 +15,6 @@ import java.beans.PropertyChangeSupport;
  */
 public class BingoModel {
 
-//    private MainApp mainApp;
     private SpielkarteAuswahlModel spielkarteAuswahlModel;
     private MainApp mainApp;
     private String str1 = "";

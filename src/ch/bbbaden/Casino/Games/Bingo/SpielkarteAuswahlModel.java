@@ -5,12 +5,15 @@
  */
 package ch.bbbaden.Casino.Games.Bingo;
 
+import Casino.DataBase.User;
 import ch.bbbaden.Casino.MainApp;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -24,7 +27,7 @@ import javafx.stage.StageStyle;
 public class SpielkarteAuswahlModel {
 
     private ArrayList<Integer> randomNumbers = new ArrayList<>();
-    
+
     private Stage stage;
     public String str1;
     public String str2;
@@ -54,6 +57,7 @@ public class SpielkarteAuswahlModel {
     private PropertyChangeSupport changes = new PropertyChangeSupport(this);
     private BingoModel bingoModel;
     private MainApp mainApp;
+    private User user;
 
     public SpielkarteAuswahlModel(MainApp mainApp) {
         this.mainApp = mainApp;
@@ -71,7 +75,8 @@ public class SpielkarteAuswahlModel {
 
     }
 
-    public void showBingo() throws IOException {
+    public void showBingo(User user) throws IOException {
+        this.user = user;
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Bingo.fxml"));
         Parent root;
 
@@ -83,6 +88,8 @@ public class SpielkarteAuswahlModel {
 
         BingoViewModel bingoViewModel = new BingoViewModel(bingoModel);
         view.setViewModel(bingoViewModel);
+        view.setMainApp(mainApp);
+        view.setUser(user);
         bingoModel.addPropertyChangeListner(bingoViewModel);
         view.bind();
 
@@ -90,10 +97,10 @@ public class SpielkarteAuswahlModel {
         bingoModel.showCards();
         Scene scene = new Scene(root);
         stage.resizableProperty().setValue(Boolean.FALSE);
-        scene.getStylesheets().add("/styles/Bingo.css");
+
         stage.setScene(scene);
-        stage.initStyle(StageStyle.UNDECORATED);
         stage.show();
+
     }
 
     public void ActionAendern() {

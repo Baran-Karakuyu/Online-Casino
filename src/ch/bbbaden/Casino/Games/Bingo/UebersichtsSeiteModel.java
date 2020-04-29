@@ -11,6 +11,8 @@ import ch.bbbaden.Casino.MainApp;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -30,29 +32,34 @@ public class UebersichtsSeiteModel {
     private PropertyChangeSupport changes = new PropertyChangeSupport(this);
 
     public void showSpielkarteAuswahl() throws IOException {
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("SpielKarteAuswahl.fxml"));
         Parent root;
         root = loader.load();
-        
+
         SpielkarteAuswahlController view = loader.getController();
         this.model = new SpielkarteAuswahlModel(mainApp);
         model.setStage(stage);
         SpielkarteAuswahlViewModel viewModel = new SpielkarteAuswahlViewModel(model, mainApp);
         view.setViewModel(viewModel);
+        view.setMainApp(mainApp);
+        view.setUser(user);
         model.addPropertyChangeListner(viewModel);
         view.bind();
-        
+
         Scene scene = new Scene(root);
-        
+
         stage.resizableProperty().setValue(Boolean.FALSE);
-        scene.getStylesheets().add("/styles/Bingo.css");
+
         stage.setScene(scene);
-        stage.initStyle(StageStyle.UNDECORATED);
+
         stage.show();
+
     }
 
     public void setMainApp(MainApp mainApp) {
         this.mainApp = mainApp;
+
     }
 
     public void setUser(User user) {

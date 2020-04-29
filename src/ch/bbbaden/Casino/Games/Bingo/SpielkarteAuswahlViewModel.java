@@ -5,10 +5,13 @@
  */
 package ch.bbbaden.Casino.Games.Bingo;
 
+import Casino.DataBase.User;
 import ch.bbbaden.Casino.MainApp;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
@@ -46,6 +49,7 @@ public class SpielkarteAuswahlViewModel implements PropertyChangeListener {
 
     private final SpielkarteAuswahlModel spielkarteAuswahlModel;
     private final MainApp mainApp;
+    private User user;
 
     public SpielkarteAuswahlViewModel(SpielkarteAuswahlModel spielkarteAuswahlModel, MainApp mainApp) {
         this.spielkarteAuswahlModel = spielkarteAuswahlModel;
@@ -164,8 +168,8 @@ public class SpielkarteAuswahlViewModel implements PropertyChangeListener {
         }
     }
 
-    public void showBingo() throws IOException {
-        spielkarteAuswahlModel.showBingo();
+    public void showBingo(User user) throws IOException {
+        spielkarteAuswahlModel.showBingo(user);
     }
 
     public StringProperty getStr1() {

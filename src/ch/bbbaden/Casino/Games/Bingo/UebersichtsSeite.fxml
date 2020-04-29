@@ -9,14 +9,14 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="332.0" prefWidth="599.0" stylesheets="@../styles/Bingo.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.bbbaden.Casino.Games.Bingo.UebersichtsSeiteController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="332.0" prefWidth="599.0" stylesheets="@../../../../../CasinoStyleSheet/BingoCSS/Bingo.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.bbbaden.Casino.Games.Bingo.UebersichtsSeiteController">
    <children>
       <ImageView fitHeight="381.0" fitWidth="599.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/Background.png" />
+            <Image url="@../../../../../CasinoIMG/Bingo/Background.png" />
          </image>
       </ImageView>
-      <Label layoutX="81.0" layoutY="28.0" prefHeight="72.0" prefWidth="34.0" text="B">
+      <Label layoutX="79.0" layoutY="58.0" prefHeight="72.0" prefWidth="34.0" text="B">
          <font>
             <Font name="Algerian" size="96.0" />
          </font>
@@ -32,7 +32,7 @@
             </LinearGradient>
          </textFill>
       </Label>
-      <Label layoutX="191.0" layoutY="28.0" prefHeight="81.0" prefWidth="34.0" text="I">
+      <Label layoutX="189.0" layoutY="60.0" prefHeight="81.0" prefWidth="34.0" text="I">
          <font>
             <Font name="Algerian" size="96.0" />
          </font>
@@ -48,7 +48,7 @@
             </LinearGradient>
          </textFill>
       </Label>
-      <Label layoutX="268.0" layoutY="25.0" prefHeight="79.0" prefWidth="51.0" text="N">
+      <Label layoutX="267.0" layoutY="57.0" prefHeight="79.0" prefWidth="51.0" text="N">
          <font>
             <Font name="Bodoni MT Black" size="96.0" />
          </font>
@@ -63,7 +63,7 @@
             </LinearGradient>
          </textFill>
       </Label>
-      <Label layoutX="382.0" layoutY="30.0" prefHeight="87.0" prefWidth="51.0" text="G">
+      <Label layoutX="382.0" layoutY="62.0" prefHeight="87.0" prefWidth="51.0" text="G">
          <font>
             <Font name="Algerian" size="93.0" />
          </font>
@@ -78,7 +78,7 @@
             </LinearGradient>
          </textFill>
       </Label>
-      <Label layoutX="471.0" layoutY="28.0" prefHeight="86.0" prefWidth="51.0" text="O">
+      <Label layoutX="473.0" layoutY="60.0" prefHeight="86.0" prefWidth="51.0" text="O">
          <font>
             <Font name="Algerian" size="96.0" />
          </font>
@@ -92,16 +92,11 @@
             </LinearGradient>
          </textFill>
       </Label>
-      <Button id="button" fx:id="btnStart" layoutX="244.0" layoutY="168.0" mnemonicParsing="false" onAction="#ActionStart" prefHeight="48.0" prefWidth="110.0" stylesheets="@Bingo.css" text="STARTEN" textFill="#005904">
+      <Button fx:id="btnStart" layoutX="244.0" layoutY="168.0" mnemonicParsing="false" onAction="#ActionStart" prefHeight="48.0" prefWidth="110.0" styleClass="buttonABC" text="STARTEN" textFill="#005904">
          <font>
             <Font size="19.0" />
          </font>
       </Button>
-      <ImageView fitHeight="37.0" fitWidth="34.0" layoutX="551.0" layoutY="14.0" onMouseClicked="#ActionVerlassen" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/exit.jpg" />
-         </image>
-      </ImageView>
       <Label fx:id="lblCredits" layoutX="130.0" layoutY="294.0" prefHeight="30.0" prefWidth="94.0" text="Credits" textAlignment="RIGHT" textFill="WHITE">
          <font>
             <Font size="20.0" />
@@ -117,15 +112,15 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <ImageView fitHeight="37.0" fitWidth="34.0" layoutX="551.0" layoutY="13.0" onMouseClicked="#ActionVerlassen" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/exit.png" />
-         </image>
-      </ImageView>
-      <Button id="button" fx:id="btnRegeln" layoutX="244.0" layoutY="227.0" mnemonicParsing="false" onAction="#ActionRegeln" prefHeight="48.0" prefWidth="110.0" stylesheets="@Bingo.css" text="REGELN" textFill="#005904">
+      <Button fx:id="btnRegeln" layoutX="244.0" layoutY="227.0" mnemonicParsing="false" onAction="#ActionRegeln" prefHeight="48.0" prefWidth="110.0" styleClass="buttonABC" text="REGELN" textFill="#005904">
          <font>
             <Font size="19.0" />
          </font>
       </Button>
+      <Label fx:id="imgVerlassen" layoutX="10.0" layoutY="10.0" onMouseClicked="#ActionVerlassen" text="ZUM CASINO MENÜ" textFill="WHITE">
+         <font>
+            <Font name="Algerian" size="26.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

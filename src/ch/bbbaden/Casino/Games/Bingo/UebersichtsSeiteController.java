@@ -5,7 +5,9 @@
  */
 package ch.bbbaden.Casino.Games.Bingo;
 
+import Casino.DataBase.User;
 import ch.bbbaden.Casino.MainApp;
+import ch.bbbaden.Casino.Menu.ViewModel.ViewModel;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -16,6 +18,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 
 /**
@@ -26,6 +29,9 @@ import javax.swing.JOptionPane;
 public class UebersichtsSeiteController implements Initializable {
 
     private UebersichtsSeiteViewModel uebersichtsSeiteViewModel;
+    private ViewModel viewModel;
+    private User user;
+
     @FXML
     private Label lblCredits;
     @FXML
@@ -34,6 +40,8 @@ public class UebersichtsSeiteController implements Initializable {
     private Button btnRegeln;
 
     private MainApp mainApp;
+    @FXML
+    private Label imgVerlassen;
 
     public void setUebersichtsSeiteViewModel(UebersichtsSeiteViewModel uebersichtsSeiteViewModel) {
         this.uebersichtsSeiteViewModel = uebersichtsSeiteViewModel;
@@ -49,8 +57,11 @@ public class UebersichtsSeiteController implements Initializable {
 
     @FXML
     private void ActionStart(ActionEvent event) throws IOException {
+
         uebersichtsSeiteViewModel.setMainApp(mainApp);
+
         uebersichtsSeiteViewModel.showSpielkarteAuswahl();
+
     }
 
     public void bind() {
@@ -59,7 +70,11 @@ public class UebersichtsSeiteController implements Initializable {
 
     @FXML
     private void ActionVerlassen(MouseEvent event) throws IOException, SQLException, ClassNotFoundException {
+        Stage stage = (Stage) imgVerlassen.getScene().getWindow();
+        stage.close();
+
         mainApp.startMenu();
+        
     }
 
     @FXML
@@ -81,5 +96,12 @@ public class UebersichtsSeiteController implements Initializable {
 
     public void setMainApp(MainApp mainApp) {
         this.mainApp = mainApp;
+        
     }
+
+    public void setUser(User user) {
+        this.user = user;
+        lblCredits.setText(Double.toString(user.getCredit()));
+    }
+
 }

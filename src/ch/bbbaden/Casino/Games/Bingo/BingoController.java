@@ -5,12 +5,18 @@
  */
 package ch.bbbaden.Casino.Games.Bingo;
 
+import Casino.DataBase.User;
 import ch.bbbaden.Casino.Games.Bingo.BingoViewModel;
+import ch.bbbaden.Casino.MainApp;
+import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.beans.property.StringProperty;
@@ -20,7 +26,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 /**
@@ -35,6 +43,8 @@ public class BingoController implements Initializable {
     ArrayList<Integer> randomNumbers = new ArrayList<>();
 
     private BingoViewModel viewModel;
+    private MainApp mainApp;
+    private User user;
 
     private Timeline timeline;
     private int startTime = 1;
@@ -47,6 +57,8 @@ public class BingoController implements Initializable {
     private boolean ende = false;
     @FXML
     private Label lblAlleNummer;
+    @FXML
+    private Label imgVerlassen;
 
     public ArrayList<Integer> getRandomNumbers() {
         for (int i = 1; i <= 75; i++) {
@@ -78,13 +90,13 @@ public class BingoController implements Initializable {
 
                     timeline.stop();
                     for (int i = 0; i < 1; i++) {
-                        
+
                         String aktuelleNummer = (list.get(i)).toString();
 
                         lblAktuelleNummer.setText(aktuelleNummer);
 
                         anzuzeigenderNummern.add(aktuelleNummer);
-                        
+
                         lblAlleNummer.setText(lblAlleNummer.getText() + lblAktuelleNummer.getText() + ", ");
 
                     }
@@ -167,31 +179,7 @@ public class BingoController implements Initializable {
     }
 
     public BingoController() {
-//        cards.add(btnCross1);
-//        cards.add(btnCross2);
-//        cards.add(btnCross3);
-//        cards.add(btnCross4);
-//        cards.add(btnCross5);
-//        cards.add(btnCross6);
-//        cards.add(btnCross7);
-//        cards.add(btnCross8);
-//        cards.add(btnCross9);
-//        cards.add(btnCross10);
-//        cards.add(btnCross11);
-//        cards.add(btnCross12);
-//        cards.add(btnCross13);
-//        cards.add(btnCross14);
-//        cards.add(btnCross15);
-//        cards.add(btnCross16);
-//        cards.add(btnCross17);
-//        cards.add(btnCross18);
-//        cards.add(btnCross19);
-//        cards.add(btnCross20);
-//        cards.add(btnCross21);
-//        cards.add(btnCross22);
-//        cards.add(btnCross23);
-//        cards.add(btnCross24);
-//        cards.add(btnCross25);
+
     }
 
     public void bind() {
@@ -461,17 +449,22 @@ public class BingoController implements Initializable {
     }
 
     @FXML
-    private void ActionVerlassen(MouseEvent event) {
-        System.exit(0);
+    private void ActionVerlassen(MouseEvent event) throws IOException, SQLException, ClassNotFoundException {
+
+        Stage stage = (Stage) imgVerlassen.getScene().getWindow();
+        stage.close();
+
+        mainApp.startMenu();
+
     }
 
-    public void countdown() {
-//        lblZeit.setText(count + "");
-//        count--; //count down 
-
+    public void setMainApp(MainApp mainApp) {
+        this.mainApp = mainApp;
     }
 
-//    public void showCards() {
-//        viewModel.showCards();
-//    }
+    public void setUser(User user) {
+        this.user = user;
+        lblCredits.setText(Double.toString(user.getCredit()));
+    }
+
 }

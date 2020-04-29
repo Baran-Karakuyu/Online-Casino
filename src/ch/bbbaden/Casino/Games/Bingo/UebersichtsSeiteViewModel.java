@@ -29,7 +29,7 @@ public class UebersichtsSeiteViewModel implements PropertyChangeListener {
     public void setMainApp(MainApp mainApp) {
         uebersichtsSeiteModel.setMainApp(mainApp);
     }
-    
+
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
     }

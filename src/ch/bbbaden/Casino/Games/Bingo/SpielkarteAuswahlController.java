@@ -5,18 +5,25 @@
  */
 package ch.bbbaden.Casino.Games.Bingo;
 
+import Casino.DataBase.User;
 import ch.bbbaden.Casino.Games.Bingo.SpielkarteAuswahlViewModel;
+import ch.bbbaden.Casino.MainApp;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -25,12 +32,9 @@ import javafx.scene.input.MouseEvent;
  */
 public class SpielkarteAuswahlController implements Initializable {
 
-    private Random rnd = new Random();
-    int randomNumber = rnd.nextInt(75) + 1;
-
-    ArrayList<String> numbers = new ArrayList<>();
-
     private SpielkarteAuswahlViewModel viewModel;
+    private MainApp mainApp;
+    private User user;
 
     @FXML
     private Button btnCross1;
@@ -82,15 +86,11 @@ public class SpielkarteAuswahlController implements Initializable {
     private Button btnCross20;
     @FXML
     private Button btnCross25;
+
     @FXML
-    private Button btnAendern;
-    @FXML
-    private Button btnAuswaehlen;
-    @FXML
-    private Label lblKosten;
+    private Label imgVerlassen;
 
     public SpielkarteAuswahlController() {
-
 
     }
 
@@ -100,107 +100,6 @@ public class SpielkarteAuswahlController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }
-
-    @FXML
-    private void ActionCross1(ActionEvent event) {
-
-    }
-
-    @FXML
-    private void ActionCross6(ActionEvent event) {
-    }
-
-    @FXML
-    private void ActionCross11(ActionEvent event) {
-    }
-
-    @FXML
-    private void ActionCross16(ActionEvent event) {
-    }
-
-    @FXML
-    private void ActionCross21(ActionEvent event) {
-    }
-
-    @FXML
-    private void ActionCross2(ActionEvent event) {
-    }
-
-    @FXML
-    private void ActionCross7(ActionEvent event) {
-    }
-
-    @FXML
-    private void ActionCross12(ActionEvent event) {
-    }
-
-    @FXML
-    private void ActionCross17(ActionEvent event) {
-    }
-
-    @FXML
-    private void ActionCross22(ActionEvent event) {
-    }
-
-    @FXML
-    private void ActionCross3(ActionEvent event) {
-    }
-
-    @FXML
-    private void ActionCross8(ActionEvent event) {
-    }
-
-    @FXML
-    private void ActionCross13(ActionEvent event) {
-    }
-
-    @FXML
-    private void ActionCross18(ActionEvent event) {
-    }
-
-    @FXML
-    private void ActionCross23(ActionEvent event) {
-    }
-
-    @FXML
-    private void ActionCross4(ActionEvent event) {
-    }
-
-    @FXML
-    private void ActionCross9(ActionEvent event) {
-    }
-
-    @FXML
-    private void ActionCross14(ActionEvent event) {
-    }
-
-    @FXML
-    private void ActionCross19(ActionEvent event) {
-    }
-
-    @FXML
-    private void ActionCross24(ActionEvent event) {
-    }
-
-    @FXML
-    private void ActionCross5(ActionEvent event) {
-    }
-
-    @FXML
-    private void ActionCross10(ActionEvent event) {
-    }
-
-    @FXML
-    private void ActionCross15(ActionEvent event) {
-    }
-
-    @FXML
-    private void ActionCross20(ActionEvent event) {
-    }
-
-    @FXML
-    private void ActionCross25(ActionEvent event) {
     }
 
     public void bind() {
@@ -240,7 +139,7 @@ public class SpielkarteAuswahlController implements Initializable {
 
     @FXML
     private void ActionAuswaehlen(ActionEvent event) throws IOException {
-        viewModel.showBingo();
+        viewModel.showBingo(user);
     }
 
     public void setViewModel(SpielkarteAuswahlViewModel viewModel) {
@@ -248,8 +147,22 @@ public class SpielkarteAuswahlController implements Initializable {
     }
 
     @FXML
-    private void ActionVerlassen(MouseEvent event) {
-        System.exit(0);
+    private void ActionVerlassen(MouseEvent event) throws IOException, ClassNotFoundException, SQLException {
+
+        Stage stage = (Stage) imgVerlassen.getScene().getWindow();
+        stage.close();
+
+        mainApp.startMenu();
+
+    }
+
+    public void setMainApp(MainApp mainApp) {
+        this.mainApp = mainApp;
+        
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
 }
