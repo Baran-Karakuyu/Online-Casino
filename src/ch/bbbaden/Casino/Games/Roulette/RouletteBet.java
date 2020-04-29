@@ -12,12 +12,12 @@ package ch.bbbaden.Casino.Games.Roulette;
 public class RouletteBet {
 
     //Multiplikatoren für Gewinnausrechnung
-    private final double RedMultiplicator = 2.0;
-    private final double BlackMultiplicator = 2.0;
-    private final double EvenMultiplicator = 2.0;
-    private final double OddMultiplicator = 2.0;
-    private final double LowMultiplicator = 2.0;
-    private final double HighMultiplicator = 2.0;
+    private final double RedMultiplicator = 1.0;
+    private final double BlackMultiplicator = 1.0;
+    private final double EvenMultiplicator = 1.0;
+    private final double OddMultiplicator = 1.0;
+    private final double LowMultiplicator = 1.0;
+    private final double HighMultiplicator = 1.0;
     private final double RowMultiplicator = 2.0;
     private final double DozenMultiplicator = 2.0;
     private final double StraightMultiplicator = 35.0;

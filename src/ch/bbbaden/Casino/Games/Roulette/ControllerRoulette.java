@@ -417,6 +417,9 @@ public class ControllerRoulette implements Initializable {
     private void ButtonHandlingResetBets(ActionEvent event) {
         lblWin.setText("");
         lblNumber.setText("");
+        lblText.setText("");
+        ChipValue = 0;
+        
     }
 
     @FXML
@@ -1720,5 +1723,8 @@ public class ControllerRoulette implements Initializable {
     public void setCreditUser() throws SQLException, ClassNotFoundException {
         konto = (Double) sql.getCreditUser(user.getName());
         PlaceholderGuthaben.setText(Double.toString(konto));
+        PlaceholderUsername.setText(user.getName());
     }
+
+
 }
