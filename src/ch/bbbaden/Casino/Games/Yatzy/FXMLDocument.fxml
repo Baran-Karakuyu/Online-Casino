@@ -15,14 +15,14 @@
     <children>
       <ImageView fitHeight="719.0" fitWidth="1215.0" layoutX="320.0" layoutY="79.0" pickOnBounds="true">
          <image>
-            <Image url="@../img/457790-PFCW4R-344.jpg" />
+            <Image url="@../../../../../CasinoIMG/Yatzy/457790-PFCW4R-344.jpg" />
          </image>
       </ImageView>
       <Pane layoutX="-2.0" layoutY="-5.0" prefHeight="795.0" prefWidth="322.0" style="-fx-background-color: black;">
          <children>
             <ImageView fitHeight="795.0" fitWidth="313.0" pickOnBounds="true">
                <image>
-                  <Image url="@../img/greenfelt2.jpg" />
+                  <Image url="@../../../../../CasinoIMG/Yatzy/greenfelt2.jpg" />
                </image>
             </ImageView>
               <CheckBox fx:id="halten1" disable="true" layoutX="154.0" layoutY="194.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="90.0" style="-fx-background-color: white;" text="Halten">
@@ -32,27 +32,27 @@
             </CheckBox>
               <ImageView fx:id="würfel2" fitHeight="83.0" fitWidth="76.0" layoutX="55.0" layoutY="275.0" pickOnBounds="true" preserveRatio="true">
                   <image>
-                      <Image url="@../img/1.png" />
+                      <Image url="@../../../../../CasinoIMG/Yatzy/1.png" />
                   </image>
               </ImageView>
               <ImageView fx:id="würfel1" fitHeight="83.0" fitWidth="76.0" layoutX="55.0" layoutY="174.0" pickOnBounds="true" preserveRatio="true">
                   <image>
-                      <Image url="@../img/1.png" />
+                      <Image url="@../../../../../CasinoIMG/Yatzy/1.png" />
                   </image>
               </ImageView>
               <ImageView fx:id="würfel3" fitHeight="83.0" fitWidth="76.0" layoutX="55.0" layoutY="373.0" pickOnBounds="true" preserveRatio="true">
                   <image>
-                      <Image url="@../img/1.png" />
+                      <Image url="@../../../../../CasinoIMG/Yatzy/1.png" />
                   </image>
               </ImageView>
               <ImageView fx:id="würfel4" fitHeight="83.0" fitWidth="76.0" layoutX="55.0" layoutY="473.0" pickOnBounds="true" preserveRatio="true">
                   <image>
-                      <Image url="@../img/1.png" />
+                      <Image url="@../../../../../CasinoIMG/Yatzy/1.png" />
                   </image>
               </ImageView>
               <ImageView fx:id="würfel5" fitHeight="83.0" fitWidth="76.0" layoutX="55.0" layoutY="567.0" pickOnBounds="true" preserveRatio="true">
                   <image>
-                      <Image url="@../img/1.png" />
+                      <Image url="@../../../../../CasinoIMG/Yatzy/1.png" />
                   </image>
               </ImageView>
             <CheckBox fx:id="halten2" disable="true" layoutX="154.0" layoutY="295.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="90.0" style="-fx-background-color: white;" text="Halten">

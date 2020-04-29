@@ -11,7 +11,7 @@
    <children>
       <ImageView fitHeight="462.0" fitWidth="704.0" pickOnBounds="true">
          <image>
-            <Image url="@../img/background.jpg" />
+            <Image url="@../../../../../CasinoIMG/Yatzy/background.jpg" />
          </image>
       </ImageView>
       <Label alignment="CENTER" layoutX="241.0" layoutY="69.0" prefHeight="76.0" prefWidth="223.0" text="Yatzy" textFill="WHITE">
