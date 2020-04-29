@@ -1,5 +1,5 @@
 
-#button {
+.buttonABC {
     -fx-display: inline-block;
     -fx-text-align: center;
     -fx-vertical-align: middle;
@@ -18,8 +18,8 @@
     -fx-color: ghostwhite;
     -fx-text-decoration: none;
 }
-#button:hover,
-#button:focus {
+.buttonABC:hover,
+.buttonABC:focus {
     -fx-border-color: white ;
     -fx-background-color:  green ;
 
