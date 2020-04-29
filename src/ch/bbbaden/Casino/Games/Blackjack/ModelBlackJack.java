@@ -147,39 +147,50 @@ public class ModelBlackJack {
     }
 
     public void statistics(double creditput, boolean winorlose, boolean insuranceWoL, double insuranceMoney) throws SQLException, ClassNotFoundException {
-        if (insuranceMoney == 0) {// No Money in Insurance so No Insurance
-            if (winorlose == true) { //He wins
-                player.userStats(2, player.getUid(), creditput, creditput, 0.0);
-            } else { //He Loses
-                player.userStats(2, player.getUid(), creditput, 0.0, creditput);
+        if (creditput == 0) {
+            if(insuranceMoney==0){
+                
+            }else{
+                if (insuranceWoL == true) {
+                    player.userStats(2, player.getUid(), creditput+insuranceMoney, insuranceMoney, 0.0);
+                } else { 
+                    player.userStats(2, player.getUid(), creditput+insuranceMoney, 0.0, insuranceMoney);
+                }
             }
         } else {
-            if (insuranceWoL == true) {// Money in Insurance so Insurance and he won Insurance
-                if (winorlose == true) {//He wins the Game
-                    player.userStats(2, player.getUid(), creditput+insuranceMoney, creditput+insuranceMoney, 0.0); //Correct
-                } else { //He loses the game
-                    if(insuranceMoney>creditput){ //He loses but he won the Insurance if the Insurance is higher then his Bet
-                        player.userStats(2, player.getUid(), creditput+insuranceMoney,  insuranceMoney-creditput,0.0);
-                    }else if(insuranceMoney<creditput){ //He loses but he won the Insurance if the Bet Money is higher then the Insurance 
-                        player.userStats(2, player.getUid(), creditput+insuranceMoney,  0.0, creditput-insuranceMoney);
-                    }else{ //He Loses and the Insurance and the Bet Money are the same so he doesnt win money nor loose so 0.0
-                         player.userStats(2, player.getUid(), creditput+insuranceMoney,  0.0, 0.0);
-                    }     
+            if (insuranceMoney == 0) {// No Money in Insurance so No Insurance
+                if (winorlose == true) { //He wins
+                    player.userStats(2, player.getUid(), creditput, creditput, 0.0);
+                } else { //He Loses
+                    player.userStats(2, player.getUid(), creditput, 0.0, creditput);
                 }
-            }else{ // Money in Insurance but he didnt Win insurance
-               if (winorlose == true) {//If Player Wins
-                   if(insuranceMoney>creditput){//If the Insurance is higher then the Credit
-                       player.userStats(2, player.getUid(), creditput+insuranceMoney, 0.0, insuranceMoney-creditput);
-                   }else if(insuranceMoney<creditput){//If the Insurance is lower then the Credit
-                       player.userStats(2, player.getUid(), creditput+insuranceMoney, creditput-insuranceMoney, 0.0);
-                   }else{//If they are the Same
-                       player.userStats(2, player.getUid(), creditput+insuranceMoney, 0.0, 0.0);
-                   }
-                } else {//if he loses and the insurance too
-                    player.userStats(2, player.getUid(), creditput+insuranceMoney, 0.0, creditput+insuranceMoney);
-                } 
+            } else {
+                if (insuranceWoL == true) {// Money in Insurance so Insurance and he won Insurance
+                    if (winorlose == true) {//He wins the Game
+                        player.userStats(2, player.getUid(), creditput + insuranceMoney, creditput + insuranceMoney, 0.0); //Correct
+                    } else { //He loses the game
+                        if (insuranceMoney > creditput) { //He loses but he won the Insurance if the Insurance is higher then his Bet
+                            player.userStats(2, player.getUid(), creditput + insuranceMoney, insuranceMoney - creditput, 0.0);
+                        } else if (insuranceMoney < creditput) { //He loses but he won the Insurance if the Bet Money is higher then the Insurance 
+                            player.userStats(2, player.getUid(), creditput + insuranceMoney, 0.0, creditput - insuranceMoney);
+                        } else { //He Loses and the Insurance and the Bet Money are the same so he doesnt win money nor loose so 0.0
+                            player.userStats(2, player.getUid(), creditput + insuranceMoney, 0.0, 0.0);
+                        }
+                    }
+                } else { // Money in Insurance but he didnt Win insurance
+                    if (winorlose == true) {//If Player Wins
+                        if (insuranceMoney > creditput) {//If the Insurance is higher then the Credit
+                            player.userStats(2, player.getUid(), creditput + insuranceMoney, 0.0, insuranceMoney - creditput);
+                        } else if (insuranceMoney < creditput) {//If the Insurance is lower then the Credit
+                            player.userStats(2, player.getUid(), creditput + insuranceMoney, creditput - insuranceMoney, 0.0);
+                        } else {//If they are the Same
+                            player.userStats(2, player.getUid(), creditput + insuranceMoney, 0.0, 0.0);
+                        }
+                    } else {//if he loses and the insurance too
+                        player.userStats(2, player.getUid(), creditput + insuranceMoney, 0.0, creditput + insuranceMoney);
+                    }
+                }
             }
         }
-
     }
 }

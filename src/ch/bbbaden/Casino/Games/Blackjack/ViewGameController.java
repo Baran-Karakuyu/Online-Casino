@@ -712,6 +712,8 @@ public class ViewGameController implements Initializable {
                 } else {
                     System.out.println("");
                 }
+                creditPut=0;
+                viewModel.setNewStatitcs(creditPut, false, insuranceWoL, insuranceMoneyPut);
                 
                 viewModel.setNewCredit(creditHere);
             }
