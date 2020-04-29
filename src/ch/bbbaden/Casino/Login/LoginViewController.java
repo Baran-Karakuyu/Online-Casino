@@ -28,6 +28,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 
 /**
  * FXML Controller class
@@ -118,16 +119,13 @@ public class LoginViewController implements Initializable {
         if (invalidChecker == false) {
             for (int i = 0; i < sql.getUsers().size(); i++) {
                 if (benutzer.get(i).getEmail().equals(email)) {
-                    if (benutzer.get(i).getPassword().equals(password)) {
-                        System.out.println("Gut");
-                        //mo.setUser(benutzer.get(i).getEmail(), benutzer.get(i).getPassword());
+                    if (BCrypt.checkpw(password, benutzer.get(i).getPassword())) {
                         mainApp.setUser(benutzer.get(i));
                         mainApp.startMenu();
+                        break;
                     } else {
-
+                        JOptionPane.showMessageDialog(null, "Email oder Passwort ist falsch.", "Fehler", JOptionPane.ERROR_MESSAGE);
                     }
-                } else {
-                    System.out.println("Password Falsch");
                 }
             }
         }

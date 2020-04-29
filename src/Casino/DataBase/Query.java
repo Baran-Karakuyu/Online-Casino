@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 
 /**
  *
@@ -72,6 +73,8 @@ public class Query {
         String queryCreateUser = "Insert into users (name, email, password, credits, role) values (?,?,?,?,'normal');";
         Connection conn = jdbc.createConnection();
         PreparedStatement ps = conn.prepareStatement(queryCreateUser);
+
+        password = BCrypt.hashpw(password, BCrypt.gensalt());
 
         ps.setString(1, name);
         ps.setString(2, email);
@@ -196,8 +199,7 @@ public class Query {
 
         ResultSet rs = st.executeQuery(queryStatistic);
         int c = 0;
-        
-        
+
         int columns = rs.getMetaData().getColumnCount();
         while (rs.next()) {
             String input = "";
