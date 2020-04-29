@@ -1598,7 +1598,7 @@ public class ControllerRoulette implements Initializable {
     private void SplittBet23To26(MouseEvent event) {
         Integer[] Betnumbers = {23, 26};
         rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
+          TotalBetValue += this.ChipValue;
         PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
         lblText.setText("You have confirmed a " + " Splitt Bet on 32,35 " + "for " + ChipValue);
     }
@@ -1607,7 +1607,7 @@ public class ControllerRoulette implements Initializable {
     private void SplittBet20To23(MouseEvent event) {
         Integer[] Betnumbers = {20, 23};
         rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
+          TotalBetValue += this.ChipValue;
         PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
         lblText.setText("You have confirmed a " + " Splitt Bet on 32,35 " + "for " + ChipValue);
     }
@@ -1616,7 +1616,7 @@ public class ControllerRoulette implements Initializable {
     private void SplittBet17To20(MouseEvent event) {
         Integer[] Betnumbers = {17, 20};
         rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
+          TotalBetValue += this.ChipValue;
         PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
         lblText.setText("You have confirmed a " + " Splitt Bet on 17,20 " + "for " + ChipValue);
     }
@@ -1625,7 +1625,7 @@ public class ControllerRoulette implements Initializable {
     private void SplittBet3To6(MouseEvent event) {
         Integer[] Betnumbers = {3, 6};
         rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
+         TotalBetValue += this.ChipValue;
         PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
         lblText.setText("You have confirmed a " + " Splitt Bet on 3,6 " + "for " + ChipValue);
 
@@ -1635,7 +1635,7 @@ public class ControllerRoulette implements Initializable {
     private void SplittBet6To9(MouseEvent event) {
         Integer[] Betnumbers = {6, 9};
         rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
+         TotalBetValue += this.ChipValue;
         PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
         lblText.setText("You have confirmed a " + " Splitt Bet on 6,9 " + "for " + ChipValue);
     }
@@ -1644,7 +1644,7 @@ public class ControllerRoulette implements Initializable {
     private void SplittBet9To12(MouseEvent event) {
         Integer[] Betnumbers = {9, 12};
         rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
+          TotalBetValue += this.ChipValue;
         PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
         lblText.setText("You have confirmed a " + " Splitt Bet on 6,9 " + "for " + ChipValue);
     }
@@ -1662,7 +1662,7 @@ public class ControllerRoulette implements Initializable {
     private void SplittBet15To18(MouseEvent event) {
         Integer[] Betnumbers = {15, 18};
         rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
+         TotalBetValue += this.ChipValue;
         PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
         lblText.setText("You have confirmed a " + " Splitt Bet on 15,18 " + "for " + ChipValue);
     }
@@ -1671,7 +1671,7 @@ public class ControllerRoulette implements Initializable {
     private void SplittBet18To21(MouseEvent event) {
         Integer[] Betnumbers = {18, 21};
         rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
+          TotalBetValue += this.ChipValue;
         PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
         lblText.setText("You have confirmed a " + " Splitt Bet on 18,21 " + "for " + ChipValue);
     }
@@ -1680,7 +1680,7 @@ public class ControllerRoulette implements Initializable {
     private void SplittBet21To24(MouseEvent event) {
         Integer[] Betnumbers = {21, 24};
         rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
+          TotalBetValue += this.ChipValue;
         PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
         lblText.setText("You have confirmed a " + " Splitt Bet on 21,24 " + "for " + ChipValue);
     }
@@ -1689,7 +1689,7 @@ public class ControllerRoulette implements Initializable {
     private void SplittBet24To27(MouseEvent event) {
         Integer[] Betnumbers = {24, 27};
         rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
+          TotalBetValue += this.ChipValue;
         PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
         lblText.setText("You have confirmed a " + " Splitt Bet on 24,27 " + "for " + ChipValue);
     }
@@ -1698,7 +1698,7 @@ public class ControllerRoulette implements Initializable {
     private void SplittBet27To30(MouseEvent event) {
         Integer[] Betnumbers = {27, 30};
         rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
+          TotalBetValue += this.ChipValue;
         PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
         lblText.setText("You have confirmed a " + " Splitt Bet on 27,30 " + "for " + ChipValue);
     }
@@ -1707,7 +1707,7 @@ public class ControllerRoulette implements Initializable {
     private void SplittBet30To33(MouseEvent event) {
         Integer[] Betnumbers = {30, 33};
         rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
+         TotalBetValue += this.ChipValue;
         PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
         lblText.setText("You have confirmed a " + " Splitt Bet on 30,33 " + "for " + ChipValue);
     }
@@ -1716,8 +1716,8 @@ public class ControllerRoulette implements Initializable {
     private void SplittBet33To36(MouseEvent event) {
         Integer[] Betnumbers = {33, 36};
         rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+        konto = konto - this.ChipValue;
+        PlaceholderGuthaben.setText(Double.toString(konto));
         lblText.setText("You have confirmed a " + " Splitt Bet on 33,36 " + "for " + ChipValue);
     }
 //--------------------------------------------------

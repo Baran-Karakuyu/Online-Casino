@@ -52,26 +52,26 @@ public class RouletteBetType {
             else if ((numbers.contains(1) && numbers.contains(34)) || (numbers.contains(2) && numbers.contains(35)) || (numbers.contains(3) && numbers.contains(36))) {
                 this.bets.add(new RouletteBet("Row", Betnumbers, Betvalue));
             }
-        } else if (numbers.size() == 18 || numbers.size() == 19 ||  numbers.size() == 17) {
+        } else if (numbers.size() == 17) {
             //  red
             if (numbers.contains(5) && numbers.contains(12) && numbers.contains(23) && numbers.contains(32)) {
                 this.bets.add(new RouletteBet("Red", Betnumbers, Betvalue));
-            } // black
-            else if (numbers.contains(6) && numbers.contains(15) && numbers.contains(24) && numbers.contains(33)) {
-                this.bets.add(new RouletteBet("Black", Betnumbers, Betvalue));
-                // even
-            } else if (numbers.get(0) % 2 == 0 && numbers.get(numbers.size() - 1) % 2 == 0) {
-                this.bets.add(new RouletteBet("Even", Betnumbers, Betvalue));
-            } // odd
-            else if (numbers.get(0) % 2 != 0 && numbers.get(numbers.size() - 1) % 2 != 0) {
-                this.bets.add(new RouletteBet("Odd", Betnumbers, Betvalue));
-            } // low
-            else if (numbers.get(numbers.size() - 1) == 18) {
-                this.bets.add(new RouletteBet("Low", Betnumbers, Betvalue));
-            } // high
-            else if (numbers.get(numbers.size() - 1) == 36) {
-                this.bets.add(new RouletteBet("High", Betnumbers, Betvalue));
             }
+        } else if (numbers.size() == 18) {
+            // even
+        } else if (numbers.contains(4) && numbers.contains(6) && numbers.contains(22) && numbers.contains(36)) {
+            this.bets.add(new RouletteBet("Even", Betnumbers, Betvalue));
+        } // odd
+        else if (numbers.contains(3) && numbers.contains(5) && numbers.contains(21) && numbers.contains(33)) {
+            this.bets.add(new RouletteBet("Odd", Betnumbers, Betvalue));
+        } // low
+        else if (numbers.get(numbers.size() - 1) == 18) {
+            this.bets.add(new RouletteBet("Low", Betnumbers, Betvalue));
+        } // high
+        else if (numbers.get(numbers.size() - 1) == 36) {
+            this.bets.add(new RouletteBet("High", Betnumbers, Betvalue));
+        } else if (numbers.size() == 19) {
+            this.bets.add(new RouletteBet("Black", Betnumbers, Betvalue));
         }
     }
 
