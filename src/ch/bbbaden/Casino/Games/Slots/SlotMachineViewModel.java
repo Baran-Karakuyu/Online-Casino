@@ -17,13 +17,13 @@ import javafx.beans.property.StringProperty;
  */
 public class SlotMachineViewModel implements PropertyChangeListener {
 
-    private final SlotMachineModel m;
-    private final StringProperty playerAccountNumber = new SimpleStringProperty();
-    private final StringProperty balanceNumber = new SimpleStringProperty();
-    private final StringProperty spinnerNumber = new SimpleStringProperty();
-    private final StringProperty winNumber = new SimpleStringProperty();
-    private final StringProperty riskNumber = new SimpleStringProperty();
-    private final StringProperty bonusNumber = new SimpleStringProperty();
+    private SlotMachineModel m;
+    private StringProperty playerAccountNumber = new SimpleStringProperty();
+    private StringProperty balanceNumber = new SimpleStringProperty();
+    private StringProperty spinnerNumber = new SimpleStringProperty();
+    private StringProperty winNumber = new SimpleStringProperty();
+    private StringProperty riskNumber = new SimpleStringProperty();
+    private StringProperty bonusNumber = new SimpleStringProperty();
 
     public SlotMachineViewModel(SlotMachineModel m) {
         this.m = m;

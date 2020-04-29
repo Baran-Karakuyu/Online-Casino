@@ -194,24 +194,6 @@ public class MainApp extends Application {
         stage.show();
     }
 
-//    public void openNextBingo() throws IOException {
-//        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/SpielKarteAuswahl.fxml"));
-//        Parent root;
-//        root = loader.load();
-//        SpielkarteAuswahlController view = loader.getController();
-//        this.model = new SpielkarteAuswahlModel(this);
-//        SpielkarteAuswahlViewModel viewModel = new SpielkarteAuswahlViewModel(model, this);
-//        view.setViewModel(viewModel);
-//        model.addPropertyChangeListner(viewModel);
-//        view.bind();
-//        Scene scene = new Scene(root);
-//        stage.resizableProperty().setValue(Boolean.FALSE);
-//        scene.getStylesheets().add("/styles/Bingo.css");
-//        stage.setScene(scene);
-//        stage.initStyle(StageStyle.UNDECORATED);
-//        stage.show();
-//    }
-
     public void openBuyCredits() throws IOException, SQLException, ClassNotFoundException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Menu/View/FXMLViewBuyCredits.fxml"));
         Parent root;

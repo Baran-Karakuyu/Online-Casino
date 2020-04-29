@@ -72,7 +72,7 @@ public class SpielkarteAuswahlModel {
     }
 
     public void showBingo() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Bingo.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Bingo.fxml"));
         Parent root;
 
         root = loader.load();

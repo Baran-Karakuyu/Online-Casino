@@ -9,7 +9,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="600.0" styleClass="menu" stylesheets="@../../../../CasinoStyleSheet/MenuCSS.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.bbbaden.Casino.Login.LoginViewController">
         <children>
-        <Button fx:id="btnSubmit" defaultButton="true" layoutX="385.0" layoutY="386.0" onAction="#loginaction" prefHeight="85.0" prefWidth="169.0" text="Anmelden" textFill="WHITE">
+        <Button fx:id="btnSubmit" defaultButton="true" layoutX="385.0" layoutY="386.0" onAction="#loginaction" prefHeight="85.0" prefWidth="169.0" styleClass="buttonsMenu" text="Anmelden" textFill="WHITE">
          <font>
             <Font name="Arial Black" size="20.0" />
          </font></Button>
@@ -28,7 +28,7 @@
             <Font name="Arial Black" size="45.0" />
          </font>
       </Label>
-      <Button fx:id="close" layoutX="46.0" layoutY="386.0" mnemonicParsing="false" onAction="#signUp" prefHeight="85.0" prefWidth="169.0" text="Registrieren" textFill="WHITE">
+      <Button fx:id="close" layoutX="46.0" layoutY="386.0" mnemonicParsing="false" onAction="#signUp" prefHeight="85.0" prefWidth="169.0" styleClass="buttonsMenu" text="Registrieren" textFill="WHITE">
          <font>
             <Font name="Arial Black" size="20.0" />
          </font></Button>

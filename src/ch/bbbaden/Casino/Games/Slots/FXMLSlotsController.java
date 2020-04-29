@@ -155,14 +155,14 @@ public class FXMLSlotsController implements Initializable {
     private Label lblSuperCherryLogo;
     
     private SlotMachineViewModel viewModel;
-    private final HashMap<String, Image> imagesSymbol = new HashMap<>();
+    private HashMap<String, Image> imagesSymbol = new HashMap<>();
     private int stopFunctionKey = 0;
     private int shuffleCounter = 0;
     private int spinCounter = 0;
     private int step = 1;
     private int cherryCollectPaintCounter = 0;
     private boolean shuffleChecker = false;
-    private final ArrayList<String> selectedSymbolsString = new ArrayList<>();
+    private ArrayList<String> selectedSymbolsString = new ArrayList<>();
     private MainApp mainApp;
 
     @Override
@@ -174,6 +174,8 @@ public class FXMLSlotsController implements Initializable {
         SpinnerValueFactory<Integer> svf = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 9999999, 0);
         this.spnDeposit.setValueFactory(svf);
         lblWinNumber.setText("0");
+        
+        //get all Images
         imagesSymbol.put("CHERRY", new Image("CasinoIMG/Slots/SlotsSymbole/Cherry.png"));
         imagesSymbol.put("TRAUBE", new Image("CasinoIMG/Slots/SlotsSymbole/Traube.png"));
         imagesSymbol.put("BANANE", new Image("CasinoIMG/Slots/SlotsSymbole/Banane.png"));
@@ -188,8 +190,8 @@ public class FXMLSlotsController implements Initializable {
 
     @FXML
     private void handlePayOutButtonAction(ActionEvent event) {
-        double geld = (Double.valueOf(lblWinNumber.getText()) + (Double.valueOf(lblPlayerAccountNumber.getText())));
-        viewModel.payOut(geld);
+        double money = (Double.valueOf(lblWinNumber.getText()) + (Double.valueOf(lblPlayerAccountNumber.getText())));
+        viewModel.payOut(money);
     }
 
     @FXML
@@ -197,7 +199,7 @@ public class FXMLSlotsController implements Initializable {
         int deposit = spnDeposit.getValue();
         viewModel.deposit(deposit);
 
-        //Spinner wieder auf 0 setzen
+        //set Spinners to 0
         SpinnerValueFactory<Integer> svf = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 9999999, 0);
         this.spnDeposit.setValueFactory(svf);
     }
@@ -254,7 +256,7 @@ public class FXMLSlotsController implements Initializable {
         //With three stars, a function is randomly selected from the pentagon
         if (ivSpinner1.getImage() == imagesSymbol.get("STERN") && ivSpinner2.getImage() == imagesSymbol.get("STERN") && ivSpinner3.getImage() == imagesSymbol.get("STERN")) {
             Random r = new Random();
-            stopFunctionKey = r.nextInt(4) + 1;
+            stopFunctionKey = r.nextInt(5) + 1;
         }
 
         //choosing the function
@@ -393,6 +395,8 @@ public class FXMLSlotsController implements Initializable {
 
     private void spinAnimation(int AfterSpinKey) throws InterruptedException {
         spinCounter = 0;
+        
+        //removes money from Account except for Cherry Collect
         if (stopFunctionKey != 4) {
             viewModel.spinSpinners();
         }
@@ -417,12 +421,15 @@ public class FXMLSlotsController implements Initializable {
 
         PauseTransition pause = new PauseTransition(Duration.millis(150));
         pause.setOnFinished(event -> {
+            //Asigns random Images to Spinners
             Random r = new Random();
             ivSpinner1.setImage(imagesSymbol.get(animationSymolNames.get(r.nextInt(10))));
             ivSpinner2.setImage(imagesSymbol.get(animationSymolNames.get(r.nextInt(10))));
             ivSpinner3.setImage(imagesSymbol.get(animationSymolNames.get(r.nextInt(10))));
             spinCounter++;
             pause.play();
+            
+            //Select the Gamemode after Spin
             if (spinCounter == 15) {
                 pause.stop();
                 if (AfterSpinKey == 0) {
@@ -475,6 +482,7 @@ public class FXMLSlotsController implements Initializable {
         String strWalze3Symbol;
         selectedSymbolsString.clear();
 
+        //Asigns random Images to Spinners
         viewModel.spinSpinners();
         ivSpinner1.setImage(imagesSymbol.get(lblSpinner1.getText()));
         strWalze1Symbol = lblSpinner1.getText();
@@ -487,7 +495,7 @@ public class FXMLSlotsController implements Initializable {
         ivSpinner3.setImage(imagesSymbol.get(lblSpinner3.getText()));
         strWalze3Symbol = lblSpinner3.getText();
 
-        //Speichert die Bilder der Walzen von links nach rechts ein
+        //Saves the name of the Image from right to left
         for (String keyW1 : imagesSymbol.keySet()) {
             if (strWalze1Symbol.equals(keyW1)) {
                 selectedSymbolsString.add(keyW1);
@@ -523,6 +531,7 @@ public class FXMLSlotsController implements Initializable {
     }
 
     private void shuffleSpin() throws SQLException, ClassNotFoundException {
+        //Asigns to all Spinners the same Image
         viewModel.shuffle(9);
         ivSpinner1.setImage(imagesSymbol.get(lblSpinner1.getText()));
         ivSpinner2.setImage(imagesSymbol.get(lblSpinner2.getText()));
@@ -533,6 +542,7 @@ public class FXMLSlotsController implements Initializable {
     }
 
     private void tenTimes() throws SQLException, ClassNotFoundException, ClassNotFoundException {
+        //Asigns random Images to Spinners
         viewModel.tenTimes(9);
         ivSpinner1.setImage(imagesSymbol.get(lblSpinner1.getText()));
         viewModel.tenTimes(9);
@@ -545,6 +555,7 @@ public class FXMLSlotsController implements Initializable {
     }
 
     private void cherryCollect() throws SQLException, ClassNotFoundException, ClassNotFoundException{
+        //Chooses Amout of "free Spinns"
         if (lblConsole.getText().isEmpty() || lblConsole.getText().equals("0")) {
             Random r = new Random();
             ArrayList<Integer> stepsNumbers = new ArrayList<>();
@@ -557,6 +568,7 @@ public class FXMLSlotsController implements Initializable {
         lblConsole.setText(String.valueOf(step));
         lblConsole.setOpacity(1);
 
+        //Asigns Images to Spinners
         viewModel.cherryCollect(10);
         ivSpinner1.setImage(imagesSymbol.get(lblSpinner1.getText()));
         viewModel.cherryCollect(10);
@@ -567,6 +579,7 @@ public class FXMLSlotsController implements Initializable {
         viewModel.checkWin(Double.valueOf(lblRiskNumber.getText()));
         checkButtonUnlock();
 
+        //Checks if a Spinner has a CHERRY symbol
         if (ivSpinner1.getImage() == imagesSymbol.get("CHERRY") || ivSpinner2.getImage() == imagesSymbol.get("CHERRY") || ivSpinner3.getImage() == imagesSymbol.get("CHERRY")) {
             cherryCollectAction();
         }
@@ -575,7 +588,7 @@ public class FXMLSlotsController implements Initializable {
     private void cherryCollectAction() throws SQLException, ClassNotFoundException, ClassNotFoundException{
         double ccBerechnung;
 
-        //checks if there was a cherry and the lights the labels one an other on top left of the GUI up
+        //checks if there was a cherry and then lights the labels one an other on top left of the GUI up
         if (cherryCollectPaintCounter == 0) {
             lblCC5x1.setTextFill(Paint.valueOf("#ffff00"));
             ccBerechnung = (Double.valueOf(lblRiskNumber.getText())) * 5;
@@ -614,7 +627,8 @@ public class FXMLSlotsController implements Initializable {
             PauseTransition ptSpinner1 = new PauseTransition(Duration.millis(1000));
             ptSpinner1.setOnFinished(event -> {
                 //selecting in wich place a new symbol has to be choosed
-                if (selectedSymbolsString.get(0).equals(selectedSymbolsString.get(1))) {                try {
+                if (selectedSymbolsString.get(0).equals(selectedSymbolsString.get(1))) {                
+                    try {
                     //right spinner
                     lblHold.setTextFill(Paint.valueOf("#ff00ff"));
                     viewModel.changeSelected(2, selectedSymbolsString.get(2), true, new String[]{selectedSymbolsString.get(0), selectedSymbolsString.get(1), selectedSymbolsString.get(2)});
@@ -626,7 +640,8 @@ public class FXMLSlotsController implements Initializable {
                     } catch (ClassNotFoundException ex) {
                         Logger.getLogger(FXMLSlotsController.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                } else if (selectedSymbolsString.get(0).equals(selectedSymbolsString.get(2))) {         try {
+                } else if (selectedSymbolsString.get(0).equals(selectedSymbolsString.get(2))) {         
+                    try {
                     //middle spinner
                     lblHold.setTextFill(Paint.valueOf("#ff00ff"));
                     viewModel.changeSelected(1, selectedSymbolsString.get(1), true, new String[]{selectedSymbolsString.get(0), selectedSymbolsString.get(1), selectedSymbolsString.get(2)});
@@ -638,7 +653,8 @@ public class FXMLSlotsController implements Initializable {
                     } catch (ClassNotFoundException ex) {
                         Logger.getLogger(FXMLSlotsController.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                } else if (selectedSymbolsString.get(1).equals(selectedSymbolsString.get(2))) {         try {
+                } else if (selectedSymbolsString.get(1).equals(selectedSymbolsString.get(2))) {         
+                    try {
                     //left spinner
                     lblHold.setTextFill(Paint.valueOf("#ff00ff"));
                     viewModel.changeSelected(0, selectedSymbolsString.get(0), true, new String[]{selectedSymbolsString.get(0), selectedSymbolsString.get(1), selectedSymbolsString.get(2)});
@@ -676,6 +692,8 @@ public class FXMLSlotsController implements Initializable {
                     }
                     spinCounter++;
                     ptSpinners.play();
+                    
+                    //Asigns the Image of the other Spinners
                     if (spinCounter == 4 || lblSpinner3.getText().equals(selectedSymbolsString.get(0))) {
                         try {
                             ivSpinner3.setImage(imagesSymbol.get(selectedSymbolsString.get(0)));
@@ -702,6 +720,8 @@ public class FXMLSlotsController implements Initializable {
                     }
                     spinCounter++;
                     ptSpinners.play();
+                    
+                    //Asigns the Image of the other Spinners
                     if (spinCounter == 5 || lblSpinner2.getText().equals(selectedSymbolsString.get(0))) {
                         try {
                             ivSpinner2.setImage(imagesSymbol.get(selectedSymbolsString.get(0)));
@@ -728,6 +748,8 @@ public class FXMLSlotsController implements Initializable {
                     }
                     spinCounter++;
                     ptSpinners.play();
+                    
+                    //Asigns the Image of the other Spinners
                     if (spinCounter == 3 || lblSpinner1.getText().equals(selectedSymbolsString.get(1))) {
                         try {
                             ivSpinner1.setImage(imagesSymbol.get(selectedSymbolsString.get(1)));
@@ -762,7 +784,9 @@ public class FXMLSlotsController implements Initializable {
                 spinCounter++;
                 ptCherrySpinner1.play();
 
+                //Checks if a random Image is a CHERRY
                 if (spinCounter == 4) {
+                    //Changes all Spinners now to CHERRY
                     try {
                         ivSpinner2.setImage(imagesSymbol.get("CHERRY"));
                         ivSpinner3.setImage(imagesSymbol.get("CHERRY"));

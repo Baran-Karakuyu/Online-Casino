@@ -107,10 +107,13 @@
             </cursor>
         </Button>
         <Rectangle fx:id="recWins" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="325.0" layoutX="713.0" layoutY="466.0" stroke="BLACK" strokeType="INSIDE" width="177.0" />
-        <Button fx:id="btnCancel" layoutX="14.0" layoutY="48.0" mnemonicParsing="false" onAction="#handleCancelButtonAction" prefHeight="50.0" prefWidth="104.0" text="Abbrechen">
+        <Button fx:id="btnCancel" layoutX="14.0" layoutY="48.0" mnemonicParsing="false" onAction="#handleCancelButtonAction" prefHeight="50.0" prefWidth="104.0" styleClass="buttonsMenu" text="Abbrechen" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="HAND" />
-         </cursor></Button>
+         </cursor>
+         <font>
+            <Font size="15.0" />
+         </font></Button>
         <Label fx:id="lblBalance" layoutX="14.0" layoutY="14.0" text="Kontostand:" textFill="WHITE" />
         <Label fx:id="lblBalanceNumber" layoutX="84.0" layoutY="14.0" prefHeight="17.0" prefWidth="43.0" textFill="WHITE" />
         <Label fx:id="lblM2x" layoutX="793.0" layoutY="241.0" text="2x" textFill="#007500">

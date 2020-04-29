@@ -19,7 +19,7 @@ import java.util.Random;
  * @author Baran
  */
 public class SlotMachineModel {
-    
+
     private double playerAccountNumber = 0;
     private double win = 0;
     private int riskCounter = -1;
@@ -27,13 +27,13 @@ public class SlotMachineModel {
     private double risk = 0.0;
     private boolean depositChecker = false;
     private Symbol symbol = Symbol.CHERRY;
-    private final HashMap<Integer, Symbol> allSymbols = new HashMap<>();
-    private final ArrayList<Symbol> spinnerSelectedSymbol = new ArrayList<>();
-    private final ArrayList<Integer> allRisks = new ArrayList<>();
-    private final DecimalFormat doubleFormatter = new DecimalFormat("#.##");
+    private HashMap<Integer, Symbol> allSymbols = new HashMap<>();
+    private ArrayList<Symbol> spinnerSelectedSymbol = new ArrayList<>();
+    private ArrayList<Integer> allRisks = new ArrayList<>();
+    private DecimalFormat doubleFormatter = new DecimalFormat("#.##");
     private User user;
     private double betNumber;
-    protected final PropertyChangeSupport changes = new PropertyChangeSupport(this);
+    protected PropertyChangeSupport changes = new PropertyChangeSupport(this);
     private double balanceNumber;
 
     public void spinSpinners() throws InterruptedException {
@@ -53,6 +53,8 @@ public class SlotMachineModel {
         if (spinnerSelectedSymbol.size() >= 3) {
             spinnerSelectedSymbol.clear();
         }
+        
+        //removes money from Account
         if (spinnerSelectedSymbol.size() < 1 && depositChecker == false) {
             managingPlayMoney((risk), 4);
             depositChecker = true;
@@ -67,7 +69,7 @@ public class SlotMachineModel {
         Symbol oldSymbol = symbol;
         symbol = allSymbols.get(cardNr);
 
-        //Die Werte in der ArrayList dienen zur Gewinnüberprüfung
+        //added to ArrayList to check the win after
         spinnerSelectedSymbol.add(allSymbols.get(cardNr));
 
         changes.firePropertyChange("spinSpinners", oldSymbol, symbol);
@@ -75,7 +77,7 @@ public class SlotMachineModel {
 
     public void managingPlayMoney(double insert, int key) {
         switch (key) {
-            //Geld ins Spielerkonto einwerfen
+            //throw money in Playeraccount
             case 0: {
                 if (balanceNumber > insert) {
                     double oldPlayerAccountNumber = playerAccountNumber;
@@ -89,7 +91,7 @@ public class SlotMachineModel {
                 }
                 break;
             }
-            //Spielerkonto und Gewinn ins Konto auszahlen
+            //payout playeraccount and win to balance
             case 1: {
                 double oldplayerAccountNumber = playerAccountNumber;
                 double oldBalanceNumber = balanceNumber;
@@ -104,7 +106,7 @@ public class SlotMachineModel {
                 changes.firePropertyChange("WinPayOut", oldGewinn, doubleFormatter.format(win));
                 break;
             }
-            //Gewinn erhöhen
+            //increase win
             case 2: {
                 double oldGewinn = win;
 
@@ -113,7 +115,7 @@ public class SlotMachineModel {
                 changes.firePropertyChange("GewinnErhöhen", oldGewinn, doubleFormatter.format(win));
                 break;
             }
-            //Gewinn ins Spielerkonto übertragen
+            //win to playeraccount
             case 3: {
                 double oldSpielerkonto = playerAccountNumber;
                 double oldGewinn = win;
@@ -125,7 +127,7 @@ public class SlotMachineModel {
                 changes.firePropertyChange("GewinnInsSpielerkonto", oldGewinn, doubleFormatter.format(win));
                 break;
             }
-            //Geld vom Spielerkonto zum Spielen nutzen
+            //use money from playeraccount
             case 4: {
                 double oldSpielerkonto = playerAccountNumber;
 
@@ -161,6 +163,7 @@ public class SlotMachineModel {
 
         double oldGewinn = win;
 
+        //50% chance of winning
         if (randomNumber <= 50) {
             win = win * 2;
             changes.firePropertyChange("Gamble", oldGewinn, win);
@@ -180,6 +183,7 @@ public class SlotMachineModel {
             allRisks.add(50);
         }
 
+        //increase risk
         riskCounter++;
 
         if (riskCounter > 5) {
@@ -198,6 +202,7 @@ public class SlotMachineModel {
         Random r = new Random();
         int randomNumber = r.nextInt(100) + 1;
 
+        //50% chance of not winnig
         if (randomNumber <= 50) {
             win = 0;
         } else if (randomNumber <= 67 && randomNumber > 50) {
@@ -224,7 +229,7 @@ public class SlotMachineModel {
 
         depositChecker = false;
 
-        //Die Werte in der ArrayList dienen zur Gewinnüberprüfung
+        //adding three symbols to check win
         spinnerSelectedSymbol.add(allSymbols.get(cardNr));
         spinnerSelectedSymbol.add(allSymbols.get(cardNr));
         spinnerSelectedSymbol.add(allSymbols.get(cardNr));
@@ -245,7 +250,7 @@ public class SlotMachineModel {
 
         depositChecker = false;
 
-        //Die Werte in der ArrayList dienen zur Gewinnüberprüfung
+        //adding to check for win
         spinnerSelectedSymbol.add(allSymbols.get(cardNr));
 
         changes.firePropertyChange("tenTimes", oldSymbol, symbol);
@@ -264,7 +269,7 @@ public class SlotMachineModel {
 
         depositChecker = false;
 
-        //Die Werte in der ArrayList dienen zur Gewinnüberprüfung
+        //adding to check for win
         spinnerSelectedSymbol.add(allSymbols.get(cardNr));
 
         changes.firePropertyChange("fruitStop", oldSymbol, symbol);
@@ -283,7 +288,7 @@ public class SlotMachineModel {
 
         depositChecker = false;
 
-        //Die Werte in der ArrayList dienen zur Gewinnüberprüfung
+        //adding to check for win
         spinnerSelectedSymbol.add(allSymbols.get(cardNr));
 
         changes.firePropertyChange("cherryCollect", oldSymbol, symbol);
@@ -300,7 +305,7 @@ public class SlotMachineModel {
 
         depositChecker = false;
 
-        //Ein Wert wird in der vorher entfernten Position eingefügt
+        //adding new symbol in the place of the old symbol
         spinnerSelectedSymbol.add(removeNumber, allSymbols.get(cardNr));
 
         changes.firePropertyChange("holdAndStep", oldSymbol, symbol);
@@ -317,7 +322,7 @@ public class SlotMachineModel {
 
         depositChecker = false;
 
-        //Ein Wert wird in der vorher entfernten Position eingefügt
+        //adding new symbol in the place of the old symbol
         spinnerSelectedSymbol.add(removeNumber, allSymbols.get(cardNr));
 
         changes.firePropertyChange("holdAndStep", oldSymbol, symbol);
@@ -336,6 +341,7 @@ public class SlotMachineModel {
         changeSymbolOptions.put("BAR", 8);
         changeSymbolOptions.put("STERN", 9);
 
+        //adding symbols to arrayList
         if (firstColumnChecker == true) {
             spinnerSelectedSymbol.clear();
             spinnerSelectedSymbol.add(0, allSymbols.get(changeSymbolOptions.get(addingSymbols[0])));
@@ -345,13 +351,13 @@ public class SlotMachineModel {
 
         spinnerSelectedSymbol.remove(removeNumber);
 
-        //Ein Wert wird Manuel in der vorher entfernten Position eingefügt
+        //adding symbol in the place of the old symbol
         spinnerSelectedSymbol.add(removeNumber, allSymbols.get(changeSymbolOptions.get(strSymbol)));
     }
 
     public void win(double bet) throws SQLException, ClassNotFoundException {
         betNumber = bet;
-        //Winchecking from highest to lowest
+        //Win-checking from highest to lowest
         if (spinnerSelectedSymbol.get(0) == Symbol.BAR && spinnerSelectedSymbol.get(1) == Symbol.BAR && spinnerSelectedSymbol.get(2) == Symbol.BAR) {
             managingPlayMoney((bet * 400), 2);
             user.userStats(1, user.getUid(), bet, bet * 400, 0);
