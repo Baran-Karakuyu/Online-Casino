@@ -365,6 +365,7 @@ public class ControllerRoulette implements Initializable {
     //Chip Usage
     @FXML
     private void UseChip10(MouseEvent event) {
+        
         ChipValue = 10;
         System.out.println("Chipvalue = " + ChipValue);
     }
@@ -396,13 +397,21 @@ public class ControllerRoulette implements Initializable {
     //-------------------------------------------------------------------------------------
 //Controll Buttons
     @FXML
-    private void ConfirmBets(ActionEvent event) {
+    private void ConfirmBets(ActionEvent event) throws SQLException, ClassNotFoundException {
         rbt.GenerateRandNumber();
         lblWin.setText("You have won " + rbt.getWin());
         lblNumber.setText("Number " + rbt.getRandom() + " has been drawn.");
-        konto = konto + rbt.getWin();
-        PlaceholderGuthaben.setText(Double.toString(konto));
+        if(rbt.getWin()==0){
 
+        }else{
+            konto+=this.ChipValue;
+            konto+=rbt.getWin();
+        }
+//        konto = konto + rbt.getWin();
+        sql.updateUser();
+        sql.updateCredit(konto, user.getName());
+        konto= sql.getCreditUser(user.getName());
+        PlaceholderGuthaben.setText(Double.toString(konto));
     }
 
     @FXML
