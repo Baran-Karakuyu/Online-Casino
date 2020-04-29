@@ -180,6 +180,7 @@ public class ViewGameController implements Initializable {
     private Button insuranceBtn;
     @FXML
     private Label username;
+    private boolean insuranceWoL = false;
 
     public void setViewModel(ViewModelBlackJack viewModel) {
         this.viewModel = viewModel;
@@ -425,7 +426,7 @@ public class ViewGameController implements Initializable {
                 sumP += playerCards.get(i).getValue();
             }
             //if(sumP>21||sumP==21)
-            if (sumP > 21 ) {
+            if (sumP > 21) {
                 sumG = 0;
                 for (int i = 0; i < dealerCards.size(); i++) {
                     sumG += dealerCards.get(i).getValue();
@@ -607,13 +608,20 @@ public class ViewGameController implements Initializable {
             System.out.println("Lost");
             endLbl.setText("LOST");
             notNegativeP = true;
+            
+            if (insuranceActive == true) {
+                insuranceMethod(insuranceMoneyPut);
+            } else {
+                System.out.println("");
+            }
+            
             if (doubleActive == true) {
                 creditHere -= creditPut;
                 creditHere -= creditPut;
-                viewModel.setNewStatitcs((creditPut * 2), false);
+                viewModel.setNewStatitcs((creditPut * 2), false, insuranceWoL, insuranceMoneyPut);
             } else {
                 creditHere -= creditPut;
-                viewModel.setNewStatitcs(creditPut, false);
+                viewModel.setNewStatitcs(creditPut, false, insuranceWoL, insuranceMoneyPut);
             }
             viewModel.setNewCredit(creditHere);
         } else {
@@ -624,18 +632,25 @@ public class ViewGameController implements Initializable {
             notNegativeG = true;
             System.out.println("You Won");
             endLbl.setText("WON");
+            
+            if (insuranceActive == true) {
+                insuranceMethod(insuranceMoneyPut);
+            } else {
+                System.out.println("");
+            }
+            
             if (doubleActive == true) {
                 creditHere += creditPut;
                 creditHere += creditPut;
-                viewModel.setNewStatitcs((creditPut * 2), true);
+                viewModel.setNewStatitcs((creditPut * 2), true, insuranceWoL, insuranceMoneyPut);
             } else {
                 if (blackjack == true) {
                     creditHere += creditPut;
                     creditHere += (creditPut / 2);
-                    viewModel.setNewStatitcs(creditPut + (creditPut / 2), true);
+                    viewModel.setNewStatitcs(creditPut + (creditPut / 2), true, insuranceWoL, insuranceMoneyPut);
                 } else {
                     creditHere += creditPut;
-                    viewModel.setNewStatitcs(creditPut, true);
+                    viewModel.setNewStatitcs(creditPut, true, insuranceWoL, insuranceMoneyPut);
                 }
             }
             viewModel.setNewCredit(creditHere);
@@ -647,43 +662,58 @@ public class ViewGameController implements Initializable {
             if (21 - sumP < 21 - sumG) {
                 System.out.println("Won");
                 endLbl.setText("WON");
+                
+                if (insuranceActive == true) {
+                    insuranceMethod(insuranceMoneyPut);
+                } else {
+                    System.out.println("");
+                }
+                
                 if (doubleActive == true) {
                     creditHere += creditPut;
                     creditHere += creditPut;
-                    viewModel.setNewStatitcs((creditPut * 2), true);
+                    viewModel.setNewStatitcs((creditPut * 2), true, insuranceWoL, insuranceMoneyPut);
                 } else {
                     if (blackjack == true) {
                         creditHere += creditPut;
                         creditHere += (creditPut / 2);
-                        viewModel.setNewStatitcs(creditPut + (creditPut / 2), true);
+                        viewModel.setNewStatitcs(creditPut + (creditPut / 2), true, insuranceWoL, insuranceMoneyPut);
                     } else {
                         creditHere += creditPut;
-                        viewModel.setNewStatitcs(creditPut, true);
+                        viewModel.setNewStatitcs(creditPut, true, insuranceWoL, insuranceMoneyPut);
                     }
                 }
                 viewModel.setNewCredit(creditHere);
             } else if (21 - sumP > 21 - sumG) {
                 System.out.println("You Lost");
                 endLbl.setText("LOST");
+                
+                if (insuranceActive == true) {
+                    insuranceMethod(insuranceMoneyPut);
+                } else {
+                    System.out.println("");
+                }
+                
                 if (doubleActive == true) {
                     creditHere -= creditPut;
                     creditHere -= creditPut;
-                    viewModel.setNewStatitcs((creditPut * 2), false);
+                    viewModel.setNewStatitcs((creditPut * 2), false, insuranceWoL, insuranceMoneyPut);
                 } else {
                     creditHere -= creditPut;
-                    viewModel.setNewStatitcs(creditPut, false);
+                    viewModel.setNewStatitcs(creditPut, false, insuranceWoL, insuranceMoneyPut);
                 }
                 viewModel.setNewCredit(creditHere);
             } else {
                 System.out.println("Even");
                 endLbl.setText("EVEN!!!");
+                if (insuranceActive == true) {
+                    insuranceMethod(insuranceMoneyPut);
+                } else {
+                    System.out.println("");
+                }
+                
                 viewModel.setNewCredit(creditHere);
             }
-        }
-        if (insuranceActive == true) {
-            insuranceMethod(insuranceMoneyPut);
-        } else {
-            System.out.println("");
         }
         checkPlayer = true;
     }
@@ -711,7 +741,15 @@ public class ViewGameController implements Initializable {
         for (int i = 0; i < dealerCards.size(); i++) {
             sumG += dealerCards.get(i).getValue();
         }
-        viewModel.insurance(credit, sumG);
+        //viewModel.insurance(credit, sumG);
+
+        if (sumG == 21) {
+            creditHere += credit;
+            insuranceWoL = true;
+        } else {
+            creditHere -= credit;
+            insuranceWoL = false;
+        }
     }
 
     @FXML
@@ -809,6 +847,7 @@ public class ViewGameController implements Initializable {
         chipsActive = true;
         creditKonto.textProperty().bind(viewModel.getCredit());
         creditHere = Double.parseDouble(creditKonto.getText());
+        insuranceWoL=false;
     }
 
     @FXML

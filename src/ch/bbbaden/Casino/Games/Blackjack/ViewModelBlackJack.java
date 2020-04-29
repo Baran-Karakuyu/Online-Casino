@@ -161,16 +161,16 @@ public class ViewModelBlackJack implements PropertyChangeListener{
     public void setNewCredit(double credit) throws SQLException, ClassNotFoundException{
         mo.setNewCredit(credit);
     }
-    public void insurance(double credit,int sum) throws SQLException, ClassNotFoundException{
-        mo.insurance(credit, sum);
-    }
+//    public void insurance(double credit,int sum) throws SQLException, ClassNotFoundException{
+//        mo.insurance(credit, sum);
+//    }
 
     public void backToMenu() throws IOException, SQLException, ClassNotFoundException {
         mo.backToMenu();
     }
 
-    public void setNewStatitcs(double creditput,boolean winorlose) throws SQLException, ClassNotFoundException {
-        mo.statistics(creditput,winorlose);
+    public void setNewStatitcs(double creditput,boolean winorlose,boolean insuranceWoL,double insuranceMoney) throws SQLException, ClassNotFoundException {
+        mo.statistics(creditput,winorlose,insuranceWoL,insuranceMoney);
     }
     
    
