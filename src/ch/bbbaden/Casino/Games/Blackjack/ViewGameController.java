@@ -618,10 +618,10 @@ public class ViewGameController implements Initializable {
             if (doubleActive == true) {
                 creditHere -= creditPut;
                 creditHere -= creditPut;
-                viewModel.setNewStatitcs((creditPut * 2), false, insuranceWoL, insuranceMoneyPut);
+                viewModel.setNewStatitcs((creditPut * 2), false, insuranceWoL, insuranceMoneyPut,false);
             } else {
                 creditHere -= creditPut;
-                viewModel.setNewStatitcs(creditPut, false, insuranceWoL, insuranceMoneyPut);
+                viewModel.setNewStatitcs(creditPut, false, insuranceWoL, insuranceMoneyPut,false);
             }
             viewModel.setNewCredit(creditHere);
         } else {
@@ -642,15 +642,15 @@ public class ViewGameController implements Initializable {
             if (doubleActive == true) {
                 creditHere += creditPut;
                 creditHere += creditPut;
-                viewModel.setNewStatitcs((creditPut * 2), true, insuranceWoL, insuranceMoneyPut);
+                viewModel.setNewStatitcs((creditPut * 2), true, insuranceWoL, insuranceMoneyPut,false);
             } else {
                 if (blackjack == true) {
                     creditHere += creditPut;
                     creditHere += (creditPut / 2);
-                    viewModel.setNewStatitcs(creditPut + (creditPut / 2), true, insuranceWoL, insuranceMoneyPut);
+                    viewModel.setNewStatitcs(creditPut + (creditPut / 2), true, insuranceWoL, insuranceMoneyPut,false);
                 } else {
                     creditHere += creditPut;
-                    viewModel.setNewStatitcs(creditPut, true, insuranceWoL, insuranceMoneyPut);
+                    viewModel.setNewStatitcs(creditPut, true, insuranceWoL, insuranceMoneyPut,false);
                 }
             }
             viewModel.setNewCredit(creditHere);
@@ -672,15 +672,15 @@ public class ViewGameController implements Initializable {
                 if (doubleActive == true) {
                     creditHere += creditPut;
                     creditHere += creditPut;
-                    viewModel.setNewStatitcs((creditPut * 2), true, insuranceWoL, insuranceMoneyPut);
+                    viewModel.setNewStatitcs((creditPut * 2), true, insuranceWoL, insuranceMoneyPut,false);
                 } else {
                     if (blackjack == true) {
                         creditHere += creditPut;
                         creditHere += (creditPut / 2);
-                        viewModel.setNewStatitcs(creditPut + (creditPut / 2), true, insuranceWoL, insuranceMoneyPut);
+                        viewModel.setNewStatitcs(creditPut + (creditPut / 2), true, insuranceWoL, insuranceMoneyPut,false);
                     } else {
                         creditHere += creditPut;
-                        viewModel.setNewStatitcs(creditPut, true, insuranceWoL, insuranceMoneyPut);
+                        viewModel.setNewStatitcs(creditPut, true, insuranceWoL, insuranceMoneyPut,false);
                     }
                 }
                 viewModel.setNewCredit(creditHere);
@@ -697,10 +697,10 @@ public class ViewGameController implements Initializable {
                 if (doubleActive == true) {
                     creditHere -= creditPut;
                     creditHere -= creditPut;
-                    viewModel.setNewStatitcs((creditPut * 2), false, insuranceWoL, insuranceMoneyPut);
+                    viewModel.setNewStatitcs((creditPut * 2), false, insuranceWoL, insuranceMoneyPut,false);
                 } else {
                     creditHere -= creditPut;
-                    viewModel.setNewStatitcs(creditPut, false, insuranceWoL, insuranceMoneyPut);
+                    viewModel.setNewStatitcs(creditPut, false, insuranceWoL, insuranceMoneyPut,false);
                 }
                 viewModel.setNewCredit(creditHere);
             } else {
@@ -712,8 +712,7 @@ public class ViewGameController implements Initializable {
                 } else {
                     System.out.println("");
                 }
-                creditPut=0;
-                viewModel.setNewStatitcs(creditPut, false, insuranceWoL, insuranceMoneyPut);
+                viewModel.setNewStatitcs(creditPut, false, insuranceWoL, insuranceMoneyPut,true);
                 
                 viewModel.setNewCredit(creditHere);
             }

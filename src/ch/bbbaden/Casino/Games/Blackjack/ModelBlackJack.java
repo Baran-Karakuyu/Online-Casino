@@ -146,8 +146,8 @@ public class ModelBlackJack {
         changes.firePropertyChange("name", "", this.player.getName());
     }
 
-    public void statistics(double creditput, boolean winorlose, boolean insuranceWoL, double insuranceMoney) throws SQLException, ClassNotFoundException {
-        if (creditput == 0) {
+    public void statistics(double creditput, boolean winorlose, boolean insuranceWoL, double insuranceMoney,boolean even) throws SQLException, ClassNotFoundException {
+        if (even==true) {
             if(insuranceMoney==0){
                 
             }else{
