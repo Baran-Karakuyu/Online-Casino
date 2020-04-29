@@ -5,6 +5,7 @@ package ch.bbbaden.Casino.Games.Yatzy;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+import Casino.DataBase.User;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -34,7 +35,9 @@ import javafx.stage.Stage;
 public class FXMLDocumentController implements Initializable {
 
     //UserInformation
-    public int kontostand = 20000;
+    public double kontostand;
+    
+    private User user;
 
     //Objekte
     private int wetteinsatzWert;
@@ -281,17 +284,15 @@ public class FXMLDocumentController implements Initializable {
     private Label verbleibend111;
     @FXML
     private Button ablauf;
+    @FXML
+    private Label konto;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
         fülleArray();
-        // TOD
-        /*
-        betrag = controller.getWetteinsatz();
-        eeee.setText("" + betrag);
-        
-         */
+        setUser(user);
+        konto.setText(""+kontostand);
     }
 
     @FXML
@@ -1195,11 +1196,16 @@ public class FXMLDocumentController implements Initializable {
         stage.show();
     }
 
-    @FXML
     private void beenden(ActionEvent event) throws IOException {
         Stage stage = (Stage) beenden.getScene().getWindow();
         stage.close();
 
+    }
+    
+    
+    private void setUser(User user){
+        this.user = user;
+        kontostand = user.getCredit();
     }
 
 }

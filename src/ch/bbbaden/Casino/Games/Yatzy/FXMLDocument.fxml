@@ -102,6 +102,16 @@
                   <Font name="Arial Black" size="30.0" />
                </font>
             </Label>
+            <Label layoutX="1022.0" layoutY="20.0" prefHeight="58.0" prefWidth="398.0" style="-fx-background-color: white;" text="Kontostand:">
+               <font>
+                  <Font name="Arial Black" size="30.0" />
+               </font>
+            </Label>
+            <Label fx:id="konto" alignment="CENTER" layoutX="1242.0" layoutY="20.0" prefHeight="58.0" prefWidth="293.0" style="-fx-background-color: white;" text="0" textFill="RED">
+               <font>
+                  <Font name="Arial Black" size="30.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
       <Rectangle arcHeight="5.0" arcWidth="5.0" height="113.0" layoutY="790.0" stroke="BLACK" strokeType="INSIDE" width="1535.0" />
