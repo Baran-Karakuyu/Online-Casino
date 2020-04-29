@@ -11,32 +11,32 @@
    <children>
       <ImageView fitHeight="658.0" fitWidth="1093.0" pickOnBounds="true">
          <image>
-            <Image url="@../img/wetteinsatz.jpg" />
+            <Image url="@../../../../../CasinoIMG/Yatzy/wetteinsatz.jpg" />
          </image>
       </ImageView>
       <ImageView fx:id="chip50" fitHeight="181.0" fitWidth="151.0" layoutX="302.0" layoutY="253.0" onMouseClicked="#auswahlChip50" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../img/Chip50.png" />
+            <Image url="@../../../../../CasinoIMG/Yatzy/Chip50.png" />
          </image>
       </ImageView>
       <ImageView fx:id="chip100" fitHeight="181.0" fitWidth="151.0" layoutX="471.0" layoutY="254.0" onMouseClicked="#auswahlChip100" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../img/Chip100.png" />
+            <Image url="@../../../../../CasinoIMG/Yatzy/Chip100.png" />
          </image>
       </ImageView>
       <ImageView fx:id="chip250" fitHeight="181.0" fitWidth="151.0" layoutX="643.0" layoutY="253.0" onMouseClicked="#auswahlChip250" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../img/Chip250.png" />
+            <Image url="@../../../../../CasinoIMG/Yatzy/Chip250.png" />
          </image>
       </ImageView>
       <ImageView fx:id="chip10" fitHeight="181.0" fitWidth="151.0" layoutX="130.0" layoutY="253.0" onMouseClicked="#auswahlChip10" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../img/Chip10.png" />
+            <Image url="@../../../../../CasinoIMG/Yatzy/Chip10.png" />
          </image>
       </ImageView>
       <ImageView fx:id="chip1000" fitHeight="181.0" fitWidth="151.0" layoutX="812.0" layoutY="254.0" onMouseClicked="#auswahlChip1000" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../img/Chip1000.png" />
+            <Image url="@../../../../../CasinoIMG/Yatzy/Chip1000.png" />
          </image>
       </ImageView>
       <Label layoutX="471.0" layoutY="14.0" text="Wetteinsatz:">
@@ -56,13 +56,13 @@
       </Label>
       <ImageView fx:id="minus" fitHeight="85.0" fitWidth="70.0" layoutX="643.0" layoutY="572.0" onMouseClicked="#einsatzVertiefen" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../img/minus.png" />
+            <Image url="@../../../../../CasinoIMG/Yatzy/minus.png" />
          </image>
       </ImageView>
       <Button fx:id="btnBestätigen" layoutX="507.0" layoutY="586.0" mnemonicParsing="false" onAction="#setWetteinsatz" prefHeight="45.0" prefWidth="110.0" text="Bestätigen" />
       <ImageView fx:id="plus" fitHeight="85.0" fitWidth="70.0" layoutX="418.0" layoutY="574.0" onMouseClicked="#einsatzErhöhen" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../img/plus.png" />
+            <Image url="@../../../../../CasinoIMG/Yatzy/plus.png" />
          </image>
       </ImageView>
    </children>
