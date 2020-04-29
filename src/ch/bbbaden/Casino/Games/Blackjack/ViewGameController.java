@@ -704,6 +704,7 @@ public class ViewGameController implements Initializable {
                 }
                 viewModel.setNewCredit(creditHere);
             } else {
+                //todo
                 System.out.println("Even");
                 endLbl.setText("EVEN!!!");
                 if (insuranceActive == true) {
