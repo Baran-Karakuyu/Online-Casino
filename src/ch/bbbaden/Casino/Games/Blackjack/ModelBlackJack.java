@@ -38,13 +38,13 @@ public class ModelBlackJack {
             allCards.clear();
             sql.updateUser();
             int oldcard = card;
-            card = 41;//newCard();
+            card = newCard();
             changes.firePropertyChange("card1P", oldcard, card);
-            card = 38;//newCard();
+            card = newCard();
             changes.firePropertyChange("card1G", oldcard, card);
-            card = 17;//newCard();
+            card = newCard();
             changes.firePropertyChange("card2P", oldcard, card);
-            card = 45;//newCard();
+            card = newCard();
             changes.firePropertyChange("card2G", oldcard, card);
         }
     }
@@ -57,7 +57,7 @@ public class ModelBlackJack {
         int oldcard = card;
         switch (cardshit) {
             case 2:
-                card = 16;//newCard();
+                card = newCard();
                 changes.firePropertyChange("card3P", oldcard, card);
                 break;
             case 3:
