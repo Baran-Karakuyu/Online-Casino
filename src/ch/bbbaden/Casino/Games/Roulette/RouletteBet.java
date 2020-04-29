@@ -12,40 +12,40 @@ package ch.bbbaden.Casino.Games.Roulette;
 public class RouletteBet {
 
     //Multiplikatoren für Gewinnausrechnung
-    private final int RedMultiplicator = 1;
-    private final int BlackMultiplicator = 1;
-    private final int EvenMultiplicator = 1;
-    private final int OddMultiplicator = 1;
-    private final int LowMultiplicator = 1;
-    private final int HighMultiplicator = 1;
-    private final int RowMultiplicator = 2;
-    private final int DozenMultiplicator = 2;
-    private final int StraightMultiplicator = 35;
-    private final int SplittMultiplicator = 17;
-    private final int CornerMultiplicator = 8;
-    private final int StreetMultiplicator = 11;
-    private final int LineMultiplicator = 5;
+    private final double RedMultiplicator = 2.0;
+    private final double BlackMultiplicator = 2.0;
+    private final double EvenMultiplicator = 2.0;
+    private final double OddMultiplicator = 2.0;
+    private final double LowMultiplicator = 2.0;
+    private final double HighMultiplicator = 2.0;
+    private final double RowMultiplicator = 2.0;
+    private final double DozenMultiplicator = 2.0;
+    private final double StraightMultiplicator = 35.0;
+    private final double SplittMultiplicator = 17.0;
+    private final double CornerMultiplicator = 8.0;
+    private final double StreetMultiplicator = 11.0;
+    private final double LineMultiplicator = 5.0;
 
     //Wettenart Variable für Bestimmung
     private String bettype;
     //Array für maximale Anzahl Wert auf einem Feld
     private Integer BetNumbers[] = new Integer[18];
     //Einsatzmenge für Wette
-    private int Betvalue = 0;
+    private double Betvalue = 0;
     //Gezogene Zahl für Überprüfung mit Wetten
     private int randomNumber;
 
     
-    public RouletteBet(String bettype, Integer[] BetNumbers, int Betvalue) {
+    public RouletteBet(String bettype, Integer[] BetNumbers, double Betvalue) {
         this.BetNumbers = BetNumbers;
         this.bettype = bettype;
         this.Betvalue = Betvalue;
     }
 
     //Ausmultiplikation der Wettarten
-    public int Bet() {
+    public double Bet() {
         boolean numberCheck = false;
-        int win = 0;
+        double win = 0.0;
 
         for (int i = 0; i < this.BetNumbers.length; i++) {
             if (this.BetNumbers[i] == randomNumber) {

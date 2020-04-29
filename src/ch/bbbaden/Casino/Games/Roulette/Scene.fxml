@@ -59,7 +59,7 @@
             <Image url="@../../../../../CasinoIMG/Chips4All/Chip50.png" />
          </image>
       </ImageView>
-      <Label fx:id="lblGuthaben" layoutX="794.0" layoutY="35.0" prefHeight="47.0" prefWidth="118.0" text="Guthaben :" textFill="WHITE">
+      <Label fx:id="lblGuthaben" layoutX="794.0" layoutY="35.0" prefHeight="47.0" prefWidth="118.0" text="Credits :" textFill="WHITE">
          <font>
             <Font name="Berlin Sans FB" size="25.0" />
          </font></Label>

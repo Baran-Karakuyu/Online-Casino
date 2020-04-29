@@ -21,7 +21,7 @@ public class RouletteBetType {
     int number = 0;
 
     //Wette hinzufügen und nach Wettenart Überprüfen! PS: Thanks for the Help
-    public void addbet(Integer[] Betnumbers, int Betvalue) {
+    public void addbet(Integer[] Betnumbers, double Betvalue) {
 
         ArrayList<Integer> numbers = new ArrayList<Integer>(Arrays.asList(Betnumbers));
 
@@ -76,8 +76,8 @@ public class RouletteBetType {
     }
 
     //Ausgabe des Gewinnes und Vergleich Wettzahlen und Rand Zahl.
-    public int getWin() {
-        int TotalWin = 0;
+    public double getWin() {
+        double TotalWin = 0;
 
         for (RouletteBet RB : this.bets) {
             RB.setRandomNumber(number);
@@ -88,7 +88,7 @@ public class RouletteBetType {
     }
 
     //Methode für Ausgabe im Controller für die Rand Number
-    public int getRandom() {
+    public double getRandom() {
         return number;
     }
 
