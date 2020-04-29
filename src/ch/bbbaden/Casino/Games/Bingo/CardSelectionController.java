@@ -6,36 +6,37 @@
 package ch.bbbaden.Casino.Games.Bingo;
 
 import Casino.DataBase.User;
-import ch.bbbaden.Casino.Games.Bingo.SpielkarteAuswahlViewModel;
 import ch.bbbaden.Casino.MainApp;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Random;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 /**
  * FXML Controller class
  *
- * @author Emirh
+ * @author Emirhan Karaca
  */
-public class SpielkarteAuswahlController implements Initializable {
+public class CardSelectionController implements Initializable {
 
-    private SpielkarteAuswahlViewModel viewModel;
+    private CardSelectionViewModel viewModel;
     private MainApp mainApp;
     private User user;
 
+    
+    @FXML
+    private Label imgLeave;
+    @FXML
+    private Label lblKosten;
+
+    //Cards
     @FXML
     private Button btnCross1;
     @FXML
@@ -87,13 +88,6 @@ public class SpielkarteAuswahlController implements Initializable {
     @FXML
     private Button btnCross25;
 
-    @FXML
-    private Label imgVerlassen;
-
-    public SpielkarteAuswahlController() {
-
-    }
-
     /**
      * Initializes the controller class.
      */
@@ -102,6 +96,7 @@ public class SpielkarteAuswahlController implements Initializable {
         // TODO
     }
 
+    //binding the cards
     public void bind() {
         btnCross1.textProperty().bind(viewModel.getStr1());
         btnCross2.textProperty().bind(viewModel.getStr2());
@@ -131,25 +126,28 @@ public class SpielkarteAuswahlController implements Initializable {
 
     }
 
+    //by pressing the "Andere Spielkarte" button, it invokes the method from the CardSelectionModel
     @FXML
-    private void ActionAendern(ActionEvent event) {
+    private void ActionOtherCard(ActionEvent event) {
 
-        viewModel.ActionAendern();
+        viewModel.ActionOtherCards();
     }
 
+    //by pressing the "Weiter" button, it invokes the method from the CardSelectionModel
     @FXML
-    private void ActionAuswaehlen(ActionEvent event) throws IOException {
+    private void ActionShowBingo(ActionEvent event) throws IOException {
         viewModel.showBingo(user);
     }
 
-    public void setViewModel(SpielkarteAuswahlViewModel viewModel) {
+    public void setCardSelectionViewModel(CardSelectionViewModel viewModel) {
         this.viewModel = viewModel;
     }
 
+    //Closes the current scene and opens up the menu of the casino
     @FXML
-    private void ActionVerlassen(MouseEvent event) throws IOException, ClassNotFoundException, SQLException {
+    private void ActionLeave(MouseEvent event) throws IOException, ClassNotFoundException, SQLException {
 
-        Stage stage = (Stage) imgVerlassen.getScene().getWindow();
+        Stage stage = (Stage) imgLeave.getScene().getWindow();
         stage.close();
 
         mainApp.startMenu();
@@ -158,7 +156,7 @@ public class SpielkarteAuswahlController implements Initializable {
 
     public void setMainApp(MainApp mainApp) {
         this.mainApp = mainApp;
-        
+
     }
 
     public void setUser(User user) {

@@ -9,7 +9,7 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="332.0" prefWidth="599.0" stylesheets="@../../../../../CasinoStyleSheet/BingoCSS/Bingo.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.bbbaden.Casino.Games.Bingo.UebersichtsSeiteController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="332.0" prefWidth="599.0" stylesheets="@../../../../../CasinoStyleSheet/BingoCSS/Bingo.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.bbbaden.Casino.Games.Bingo.OverviewPageController">
    <children>
       <ImageView fitHeight="381.0" fitWidth="599.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -112,12 +112,12 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <Button fx:id="btnRegeln" layoutX="244.0" layoutY="227.0" mnemonicParsing="false" onAction="#ActionRegeln" prefHeight="48.0" prefWidth="110.0" styleClass="buttonABC" text="REGELN" textFill="#005904">
+      <Button fx:id="btnRules" layoutX="244.0" layoutY="227.0" mnemonicParsing="false" onAction="#ActionRules" prefHeight="48.0" prefWidth="110.0" styleClass="buttonABC" text="REGELN" textFill="#005904">
          <font>
             <Font size="19.0" />
          </font>
       </Button>
-      <Label fx:id="imgVerlassen" layoutX="10.0" layoutY="10.0" onMouseClicked="#ActionVerlassen" text="ZUM CASINO MENÜ" textFill="WHITE">
+      <Label fx:id="imgLeave" layoutX="10.0" layoutY="10.0" onMouseClicked="#ActionLeave" text="ZUM CASINO MENÜ" textFill="WHITE">
          <font>
             <Font name="Algerian" size="26.0" />
          </font>

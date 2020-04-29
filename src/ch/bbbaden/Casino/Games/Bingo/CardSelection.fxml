@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="537.0" prefWidth="482.0" style="-fx-background-color: ^;" stylesheets="@../../../../../CasinoStyleSheet/BingoCSS/Bingo.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.bbbaden.Casino.Games.Bingo.SpielkarteAuswahlController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="537.0" prefWidth="482.0" stylesheets="@../../../../../CasinoStyleSheet/BingoCSS/Bingo.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.bbbaden.Casino.Games.Bingo.CardSelectionController">
     <children>
         <ImageView fitHeight="273.0" fitWidth="492.0" layoutX="-2.0" layoutY="-6.0" pickOnBounds="true" preserveRatio="true">
             <image>
@@ -154,12 +154,12 @@
                 <Font name="Algerian" size="32.0" />
             </font>
         </Label>
-        <Button fx:id="btnAendern" layoutX="122.0" layoutY="458.0" mnemonicParsing="false" onAction="#ActionAendern" prefHeight="48.0" prefWidth="157.0" styleClass="buttonABC" text="Andere Spielkarte">
+        <Button layoutX="122.0" layoutY="458.0" mnemonicParsing="false" onAction="#ActionOtherCard" prefHeight="48.0" prefWidth="157.0" styleClass="buttonABC" text="Andere Spielkarte">
             <font>
                 <Font size="19.0" />
             </font>
         </Button>
-        <Button fx:id="btnAuswaehlen" layoutX="290.0" layoutY="458.0" mnemonicParsing="false" onAction="#ActionAuswaehlen" prefHeight="48.0" prefWidth="72.0" styleClass="buttonABC" text="Weiter">
+        <Button layoutX="290.0" layoutY="458.0" mnemonicParsing="false" onAction="#ActionShowBingo" prefHeight="48.0" prefWidth="72.0" styleClass="buttonABC" text="Weiter">
             <font>
                 <Font size="19.0" />
             </font>
@@ -239,7 +239,7 @@
                 <Image url="@../../../../../../../../../Desktop/bw.JPG" />
             </image>
         </ImageView>
-        <Label fx:id="imgVerlassen" layoutX="9.0" layoutY="10.0" onMouseClicked="#ActionVerlassen" text="ZUM CASINO MENÜ" textFill="WHITE">
+        <Label fx:id="imgLeave" layoutX="9.0" layoutY="10.0" onMouseClicked="#ActionLeave" text="ZUM CASINO MENÜ" textFill="WHITE">
             <font>
                 <Font name="Algerian" size="26.0" />
             </font>

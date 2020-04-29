@@ -49,7 +49,7 @@
             <Font size="13.0" />
          </font>
       </Button>
-      <Button fx:id="btnCross21" layoutX="259.0" layoutY="168.0" mnemonicParsing="false" onAction="#ActionCross21" onMouseClicked="#ActionVerlassen" prefHeight="39.0" prefWidth="34.0" style="-fx-background-color: white;">
+      <Button fx:id="btnCross21" layoutX="259.0" layoutY="168.0" mnemonicParsing="false" onAction="#ActionCross21" prefHeight="39.0" prefWidth="34.0" style="-fx-background-color: white;">
          <font>
             <Font size="13.0" />
          </font>
@@ -159,12 +159,12 @@
          <font>
             <Font size="26.0" />
          </font></Label>
-      <Label fx:id="lblZeit" layoutX="88.0" layoutY="87.0" prefHeight="66.0" prefWidth="222.0" text="30 Sekunden" textFill="WHITE">
+      <Label fx:id="lblTime" layoutX="88.0" layoutY="87.0" prefHeight="66.0" prefWidth="222.0" text="30 Sekunden" textFill="WHITE">
          <font>
             <Font name="Algerian" size="32.0" />
          </font>
       </Label>
-      <Label fx:id="lblAktuelleNummer" alignment="CENTER" layoutX="419.0" layoutY="134.0" prefHeight="39.0" prefWidth="64.0" textFill="RED">
+      <Label fx:id="lblCurrentNumbers" alignment="CENTER" layoutX="419.0" layoutY="134.0" prefHeight="39.0" prefWidth="64.0" textFill="RED">
          <font>
             <Font name="System Bold" size="52.0" />
          </font>
@@ -334,11 +334,6 @@
             <Font size="13.0" />
          </font>
       </Button>
-      <ImageView fitHeight="37.0" fitWidth="34.0" layoutX="705.0" layoutY="14.0" onMouseClicked="#ActionVerlassen" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/exit.png" />
-         </image>
-      </ImageView>
       <Label fx:id="lblCredits" layoutX="175.0" layoutY="543.0" text="Credits" textFill="WHITE">
          <font>
             <Font size="25.0" />
@@ -349,7 +344,7 @@
             <Font size="32.0" />
          </font>
       </Label>
-      <Label fx:id="lblAlleNummer" layoutX="535.0" layoutY="107.0" prefHeight="142.0" prefWidth="212.0" textFill="WHITE" wrapText="true">
+      <Label fx:id="lblAllNumbers" layoutX="535.0" layoutY="107.0" prefHeight="142.0" prefWidth="212.0" textFill="WHITE" wrapText="true">
          <font>
             <Font size="14.0" />
          </font>
@@ -499,12 +494,7 @@
             <Image url="@../../../../../../../../../Desktop/bw.JPG" />
          </image>
       </ImageView>
-      <ImageView fitHeight="8.0" fitWidth="20.0" layoutX="485.0" layoutY="349.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../../../../../../../Desktop/bw.JPG" />
-         </image>
-      </ImageView>
-      <Label fx:id="imgVerlassen" layoutX="8.0" layoutY="7.0" onMouseClicked="#ActionVerlassen" text="Zum Casino Menü" textFill="WHITE">
+      <Label fx:id="imgLeave" layoutX="8.0" layoutY="7.0" onMouseClicked="#ActionLeave" text="Zum Casino Menü" textFill="WHITE">
          <font>
             <Font name="Algerian" size="26.0" />
          </font>

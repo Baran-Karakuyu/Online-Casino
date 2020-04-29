@@ -10,17 +10,20 @@ import ch.bbbaden.Casino.MainApp;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 /**
  *
- * @author Emirh
+ * @author Emirhan Karaca
  */
-public class SpielkarteAuswahlViewModel implements PropertyChangeListener {
+public class CardSelectionViewModel implements PropertyChangeListener {
 
+    private final CardSelectionModel cardSelectionModel;
+    private final MainApp mainApp;
+    private User user;
+
+    //declaration of variables
     private final StringProperty str1 = new SimpleStringProperty();
     private final StringProperty str2 = new SimpleStringProperty();
     private final StringProperty str3 = new SimpleStringProperty();
@@ -47,19 +50,22 @@ public class SpielkarteAuswahlViewModel implements PropertyChangeListener {
     private final StringProperty str24 = new SimpleStringProperty();
     private final StringProperty str25 = new SimpleStringProperty();
 
-    private final SpielkarteAuswahlModel spielkarteAuswahlModel;
-    private final MainApp mainApp;
-    private User user;
-
-    public SpielkarteAuswahlViewModel(SpielkarteAuswahlModel spielkarteAuswahlModel, MainApp mainApp) {
-        this.spielkarteAuswahlModel = spielkarteAuswahlModel;
+    public CardSelectionViewModel(CardSelectionModel cardSelectionModel, MainApp mainApp) {
+        this.cardSelectionModel = cardSelectionModel;
         this.mainApp = mainApp;
     }
 
-    public void ActionAendern() {
-        spielkarteAuswahlModel.ActionAendern();
+    //invokes the method from the CardSelectionModel
+    public void ActionOtherCards() {
+        cardSelectionModel.ActionOtherCards();
     }
 
+    //invokes the method from the CardSelectionModel
+    public void showBingo(User user) throws IOException {
+        cardSelectionModel.showBingo(user);
+    }
+
+    //if change is fired this method is called, sets values of String with different cases
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
 
@@ -168,10 +174,7 @@ public class SpielkarteAuswahlViewModel implements PropertyChangeListener {
         }
     }
 
-    public void showBingo(User user) throws IOException {
-        spielkarteAuswahlModel.showBingo(user);
-    }
-
+    //All Getters for the Strings
     public StringProperty getStr1() {
         return str1;
     }

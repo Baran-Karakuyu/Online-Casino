@@ -12,22 +12,23 @@ import java.io.IOException;
 
 /**
  *
- * @author Emirh
+ * @author Emirhan Karaca
  */
-public class UebersichtsSeiteViewModel implements PropertyChangeListener {
+public class OverviewPageViewModel implements PropertyChangeListener {
 
-    private UebersichtsSeiteModel uebersichtsSeiteModel;
+    private OverviewPageModel overviewPageModel;
 
-    public UebersichtsSeiteViewModel(UebersichtsSeiteModel uebersichtsSeiteModel) {
-        this.uebersichtsSeiteModel = uebersichtsSeiteModel;
+    public OverviewPageViewModel(OverviewPageModel overviewPageModel) {
+        this.overviewPageModel = overviewPageModel;
     }
 
-    public void showSpielkarteAuswahl() throws IOException {
-        uebersichtsSeiteModel.showSpielkarteAuswahl();
+    //invokes the method from the CardSelectionModel
+    public void showCardSelection() throws IOException {
+        overviewPageModel.showCardSelection();
     }
 
     public void setMainApp(MainApp mainApp) {
-        uebersichtsSeiteModel.setMainApp(mainApp);
+        overviewPageModel.setMainApp(mainApp);
     }
 
     @Override

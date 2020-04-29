@@ -5,54 +5,49 @@
  */
 package ch.bbbaden.Casino.Games.Bingo;
 
-//import ch.bbbaden.ims.programmierwochen.bingo.MainApp;
 import Casino.DataBase.User;
 import ch.bbbaden.Casino.MainApp;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 /**
  *
- * @author Emirh
+ * @author Emirhan Karaca
  */
-public class UebersichtsSeiteModel {
+public class OverviewPageModel {
 
     private MainApp mainApp;
-    private SpielkarteAuswahlModel model;
+    private CardSelectionModel cardSelectionModel;
     private User user;
     private Stage stage;
+
+    //declaration of variable
     private PropertyChangeSupport changes = new PropertyChangeSupport(this);
 
-    public void showSpielkarteAuswahl() throws IOException {
+    //shows the "CardSelection" Scene
+    public void showCardSelection() throws IOException {
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("SpielKarteAuswahl.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("CardSelection.fxml"));
         Parent root;
         root = loader.load();
 
-        SpielkarteAuswahlController view = loader.getController();
-        this.model = new SpielkarteAuswahlModel(mainApp);
-        model.setStage(stage);
-        SpielkarteAuswahlViewModel viewModel = new SpielkarteAuswahlViewModel(model, mainApp);
-        view.setViewModel(viewModel);
-        view.setMainApp(mainApp);
-        view.setUser(user);
-        model.addPropertyChangeListner(viewModel);
-        view.bind();
-
+        CardSelectionController cardSelectionController = loader.getController();
+        this.cardSelectionModel = new CardSelectionModel(mainApp);
+        cardSelectionModel.setStage(stage);
+        CardSelectionViewModel cardSelectionViewModel = new CardSelectionViewModel(cardSelectionModel, mainApp);
+        cardSelectionController.setCardSelectionViewModel(cardSelectionViewModel);
+        cardSelectionController.setMainApp(mainApp);
+        cardSelectionController.setUser(user);
+        cardSelectionModel.addPropertyChangeListner(cardSelectionViewModel);
+        cardSelectionController.bind();
         Scene scene = new Scene(root);
-
         stage.resizableProperty().setValue(Boolean.FALSE);
-
         stage.setScene(scene);
-
         stage.show();
 
     }
@@ -70,6 +65,7 @@ public class UebersichtsSeiteModel {
         this.stage = stage;
     }
 
+    //adds the listener
     public void addPropertyChangeListner(PropertyChangeListener l) {
         changes.addPropertyChangeListener(l);
     }

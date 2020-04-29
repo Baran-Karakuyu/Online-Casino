@@ -6,27 +6,20 @@
 package ch.bbbaden.Casino.Games.Bingo;
 
 import Casino.DataBase.User;
-import ch.bbbaden.Casino.Games.Bingo.BingoViewModel;
 import ch.bbbaden.Casino.MainApp;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Random;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -34,90 +27,33 @@ import javafx.util.Duration;
 /**
  * FXML Controller class
  *
- * @author Emirh
+ * @author Emirhan Karaca
  */
 public class BingoController implements Initializable {
-
-    ArrayList<Button> cards = new ArrayList<Button>();
-    ArrayList<StringProperty> texts = new ArrayList<>();
-    ArrayList<Integer> randomNumbers = new ArrayList<>();
 
     private BingoViewModel viewModel;
     private MainApp mainApp;
     private User user;
 
+    //declaration of variables
     private Timeline timeline;
-    private int startTime = 1;
+    private int startTime = 30;
     private Integer timeSeconds = startTime;
-
-    Random rnd = new Random();
+    ArrayList<Integer> randoms = new ArrayList<>();
+    private boolean end = false;
 
     @FXML
     private Label lblCredits;
-    private boolean ende = false;
     @FXML
-    private Label lblAlleNummer;
+    private Label lblAllNumbers;
     @FXML
-    private Label imgVerlassen;
+    private Label imgLeave;
+    @FXML
+    private Label lblTime;
+    @FXML
+    private Label lblCurrentNumbers;
 
-    public ArrayList<Integer> getRandomNumbers() {
-        for (int i = 1; i <= 75; i++) {
-            randomNumbers.add(i);
-
-        }
-        Collections.shuffle(randomNumbers);
-
-        return randomNumbers;
-
-    }
-
-    public void startTimer() {
-        final ArrayList<Integer> list = getRandomNumbers();
-        final ArrayList<String> anzuzeigenderNummern = new ArrayList<>();
-
-        timeline = new Timeline(30);
-        KeyFrame keyFrame = new KeyFrame(Duration.seconds(1),
-                new EventHandler<ActionEvent>() {
-
-            @Override
-
-            public void handle(ActionEvent event) {
-                lblZeit.setText(timeSeconds + " sekunden");
-
-                timeSeconds--;
-
-                if (timeSeconds == -1) {
-
-                    timeline.stop();
-                    for (int i = 0; i < 1; i++) {
-
-                        String aktuelleNummer = (list.get(i)).toString();
-
-                        lblAktuelleNummer.setText(aktuelleNummer);
-
-                        anzuzeigenderNummern.add(aktuelleNummer);
-
-                        lblAlleNummer.setText(lblAlleNummer.getText() + lblAktuelleNummer.getText() + ", ");
-
-                    }
-
-                    timeSeconds = 1;
-
-                    if (!ende) {
-                        startTimer();
-                    }
-
-                }
-            }
-        }
-        );
-
-        timeline.setCycleCount(Timeline.INDEFINITE);
-        timeline.getKeyFrames().add(keyFrame);
-
-        timeline.play();
-    }
-
+    //Cards
     @FXML
     private Button btnCross1;
     @FXML
@@ -169,19 +105,64 @@ public class BingoController implements Initializable {
     @FXML
     private Button btnCross25;
 
-    @FXML
-    private Label lblZeit;
-    @FXML
-    private Label lblAktuelleNummer;
-
-    public void setViewModel(BingoViewModel viewModel) {
+    public void setBingoViewModel(BingoViewModel viewModel) {
         this.viewModel = viewModel;
     }
 
-    public BingoController() {
+    //generates random numbers and then shuffles it so there are no duplicates
+    public ArrayList<Integer> getRandomNumbers() {
+        for (int i = 1; i <= 75; i++) {
+            randoms.add(i);
+
+        }
+        Collections.shuffle(randoms);
+
+        return randoms;
 
     }
 
+    //timer which counts down from 30, if hits 0, generate a new random number
+    public void startTimer() {
+        final ArrayList<Integer> list = getRandomNumbers();
+
+        timeline = new Timeline(30);
+        KeyFrame keyFrame = new KeyFrame(Duration.seconds(1), (ActionEvent event) -> {
+            // update timerLabel
+            lblTime.setText(timeSeconds + " sekunden");
+
+            //time -1;
+            timeSeconds--;
+
+            if (timeSeconds == -1) {
+
+                timeline.stop();
+
+                for (int i = 0; i < 1; i++) {
+
+                    String aktuelleNummer = (list.get(i)).toString();
+
+                    lblCurrentNumbers.setText(aktuelleNummer);
+
+                    lblAllNumbers.setText(lblAllNumbers.getText() + lblCurrentNumbers.getText() + ", ");
+
+                }
+                //set timer to 30
+                timeSeconds = 30;
+
+                if (!end) {
+                    startTimer();
+                }
+
+            }
+        });
+
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.getKeyFrames().add(keyFrame);
+
+        timeline.play();
+    }
+
+    //binding of the cards
     public void bind() {
         btnCross1.textProperty().bind(viewModel.getStr1());
         btnCross2.textProperty().bind(viewModel.getStr2());
@@ -219,6 +200,7 @@ public class BingoController implements Initializable {
 
     }
 
+    //Cards can be marked
     @FXML
     private void ActionCross1(ActionEvent event) {
 
@@ -449,21 +431,23 @@ public class BingoController implements Initializable {
     }
 
     @FXML
-    private void ActionVerlassen(MouseEvent event) throws IOException, SQLException, ClassNotFoundException {
+    private void ActionLeave(MouseEvent event) throws IOException, SQLException, ClassNotFoundException {
 
-        Stage stage = (Stage) imgVerlassen.getScene().getWindow();
+        Stage stage = (Stage) imgLeave.getScene().getWindow();
         stage.close();
 
         mainApp.startMenu();
 
     }
-
+    //setMainApp
     public void setMainApp(MainApp mainApp) {
         this.mainApp = mainApp;
     }
 
+    //setUser
     public void setUser(User user) {
         this.user = user;
+        //set Credits of the user
         lblCredits.setText(Double.toString(user.getCredit()));
     }
 

@@ -12,22 +12,23 @@ import java.beans.PropertyChangeSupport;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 /**
  *
- * @author Emirh
+ * @author Emirhan Karaca
  */
-public class SpielkarteAuswahlModel {
+public class CardSelectionModel {
 
+    private BingoModel bingoModel;
+    private MainApp mainApp;
+    private User user;
+
+    //declaration of variables
     private ArrayList<Integer> randomNumbers = new ArrayList<>();
-
     private Stage stage;
     public String str1;
     public String str2;
@@ -55,15 +56,13 @@ public class SpielkarteAuswahlModel {
     public String str24;
     public String str25;
     private PropertyChangeSupport changes = new PropertyChangeSupport(this);
-    private BingoModel bingoModel;
-    private MainApp mainApp;
-    private User user;
 
-    public SpielkarteAuswahlModel(MainApp mainApp) {
+    public CardSelectionModel(MainApp mainApp) {
         this.mainApp = mainApp;
 
     }
 
+    //generates random numbers and then shuffles it so there are no duplicates
     public ArrayList<Integer> getRandomNumbers() {
         for (int i = 1; i <= 75; i++) {
             randomNumbers.add(i);
@@ -75,35 +74,32 @@ public class SpielkarteAuswahlModel {
 
     }
 
+    //shows the "Bingo" Scene
     public void showBingo(User user) throws IOException {
         this.user = user;
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Bingo.fxml"));
         Parent root;
-
         root = loader.load();
 
         BingoController view = loader.getController();
-
         bingoModel = new BingoModel(mainApp, this);
-
         BingoViewModel bingoViewModel = new BingoViewModel(bingoModel);
-        view.setViewModel(bingoViewModel);
+        view.setBingoViewModel(bingoViewModel);
         view.setMainApp(mainApp);
         view.setUser(user);
         bingoModel.addPropertyChangeListner(bingoViewModel);
         view.bind();
-
         view.startTimer();
         bingoModel.showCards();
         Scene scene = new Scene(root);
         stage.resizableProperty().setValue(Boolean.FALSE);
-
         stage.setScene(scene);
         stage.show();
 
     }
-
-    public void ActionAendern() {
+    
+    //generates random Numbers, when hit once on "Andere Spielkarte", saves the new Number in the String
+    public void ActionOtherCards() {
         ArrayList<Integer> list = getRandomNumbers();
 
         String oldstr1 = str1;
@@ -236,6 +232,7 @@ public class SpielkarteAuswahlModel {
         this.stage = stage;
     }
 
+    //adds the listener
     public void addPropertyChangeListner(PropertyChangeListener l) {
         changes.addPropertyChangeListener(l);
     }

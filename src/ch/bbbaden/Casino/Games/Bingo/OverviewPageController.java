@@ -7,7 +7,6 @@ package ch.bbbaden.Casino.Games.Bingo;
 
 import Casino.DataBase.User;
 import ch.bbbaden.Casino.MainApp;
-import ch.bbbaden.Casino.Menu.ViewModel.ViewModel;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -15,7 +14,6 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -24,27 +22,22 @@ import javax.swing.JOptionPane;
 /**
  * FXML Controller class
  *
- * @author Emirh
+ * @author Emirhan Karaca
  */
-public class UebersichtsSeiteController implements Initializable {
+public class OverviewPageController implements Initializable {
 
-    private UebersichtsSeiteViewModel uebersichtsSeiteViewModel;
-    private ViewModel viewModel;
+    private MainApp mainApp;
+    private OverviewPageViewModel overviewPageModel;
     private User user;
 
     @FXML
     private Label lblCredits;
-    @FXML
-    private Button btnStart;
-    @FXML
-    private Button btnRegeln;
 
-    private MainApp mainApp;
     @FXML
-    private Label imgVerlassen;
+    private Label imgLeave;
 
-    public void setUebersichtsSeiteViewModel(UebersichtsSeiteViewModel uebersichtsSeiteViewModel) {
-        this.uebersichtsSeiteViewModel = uebersichtsSeiteViewModel;
+    public void setOverviewPageViewModel(OverviewPageViewModel overviewPageModel) {
+        this.overviewPageModel = overviewPageModel;
     }
 
     /**
@@ -58,9 +51,9 @@ public class UebersichtsSeiteController implements Initializable {
     @FXML
     private void ActionStart(ActionEvent event) throws IOException {
 
-        uebersichtsSeiteViewModel.setMainApp(mainApp);
+        overviewPageModel.setMainApp(mainApp);
 
-        uebersichtsSeiteViewModel.showSpielkarteAuswahl();
+        overviewPageModel.showCardSelection();
 
     }
 
@@ -69,16 +62,16 @@ public class UebersichtsSeiteController implements Initializable {
     }
 
     @FXML
-    private void ActionVerlassen(MouseEvent event) throws IOException, SQLException, ClassNotFoundException {
-        Stage stage = (Stage) imgVerlassen.getScene().getWindow();
+    private void ActionLeave(MouseEvent event) throws IOException, SQLException, ClassNotFoundException {
+        Stage stage = (Stage) imgLeave.getScene().getWindow();
         stage.close();
 
         mainApp.startMenu();
-        
+
     }
 
     @FXML
-    private void ActionRegeln(ActionEvent event) {
+    private void ActionRules(ActionEvent event) {
 
         JOptionPane.showMessageDialog(null,
                 "Die Teilnehmer kaufen Lose oder auch Teilnahmecoupons, \n "
@@ -96,7 +89,7 @@ public class UebersichtsSeiteController implements Initializable {
 
     public void setMainApp(MainApp mainApp) {
         this.mainApp = mainApp;
-        
+
     }
 
     public void setUser(User user) {

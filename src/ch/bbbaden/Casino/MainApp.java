@@ -6,11 +6,11 @@
 package ch.bbbaden.Casino;
 
 import Casino.DataBase.User;
-import ch.bbbaden.Casino.Games.Bingo.SpielkarteAuswahlController;
-import ch.bbbaden.Casino.Games.Bingo.SpielkarteAuswahlViewModel;
-import ch.bbbaden.Casino.Games.Bingo.UebersichtsSeiteController;
-import ch.bbbaden.Casino.Games.Bingo.UebersichtsSeiteModel;
-import ch.bbbaden.Casino.Games.Bingo.UebersichtsSeiteViewModel;
+import ch.bbbaden.Casino.Games.Bingo.CardSelectionController;
+import ch.bbbaden.Casino.Games.Bingo.CardSelectionViewModel;
+import ch.bbbaden.Casino.Games.Bingo.OverviewPageController;
+import ch.bbbaden.Casino.Games.Bingo.OverviewPageModel;
+import ch.bbbaden.Casino.Games.Bingo.OverviewPageViewModel;
 import ch.bbbaden.Casino.Games.Blackjack.ModelBlackJack;
 import ch.bbbaden.Casino.Games.Blackjack.ViewGameController;
 import ch.bbbaden.Casino.Games.Blackjack.ViewModelBlackJack;
@@ -157,18 +157,18 @@ public class MainApp extends Application {
     }
 
     public void startBingo() throws IOException, SQLException, ClassNotFoundException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("Games/Bingo/UebersichtsSeite.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Games/Bingo/OverviewPage.fxml"));
         Parent root;
         root = loader.load();
 
-        UebersichtsSeiteController view = loader.getController();
+        OverviewPageController view = loader.getController();
         view.setMainApp(this);
         view.setUser(user);
-        UebersichtsSeiteModel model = new UebersichtsSeiteModel();
+        OverviewPageModel model = new OverviewPageModel();
         model.setUser(user);
         model.setStage(stage);
-        final UebersichtsSeiteViewModel viewModel = new UebersichtsSeiteViewModel(model);
-        view.setUebersichtsSeiteViewModel(viewModel);
+        final OverviewPageViewModel viewModel = new OverviewPageViewModel(model);
+        view.setOverviewPageViewModel(viewModel);
         model.addPropertyChangeListner(viewModel);
         view.bind();
 
@@ -179,19 +179,19 @@ public class MainApp extends Application {
         stage.setScene(scene);
         stage.show();
     }
-    
-    public void startRoulette()throws IOException, SQLException, ClassNotFoundException {
-        FXMLLoader loader=  new FXMLLoader(getClass().getResource("Games/Roulette/Scene.fxml"));
+
+    public void startRoulette() throws IOException, SQLException, ClassNotFoundException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Games/Roulette/Scene.fxml"));
         Parent root;
-        root= loader.load();
-        
-        ControllerRoulette view= loader.getController();
+        root = loader.load();
+
+        ControllerRoulette view = loader.getController();
         view.setUser(user);
         view.setMainApp(this);
         view.setCreditUser();
-        
-        final Scene scene= new Scene(root);
-        
+
+        final Scene scene = new Scene(root);
+
         stage.setTitle("Roulette");
         stage.setScene(scene);
         stage.show();

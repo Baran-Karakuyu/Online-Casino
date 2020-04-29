@@ -13,10 +13,14 @@ import javafx.beans.property.StringProperty;
 
 /**
  *
- * @author Emirh
+ * @author Emirhan Karaca
  */
 public class BingoViewModel implements PropertyChangeListener {
 
+    BingoModel bingoModel;
+    MainApp mainApp;
+
+    //declaration of variables
     StringProperty str1 = new SimpleStringProperty();
     StringProperty str2 = new SimpleStringProperty();
     StringProperty str3 = new SimpleStringProperty();
@@ -43,13 +47,11 @@ public class BingoViewModel implements PropertyChangeListener {
     StringProperty str24 = new SimpleStringProperty();
     StringProperty str25 = new SimpleStringProperty();
 
-    BingoModel bingoModel;
-    MainApp mainApp;
-
     public BingoViewModel(BingoModel bingoModel) {
         this.bingoModel = bingoModel;
     }
 
+    //if change is fired this method is called, sets values of String with different cases
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
 
@@ -158,6 +160,7 @@ public class BingoViewModel implements PropertyChangeListener {
         }
     }
 
+    //All Getters for the Strings
     public StringProperty getStr1() {
         return str1;
     }
