@@ -5,8 +5,11 @@
  */
 package ch.bbbaden.Casino.Games.Yatzy;
 
+import Casino.DataBase.User;
+import ch.bbbaden.Casino.MainApp;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -30,27 +33,33 @@ public class FXMLStartscreenController implements Initializable {
 
     @FXML
     private Button btnBeenden;
+    
+    private User user;
+    private MainApp mainApp;
+    private Stage stage;
 
     @FXML
-    private void closeButtonAction() {
+    private void closeButtonAction() throws IOException, SQLException, ClassNotFoundException {
+        stage = (Stage) btnBeenden.getScene().getWindow();
+        stage.close();
 
-        Platform.exit();
+        mainApp.startMenu();
     }
 
     @FXML
     public void starten(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLDocument.fxml"));
+        Parent root;
+        root = loader.load();
 
-        Stage stage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
-
+        FXMLDocumentController view = loader.getController();
+        view.setUser(user);
+        view.setStage(stage);
+        view.setMainApp(mainApp);
         Scene scene = new Scene(root);
 
         stage.setScene(scene);
         stage.show();
-        
-          Stage stage2 = (Stage) btnStart.getScene().getWindow();
-             stage2.close();
-
     }
 
     /**
@@ -61,4 +70,15 @@ public class FXMLStartscreenController implements Initializable {
         // TODO
     }
 
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public void setMainApp(MainApp mainApp) {
+        this.mainApp = mainApp;
+    }
+
+    public void setStage(Stage stage) {
+        this.stage = stage;
+    }
 }

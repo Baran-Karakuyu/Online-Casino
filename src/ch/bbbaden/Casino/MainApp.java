@@ -146,8 +146,9 @@ public class MainApp extends Application {
         root = loader.load();
 
         FXMLStartscreenController view = loader.getController();
-
-        //view.setMainApp(this);
+        view.setUser(user);
+        view.setMainApp(this);
+        view.setStage(stage);
         final Scene scene = new Scene(root);
 
         stage.setTitle("Yatzy");
@@ -177,6 +178,7 @@ public class MainApp extends Application {
         stage.setScene(scene);
         stage.show();
     }
+    
     public void startRoulette()throws IOException, SQLException, ClassNotFoundException {
         FXMLLoader loader=  new FXMLLoader(getClass().getResource("Games/Roulette/Scene.fxml"));
         Parent root;

@@ -6,8 +6,10 @@ package ch.bbbaden.Casino.Games.Yatzy;
  * and open the template in the editor.
  */
 import Casino.DataBase.User;
+import ch.bbbaden.Casino.MainApp;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.ResourceBundle;
@@ -36,8 +38,10 @@ public class FXMLDocumentController implements Initializable {
 
     //UserInformation
     public double kontostand;
-    
+
     private User user;
+    private Stage stage;
+    private MainApp mainApp;
 
     //Objekte
     private int wetteinsatzWert;
@@ -291,8 +295,7 @@ public class FXMLDocumentController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
 
         fülleArray();
-        setUser(user);
-        konto.setText(""+kontostand);
+        //konto.setText("" + kontostand);
     }
 
     @FXML
@@ -1166,8 +1169,10 @@ public class FXMLDocumentController implements Initializable {
     }
 
     @FXML
-    public void beenden() {
-        Platform.exit();
+    public void beenden() throws IOException, SQLException, ClassNotFoundException {
+        stage = (Stage) beenden.getScene().getWindow();
+        stage.close();
+        mainApp.startMenu();
     }
 
     @FXML
@@ -1196,16 +1201,16 @@ public class FXMLDocumentController implements Initializable {
         stage.show();
     }
 
-    private void beenden(ActionEvent event) throws IOException {
-        Stage stage = (Stage) beenden.getScene().getWindow();
-        stage.close();
-
-    }
-    
-    
-    private void setUser(User user){
+    public void setUser(User user) {
         this.user = user;
-        kontostand = user.getCredit();
+        konto.setText(String.valueOf(user.getCredit()));
     }
 
+    public void setStage(Stage stage) {
+        this.stage = stage;
+    }
+
+    public void setMainApp(MainApp mainApp) {
+        this.mainApp = mainApp;
+    }
 }
