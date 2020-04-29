@@ -11,7 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import org.Springframework.security.crypto.BCrypt;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 
 /**
  *

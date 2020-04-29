@@ -5,8 +5,10 @@ package ch.bbbaden.Casino.Games.Yatzy;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+import Casino.DataBase.User;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -32,16 +34,14 @@ public class FXMLWettsystemController implements Initializable {
     @FXML
     private Label warnung;
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
-    }
-
     //Objekte BetSystem
-
-    public int wetteinsatz = 0;
+    public double wetteinsatz = 0;
 
     private boolean erhöhen = true;
+
+    public User user;
+
+    public double kontostand;
 
     @FXML
     private Label lblWetteinsatz;
@@ -66,6 +66,11 @@ public class FXMLWettsystemController implements Initializable {
     private ImageView plus;
     @FXML
     private Button btnBestätigen;
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        setUser(user);
+    }
 
     //Code für Betsystem
     private void updateBet() {
@@ -149,34 +154,37 @@ public class FXMLWettsystemController implements Initializable {
     }
 
     @FXML
-    private void setWetteinsatz(ActionEvent event) throws IOException {
+    private void setWetteinsatz(ActionEvent event) throws IOException, SQLException, ClassNotFoundException {
 
-FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLDocument.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLDocument.fxml"));
 
-            Parent root = loader.load();
+        Parent root = loader.load();
 
-            FXMLDocumentController DocumentController = loader.getController();
+        FXMLDocumentController DocumentController = loader.getController();
 
-            
+        Scene scene = new Scene(root);
 
-            Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setScene(scene);
 
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            
-            if(wetteinsatz <= DocumentController.kontostand){
+        if (wetteinsatz <= kontostand) {
             stage.show();
-            
-           DocumentController.getÜbergabe(wetteinsatz);
-           
-           Stage stage2 = (Stage) btnBestätigen.getScene().getWindow();
-             stage2.close();
-            }
-            
-            else{
-                warnung.setVisible(true);
-            }
 
+            DocumentController.getÜbergabe((int) wetteinsatz);
+
+            Stage stage2 = (Stage) btnBestätigen.getScene().getWindow();
+            stage2.close();
+            
+            user.setCredit(kontostand - wetteinsatz);
+        } else {
+            warnung.setVisible(true);
+        }
+
+    }
+
+    private void setUser(User user) {
+        this.user = user;
+        kontostand = user.getCredit();
     }
 
 }

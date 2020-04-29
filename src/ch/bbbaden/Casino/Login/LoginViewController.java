@@ -23,7 +23,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javax.swing.JOptionPane;
-import org.Springframework.security.crypto.BCrypt;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 
 /**
  * FXML Controller class

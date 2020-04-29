@@ -44,7 +44,7 @@ public class FXMLDocumentController implements Initializable {
     private MainApp mainApp;
 
     //Objekte
-    private int wetteinsatzWert;
+    private double wetteinsatzWert;
     Würfel w1 = new Würfel();
     Würfel w2 = new Würfel();
     Würfel w3 = new Würfel();
@@ -296,10 +296,12 @@ public class FXMLDocumentController implements Initializable {
 
         fülleArray();
         //konto.setText("" + kontostand);
+        setUser(user);
+        konto.setText("" + kontostand);
     }
 
     @FXML
-    private void würfeln(ActionEvent event) {
+    private void würfeln(ActionEvent event) throws SQLException, ClassNotFoundException {
         update();
 
         halten1.setDisable(false);
@@ -477,7 +479,7 @@ public class FXMLDocumentController implements Initializable {
     }
 
     @FXML
-    private void starten(ActionEvent event) {
+    private void starten(ActionEvent event) throws SQLException, ClassNotFoundException {
 
         buttonWürfeln.setDisable(false);
         verbleibendeZüge = 3;
@@ -506,7 +508,7 @@ public class FXMLDocumentController implements Initializable {
     }
 
     @FXML
-    private void einer(ActionEvent event) {
+    private void einer(ActionEvent event) throws SQLException, ClassNotFoundException {
 
         ergebnis = einfacheKombination.Einer(würfel);
         total = total + ergebnis;
@@ -522,7 +524,7 @@ public class FXMLDocumentController implements Initializable {
     }
 
     @FXML
-    private void zweier(ActionEvent event) {
+    private void zweier(ActionEvent event) throws SQLException, ClassNotFoundException {
 
         ergebnis = einfacheKombination.Zweier(würfel);
         total = total + ergebnis;
@@ -538,7 +540,7 @@ public class FXMLDocumentController implements Initializable {
     }
 
     @FXML
-    private void dreier(ActionEvent event) {
+    private void dreier(ActionEvent event) throws SQLException, ClassNotFoundException {
 
         ergebnis = einfacheKombination.Dreier(würfel);
         total = total + ergebnis;
@@ -554,7 +556,7 @@ public class FXMLDocumentController implements Initializable {
     }
 
     @FXML
-    private void vierer(ActionEvent event) {
+    private void vierer(ActionEvent event) throws SQLException, ClassNotFoundException {
 
         ergebnis = einfacheKombination.Vierer(würfel);
         total = total + ergebnis;
@@ -570,7 +572,7 @@ public class FXMLDocumentController implements Initializable {
     }
 
     @FXML
-    private void fünfer(ActionEvent event) {
+    private void fünfer(ActionEvent event) throws SQLException, ClassNotFoundException {
 
         ergebnis = einfacheKombination.Fünfer(würfel);
         total = total + ergebnis;
@@ -586,7 +588,7 @@ public class FXMLDocumentController implements Initializable {
     }
 
     @FXML
-    private void sechser(ActionEvent event) {
+    private void sechser(ActionEvent event) throws SQLException, ClassNotFoundException {
 
         ergebnis = einfacheKombination.Sechser(würfel);
         total = total + ergebnis;
@@ -602,7 +604,7 @@ public class FXMLDocumentController implements Initializable {
     }
 
     @FXML
-    private void dreierPasch(ActionEvent event) {
+    private void dreierPasch(ActionEvent event) throws SQLException, ClassNotFoundException {
         ergebnis = schwierigeKombination.DreierPasch(würfel);
         total = total + ergebnis;
         update();
@@ -615,7 +617,7 @@ public class FXMLDocumentController implements Initializable {
     }
 
     @FXML
-    private void viererPasch(ActionEvent event) {
+    private void viererPasch(ActionEvent event) throws SQLException, ClassNotFoundException {
         ergebnis = schwierigeKombination.ViererPasch(würfel);
         total = total + ergebnis;
         update();
@@ -628,7 +630,7 @@ public class FXMLDocumentController implements Initializable {
     }
 
     @FXML
-    private void kleineStrasse(ActionEvent event) {
+    private void kleineStrasse(ActionEvent event) throws SQLException, ClassNotFoundException {
         ergebnis = schwierigeKombination.KleineStrasse(würfel);
         total = total + ergebnis;
         update();
@@ -641,7 +643,7 @@ public class FXMLDocumentController implements Initializable {
     }
 
     @FXML
-    private void grosseStrasse(ActionEvent event) {
+    private void grosseStrasse(ActionEvent event) throws SQLException, ClassNotFoundException {
         ergebnis = schwierigeKombination.GrosseStrasse(würfel);
         total = total + ergebnis;
         update();
@@ -654,7 +656,7 @@ public class FXMLDocumentController implements Initializable {
     }
 
     @FXML
-    private void yatzy(ActionEvent event) {
+    private void yatzy(ActionEvent event) throws SQLException, ClassNotFoundException {
         ergebnis = schwierigeKombination.Yatzy(würfel);
         total = total + ergebnis;
         update();
@@ -667,7 +669,7 @@ public class FXMLDocumentController implements Initializable {
     }
 
     @FXML
-    private void chance(ActionEvent event) {
+    private void chance(ActionEvent event) throws SQLException, ClassNotFoundException {
         ergebnis = schwierigeKombination.Chance(würfel);
         total = total + ergebnis;
         update();
@@ -680,7 +682,7 @@ public class FXMLDocumentController implements Initializable {
     }
 
     @FXML
-    private void fullHouse(ActionEvent event) {
+    private void fullHouse(ActionEvent event) throws SQLException, ClassNotFoundException {
         ergebnis = schwierigeKombination.FullHouse(würfel);
         total = total + ergebnis;
         update();
@@ -712,7 +714,7 @@ public class FXMLDocumentController implements Initializable {
 
     }
 
-    public void update() {
+    public void update() throws SQLException, ClassNotFoundException {
         if (lockedEiner == false) {
             einer.setDisable(false);
 
@@ -1137,26 +1139,37 @@ public class FXMLDocumentController implements Initializable {
     }
 
     //Winscreen Code
-    private void makeWinscreen() {
+    private void makeWinscreen() throws SQLException, ClassNotFoundException {
 
         winscreen.setVisible(true);
         winscreen.setDisable(false);
+        double gewinn = 0;
+        double verlust = 0;
 
         if (bottotal > total) {
             gewinner.setText("Verloren");
             gewonnenesGeld.setText("Verlorenes Geld:");
             gewonnenesWert.setText("" + wetteinsatzWert);
+            gewinn = 0;
+            verlust = wetteinsatzWert;
 
         } else {
             gewinner.setText("Gewonnen");
             gewonnenesGeld.setText("Gewonnenes Geld:");
             gewonnenesWert.setText("" + (wetteinsatzWert * 2));
             kontostand = kontostand + wetteinsatzWert * 2;
+            gewinn = wetteinsatzWert * 2;
+            verlust = 0;
         }
 
         Punkte.setText("" + total);
         botPunkte.setText("" + bottotal);
         neuerKontostand.setText("" + kontostand);
+
+        user.userStats(1, user.getUid(), wetteinsatzWert, gewinn, verlust);
+        if (total > bottotal) {
+            user.setCredit(kontostand + wetteinsatzWert * 2);
+        }
 
     }
 
@@ -1199,6 +1212,11 @@ public class FXMLDocumentController implements Initializable {
 
         stage.setScene(scene);
         stage.show();
+    }
+
+    private void beenden(ActionEvent event) throws IOException {
+        stage = (Stage) beenden.getScene().getWindow();
+        stage.close();
     }
 
     public void setUser(User user) {
