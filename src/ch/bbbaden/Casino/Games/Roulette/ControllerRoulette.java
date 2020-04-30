@@ -446,6 +446,7 @@ public class ControllerRoulette implements Initializable {
         lblText.setText("");
         ChipValue = 0;
         Integer[] Betnumbers = {};
+        TotalBetValue = 0;
         
     }
 
