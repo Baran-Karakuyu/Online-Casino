@@ -15,7 +15,7 @@ import org.springframework.security.crypto.bcrypt.BCrypt;
 
 /**
  *
- * @author Andrei Oleniuc
+ *@author Andrei Oleniuc und Rojda-Baran Karakuyu
  */
 public class Query {
 

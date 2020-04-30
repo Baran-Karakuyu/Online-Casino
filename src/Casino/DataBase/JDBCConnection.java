@@ -11,7 +11,7 @@ import java.sql.SQLException;
 
 /**
  *
- * @author Andrei Oleniuc
+ * @author Andrei Oleniuc und Rojda-Baran Karakuyu
  */
 public class JDBCConnection {
 

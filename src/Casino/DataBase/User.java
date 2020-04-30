@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Andrei Oleniuc
+ * @author Andrei Oleniuc und Rojda-Baran Karakuyu
  */
 public class User {
     private int uid;
