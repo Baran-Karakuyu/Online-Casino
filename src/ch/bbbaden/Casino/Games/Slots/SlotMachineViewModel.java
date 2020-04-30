@@ -13,7 +13,7 @@ import javafx.beans.property.StringProperty;
 
 /**
  *
- * @author Baran
+ * @author Rojda-Baran Karakuyu
  */
 public class SlotMachineViewModel implements PropertyChangeListener {
 
@@ -34,23 +34,23 @@ public class SlotMachineViewModel implements PropertyChangeListener {
         playerAccountNumber.setValue("0.0");
     }
 
-    public void deposit(double insert) {
+    public void deposit(double insert) throws SQLException, ClassNotFoundException {
         m.managingPlayMoney(insert, 0);
     }
 
-    public void payOut(double insert) {
+    public void payOut(double insert) throws SQLException, ClassNotFoundException {
         m.managingPlayMoney(insert, 1);
     }
 
-    public void win(double insert) {
+    public void win(double insert) throws SQLException, ClassNotFoundException {
         m.managingPlayMoney(insert, 2);
     }
 
-    public void winToPlayerAccountNumber(double insert) {
+    public void winToPlayerAccountNumber(double insert) throws SQLException, ClassNotFoundException {
         m.managingPlayMoney(insert, 3);
     }
 
-    public void spinSpinners() throws InterruptedException {
+    public void spinSpinners() throws InterruptedException, SQLException, ClassNotFoundException {
         m.spinSpinners();
     }
 

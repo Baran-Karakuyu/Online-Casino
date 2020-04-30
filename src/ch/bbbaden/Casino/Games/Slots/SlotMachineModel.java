@@ -16,7 +16,7 @@ import java.util.Random;
 
 /**
  *
- * @author Baran
+ * @author Rojda-Baran Karakuyu
  */
 public class SlotMachineModel {
 
@@ -36,7 +36,7 @@ public class SlotMachineModel {
     protected PropertyChangeSupport changes = new PropertyChangeSupport(this);
     private double balanceNumber;
 
-    public void spinSpinners() throws InterruptedException {
+    public void spinSpinners() throws InterruptedException, SQLException, ClassNotFoundException {
         if (allSymbols.isEmpty()) {
             allSymbols.put(0, Symbol.CHERRY);
             allSymbols.put(1, Symbol.TRAUBE);
@@ -53,7 +53,7 @@ public class SlotMachineModel {
         if (spinnerSelectedSymbol.size() >= 3) {
             spinnerSelectedSymbol.clear();
         }
-        
+
         //removes money from Account
         if (spinnerSelectedSymbol.size() < 1 && depositChecker == false) {
             managingPlayMoney((risk), 4);
@@ -75,7 +75,7 @@ public class SlotMachineModel {
         changes.firePropertyChange("spinSpinners", oldSymbol, symbol);
     }
 
-    public void managingPlayMoney(double insert, int key) {
+    public void managingPlayMoney(double insert, int key) throws SQLException, ClassNotFoundException {
         switch (key) {
             //throw money in Playeraccount
             case 0: {
@@ -85,6 +85,9 @@ public class SlotMachineModel {
 
                     playerAccountNumber = playerAccountNumber + insert;
                     balanceNumber = balanceNumber - insert;
+
+                    user.userStats(1, user.getUid(), insert, 0, insert);
+                    user.setCredit(balanceNumber);
 
                     changes.firePropertyChange("PlayerAccountDeposit", oldPlayerAccountNumber, doubleFormatter.format(playerAccountNumber));
                     changes.firePropertyChange("BalancePayOut", oldBalanceNumber, doubleFormatter.format(balanceNumber));
@@ -117,23 +120,23 @@ public class SlotMachineModel {
             }
             //win to playeraccount
             case 3: {
-                double oldSpielerkonto = playerAccountNumber;
-                double oldGewinn = win;
+                double oldPlayerAccountNumber = playerAccountNumber;
+                double oldWin = win;
 
                 playerAccountNumber = playerAccountNumber + insert;
                 win = 0;
 
-                changes.firePropertyChange("SpielerkontoerhöhungDurchGewinn", oldSpielerkonto, doubleFormatter.format(playerAccountNumber));
-                changes.firePropertyChange("GewinnInsSpielerkonto", oldGewinn, doubleFormatter.format(win));
+                changes.firePropertyChange("SpielerkontoerhöhungDurchGewinn", oldPlayerAccountNumber, doubleFormatter.format(playerAccountNumber));
+                changes.firePropertyChange("GewinnInsSpielerkonto", oldWin, doubleFormatter.format(win));
                 break;
             }
             //use money from playeraccount
             case 4: {
-                double oldSpielerkonto = playerAccountNumber;
+                double oldPlayerAccountNumber = playerAccountNumber;
 
                 playerAccountNumber = playerAccountNumber - insert;
 
-                changes.firePropertyChange("SpielerkontogeldZumSpielenNutzen", oldSpielerkonto, doubleFormatter.format(playerAccountNumber));
+                changes.firePropertyChange("SpielerkontogeldZumSpielenNutzen", oldPlayerAccountNumber, doubleFormatter.format(playerAccountNumber));
             }
             default:
                 break;
@@ -153,7 +156,7 @@ public class SlotMachineModel {
             changes.firePropertyChange("Bonus", oldBonus, bonus);
         } else {
             user.userStats(1, user.getUid(), betNumber, 0, betNumber);
-            user.setCredit(balanceNumber - betNumber);
+            user.setCredit(balanceNumber);
         }
     }
 

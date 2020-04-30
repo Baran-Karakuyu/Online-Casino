@@ -7,7 +7,7 @@ package ch.bbbaden.Casino.Games.Slots;
 
 /**
  *
- * @author Baran
+ * @author Rojda-Baran Karakuyu
  */
 public enum Symbol {
     CHERRY,

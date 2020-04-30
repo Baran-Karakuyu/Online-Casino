@@ -33,7 +33,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Baran
+ * @author Rojda-Baran Karakuyu
  */
 public class FXMLSlotsController implements Initializable {
     
@@ -189,13 +189,13 @@ public class FXMLSlotsController implements Initializable {
     }
 
     @FXML
-    private void handlePayOutButtonAction(ActionEvent event) {
+    private void handlePayOutButtonAction(ActionEvent event) throws SQLException, ClassNotFoundException {
         double money = (Double.valueOf(lblWinNumber.getText()) + (Double.valueOf(lblPlayerAccountNumber.getText())));
         viewModel.payOut(money);
     }
 
     @FXML
-    private void handleDepositButtonAction(ActionEvent event) {
+    private void handleDepositButtonAction(ActionEvent event) throws SQLException, ClassNotFoundException {
         int deposit = spnDeposit.getValue();
         viewModel.deposit(deposit);
 
@@ -250,7 +250,7 @@ public class FXMLSlotsController implements Initializable {
     }
 
     @FXML
-    private void handleStopButtonAction(ActionEvent event) throws InterruptedException {
+    private void handleStopButtonAction(ActionEvent event) throws InterruptedException, SQLException, ClassNotFoundException {
         lblWIN.setTextFill(Paint.valueOf("#000077"));
 
         //With three stars, a function is randomly selected from the pentagon
@@ -264,7 +264,7 @@ public class FXMLSlotsController implements Initializable {
             //Normal Spin
             case 0: {
                 if (Double.valueOf(lblPlayerAccountNumber.getText()) > 0.0 && (Double.valueOf(lblPlayerAccountNumber.getText()) - (Double.valueOf(lblRiskNumber.getText())) >= 0.0)) {
-                    //Zahlt Gewinn in Spielerkonto ein
+                    //Deposits win into playeraccount
                     if (!(lblWinNumber.getText().equals("0"))) {
                         viewModel.winToPlayerAccountNumber(Double.valueOf(lblWinNumber.getText()));
                     }
@@ -297,7 +297,7 @@ public class FXMLSlotsController implements Initializable {
             }
             //2x Shuffle
             case 1: {
-                //Zahlt Gewinn in Spielerkonto ein
+                //Deposits win into playeraccount
                 if (!(lblWinNumber.getText().equals("0"))) {
                     viewModel.winToPlayerAccountNumber(Double.valueOf(lblWinNumber.getText()));
                 }
@@ -322,7 +322,7 @@ public class FXMLSlotsController implements Initializable {
             }
             //4x Shuffle
             case 2: {
-                //Zahlt Gewinn in Spielerkonto ein
+                //Deposits win into playeraccount
                 if (!(lblWinNumber.getText().equals("0"))) {
                     viewModel.winToPlayerAccountNumber(Double.valueOf(lblWinNumber.getText()));
                 }
@@ -347,7 +347,7 @@ public class FXMLSlotsController implements Initializable {
             }
             //10x Shuffle
             case 3: {
-                //Zahlt Gewinn in Spielerkonto ein
+                //Deposits win into playeraccount
                 if (!(lblWinNumber.getText().equals("0"))) {
                     viewModel.winToPlayerAccountNumber(Double.valueOf(lblWinNumber.getText()));
                 }
@@ -393,7 +393,7 @@ public class FXMLSlotsController implements Initializable {
         mainApp.startMenu();
     }
 
-    private void spinAnimation(int AfterSpinKey) throws InterruptedException {
+    private void spinAnimation(int AfterSpinKey) throws InterruptedException, SQLException, ClassNotFoundException {
         spinCounter = 0;
         
         //removes money from Account except for Cherry Collect

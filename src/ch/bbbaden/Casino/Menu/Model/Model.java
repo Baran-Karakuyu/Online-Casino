@@ -82,30 +82,9 @@ public class Model {
             benutzer.add(sql.getUsers().get(i));
         }
 
-//        for (int i = 0; i < sql.getUsers().size(); i++) {
-//            if (sql.getUsers().get(i).getEmail().equals(email)) {
-//                if (sql.getUsers().get(i).getPassword().equals(password)) {
-//                    name = sql.getUsers().get(i).getName();
-//                    credit = sql.getCreditUser(name);
-//                    System.out.println(name);
-//                } else {
-//
-//                }
-//            }
-//        }
-//        for (int i = 0; i < user.getUid; i++) {
-//            if (user.getEmail().equals(email)) {
-//                if (user.getPassword().equals(password)) {
         name = user.getName();
         credit = user.getCredit();
         role = user.getRole();
-
-        System.out.println(name);
-//                } else {
-//
-//                }
-//            }
-//        }
 
         changes.firePropertyChange("name", oldName, name);
         changes.firePropertyChange("credit", oldCredits, credit);
