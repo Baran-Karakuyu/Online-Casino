@@ -32,8 +32,9 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 /**
- *
- * @author yanni
+ * FXMLMainYatzy
+ * 
+ * @author Yannick Wulf
  */
 public class FXMLMainYatzy implements Initializable {
 

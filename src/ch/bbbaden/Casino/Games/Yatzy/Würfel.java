@@ -10,8 +10,9 @@ import java.util.Random;
  */
 
 /**
- *
- * @author yanni
+ * Würfel
+ * 
+ * @author Yannick Wulf
  */
 public class Würfel {
     

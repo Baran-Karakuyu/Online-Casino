@@ -13,10 +13,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
+
 /**
- * FXML Controller class
- *
- * @author yanni
+ * FXMLInfoController
+ * 
+ * @author Yannick Wulf
  */
 public class FXMLInfoController implements Initializable {
 

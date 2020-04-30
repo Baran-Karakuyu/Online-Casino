@@ -27,8 +27,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 /**
+ * FXMLWettsystemController
  *
- * @author yanni
+ * @author Yannick Wulf
  */
 public class FXMLWettsystemController implements Initializable {
 

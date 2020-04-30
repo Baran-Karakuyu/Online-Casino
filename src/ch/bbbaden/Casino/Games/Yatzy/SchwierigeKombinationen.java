@@ -9,8 +9,9 @@ import java.util.Arrays;
 import java.util.Collections;
 
 /**
+ * SchwierigeKombinationen
  *
- * @author yanni
+ * @author Yannick Wulf
  */
 public class SchwierigeKombinationen {
 

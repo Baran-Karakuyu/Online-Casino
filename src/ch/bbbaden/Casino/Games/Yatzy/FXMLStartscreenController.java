@@ -22,9 +22,9 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 /**
- * FXML Controller class
+ * FXMLStartscreenController
  *
- * @author yanni
+ * @author Yannick Wulf
  */
 public class FXMLStartscreenController implements Initializable {
 

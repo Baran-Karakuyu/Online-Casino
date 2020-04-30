@@ -18,7 +18,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-
+/**
+ *
+ * @author Denis Silva Meira
+ */
 public class ControllerRoulette implements Initializable {
 
     @FXML

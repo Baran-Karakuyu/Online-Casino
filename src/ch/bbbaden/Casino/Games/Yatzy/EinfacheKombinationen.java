@@ -7,7 +7,7 @@ package ch.bbbaden.Casino.Games.Yatzy;
  */
 /**
  *
- * @author yanni
+ * @author Yannick Wulf
  */
 public class EinfacheKombinationen {
 
