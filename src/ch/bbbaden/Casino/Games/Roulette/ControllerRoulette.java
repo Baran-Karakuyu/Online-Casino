@@ -18,6 +18,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+
 /**
  *
  * @author Denis Silva Meira
@@ -452,7 +453,7 @@ public class ControllerRoulette implements Initializable {
         ChipValue = 0;
         Integer[] Betnumbers = {};
         TotalBetValue = 0;
-        
+
     }
 
     @FXML
@@ -464,11 +465,15 @@ public class ControllerRoulette implements Initializable {
     //Fieldbets -> Payout = 
     @FXML
     private void BetField0(MouseEvent event) {
-        Integer[] Betnumbers = {0};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + "Straight Bet " + "for " + ChipValue);
+        if (konto < this.ChipValue) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {0};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + "Straight Bet " + "for " + ChipValue);
+        }
     }
 
     @FXML
