@@ -1171,61 +1171,85 @@ public class ControllerRoulette implements Initializable {
     @FXML
     private void StreetBet7(MouseEvent event
     ) {
-        Integer[] Betnumbers = {19, 20, 21};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + " Street Bet on 19-21 " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {19, 20, 21};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + " Street Bet on 19-21 " + "for " + ChipValue);
+        }
     }
 
     @FXML
     private void StreetBet8(MouseEvent event
     ) {
-        Integer[] Betnumbers = {22, 23, 24};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + " Street Bet on 22-24 " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {22, 23, 24};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + " Street Bet on 22-24 " + "for " + ChipValue);
+        }
     }
 
     @FXML
     private void StreetBet9(MouseEvent event
     ) {
-        Integer[] Betnumbers = {25, 26, 27};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + " Street Bet on 25-27 " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {25, 26, 27};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + " Street Bet on 25-27 " + "for " + ChipValue);
+        }
     }
 
     @FXML
     private void StreetBet10(MouseEvent event
     ) {
-        Integer[] Betnumbers = {28, 29, 30};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + " Street Bet on 28-30 " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {28, 29, 30};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + " Street Bet on 28-30 " + "for " + ChipValue);
+        }
     }
 
     @FXML
     private void StreetBet11(MouseEvent event
     ) {
-        Integer[] Betnumbers = {31, 32, 33};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + " Street Bet on 31-33 " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {31, 32, 33};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + " Street Bet on 31-33 " + "for " + ChipValue);
+        }
     }
 
     @FXML
     private void StreetBet12(MouseEvent event
     ) {
-        Integer[] Betnumbers = {34, 35, 36};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + " Street Bet on 34-36 " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {34, 35, 36};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + " Street Bet on 34-36 " + "for " + ChipValue);
+        }
     }
 
     //-------------------------------------------------------------------------------------
@@ -1233,31 +1257,43 @@ public class ControllerRoulette implements Initializable {
     @FXML
     private void BetField2To1One(MouseEvent event
     ) {
-        Integer[] Betnumbers = {1, 4, 7, 10, 13, 16, 19, 22, 25, 28, 31, 34};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + " 2 to 1 Bet 1st Line " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {1, 4, 7, 10, 13, 16, 19, 22, 25, 28, 31, 34};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + " 2 to 1 Bet 1st Line " + "for " + ChipValue);
+        }
     }
 
     @FXML
     private void BetField2To1Two(MouseEvent event
     ) {
-        Integer[] Betnumbers = {2, 5, 8, 11, 14, 17, 20, 23, 26, 29, 32, 35};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + " 2 to 1 Bet 2nd Line " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {2, 5, 8, 11, 14, 17, 20, 23, 26, 29, 32, 35};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + " 2 to 1 Bet 2nd Line " + "for " + ChipValue);
+        }
     }
 
     @FXML
     private void BetField2To1Three(MouseEvent event
     ) {
-        Integer[] Betnumbers = {3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + " 2 to 1 Bet 3rd Line " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + " 2 to 1 Bet 3rd Line " + "for " + ChipValue);
+        }
     }
 
     //-------------------------------------------------------------------------------------
@@ -1265,224 +1301,312 @@ public class ControllerRoulette implements Initializable {
     @FXML
     private void CornerBet1To5(MouseEvent event
     ) {
-        Integer[] Betnumbers = {1, 2, 4, 5};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + " Corner Bet on 1,2 - 4,5 " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {1, 2, 4, 5};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + " Corner Bet on 1,2 - 4,5 " + "for " + ChipValue);
+        }
     }
 
     @FXML
     private void CornerBet2To6(MouseEvent event
     ) {
-        Integer[] Betnumbers = {2, 3, 5, 6};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + " Corner Bet on 2,3 - 5,6 " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {2, 3, 5, 6};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + " Corner Bet on 2,3 - 5,6 " + "for " + ChipValue);
+        }
     }
 
     @FXML
     private void CornerBet5To9(MouseEvent event
     ) {
-        Integer[] Betnumbers = {5, 6, 8, 9};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + " Corner Bet on 5,6 - 8,9 " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {5, 6, 8, 9};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + " Corner Bet on 5,6 - 8,9 " + "for " + ChipValue);
+        }
     }
 
     @FXML
     private void CornerBet8To12(MouseEvent event
     ) {
-        Integer[] Betnumbers = {8, 9, 11, 12};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + " Corner Bet on 8,9 - 11,12 " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {8, 9, 11, 12};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + " Corner Bet on 8,9 - 11,12 " + "for " + ChipValue);
+        }
     }
 
     @FXML
     private void CornerBet11To15(MouseEvent event
     ) {
-        Integer[] Betnumbers = {11, 12, 14, 15};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + " Corner Bet on 11,12 - 14,15 " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {11, 12, 14, 15};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + " Corner Bet on 11,12 - 14,15 " + "for " + ChipValue);
+        }
     }
 
     @FXML
     private void CornerBet14To18(MouseEvent event
     ) {
-        Integer[] Betnumbers = {14, 15, 17, 18};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + " Corner Bet on 14,15  - 17,18 " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {14, 15, 17, 18};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + " Corner Bet on 14,15  - 17,18 " + "for " + ChipValue);
+        }
     }
 
     @FXML
     private void CornerBet17To21(MouseEvent event
     ) {
-        Integer[] Betnumbers = {17, 18, 20, 21};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + " Corner Bet on 17,18  - 20,21 " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {17, 18, 20, 21};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + " Corner Bet on 17,18  - 20,21 " + "for " + ChipValue);
+        }
 
     }
 
     @FXML
     private void CornerBet20To24(MouseEvent event
     ) {
-        Integer[] Betnumbers = {20, 21, 23, 24};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + " Corner Bet on 20,21  - 23,24 " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {20, 21, 23, 24};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + " Corner Bet on 20,21  - 23,24 " + "for " + ChipValue);
+        }
     }
 
     @FXML
     private void CornerBet23To27(MouseEvent event
     ) {
-        Integer[] Betnumbers = {23, 24, 26, 27};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + " Corner Bet on 23,24  - 26,27 " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {23, 24, 26, 27};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + " Corner Bet on 23,24  - 26,27 " + "for " + ChipValue);
+        }
     }
 
     @FXML
     private void CornerBet26To30(MouseEvent event
     ) {
-        Integer[] Betnumbers = {26, 27, 30, 31};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + " Corner Bet on 26,27  - 30,31 " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {26, 27, 30, 31};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + " Corner Bet on 26,27  - 30,31 " + "for " + ChipValue);
+        }
     }
 
     @FXML
     private void CornerBet29To33(MouseEvent event
     ) {
-        Integer[] Betnumbers = {29, 30, 32, 33};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + " Corner Bet on 29,30  - 32,33 " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {29, 30, 32, 33};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + " Corner Bet on 29,30  - 32,33 " + "for " + ChipValue);
+        }
     }
 
     @FXML
     private void CornerBet32To36(MouseEvent event
     ) {
-        Integer[] Betnumbers = {32, 33, 35, 36};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        konto = konto - this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto));
-        lblText.setText("You have confirmed a " + " Corner Bet on 32,33  - 35,36 " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {32, 33, 35, 36};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            konto = konto - this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto));
+            lblText.setText("You have confirmed a " + " Corner Bet on 32,33  - 35,36 " + "for " + ChipValue);
+        }
     }
 
     @FXML
     private void CornerBet31To35(MouseEvent event
     ) {
-        Integer[] Betnumbers = {31, 32, 34, 35};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + " Corner Bet on 31,32  - 34,35 " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {31, 32, 34, 35};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + " Corner Bet on 31,32  - 34,35 " + "for " + ChipValue);
+        }
     }
 
     @FXML
     private void CornerBet28To32(MouseEvent event
     ) {
-        Integer[] Betnumbers = {28, 29, 31, 32};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + " Corner Bet on 28,29  - 31,32 " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {28, 29, 31, 32};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + " Corner Bet on 28,29  - 31,32 " + "for " + ChipValue);
+        }
     }
 
     @FXML
     private void CornerBet25To29(MouseEvent event
     ) {
-        Integer[] Betnumbers = {25, 26, 28, 29};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + " Corner Bet on 25,26  - 38,29 " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {25, 26, 28, 29};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + " Corner Bet on 25,26  - 38,29 " + "for " + ChipValue);
+        }
 
     }
 
     @FXML
     private void CornerBet19To23(MouseEvent event
     ) {
-        Integer[] Betnumbers = {19, 20, 22, 23};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + " Corner Bet on 19,20  - 22,23 " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {19, 20, 22, 23};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + " Corner Bet on 19,20  - 22,23 " + "for " + ChipValue);
+        }
     }
 
     @FXML
     private void CornerBet22To26(MouseEvent event
     ) {
-        Integer[] Betnumbers = {22, 23, 25, 26};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + " Corner Bet on 22,23- 25,26 " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {22, 23, 25, 26};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + " Corner Bet on 22,23- 25,26 " + "for " + ChipValue);
+        }
 
     }
 
     @FXML
     private void CornerBet16To20(MouseEvent event
     ) {
-        Integer[] Betnumbers = {16, 17, 19, 20};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + " Corner Bet on 22,23- 25,26 " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {16, 17, 19, 20};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + " Corner Bet on 22,23- 25,26 " + "for " + ChipValue);
+        }
     }
 
     @FXML
     private void CornerBet13To17(MouseEvent event
     ) {
-        Integer[] Betnumbers = {13, 14, 16, 17};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + " Corner Bet on 13,14- 16,17 " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {13, 14, 16, 17};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + " Corner Bet on 13,14- 16,17 " + "for " + ChipValue);
+        }
     }
 
     @FXML
     private void CornerBet10To14(MouseEvent event
     ) {
-        Integer[] Betnumbers = {10, 11, 13, 14};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + " Corner Bet on 10,11- 13,14 " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {10, 11, 13, 14};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + " Corner Bet on 10,11- 13,14 " + "for " + ChipValue);
+        }
     }
 
     @FXML
     private void CornerBet7To11(MouseEvent event
     ) {
-        Integer[] Betnumbers = {7, 8, 10, 11};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + " Corner Bet on 7,8- 10,11 " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {7, 8, 10, 11};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + " Corner Bet on 7,8- 10,11 " + "for " + ChipValue);
+        }
     }
 
     @FXML
     private void CornerBet4To8(MouseEvent event
     ) {
-        Integer[] Betnumbers = {4, 5, 7, 8};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + " Corner Bet on 4,5- 7,8 " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {4, 5, 7, 8};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + " Corner Bet on 4,5- 7,8 " + "for " + ChipValue);
+        }
     }
 
     //-------------------------------------------------------------------------------------
@@ -1490,241 +1614,337 @@ public class ControllerRoulette implements Initializable {
     @FXML
     private void SplittBet5To6(MouseEvent event
     ) {
-        Integer[] Betnumbers = {5, 6};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + " Splitt Bet on 5,6 " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {5, 6};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + " Splitt Bet on 5,6 " + "for " + ChipValue);
+        }
     }
 
     @FXML
     private void SplittBet2To3(MouseEvent event
     ) {
-        Integer[] Betnumbers = {2, 3};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + " Splitt Bet on 2,3 " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {2, 3};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + " Splitt Bet on 2,3 " + "for " + ChipValue);
+        }
     }
 
     @FXML
     private void SplittBet1To2(MouseEvent event
     ) {
-        Integer[] Betnumbers = {1, 2};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + " Splitt Bet on 1,2 " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {1, 2};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + " Splitt Bet on 1,2 " + "for " + ChipValue);
+        }
     }
 
     @FXML
     private void SplittBet8To9(MouseEvent event
     ) {
-        Integer[] Betnumbers = {8, 9};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + " Splitt Bet on 8,9 " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {8, 9};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + " Splitt Bet on 8,9 " + "for " + ChipValue);
+        }
     }
 
     @FXML
     private void SplittBet11To12(MouseEvent event
     ) {
-        Integer[] Betnumbers = {11, 12};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + " Splitt Bet on 11,12 " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {11, 12};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + " Splitt Bet on 11,12 " + "for " + ChipValue);
+        }
     }
 
     @FXML
     private void SplittBet14To15(MouseEvent event
     ) {
-        Integer[] Betnumbers = {14, 15};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + " Splitt Bet on 14,15 " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {14, 15};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + " Splitt Bet on 14,15 " + "for " + ChipValue);
+        }
     }
 
     @FXML
     private void SplittBet17To18(MouseEvent event
     ) {
-        Integer[] Betnumbers = {17, 18};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + " Splitt Bet on 17,18 " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {17, 18};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + " Splitt Bet on 17,18 " + "for " + ChipValue);
+        }
     }
 
     @FXML
     private void SplittBet20To21(MouseEvent event
     ) {
-        Integer[] Betnumbers = {20, 21};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + " Splitt Bet on 20,21 " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {20, 21};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + " Splitt Bet on 20,21 " + "for " + ChipValue);
+        }
     }
 
     @FXML
     private void SplittBet23To24(MouseEvent event
     ) {
-        Integer[] Betnumbers = {23, 24};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + " Splitt Bet on 23,24 " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {23, 24};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + " Splitt Bet on 23,24 " + "for " + ChipValue);
+        }
     }
 
     @FXML
     private void SplittBet26To27(MouseEvent event
     ) {
-        Integer[] Betnumbers = {26, 27};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + " Splitt Bet on 26,27 " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {26, 27};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + " Splitt Bet on 26,27 " + "for " + ChipValue);
+        }
     }
 
     @FXML
     private void SplittBet29To30(MouseEvent event
     ) {
-        Integer[] Betnumbers = {29, 30};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + " Splitt Bet on 29,30 " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {29, 30};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + " Splitt Bet on 29,30 " + "for " + ChipValue);
+        }
     }
 
     @FXML
     private void SplittBet4To5(MouseEvent event
     ) {
-        Integer[] Betnumbers = {4, 5};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + " Splitt Bet on 4,5 " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {4, 5};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + " Splitt Bet on 4,5 " + "for " + ChipValue);
+        }
     }
 
     @FXML
     private void SplittBet32To33(MouseEvent event
     ) {
-        Integer[] Betnumbers = {32, 33};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + " Splitt Bet on 29,30 " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {32, 33};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + " Splitt Bet on 29,30 " + "for " + ChipValue);
+        }
     }
 
     @FXML
     private void SplittBet35To36(MouseEvent event
     ) {
-        Integer[] Betnumbers = {35, 36};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + " Splitt Bet on 35,36 " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {35, 36};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + " Splitt Bet on 35,36 " + "for " + ChipValue);
+        }
     }
 
     @FXML
     private void SplittBet34To35(MouseEvent event
     ) {
-        Integer[] Betnumbers = {34, 35};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + " Splitt Bet on 34,35 " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {34, 35};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + " Splitt Bet on 34,35 " + "for " + ChipValue);
+        }
     }
 
     @FXML
     private void SplittBet31To32(MouseEvent event
     ) {
-        Integer[] Betnumbers = {31, 32};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + " Splitt Bet on 31,32 " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {31, 32};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + " Splitt Bet on 31,32 " + "for " + ChipValue);
+        }
     }
 
     @FXML
     private void SplittBet28To29(MouseEvent event
     ) {
-        Integer[] Betnumbers = {28, 29};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + " Splitt Bet on 28,29 " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {28, 29};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + " Splitt Bet on 28,29 " + "for " + ChipValue);
+        }
     }
 
     @FXML
     private void SplittBet25To26(MouseEvent event
     ) {
-        Integer[] Betnumbers = {25, 26};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + " Splitt Bet on 25,26 " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {25, 26};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + " Splitt Bet on 25,26 " + "for " + ChipValue);
+        }
     }
 
     @FXML
     private void SplittBet22To23(MouseEvent event
     ) {
-        Integer[] Betnumbers = {22, 23};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + " Splitt Bet on 22,23 " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {22, 23};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + " Splitt Bet on 22,23 " + "for " + ChipValue);
+        }
     }
 
     @FXML
     private void SplittBet19To20(MouseEvent event
     ) {
-        Integer[] Betnumbers = {19, 20};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + " Splitt Bet on 19,20 " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {19, 20};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + " Splitt Bet on 19,20 " + "for " + ChipValue);
+        }
     }
 
     @FXML
     private void SplittBet16To17(MouseEvent event
     ) {
-        Integer[] Betnumbers = {16, 17};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + " Splitt Bet on 16,17 " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {16, 17};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + " Splitt Bet on 16,17 " + "for " + ChipValue);
+        }
     }
 
     @FXML
     private void SplittBet13To14(MouseEvent event
     ) {
-        Integer[] Betnumbers = {13, 14};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + " Splitt Bet on 13,14 " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {13, 14};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + " Splitt Bet on 13,14 " + "for " + ChipValue);
+        }
     }
 
     @FXML
     private void SplittBet10To11(MouseEvent event
     ) {
-        Integer[] Betnumbers = {10, 11};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + " Splitt Bet on 10,11 " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {10, 11};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + " Splitt Bet on 10,11 " + "for " + ChipValue);
+        }
     }
 
     @FXML
     private void SplittBet7To8(MouseEvent event
     ) {
-        Integer[] Betnumbers = {7, 8};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + " Splitt Bet on 7,8 " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {7, 8};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + " Splitt Bet on 7,8 " + "for " + ChipValue);
+        }
 
     }
 
@@ -1733,333 +1953,465 @@ public class ControllerRoulette implements Initializable {
     @FXML
     private void SplittBet1To4(MouseEvent event
     ) {
-        Integer[] Betnumbers = {1, 4,};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + " Splitt Bet on 1,4 " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {1, 4,};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + " Splitt Bet on 1,4 " + "for " + ChipValue);
+        }
     }
 
     @FXML
     private void SplittBet4To7(MouseEvent event
     ) {
-        Integer[] Betnumbers = {4, 7};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + " Splitt Bet on 4,7 " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {4, 7};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + " Splitt Bet on 4,7 " + "for " + ChipValue);
+        }
     }
 
     @FXML
     private void SplittBet7To10(MouseEvent event
     ) {
-        Integer[] Betnumbers = {7, 10};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + " Splitt Bet on 7,10 " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {7, 10};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + " Splitt Bet on 7,10 " + "for " + ChipValue);
+        }
     }
 
     @FXML
     private void SplittBet10To13(MouseEvent event
     ) {
-        Integer[] Betnumbers = {10, 13};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + " Splitt Bet on 10,13 " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {10, 13};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + " Splitt Bet on 10,13 " + "for " + ChipValue);
+        }
 
     }
 
     @FXML
     private void SplittBet13To16(MouseEvent event
     ) {
-        Integer[] Betnumbers = {13, 16};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + " Splitt Bet on 13,16 " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {13, 16};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + " Splitt Bet on 13,16 " + "for " + ChipValue);
+        }
     }
 
     @FXML
     private void SplittBet16To19(MouseEvent event
     ) {
-        Integer[] Betnumbers = {16, 19};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + " Splitt Bet on 16,19 " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {16, 19};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + " Splitt Bet on 16,19 " + "for " + ChipValue);
+        }
     }
 
     @FXML
     private void SplittBet19To22(MouseEvent event
     ) {
-        Integer[] Betnumbers = {19, 22};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + " Splitt Bet on 16,19 " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {19, 22};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + " Splitt Bet on 16,19 " + "for " + ChipValue);
+        }
     }
 
     @FXML
     private void SplittBet22To25(MouseEvent event
     ) {
-        Integer[] Betnumbers = {22, 25};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + " Splitt Bet on 22,25 " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {22, 25};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + " Splitt Bet on 22,25 " + "for " + ChipValue);
+        }
     }
 
     @FXML
     private void SplittBet25To28(MouseEvent event
     ) {
-        Integer[] Betnumbers = {25, 28};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + " Splitt Bet on 25,28 " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {25, 28};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + " Splitt Bet on 25,28 " + "for " + ChipValue);
+        }
     }
 
     @FXML
     private void SplittBet28To31(MouseEvent event
     ) {
-        Integer[] Betnumbers = {28, 31};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + " Splitt Bet on 28,31 " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {28, 31};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + " Splitt Bet on 28,31 " + "for " + ChipValue);
+        }
     }
 
     @FXML
     private void SplittBet31To34(MouseEvent event
     ) {
-        Integer[] Betnumbers = {31, 34};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + " Splitt Bet on 31,34 " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {31, 34};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + " Splitt Bet on 31,34 " + "for " + ChipValue);
+        }
     }
 
     @FXML
     private void SplittBet8To11(MouseEvent event
     ) {
-        Integer[] Betnumbers = {8, 11};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + " Splitt Bet on 8,11 " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {8, 11};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + " Splitt Bet on 8,11 " + "for " + ChipValue);
+        }
     }
 
     @FXML
     private void SplittBet5To8(MouseEvent event
     ) {
-        Integer[] Betnumbers = {5, 8};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + " Splitt Bet on 5,8 " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {5, 8};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + " Splitt Bet on 5,8 " + "for " + ChipValue);
+        }
     }
 
     @FXML
     private void SplittBet2To5(MouseEvent event
     ) {
-        Integer[] Betnumbers = {2, 5};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + " Splitt Bet on 2,5 " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {2, 5};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + " Splitt Bet on 2,5 " + "for " + ChipValue);
+        }
 
     }
 
     @FXML
     private void SplittBet14To17(MouseEvent event
     ) {
-        Integer[] Betnumbers = {14, 17};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + " Splitt Bet on 14,17 " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {14, 17};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + " Splitt Bet on 14,17 " + "for " + ChipValue);
+        }
     }
 
     @FXML
     private void SplittBet11To14(MouseEvent event
     ) {
-        Integer[] Betnumbers = {11, 14};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + " Splitt Bet on 11,14 " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {11, 14};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + " Splitt Bet on 11,14 " + "for " + ChipValue);
+        }
     }
 
     @FXML
     private void SplittBet32To35(MouseEvent event
     ) {
-        Integer[] Betnumbers = {32, 35};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + " Splitt Bet on 32,35 " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {32, 35};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + " Splitt Bet on 32,35 " + "for " + ChipValue);
+        }
     }
 
     @FXML
     private void SplittBet29To32(MouseEvent event
     ) {
-        Integer[] Betnumbers = {29, 32};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + " Splitt Bet on 29,32 " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {29, 32};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + " Splitt Bet on 29,32 " + "for " + ChipValue);
+        }
     }
 
     @FXML
     private void SplittBet26To29(MouseEvent event
     ) {
-        Integer[] Betnumbers = {26, 29};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + " Splitt Bet on 26,29 " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {26, 29};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + " Splitt Bet on 26,29 " + "for " + ChipValue);
+        }
     }
 
     @FXML
     private void SplittBet23To26(MouseEvent event
     ) {
-        Integer[] Betnumbers = {23, 26};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + " Splitt Bet on 23,26 " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {23, 26};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + " Splitt Bet on 23,26 " + "for " + ChipValue);
+        }
     }
 
     @FXML
     private void SplittBet20To23(MouseEvent event
     ) {
-        Integer[] Betnumbers = {20, 23};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + " Splitt Bet on 20,23 " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {20, 23};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + " Splitt Bet on 20,23 " + "for " + ChipValue);
+        }
     }
 
     @FXML
     private void SplittBet17To20(MouseEvent event
     ) {
-        Integer[] Betnumbers = {17, 20};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + " Splitt Bet on 17,20 " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {17, 20};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + " Splitt Bet on 17,20 " + "for " + ChipValue);
+        }
     }
 
     @FXML
     private void SplittBet3To6(MouseEvent event
     ) {
-        Integer[] Betnumbers = {3, 6};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + " Splitt Bet on 3,6 " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {3, 6};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + " Splitt Bet on 3,6 " + "for " + ChipValue);
+        }
 
     }
 
     @FXML
     private void SplittBet6To9(MouseEvent event
     ) {
-        Integer[] Betnumbers = {6, 9};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + " Splitt Bet on 6,9 " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {6, 9};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + " Splitt Bet on 6,9 " + "for " + ChipValue);
+        }
     }
 
     @FXML
     private void SplittBet9To12(MouseEvent event
     ) {
-        Integer[] Betnumbers = {9, 12};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + " Splitt Bet on 9,12 " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {9, 12};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + " Splitt Bet on 9,12 " + "for " + ChipValue);
+        }
     }
 
     @FXML
     private void SplittBet12To15(MouseEvent event
     ) {
-        Integer[] Betnumbers = {12, 15};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + " Splitt Bet on 12,15 " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {12, 15};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + " Splitt Bet on 12,15 " + "for " + ChipValue);
+        }
     }
 
     @FXML
     private void SplittBet15To18(MouseEvent event
     ) {
-        Integer[] Betnumbers = {15, 18};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + " Splitt Bet on 15,18 " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {15, 18};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + " Splitt Bet on 15,18 " + "for " + ChipValue);
+        }
     }
 
     @FXML
     private void SplittBet18To21(MouseEvent event
     ) {
-        Integer[] Betnumbers = {18, 21};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + " Splitt Bet on 18,21 " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {18, 21};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + " Splitt Bet on 18,21 " + "for " + ChipValue);
+        }
     }
 
     @FXML
     private void SplittBet21To24(MouseEvent event
     ) {
-        Integer[] Betnumbers = {21, 24};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + " Splitt Bet on 21,24 " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {21, 24};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + " Splitt Bet on 21,24 " + "for " + ChipValue);
+        }
     }
 
     @FXML
     private void SplittBet24To27(MouseEvent event
     ) {
-        Integer[] Betnumbers = {24, 27};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + " Splitt Bet on 24,27 " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {24, 27};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + " Splitt Bet on 24,27 " + "for " + ChipValue);
+        }
     }
 
     @FXML
     private void SplittBet27To30(MouseEvent event
     ) {
-        Integer[] Betnumbers = {27, 30};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + " Splitt Bet on 27,30 " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {27, 30};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + " Splitt Bet on 27,30 " + "for " + ChipValue);
+        }
     }
 
     @FXML
     private void SplittBet30To33(MouseEvent event
     ) {
-        Integer[] Betnumbers = {30, 33};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + " Splitt Bet on 30,33 " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {30, 33};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + " Splitt Bet on 30,33 " + "for " + ChipValue);
+        }
     }
 
     @FXML
     private void SplittBet33To36(MouseEvent event
     ) {
-        Integer[] Betnumbers = {33, 36};
-        rbt.addbet(Betnumbers, this.ChipValue);
-        TotalBetValue += this.ChipValue;
-        PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
-        lblText.setText("You have confirmed a " + " Splitt Bet on 33,36 " + "for " + ChipValue);
+        if (TotalBetValue >= konto) {
+            lblText.setText("You're trying to bet with more than you have on your account");
+        } else {
+            Integer[] Betnumbers = {33, 36};
+            rbt.addbet(Betnumbers, this.ChipValue);
+            TotalBetValue += this.ChipValue;
+            PlaceholderGuthaben.setText(Double.toString(konto - TotalBetValue));
+            lblText.setText("You have confirmed a " + " Splitt Bet on 33,36 " + "for " + ChipValue);
+        }
     }
 }
