@@ -16,7 +16,7 @@ import java.util.Random;
 public class RouletteBetType {
 
     ArrayList<RouletteBet> bets = new ArrayList<RouletteBet>(36);
-
+    double TotalWin = 0;
     Random randnumber = new Random();
     int number = 0;
 
@@ -95,5 +95,9 @@ public class RouletteBetType {
     //Methode für Generierung der Rand Number
     public void GenerateRandNumber() {
         number = (int) (randnumber.nextDouble() * 36);
+    }
+
+    public double resetWin() {
+        return TotalWin = 0;
     }
 }

@@ -453,6 +453,7 @@ public class ControllerRoulette implements Initializable {
         ChipValue = 0;
         Integer[] Betnumbers = {};
         TotalBetValue = 0;
+        rbt.resetWin();
 
     }
 
