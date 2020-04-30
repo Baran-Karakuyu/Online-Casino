@@ -465,7 +465,7 @@ public class ControllerRoulette implements Initializable {
     //Fieldbets -> Payout = 
     @FXML
     private void BetField0(MouseEvent event) {
-        if (konto < this.ChipValue) {
+        if (TotalBetValue > konto) {
             lblText.setText("You're trying to bet with more than you have on your account");
         } else {
             Integer[] Betnumbers = {0};
