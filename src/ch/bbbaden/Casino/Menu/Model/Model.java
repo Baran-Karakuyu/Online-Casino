@@ -18,7 +18,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Baran
+ * @author Andrei Oleniuc und Rojda-Baran Karakuyu
  */
 public class Model {
 

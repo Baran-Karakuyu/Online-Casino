@@ -13,7 +13,7 @@ import java.sql.SQLException;
 
 /**
  *
- * @author Baran
+ * @author Rojda-Baran Karakuyu
  */
 public class ModelBuyCredits {
 

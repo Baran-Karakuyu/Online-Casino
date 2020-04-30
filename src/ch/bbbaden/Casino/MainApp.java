@@ -42,7 +42,7 @@ import javafx.stage.Stage;
 
 /**
  *
- * @author Baran
+ * @author Andrei Oleniuc und Rojda-Baran Karakuyu
  */
 public class MainApp extends Application {
 

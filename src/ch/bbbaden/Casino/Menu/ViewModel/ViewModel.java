@@ -15,7 +15,7 @@ import javafx.beans.property.StringProperty;
 
 /**
  *
- * @author Baran
+ *@author Andrei Oleniuc und Rojda-Baran Karakuyu
  */
 public class ViewModel implements PropertyChangeListener {
 

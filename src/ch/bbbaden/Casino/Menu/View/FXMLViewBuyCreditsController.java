@@ -21,7 +21,7 @@ import javax.swing.JOptionPane;
 /**
  * FXML Controller class
  *
- * @author Baran
+ * @author Rojda-Baran Karakuyu
  */
 public class FXMLViewBuyCreditsController implements Initializable {
 

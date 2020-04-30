@@ -27,7 +27,7 @@ import javax.swing.text.View;
 /**
  * FXML Controller class
  *
- * @author Baran
+ *@author  Rojda-Baran Karakuyu
  */
 public class FXMLViewStatisticController implements Initializable {
 

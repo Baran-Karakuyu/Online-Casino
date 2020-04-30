@@ -11,7 +11,7 @@ import java.sql.SQLException;
 
 /**
  *
- * @author Baran
+ * @author Andrei Oleniuc und Rojda-Baran Karakuyu
  */
 public class ViewModelStatistic {
     private ModelStatistic m;

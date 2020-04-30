@@ -28,7 +28,7 @@ import org.springframework.security.crypto.bcrypt.BCrypt;
 /**
  * FXML Controller class
  *
- * @author Andrei Oleniuc
+ * @author Andrei Oleniuc 
  */
 public class LoginViewController implements Initializable {
 

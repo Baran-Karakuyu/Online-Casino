@@ -24,7 +24,7 @@ import javax.swing.JOptionPane;
 /**
  * FXML Controller class
  *
- * @author Andrei Oleniuc
+ * @author Andrei Oleniuc 
  */
 public class RegisterViewController implements Initializable {
 
