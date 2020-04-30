@@ -21,19 +21,26 @@ import java.util.Random;
  */
 public class ModelBlackJack {
 
+    //Changes used for MVVM to Bring Data to the Listener in this case the ViewModelBlackjack
     protected final PropertyChangeSupport changes = new PropertyChangeSupport(this);
+    //The MainApp, is here to be able to go back to the Menu or to different games/views
     private MainApp mainApp;
+    //Query Class which Handles Database operation 
     private final Query sql = new Query();
-    private ArrayList<User> users = new ArrayList<>();
-    private int card = 0;
+    //Our User that Plays right now
     private User player;
+    
+    //The Taken Card which saves the random number
+    private int card = 0;
     private Double dbCredit = 0.0;
     private Random r = new Random();
+    //Represents all already taken Cards
     private ArrayList<Integer> allCards = new ArrayList<>();
-
+    
+    //Starts the game after the Money has been Put
     public void play() throws SQLException, ClassNotFoundException {
         if (sql.getCreditUser(player.getName()) <= 0) {
-            System.out.println("YOU BROKE ASS");
+            System.out.println("Not enough Money");
         } else {
             allCards.clear();
             sql.updateUser();
@@ -48,11 +55,12 @@ public class ModelBlackJack {
             changes.firePropertyChange("card2G", oldcard, card);
         }
     }
-
+    //Transer the Credit over to the Local Files
     public void credit() throws SQLException, ClassNotFoundException {
         userDataTransfer();
     }
-
+    
+    //Handles the event of taking cards in case of the Player
     public void hitaction(int cardshit) {
         int oldcard = card;
         switch (cardshit) {
@@ -70,7 +78,7 @@ public class ModelBlackJack {
                 break;
         }
     }
-
+    //Handles the event of taking cards in case of the Dealer
     public void holdaction(int sumGroupier, int idcard) {
         int oldcard = card;
         if (sumGroupier < 17) {
@@ -78,7 +86,8 @@ public class ModelBlackJack {
             changes.firePropertyChange("card" + idcard + "G", oldcard, card);
         }
     }
-
+    
+    //Handles the event of taking the double down Card
     public void doubleAction() {
         int oldcard = card;
         card = newCard();
@@ -99,30 +108,20 @@ public class ModelBlackJack {
         sql.updateCredit(credit, player.getName());
         changes.firePropertyChange("credit", oldcredit, Double.toString(credit));
     }
-
-    //todo
-//    public void insurance(double credit, int sum) throws SQLException, ClassNotFoundException {
-//        double credits = 0;
-//        credits = sql.getCreditUser(player.getName());
-//        if (sum == 21) {
-//            credits += credit;
-//        } else {
-//            credits -= credit;
-//        }
-//        setNewCredit(credits);
-//    }
+    //The Listener listenes to these Changes
     public void addPropertyChangeListener(final PropertyChangeListener listener) {
         changes.addPropertyChangeListener(listener);
     }
-
+    //Sets MainApp
     public void setMainApp(MainApp mainApp) {
         this.mainApp = mainApp;
     }
-
+    //Lets the User go back to the Menu
     public void backToMenu() throws IOException, SQLException, ClassNotFoundException {
         mainApp.startMenu();
     }
-
+    
+    //Takes a new Card that hasent been already taken
     private int newCard() {
         int cardTaken = 0;
         cardTaken = r.nextInt(52) + 1;
@@ -140,12 +139,12 @@ public class ModelBlackJack {
         allCards.add(cardTaken);
         return cardTaken;
     }
-
+    //Sets the User and Displays it
     public void setUser(User user) {
         this.player = user;
         changes.firePropertyChange("name", "", this.player.getName());
     }
-
+    //Updates the Statistics of the Player and the game after every round ends
     public void statistics(double creditput, boolean winorlose, boolean insuranceWoL, double insuranceMoney,boolean even) throws SQLException, ClassNotFoundException {
         if (even==true) {
             if(insuranceMoney==0){

@@ -21,10 +21,14 @@ import javafx.beans.property.StringProperty;
 public class ViewModelBlackJack implements PropertyChangeListener{
     private final ModelBlackJack mo;
 
+    //Sets the Connection
     public ViewModelBlackJack(ModelBlackJack mo) {
         this.mo = mo;
     }
+    //Saves the name of the player
     StringProperty name= new SimpleStringProperty();
+    
+    //Saves the Values of the Cards so they can be given over to the ViewController
     IntegerProperty card1P = new SimpleIntegerProperty();
     IntegerProperty card1G = new SimpleIntegerProperty();
     IntegerProperty card2P = new SimpleIntegerProperty();
@@ -36,12 +40,16 @@ public class ViewModelBlackJack implements PropertyChangeListener{
     IntegerProperty card5P = new SimpleIntegerProperty();
     IntegerProperty card5G = new SimpleIntegerProperty();
     IntegerProperty cardDouble = new SimpleIntegerProperty();
+    
+    
+    //Saves the Credit of the Player in the ViewModel to be prepared for the ViewController
     StringProperty credit= new SimpleStringProperty();
 
+    //Lets the game start after starting a round
     public void play() throws SQLException, ClassNotFoundException {
         mo.play();
     }
-
+    //All getters for the Cards random Numbers
     public IntegerProperty getCard1P() {
         return card1P;
     }
@@ -85,17 +93,17 @@ public class ViewModelBlackJack implements PropertyChangeListener{
     public IntegerProperty getCardDouble() {
         return cardDouble;
     }
-
+    //Getter for the Credit so it Bindable
     public StringProperty getCredit() {
         return credit;
     }
-
+    //Getter for the Name so it Bindable
     public StringProperty getName() {
         return name;
     }
     
 
-
+    //Changes the Values of the Properties when a Change occurs in the Model
     @Override
     public void propertyChange(PropertyChangeEvent pce) {
         switch (pce.getPropertyName()) {
@@ -141,34 +149,35 @@ public class ViewModelBlackJack implements PropertyChangeListener{
         }
     }
 
+    //Lets the Hitting action start in the Model
     public void hitaction(int cards) {
         mo.hitaction(cards);
     }
-
+    //lets the Standing/Holding Action start in the Model
     public void holdaction(int cardsDealer,int idcard) {
         mo.holdaction(cardsDealer,idcard);
     }
-
+    //Lets the doubledown Action start in the Model
     public void doubleaction() {
         mo.doubleAction();
     }
+    //Updates the Credit at the begging of the Round
     public void credit() throws SQLException, ClassNotFoundException{
         mo.credit();
     }
+    //Updates the Data of the Credit to the newest 
     public void updatePlayer() throws SQLException, ClassNotFoundException{
         mo.userDataTransfer();
     }
+    //Sets the new Credit whenever it Changes,  Parameters go over to the Model
     public void setNewCredit(double credit) throws SQLException, ClassNotFoundException{
         mo.setNewCredit(credit);
     }
-//    public void insurance(double credit,int sum) throws SQLException, ClassNotFoundException{
-//        mo.insurance(credit, sum);
-//    }
-
+    //Goes back to the Menu
     public void backToMenu() throws IOException, SQLException, ClassNotFoundException {
         mo.backToMenu();
     }
-
+    //Creates a new Statistic in for the game and the player, Parameters go over to the Model
     public void setNewStatitcs(double creditput,boolean winorlose,boolean insuranceWoL,double insuranceMoney,boolean even) throws SQLException, ClassNotFoundException {
         mo.statistics(creditput,winorlose,insuranceWoL,insuranceMoney,even);
     }
