@@ -11,7 +11,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="903.0" prefWidth="1493.0" style="-fx-background-color: green;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.bbbaden.Casino.Games.Yatzy.FXMLDocumentController">
+<AnchorPane id="AnchorPane" prefHeight="903.0" prefWidth="1493.0" style="-fx-background-color: green;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.bbbaden.Casino.Games.Yatzy.FXMLMainYatzy">
     <children>
       <ImageView fitHeight="719.0" fitWidth="1215.0" layoutX="320.0" layoutY="79.0" pickOnBounds="true">
          <image>

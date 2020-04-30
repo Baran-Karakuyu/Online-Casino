@@ -6,6 +6,7 @@ package ch.bbbaden.Casino.Games.Yatzy;
  * and open the template in the editor.
  */
 import Casino.DataBase.User;
+import ch.bbbaden.Casino.MainApp;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -66,10 +67,12 @@ public class FXMLWettsystemController implements Initializable {
     private ImageView plus;
     @FXML
     private Button btnBestätigen;
+    private MainApp mainApp;
+    private Stage stage;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        setUser(user);
+//        setUser(user);
     }
 
     //Code für Betsystem
@@ -156,35 +159,43 @@ public class FXMLWettsystemController implements Initializable {
     @FXML
     private void setWetteinsatz(ActionEvent event) throws IOException, SQLException, ClassNotFoundException {
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLDocument.fxml"));
-
-        Parent root = loader.load();
-
-        FXMLDocumentController DocumentController = loader.getController();
-
-        Scene scene = new Scene(root);
-
-        Stage stage = new Stage();
-        stage.setScene(scene);
-
-        if (wetteinsatz <= kontostand) {
-            stage.show();
-
-            DocumentController.getÜbergabe((int) wetteinsatz);
-
-            Stage stage2 = (Stage) btnBestätigen.getScene().getWindow();
-            stage2.close();
-            
-            user.setCredit(kontostand - wetteinsatz);
-        } else {
-            warnung.setVisible(true);
-        }
-
+//        FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLDocument.fxml"));
+//
+//        Parent root = loader.load();
+//
+//        FXMLMainYatzy DocumentController = loader.getController();
+//
+//        Scene scene = new Scene(root);
+//
+//        Stage stage = new Stage();
+//        stage.setScene(scene);
+//
+//        if (wetteinsatz <= kontostand) {
+//            stage.show();
+//
+//            DocumentController.getÜbergabe((int) wetteinsatz);
+//
+//            Stage stage2 = (Stage) btnBestätigen.getScene().getWindow();
+//            stage2.close();
+//            
+//            user.setCredit(kontostand - wetteinsatz);
+//        } else {
+//            warnung.setVisible(true);
+//        }
+        mainApp.startYatzy(wetteinsatz);
     }
 
-    private void setUser(User user) {
+    public void setUser(User user) {
         this.user = user;
         kontostand = user.getCredit();
+    }
+
+    public void setMainApp(MainApp mainApp) {
+        this.mainApp = mainApp;
+    }
+    
+    public void setStage(Stage stage){
+        this.stage = stage;
     }
 
 }

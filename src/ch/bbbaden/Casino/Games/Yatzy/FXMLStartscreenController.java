@@ -47,19 +47,20 @@ public class FXMLStartscreenController implements Initializable {
     }
 
     @FXML
-    public void starten(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLDocument.fxml"));
-        Parent root;
-        root = loader.load();
-
-        FXMLDocumentController view = loader.getController();
-        view.setUser(user);
-        view.setStage(stage);
-        view.setMainApp(mainApp);
-        Scene scene = new Scene(root);
-
-        stage.setScene(scene);
-        stage.show();
+    public void starten(ActionEvent event) throws IOException, SQLException, ClassNotFoundException {
+//        FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLDocument.fxml"));
+//        Parent root;
+//        root = loader.load();
+//
+//        FXMLMainYatzy view = loader.getController();
+//        view.setUser(user);
+//        view.setStage(stage);
+//        view.setMainApp(mainApp);
+//        Scene scene = new Scene(root);
+//
+//        stage.setScene(scene);
+//        stage.show();
+          mainApp.startYatzy(0);
     }
 
     /**

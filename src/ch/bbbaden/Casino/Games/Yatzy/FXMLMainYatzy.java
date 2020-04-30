@@ -5,6 +5,7 @@ package ch.bbbaden.Casino.Games.Yatzy;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+import Casino.DataBase.Query;
 import Casino.DataBase.User;
 import ch.bbbaden.Casino.MainApp;
 import java.io.IOException;
@@ -34,7 +35,7 @@ import javafx.stage.Stage;
  *
  * @author yanni
  */
-public class FXMLDocumentController implements Initializable {
+public class FXMLMainYatzy implements Initializable {
 
     //UserInformation
     public double kontostand;
@@ -290,13 +291,14 @@ public class FXMLDocumentController implements Initializable {
     private Button ablauf;
     @FXML
     private Label konto;
+    private Query sql = new Query();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
         fülleArray();
         //konto.setText("" + kontostand);
-        setUser(user);
+        //setUser(user);
         konto.setText("" + kontostand);
     }
 
@@ -695,22 +697,27 @@ public class FXMLDocumentController implements Initializable {
     }
 
     @FXML
-    private void wettsystemöffnen(ActionEvent event) throws IOException {
+    private void wettsystemöffnen(ActionEvent event) throws IOException, SQLException, ClassNotFoundException {
 
-        Parent root = FXMLLoader.load(getClass().getResource("FXMLWettsystem.fxml"));
-
-        Scene scene = new Scene(root);
-
-        Stage stage = new Stage();
-        stage.setTitle("Bet");
-        stage.setScene(scene);
-        stage.show();
-
-        starten.toFront();
-        wettsystem.setDisable(false);
-        wettsystem.setVisible(false);
-        Stage stage2 = (Stage) wettsystem.getScene().getWindow();
-        stage2.close();
+//        Parent root = FXMLLoader.load(getClass().getResource("FXMLWettsystem.fxml"));
+//        FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLWettsystem.fxml"));
+//        
+//        FXMLWettsystemController wette = loader.getController();
+//        //wette.setUser(user);
+//        
+//        Scene scene = new Scene(root);
+//
+//        Stage stage = new Stage();
+//        stage.setTitle("Bet");
+//        stage.setScene(scene);
+//        stage.show();
+//
+//        starten.toFront();
+//        wettsystem.setDisable(false);
+//        wettsystem.setVisible(false);
+//        Stage stage2 = (Stage) wettsystem.getScene().getWindow();
+//        stage2.close();
+        mainApp.startWettsystemYatzy();
 
     }
 
@@ -1230,5 +1237,16 @@ public class FXMLDocumentController implements Initializable {
 
     public void setMainApp(MainApp mainApp) {
         this.mainApp = mainApp;
+    }
+
+    public void setWetteinsatz(double creditgesetzt) {
+        if (creditgesetzt == 0) {
+
+        } else {
+            System.out.println(creditgesetzt);
+            double ks = user.getCredit()-creditgesetzt;
+            konto.setText(Double.toString(ks));
+            
+        }
     }
 }

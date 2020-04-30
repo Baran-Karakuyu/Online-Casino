@@ -18,7 +18,9 @@ import ch.bbbaden.Casino.Games.Roulette.ControllerRoulette;
 import ch.bbbaden.Casino.Games.Slots.FXMLSlotsController;
 import ch.bbbaden.Casino.Games.Slots.SlotMachineModel;
 import ch.bbbaden.Casino.Games.Slots.SlotMachineViewModel;
+import ch.bbbaden.Casino.Games.Yatzy.FXMLMainYatzy;
 import ch.bbbaden.Casino.Games.Yatzy.FXMLStartscreenController;
+import ch.bbbaden.Casino.Games.Yatzy.FXMLWettsystemController;
 import ch.bbbaden.Casino.Login.LoginViewController;
 import ch.bbbaden.Casino.Login.RegisterViewController;
 import ch.bbbaden.Casino.Menu.Model.Model;
@@ -140,7 +142,7 @@ public class MainApp extends Application {
         stage.show();
     }
 
-    public void startYatzy() throws IOException, SQLException, ClassNotFoundException {
+    public void startYatzyStart() throws IOException, SQLException, ClassNotFoundException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Games/Yatzy/FXMLStartscreen.fxml"));
         Parent root;
         root = loader.load();
@@ -256,6 +258,37 @@ public class MainApp extends Application {
 
         final Scene scene = new Scene(root);
         stage.setTitle("Statistik");
+        stage.setScene(scene);
+        stage.show();
+    }
+    public void startYatzy(double creditgesetzt) throws IOException, SQLException, ClassNotFoundException{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Games/Yatzy/FXMLDocument.fxml"));
+        Parent root;
+        root = loader.load();
+
+        FXMLMainYatzy view = loader.getController();
+        view.setMainApp(this);
+        view.setUser(user);
+        view.setStage(stage);
+        view.setWetteinsatz(creditgesetzt);
+        final Scene scene = new Scene(root);
+
+        stage.setTitle("Yatzy");
+        stage.setScene(scene);
+        stage.show();
+    }
+    public void startWettsystemYatzy()throws IOException, SQLException, ClassNotFoundException{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Games/Yatzy/FXMLWettsystem.fxml"));
+        Parent root;
+        root = loader.load();
+
+        FXMLWettsystemController view = loader.getController();
+        view.setMainApp(this);
+        view.setUser(user);
+        view.setStage(stage);
+        final Scene scene = new Scene(root);
+
+        stage.setTitle("Wettsystem");
         stage.setScene(scene);
         stage.show();
     }

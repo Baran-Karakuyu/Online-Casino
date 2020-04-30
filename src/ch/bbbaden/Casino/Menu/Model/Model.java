@@ -42,7 +42,7 @@ public class Model {
     }
 
     public void startYatzy() throws IOException, SQLException, ClassNotFoundException {
-        mainApp.startYatzy();
+        mainApp.startYatzyStart();
     }
 
     public void startBingo() throws IOException, SQLException, ClassNotFoundException {
