@@ -261,6 +261,7 @@ public class MainApp extends Application {
         stage.setScene(scene);
         stage.show();
     }
+    
     public void startYatzy(double creditgesetzt) throws IOException, SQLException, ClassNotFoundException{
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Games/Yatzy/FXMLDocument.fxml"));
         Parent root;
@@ -277,6 +278,7 @@ public class MainApp extends Application {
         stage.setScene(scene);
         stage.show();
     }
+    
     public void startWettsystemYatzy()throws IOException, SQLException, ClassNotFoundException{
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Games/Yatzy/FXMLWettsystem.fxml"));
         Parent root;
