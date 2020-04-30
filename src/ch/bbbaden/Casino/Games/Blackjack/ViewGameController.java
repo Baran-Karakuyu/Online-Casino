@@ -102,6 +102,7 @@ public class ViewGameController implements Initializable {
 
     @FXML
     private ImageView doubleDownCard;
+    //Chips
     @FXML
     private ImageView chip10;
     @FXML
@@ -172,20 +173,25 @@ public class ViewGameController implements Initializable {
     private Button resetBtn;
     @FXML
     private ChoiceBox<Double> insuranceChoice;
+    //Booleans to Check
     private boolean checkPlayer = false;
     private boolean blackjack = false;
     private boolean put = false;
     private boolean chipsActive = true;
     @FXML
     private Button insuranceBtn;
+    //Unsername
     @FXML
     private Label username;
+    //Insurance Boolean
     private boolean insuranceWoL = false;
-
+    
+    //ViewModel Setter
     public void setViewModel(ViewModelBlackJack viewModel) {
         this.viewModel = viewModel;
     }
 
+    //Binding
     public void bind() throws SQLException, ClassNotFoundException {
         cardP.bind(viewModel.getCard1P());
         cardG.bind(viewModel.getCard1G());
@@ -203,7 +209,7 @@ public class ViewGameController implements Initializable {
         creditKonto.textProperty().bind(viewModel.getCredit());
         creditHere = Double.parseDouble(creditKonto.getText());
     }
-
+    //Adding Pictures and ChoiceBox Items
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         insuranceChoice.getItems().add(10.0);
@@ -236,9 +242,10 @@ public class ViewGameController implements Initializable {
         insuranceBtn.opacityProperty().set(0.0);
         insuranceChoice.opacityProperty().set(0.0);
     }
-
+    //Method to take Cards
     @FXML
     private void hitAction(ActionEvent event) throws SQLException, ClassNotFoundException {
+        //Checks if Round started
         if (put == false) {
             JOptionPane.showMessageDialog(null, "Start the game first with Put", "Fail", JOptionPane.ERROR_MESSAGE);
         } else {
@@ -249,12 +256,14 @@ public class ViewGameController implements Initializable {
                 holding();
                 hitBtn.opacityProperty().set(0.1);
             } else {
+                //Checks for the next Card
                 switch (cardsHit) {
                     case 2:
                         sumP = 0;
                         for (int i = 0; i < playerCards.size(); i++) {
                             sumP += playerCards.get(i).getValue();
                         }
+                        //if sum already over 10 ace 1 otherwise ace 11
                         if (sumP > 10) {
                             cardsPlayer(card3P, card3Player, "CasinoIMG/BlackJack/Card", 1);
                         } else {
@@ -264,7 +273,7 @@ public class ViewGameController implements Initializable {
                         for (int i = 0; i < playerCards.size(); i++) {
                             sumP += playerCards.get(i).getValue();
                         }
-
+                        //if 21 or over 21 dealer plays and he cant hit nomore
                         if (sumP > 20) {
                             hitBtn.setDisable(true);
                             holding();
@@ -315,13 +324,15 @@ public class ViewGameController implements Initializable {
             for (int i = 0; i < playerCards.size(); i++) {
                 sumP += playerCards.get(i).getValue();
             }
+            //Displays Sum
             playerValue.setText(Integer.toString(sumP));
             viewModel.updatePlayer();
         }
     }
-
+    //Hold Action for Button Dealer Takes Card
     @FXML
     private void holdAction(ActionEvent event) throws SQLException, ClassNotFoundException {
+        //Checks if Round started
         if (put == false) {
             JOptionPane.showMessageDialog(null, "Start the game first with Put", "Fail", JOptionPane.ERROR_MESSAGE);
         } else {
@@ -338,13 +349,14 @@ public class ViewGameController implements Initializable {
             }
             viewModel.holdaction(sumG, cardsDealer);
 
-            //card4Show();
+            //Hides the second card so dealer second card revealed
             cardHide.setImage(null);
 
             sumG = 0;
             for (int i = 0; i < dealerCards.size(); i++) {
                 sumG += dealerCards.get(i).getValue();
             }
+            //If he under 17 he takes Cards
             if (sumG < 17) {
 
                 viewModel.holdaction(sumG, cardsDealer);
@@ -391,7 +403,9 @@ public class ViewGameController implements Initializable {
             for (int i = 0; i < playerCards.size(); i++) {
                 sumP += playerCards.get(i).getValue();
             }
+            //Checks Result
             checkPlayer(sumP, sumG);
+            //Displays new Sum
             dealerValue.setText(Integer.toString(sumG));
             sumG = 0;
             viewModel.updatePlayer();
@@ -400,6 +414,7 @@ public class ViewGameController implements Initializable {
 
     //Dealer Actions after Double or Bust
     private void holding() throws SQLException, ClassNotFoundException {
+        //Checks if Round started
         if (put == false) {
             JOptionPane.showMessageDialog(null, "Start the game first with Put", "Fail", JOptionPane.ERROR_MESSAGE);
         } else {
@@ -409,13 +424,13 @@ public class ViewGameController implements Initializable {
             doubleBtn.opacityProperty().set(0.5);
             hitBtn.opacityProperty().set(0.5);
             holdBtn.opacityProperty().set(0.5);
-
+            //Lets the Dealer play
             sumG = 0;
             for (int i = 0; i < dealerCards.size(); i++) {
                 sumG += dealerCards.get(i).getValue();
             }
-            viewModel.holdaction(sumG, cardsDealer);
-            //card4Show();
+            viewModel.holdaction(sumG, cardsDealer);            
+            //Hides the second card so dealer second card revealed
             cardHide.setImage(null);
             sumG = 0;
             for (int i = 0; i < dealerCards.size(); i++) {
@@ -425,14 +440,14 @@ public class ViewGameController implements Initializable {
             for (int i = 0; i < playerCards.size(); i++) {
                 sumP += playerCards.get(i).getValue();
             }
-            //if(sumP>21||sumP==21)
+            //if player over 21 dealer takes 2 cards
             if (sumP > 21) {
                 sumG = 0;
                 for (int i = 0; i < dealerCards.size(); i++) {
                     sumG += dealerCards.get(i).getValue();
                     System.out.println("Values :" + dealerCards.get(i).getValue());
                 }
-            } else {
+            } else {// else he takes cards as long as he under 17
                 if (sumG < 17) {
                     if (sumG > 10) {
                         cardsDealer(card3G, card3Groupier, "CasinoIMG/BlackJack/Card", 1);
@@ -480,17 +495,21 @@ public class ViewGameController implements Initializable {
             for (int i = 0; i < playerCards.size(); i++) {
                 sumP += playerCards.get(i).getValue();
             }
+            //Checks Result
             checkPlayer(sumP, sumG);
+            //Displays Result
             dealerValue.setText(Integer.toString(sumG));
             viewModel.updatePlayer();
         }
     }
-
+    //Takes Double Card
     @FXML
     private void doubledownAction(ActionEvent event) throws SQLException, ClassNotFoundException {
+        //Checks if the Round Started
         if (put == false) {
             JOptionPane.showMessageDialog(null, "Start the game first with Put", "Fail", JOptionPane.ERROR_MESSAGE);
         } else {
+            //Doubles the Money and gives the Player the Third card plus makes the Dealer play
             sumP = 0;
             for (int i = 0; i < playerCards.size(); i++) {
                 sumP += playerCards.get(i).getValue();
@@ -524,8 +543,8 @@ public class ViewGameController implements Initializable {
 
             }
         }
-    }
-
+    }   
+    //Putting the Money down and starting the Game
     @FXML
     private void putAction(ActionEvent event) throws SQLException, ClassNotFoundException {
         putBtn.setDisable(true);
@@ -533,19 +552,21 @@ public class ViewGameController implements Initializable {
         insuranceChoice.setDisable(true);
         insuranceBtn.opacityProperty().set(0.0);
         insuranceChoice.opacityProperty().set(0.0);
+        //Checks if Player broke
         if (Double.parseDouble(creditKonto.getText()) <= 0.0) {
-            JOptionPane.showMessageDialog(null, "Bet Money/Chips first", "Fail", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "You need more Money", "Fail", JOptionPane.ERROR_MESSAGE);
         } else {
+            //Checks if Money has been Put
             if (creditPut == 0.0) {
                 System.out.println("Set Money Geld");
             } else {
                 put = true;
                 chipsActive = false;
                 viewModel.play();
-
+                //Gives the first For cards
                 cardsPlayer(cardP, card1Player, "CasinoIMG/BlackJack/Card", 11);
                 cardsDealer(cardG, card1Groupier, "CasinoIMG/BlackJack/Card", 11);
-                //card 0 issue
+                
                 if (playerCards.get(0).getValue() == 11) {
                     cardsPlayer(card2P, card2Player, "CasinoIMG/BlackJack/Card", 1);
                 } else {
@@ -561,7 +582,7 @@ public class ViewGameController implements Initializable {
 
                 sumP = 0;
                 sumG = 0;
-
+                //Checks for Insurance Possibility
                 if (dealerCards.get(0).getValue() == 11) {
                     insuranceBtn.setDisable(false);
                     insuranceBtn.opacityProperty().set(1.0);
@@ -571,6 +592,7 @@ public class ViewGameController implements Initializable {
                 for (int i = 0; i < playerCards.size(); i++) {
                     sumP += playerCards.get(i).getValue();
                 }
+                //Checks for Double Possibility
                 if (sumP > 8 && sumP < 12) {
                     doubleBtn.setDisable(false);
                     doubleBtn.opacityProperty().set(1.0);
@@ -581,6 +603,7 @@ public class ViewGameController implements Initializable {
                 for (int i = 0; i < dealerCards.size(); i++) {
                     sumG += dealerCards.get(i).getValue();
                 }
+                //Checks for Blackjack
                 if (sumP > 20) {
                     holding();
                     insuranceBtn.setDisable(true);
@@ -592,6 +615,7 @@ public class ViewGameController implements Initializable {
                 }
                 putBtn.opacityProperty().set(0.0);
             }
+            //Checks if Picture Display has Failed
             if (card1Player.getImage() == null || card2Player.getImage() == null || card1Groupier.getImage() == null || card1Groupier.getImage() == null) {
                 System.out.println("Fail");
             }
@@ -604,6 +628,7 @@ public class ViewGameController implements Initializable {
     private void checkPlayer(int sumP, int sumG) throws SQLException, ClassNotFoundException {
         boolean notNegativeP = false;
         boolean notNegativeG = false;
+        //Looks if Player over 21
         if (21 - sumP < 0) {
             System.out.println("Lost");
             endLbl.setText("LOST");
@@ -627,7 +652,7 @@ public class ViewGameController implements Initializable {
         } else {
             notNegativeP = false;
         }
-
+        //Looks if Dealer over 21
         if (21 - sumG < 0) {
             notNegativeG = true;
             System.out.println("You Won");
@@ -657,7 +682,7 @@ public class ViewGameController implements Initializable {
         } else {
             notNegativeG = false;
         }
-
+        //Happens if both under 21
         if (notNegativeP == false && notNegativeG == false) {
             if (21 - sumP < 21 - sumG) {
                 System.out.println("Won");
@@ -717,9 +742,10 @@ public class ViewGameController implements Initializable {
                 viewModel.setNewCredit(creditHere);
             }
         }
+        //Makes checkPlayer true because the Check of the Sums and the round itself is done
         checkPlayer = true;
     }
-
+    //Insurance Button Saves Insurance Amount and sets the Boolean Insurance on True
     @FXML
     private void insurance(ActionEvent event) {
         if (insuranceChoice.getValue() == 0) {
@@ -729,6 +755,7 @@ public class ViewGameController implements Initializable {
             insuranceActive = true;
             insuranceMoneyPut = insuranceChoice.getValue();
             double bank = Double.parseDouble(creditKonto.getText()) - creditPut;
+            //if not Enough Money shows Message
             if (bank < insuranceMoneyPut) {
                 insuranceActive = false;
                 insuranceBtn.setTextFill(Color.WHITE);
@@ -744,7 +771,7 @@ public class ViewGameController implements Initializable {
             sumG += dealerCards.get(i).getValue();
         }
         //viewModel.insurance(credit, sumG);
-
+        //Checks if Dealer has 21 to Add or Substract Money from Credit
         if (sumG == 21) {
             creditHere += credit;
             insuranceWoL = true;
@@ -753,9 +780,10 @@ public class ViewGameController implements Initializable {
             insuranceWoL = false;
         }
     }
-
+    //Closes the Programm
     @FXML
     private void closeBtn(ActionEvent event) throws SQLException, ClassNotFoundException {
+       //if Player already ended the Round nothing happens if not he looses that Money he put on the Table
         if (checkPlayer = true) {
             System.exit(0);
         } else {
@@ -764,7 +792,7 @@ public class ViewGameController implements Initializable {
             System.exit(0);
         }
     }
-
+    //Resets everything
     @FXML
     private void reset(ActionEvent event) throws IOException, SQLException, ClassNotFoundException {
         if (checkPlayer == true) {
@@ -847,22 +875,26 @@ public class ViewGameController implements Initializable {
         putBtn.setDisable(false);
         put = false;
         chipsActive = true;
+        //Gets the newest Credit of the Player again
         creditKonto.textProperty().bind(viewModel.getCredit());
         creditHere = Double.parseDouble(creditKonto.getText());
         insuranceWoL=false;
     }
-
+    //Displays Chips if Pressed
     @FXML
     private void chip10(MouseEvent event) {
         if (chipsActive == true) {
             double credit = Double.parseDouble(creditKonto.getText());
             double sum = creditPut + 10.0;
+            //Looks if enough Credit
             if (credit <= 0.0 || credit < 10.0 || credit < sum) {
                 JOptionPane.showMessageDialog(null, "You need Money", "Fehler", JOptionPane.ERROR_MESSAGE);
             } else {
+                //Put more Credit
                 creditPut += 10.0;
                 chipsvalue.setText(Double.toString(creditPut));
                 chipAmount++;
+                //Displays Different next Chip on the Table
                 switch (chipAmount) {
                     case 1:
                         chips.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip10.png"));
@@ -926,18 +958,21 @@ public class ViewGameController implements Initializable {
             }
         }
     }
-
+    //Displays Chips if Pressed
     @FXML
     private void chip50(MouseEvent event) {
         if (chipsActive == true) {
             double credit = Double.parseDouble(creditKonto.getText());
             double sum = creditPut + 50.0;
+            //Looks if enough Credit
             if (credit <= 0.0 || credit < 50.0 || credit < sum) {
                 JOptionPane.showMessageDialog(null, "You need Money", "Fail", JOptionPane.ERROR_MESSAGE);
             } else {
+                 //Put more Credit
                 creditPut += 50.0;
                 chipsvalue.setText(Double.toString(creditPut));
                 chipAmount++;
+                //Displays Different next Chip on the Table
                 switch (chipAmount) {
                     case 1:
                         chips.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip50.png"));
@@ -1000,18 +1035,21 @@ public class ViewGameController implements Initializable {
             }
         }
     }
-
+    //Displays Chips if Pressed
     @FXML
     private void chip100(MouseEvent event) {
         if (chipsActive == true) {
             double credit = Double.parseDouble(creditKonto.getText());
             double sum = creditPut + 100.0;
+            //Looks if enough Credit
             if (credit <= 0.0 || credit < 100.0 || credit < sum) {
                 JOptionPane.showMessageDialog(null, "You need Money", "Fail", JOptionPane.ERROR_MESSAGE);
             } else {
+                 //Put more Credit
                 creditPut += 100.0;
                 chipsvalue.setText(Double.toString(creditPut));
                 chipAmount++;
+                //Displays Different next Chip on the Table
                 switch (chipAmount) {
                     case 1:
                         chips.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip100.png"));
@@ -1056,18 +1094,21 @@ public class ViewGameController implements Initializable {
             }
         }
     }
-
+    //Displays Chips if Pressed
     @FXML
     private void chip250(MouseEvent event) {
         if (chipsActive == true) {
             double credit = Double.parseDouble(creditKonto.getText());
             double sum = creditPut + 250.0;
+            //Looks if enough Credit
             if (credit <= 0.0 || credit < 250.0 || credit < sum) {
                 JOptionPane.showMessageDialog(null, "You need Money", "Fail", JOptionPane.ERROR_MESSAGE);
             } else {
+                 //Put more Credit
                 creditPut += 250.0;
                 chipsvalue.setText(Double.toString(creditPut));
                 chipAmount++;
+                //Displays Different next Chip on the Table                
                 switch (chipAmount) {
                     case 1:
                         chips.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip250.png"));
@@ -1112,18 +1153,21 @@ public class ViewGameController implements Initializable {
             }
         }
     }
-
+    //Displays Chips if Pressed
     @FXML
     private void chip1000(MouseEvent event) {
         if (chipsActive == true) {
             double credit = Double.parseDouble(creditKonto.getText());
             double sum = creditPut + 1000.0;
+            //Looks if enough Credit
             if (credit <= 0.0 || credit < 1000.0 || credit < sum) {
                 JOptionPane.showMessageDialog(null, "You need Money", "Fail", JOptionPane.ERROR_MESSAGE);
             } else {
+                 //Put more Credit
                 creditPut += 1000.0;
                 chipsvalue.setText(Double.toString(creditPut));
                 chipAmount++;
+                //Displays Different next Chip on the Table                
                 switch (chipAmount) {
                     case 1:
                         chips.setImage(new Image("CasinoIMG/BlackJack/Chips/Chip1000.png"));
@@ -1169,14 +1213,15 @@ public class ViewGameController implements Initializable {
         }
     }
 
-    //Cards Displayer
+    //Displays Cards of the Player
     private void cardsPlayer(IntegerProperty card, ImageView cardView, String set, int aceValue) {
         cardsHit++;
+        //Checks what Random Number is given and what Card is taken
         switch (card.get()) {
             case 1:
                 cardView.setImage(new Image(set + "/2C.png"));
                 cardsTaken++;
-
+                //Adds a new Card to the ArrrayList of PlayerCards
                 playerCards.add(new Cards(1, 2));
                 break;
             case 2:
@@ -1488,14 +1533,15 @@ public class ViewGameController implements Initializable {
                 break;
         }
     }
-
+    //Displays Cards of Dealer
     private void cardsDealer(IntegerProperty card, ImageView cardView, String set, int aceValue) {
         cardsDealer++;
+        //Checks what Random Number is given and what Card is taken
         switch (card.get()) {
             case 1:
                 cardView.setImage(new Image(set + "/2C.png"));
                 cardsTaken++;
-
+                //Adds a new Card to the ArrrayList of DealerCards
                 dealerCards.add(new Cards(1, 2));
                 break;
             case 2:
@@ -1807,12 +1853,14 @@ public class ViewGameController implements Initializable {
                 break;
         }
     }
-
+    //Goes back to the Menu
     @FXML
     private void backToMenu(ActionEvent event) throws IOException, SQLException, ClassNotFoundException {
+        //Checks if Mid Round or the end of the Round
         if (checkPlayer == true) {
             viewModel.backToMenu();
-        } else {
+        } else { 
+            //Takes away the Money because he Left the game
             creditHere -= creditPut;
             viewModel.setNewCredit(creditHere);
             viewModel.backToMenu();
