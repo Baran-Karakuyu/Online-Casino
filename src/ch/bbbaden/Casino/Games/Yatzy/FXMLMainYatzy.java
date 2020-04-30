@@ -216,6 +216,7 @@ public class FXMLMainYatzy implements Initializable {
 
     @FXML
     private Button starten;
+    
     @FXML
     private TextField botZweier;
     @FXML
@@ -254,6 +255,7 @@ public class FXMLMainYatzy implements Initializable {
     private Label rundenzahl;
     @FXML
     private Pane winscreen;
+    
     private Label Wetteinsatz;
     @FXML
     private Label gewinner;
@@ -274,20 +276,7 @@ public class FXMLMainYatzy implements Initializable {
     private Button beenden;
     @FXML
     private Button neueRunde;
-    @FXML
-    private Label verbleibend3;
-    @FXML
-    private Label verbleibend1;
-    @FXML
-    private Label verbleibend11;
-    @FXML
-    private Label verbleibend31;
-    @FXML
-    private Label verbleibend311;
-    @FXML
-    private Label verbleibend12;
-    @FXML
-    private Label verbleibend111;
+   
     @FXML
     private Button ablauf;
     @FXML
@@ -1167,6 +1156,14 @@ public class FXMLMainYatzy implements Initializable {
             gewonnenesWert.setText("" + (wetteinsatzWert * 2));
             kontostand = kontostand + wetteinsatzWert * 2;
             gewinn = wetteinsatzWert * 2;
+            verlust = 0;
+        }
+        
+        if(bottotal == total){
+               gewinner.setText("Unentschieden");
+            gewonnenesGeld.setText("Erhaltenes Geld:");
+            gewonnenesWert.setText("" + wetteinsatzWert);
+            gewinn = wetteinsatzWert;
             verlust = 0;
         }
 
