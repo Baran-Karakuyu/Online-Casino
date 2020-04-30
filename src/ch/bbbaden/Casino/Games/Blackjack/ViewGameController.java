@@ -316,6 +316,7 @@ public class ViewGameController implements Initializable {
                             hitBtn.setDisable(true);
                             holding();
                         }
+                        holding();
                         break;
                 }
             }
