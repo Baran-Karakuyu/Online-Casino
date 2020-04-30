@@ -33,7 +33,7 @@ import javafx.stage.Stage;
 
 /**
  * FXMLMainYatzy
- * 
+ *
  * @author Yannick Wulf
  */
 public class FXMLMainYatzy implements Initializable {
@@ -216,7 +216,7 @@ public class FXMLMainYatzy implements Initializable {
 
     @FXML
     private Button starten;
-    
+
     @FXML
     private TextField botZweier;
     @FXML
@@ -255,7 +255,7 @@ public class FXMLMainYatzy implements Initializable {
     private Label rundenzahl;
     @FXML
     private Pane winscreen;
-    
+
     private Label Wetteinsatz;
     @FXML
     private Label gewinner;
@@ -276,7 +276,7 @@ public class FXMLMainYatzy implements Initializable {
     private Button beenden;
     @FXML
     private Button neueRunde;
-   
+
     @FXML
     private Button ablauf;
     @FXML
@@ -708,6 +708,8 @@ public class FXMLMainYatzy implements Initializable {
 //        Stage stage2 = (Stage) wettsystem.getScene().getWindow();
 //        stage2.close();
         mainApp.startWettsystemYatzy();
+        wettsystem.setDisable(true);
+        wettsystem.setVisible(false);
 
     }
 
@@ -1158,9 +1160,9 @@ public class FXMLMainYatzy implements Initializable {
             gewinn = wetteinsatzWert * 2;
             verlust = 0;
         }
-        
-        if(bottotal == total){
-               gewinner.setText("Unentschieden");
+
+        if (bottotal == total) {
+            gewinner.setText("Unentschieden");
             gewonnenesGeld.setText("Erhaltenes Geld:");
             gewonnenesWert.setText("" + wetteinsatzWert);
             gewinn = wetteinsatzWert;
@@ -1242,9 +1244,9 @@ public class FXMLMainYatzy implements Initializable {
 
         } else {
             System.out.println(creditgesetzt);
-            double ks = user.getCredit()-creditgesetzt;
+            double ks = user.getCredit() - creditgesetzt;
             konto.setText(Double.toString(ks));
-            
+
         }
     }
 }
