@@ -424,8 +424,10 @@ public class ControllerRoulette implements Initializable {
         lblNumber.setText("Number " + rbt.getRandom() + " has been drawn.");
         if (rbt.getWin() == 0) {
             konto -= TotalBetValue;
+            user.userStats(3, user.getUid(), TotalBetValue, 0, TotalBetValue);
         } else {
             konto += rbt.getWin();
+            user.userStats(3, user.getUid(), TotalBetValue, rbt.getWin(), 0);
         }
 //        konto = konto + rbt.getWin();
         sql.updateUser();
